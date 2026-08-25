@@ -153,21 +153,21 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 <div class="segment" data-seg="player-tracker">
   <div class="seg-head">
     <div><div class="seg-time">AT A GLANCE</div><div class="seg-title">Player Tracker</div></div>
-    <div class="seg-count" data-count-for="player-tracker">0/21</div>
+    <div class="seg-count" data-count-for="player-tracker">0/14</div>
   </div>
   <div class="checklist">
     <table class="pt-table">
       <thead>
-        <tr><th>Player Name</th><th>Attended</th><th>Executed</th><th>Strong Effort</th></tr>
+        <tr><th>Player Name</th><th>Attended</th><th>Strong Effort</th></tr>
       </thead>
       <tbody>
-        <tr><td>Emilia Albert</td><td><input type="checkbox" id="pt-emilia-att"></td><td><input type="checkbox" id="pt-emilia-exec"></td><td><input type="checkbox" id="pt-emilia-effort"></td></tr>
-        <tr><td>Maverick Hahn</td><td><input type="checkbox" id="pt-maverick-att"></td><td><input type="checkbox" id="pt-maverick-exec"></td><td><input type="checkbox" id="pt-maverick-effort"></td></tr>
-        <tr><td>Ellie Lipp</td><td><input type="checkbox" id="pt-ellie-att"></td><td><input type="checkbox" id="pt-ellie-exec"></td><td><input type="checkbox" id="pt-ellie-effort"></td></tr>
-        <tr><td>Amelia Molitor</td><td><input type="checkbox" id="pt-amelia-att"></td><td><input type="checkbox" id="pt-amelia-exec"></td><td><input type="checkbox" id="pt-amelia-effort"></td></tr>
-        <tr><td>Zenobia Pasika</td><td><input type="checkbox" id="pt-zenobia-att"></td><td><input type="checkbox" id="pt-zenobia-exec"></td><td><input type="checkbox" id="pt-zenobia-effort"></td></tr>
-        <tr><td>Hannah Schrader</td><td><input type="checkbox" id="pt-hannah-att"></td><td><input type="checkbox" id="pt-hannah-exec"></td><td><input type="checkbox" id="pt-hannah-effort"></td></tr>
-        <tr><td>Cate Wehner</td><td><input type="checkbox" id="pt-cate-att"></td><td><input type="checkbox" id="pt-cate-exec"></td><td><input type="checkbox" id="pt-cate-effort"></td></tr>
+        <tr><td>Emilia</td><td><input type="checkbox" id="pt-emilia-att"></td><td><input type="checkbox" id="pt-emilia-effort"></td></tr>
+        <tr><td>Maverick</td><td><input type="checkbox" id="pt-maverick-att"></td><td><input type="checkbox" id="pt-maverick-effort"></td></tr>
+        <tr><td>Ellie</td><td><input type="checkbox" id="pt-ellie-att"></td><td><input type="checkbox" id="pt-ellie-effort"></td></tr>
+        <tr><td>Amelia</td><td><input type="checkbox" id="pt-amelia-att"></td><td><input type="checkbox" id="pt-amelia-effort"></td></tr>
+        <tr><td>Zenobia</td><td><input type="checkbox" id="pt-zenobia-att"></td><td><input type="checkbox" id="pt-zenobia-effort"></td></tr>
+        <tr><td>Hannah</td><td><input type="checkbox" id="pt-hannah-att"></td><td><input type="checkbox" id="pt-hannah-effort"></td></tr>
+        <tr><td>Cate</td><td><input type="checkbox" id="pt-cate-att"></td><td><input type="checkbox" id="pt-cate-effort"></td></tr>
       </tbody>
     </table>
   </div>
@@ -235,11 +235,10 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 <div class="segment" data-seg="water-break">
   <div class="seg-head">
     <div><div class="seg-time">6:10 – 6:15 PM</div><div class="seg-title">Water Break</div></div>
-    <div class="seg-count" data-count-for="water-break">0/2</div>
+    <div class="seg-count" data-count-for="water-break">0/1</div>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wb-1"><label for="wb-1">Water break — everyone drinks</label></div>
-    <div class="item"><input type="checkbox" id="wb-2"><label for="wb-2">Quick bathroom break if needed</label></div>
   </div>
 </div>
 
@@ -537,18 +536,16 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
     out += `CARRY INTO WEEK 3:\n${state.carryForward.trim()}\n`;
   }
   const players = [
-    {id:'emilia',name:'Emilia Albert'},{id:'maverick',name:'Maverick Hahn'},
-    {id:'ellie',name:'Ellie Lipp'},{id:'amelia',name:'Amelia Molitor'},
-    {id:'zenobia',name:'Zenobia Pasika'},{id:'hannah',name:'Hannah Schrader'},
-    {id:'cate',name:'Cate Wehner'}
+    {id:'emilia',name:'Emilia'},{id:'maverick',name:'Maverick'},
+    {id:'ellie',name:'Ellie'},{id:'amelia',name:'Amelia'},
+    {id:'zenobia',name:'Zenobia'},{id:'hannah',name:'Hannah'},
+    {id:'cate',name:'Cate'}
   ];
-  const executed = players.filter(p=>document.getElementById('pt-'+p.id+'-exec').checked).map(p=>p.name);
   const effort = players.filter(p=>document.getElementById('pt-'+p.id+'-effort').checked).map(p=>p.name);
   const attended = players.filter(p=>document.getElementById('pt-'+p.id+'-att').checked).map(p=>p.name);
-  if(attended.length || executed.length || effort.length){
+  if(attended.length || effort.length){
     out += '\nPLAYER TRACKER\n';
     if(attended.length) out += `Attended: ${attended.join(', ')}\n`;
-    if(executed.length) out += `Executed: ${executed.join(', ')}\n`;
     if(effort.length) out += `Strong Effort: ${effort.join(', ')}\n`;
   }
   try{
