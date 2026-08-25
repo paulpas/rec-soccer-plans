@@ -270,19 +270,20 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
 </div>
 
-<!-- SEGMENT 5: Game Application -->
+<!-- SEGMENT 5: Full Field Scrimmage -->
 <div class="segment" data-seg="w2-scrimmage">
   <div class="seg-head">
-    <div><div class="seg-time">6:35 – 6:40 PM</div><div class="seg-title">Game Application</div></div>
-    <div class="seg-count" data-count-for="w2-scrimmage">0/3</div>
+    <div><div class="seg-time">6:35 – 6:40 PM</div><div class="seg-title">Full Field Scrimmage</div></div>
+    <div class="seg-count" data-count-for="w2-scrimmage">0/4</div>
   </div>
   <div class="checklist">
-    <div class="item"><input type="checkbox" id="w2-scrimmage-1"><label for="w2-scrimmage-1">Short scrimmage focused on applying passing into space</label></div>
-    <div class="item"><input type="checkbox" id="w2-scrimmage-2"><label for="w2-scrimmage-2">Encourage players to call "space!" before receiving</label></div>
-    <div class="item"><input type="checkbox" id="w2-scrimmage-3"><label for="w2-scrimmage-3">Praise attempts to pass into space, even if they don't connect</label></div>
+    <div class="item"><input type="checkbox" id="w2-scrimmage-1"><label for="w2-scrimmage-1">Play a full field game — goals, goalies, real positions</label></div>
+    <div class="item"><input type="checkbox" id="w2-scrimmage-2"><label for="w2-scrimmage-2">Look for passes into space — aim where teammates are running, not where they're standing</label></div>
+    <div class="item"><input type="checkbox" id="w2-scrimmage-3"><label for="w2-scrimmage-3">If a pass lane is blocked, use footwork to create one before passing</label></div>
+    <div class="item"><input type="checkbox" id="w2-scrimmage-4"><label for="w2-scrimmage-4">Celebrate any goal that starts with a pass into space</label></div>
   </div>
   <div class="notes-block">
-    <label class="notes-label" for="w2-scrimmage-notes">Coach notes — did passing into space show up live?</label>
+    <label class="notes-label" for="w2-scrimmage-notes">Coach notes — did passing into space show up in the real game?</label>
     <textarea id="w2-scrimmage-notes" placeholder="e.g. saw two good passes into space, most kids still default to feet but getting the idea..."></textarea>
   </div>
 </div>
@@ -485,7 +486,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
     'w2-arrival':'Arrival Scrimmage', 'w2-welcome':'Welcome & Recap',
     'w2-footwork':'Footwork & Creating Passing Lanes', 'water-break':'Water Break',
     'w2-passing':'Passing Into Space Drill',
-    'w2-scrimmage':'Game Application', 'w2-juggling':'Juggling Practice'
+    'w2-scrimmage':'Full Field Scrimmage', 'w2-juggling':'Juggling Practice'
   };
   segmentIds.forEach(seg=>{
     const notes = state.segments[seg].notes;

@@ -280,19 +280,20 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
 </div>
 
-<!-- SEGMENT 5: Scrimmage with Focus -->
+<!-- SEGMENT 5: Full Field Scrimmage -->
 <div class="segment" data-seg="w2w-scrimmage">
   <div class="seg-head">
-    <div><div class="seg-time">6:35 – 6:40 PM</div><div class="seg-title">Scrimmage with Focus</div></div>
-    <div class="seg-count" data-count-for="w2w-scrimmage">0/3</div>
+    <div><div class="seg-time">6:35 – 6:40 PM</div><div class="seg-title">Full Field Scrimmage</div></div>
+    <div class="seg-count" data-count-for="w2w-scrimmage">0/4</div>
   </div>
   <div class="checklist">
-    <div class="item"><input type="checkbox" id="w2w-scrimmage-1"><label for="w2w-scrimmage-1">Quick half-field scrimmage</label></div>
-    <div class="item"><input type="checkbox" id="w2w-scrimmage-2"><label for="w2w-scrimmage-2">Only count goals that involve a pass into space</label></div>
-    <div class="item"><input type="checkbox" id="w2w-scrimmage-3"><label for="w2w-scrimmage-3">Coach narrates good examples live</label></div>
+    <div class="item"><input type="checkbox" id="w2w-scrimmage-1"><label for="w2w-scrimmage-1">Play a full field game — goals, goalies, real positions</label></div>
+    <div class="item"><input type="checkbox" id="w2w-scrimmage-2"><label for="w2w-scrimmage-2">Movement is everything — don't stand still waiting for the ball, cut into space</label></div>
+    <div class="item"><input type="checkbox" id="w2w-scrimmage-3"><label for="w2w-scrimmage-3">Passers aim ahead of runners, not at their feet</label></div>
+    <div class="item"><input type="checkbox" id="w2w-scrimmage-4"><label for="w2w-scrimmage-4">If the lane is blocked, move the ball sideways until it opens</label></div>
   </div>
   <div class="notes-block">
-    <label class="notes-label" for="w2w-scrimmage-notes">Coach notes — did the movement passing show up in game situations?</label>
+    <label class="notes-label" for="w2w-scrimmage-notes">Coach notes — did movement passing show up in the real game?</label>
     <textarea id="w2w-scrimmage-notes" placeholder="e.g. one great pass into space led to a goal, most kids still tend to pass to feet but the idea is clicking..."></textarea>
   </div>
 </div>
@@ -495,7 +496,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
     'w2w-arrival':'Arrival Scrimmage', 'w2w-welcome':'Welcome & Recap',
     'w2w-footwork':'Footwork & Movement Passing', 'water-break':'Water Break',
     'w2w-passing':'Small-Sided Game: Pass Into Space',
-    'w2w-scrimmage':'Scrimmage with Focus', 'w2w-juggling':'Juggling Practice'
+    'w2w-scrimmage':'Full Field Scrimmage', 'w2w-juggling':'Juggling Practice'
   };
   segmentIds.forEach(seg=>{
     const notes = state.segments[seg].notes;

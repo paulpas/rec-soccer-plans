@@ -333,16 +333,16 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 <!-- SEGMENT 5 -->
 <div class="segment" data-seg="scrimmage">
   <div class="seg-head">
-    <div><div class="seg-time">6:35 – 6:50 PM</div><div class="seg-title">Half-Field Scrimmage</div></div>
+    <div><div class="seg-time">6:35 – 6:50 PM</div><div class="seg-title">Full Field Scrimmage</div></div>
     <div class="seg-count" data-count-for="scrimmage">0/3</div>
   </div>
   <div class="checklist">
-    <div class="item"><input type="checkbox" id="scrimmage-1"><label for="scrimmage-1">No out of bounds on sidelines — play on, kids self-ref</label></div>
-    <div class="item"><input type="checkbox" id="scrimmage-2"><label for="scrimmage-2">Ball past the goal line → resets</label></div>
-    <div class="item"><input type="checkbox" id="scrimmage-3"><label for="scrimmage-3">Defense wins ball → carries to half-line to reset</label></div>
+    <div class="item"><input type="checkbox" id="scrimmage-1"><label for="scrimmage-1">Play a full field game — goals, goalies, real positions</label></div>
+    <div class="item"><input type="checkbox" id="scrimmage-2"><label for="scrimmage-2">Apply the diamond shape on offense — spread out, use the width</label></div>
+    <div class="item"><input type="checkbox" id="scrimmage-3"><label for="scrimmage-3">Defense stays compact — second defender covers the space behind</label></div>
   </div>
   <div class="notes-block">
-    <label class="notes-label" for="scrimmage-notes">Coach notes — did the formation ideas show up live?</label>
+    <label class="notes-label" for="scrimmage-notes">Coach notes — did the formation and shape show up in the game?</label>
     <textarea id="scrimmage-notes" placeholder="e.g. saw the diamond twice, nobody held the central cover position yet..."></textarea>
   </div>
 </div>
@@ -457,7 +457,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
   let out = 'WEEK 1 NOTES\n\n';
   const titles = {
     arrival:'Arrival Scrimmage', welcome:'Welcome & Team Talk', footwork:'Footwork Foundations',
-    'water-break':'Water Break', formation:'On-Field Formation Walkthrough', scrimmage:'Half-Field Scrimmage'
+    'water-break':'Water Break', formation:'On-Field Formation Walkthrough',     scrimmage:'Full Field Scrimmage'
   };
   segmentIds.forEach(seg=>{
     const notes = state.segments[seg].notes;
