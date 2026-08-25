@@ -471,7 +471,8 @@ function updateCounts(){
 
 document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
   cb.addEventListener('change', ()=>{
-    cb.closest('.item').classList.toggle('checked', cb.checked);
+    const item = cb.closest('.item');
+    if(item) item.classList.toggle('checked', cb.checked);
     updateCounts();
     scheduleSave();
   });
