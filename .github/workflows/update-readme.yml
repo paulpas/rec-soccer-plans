@@ -31,8 +31,8 @@ jobs:
           echo "" >> README.md
           echo "## Lesson Plans" >> README.md
           echo "" >> README.md
-          echo "| Week | Day | Plan | Preview |" >> README.md
-          echo "|------|-----|------|---------|" >> README.md
+          echo "| Week | Day | Plan |" >> README.md
+          echo "|------|-----|------|" >> README.md
 
           # ── Collect plan entries and write table rows to temp file ──
           FOUND=0
@@ -75,7 +75,7 @@ jobs:
 
           # Sort by week+day key, then emit formatted table rows
           sort -t'|' -k1 -n /tmp/plan_rows.txt | while IFS='|' read -r _sort week day title file preview_url; do
-            echo "| ${week} | ${day} | [${title}](${file}) | [View](https://html-preview.github.io/?url=${preview_url}) |"
+            echo "| ${week} | ${day} | [${title}](https://html-preview.github.io/?url=${preview_url}) |"
           done >> README.md
 
       - name: Commit and push
