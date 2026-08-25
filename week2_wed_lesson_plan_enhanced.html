@@ -460,7 +460,7 @@ function applyState(state){
     if(!segState) return;
     Object.entries(segState.items || {}).forEach(([id, checked])=>{
       const el = document.getElementById(id);
-      if(el){ el.checked = checked; el.closest('.item').classList.toggle('checked', checked); }
+      if(el){ el.checked = checked; const item = el.closest('.item'); if(item) item.classList.toggle('checked', checked); }
     });
     const notesEl = document.getElementById(seg+'-notes');
     if(notesEl && segState.notes) notesEl.value = segState.notes;
