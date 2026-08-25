@@ -1,0 +1,81 @@
+name: Update README
+
+on:
+  push:
+    branches: [main]
+    paths: ["*.html"]
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    # Belt-and-suspenders: skip if this commit was made by the workflow itself
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      !contains(github.event.head_commit.message, '[skip ci]')
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate README
+        run: |
+          set -euo pipefail
+
+          REPO_URL="https://github.com/paulpas/rec-soccer-plans"
+
+          # ── Write README header ──
+          echo "# Rec Soccer Coaching Plans" > README.md
+          echo "" >> README.md
+          echo "Season plans for rec soccer coaching. Each plan includes structured drills, SVG field diagrams, and a checklist that auto-saves." >> README.md
+          echo "" >> README.md
+          echo "## Lesson Plans" >> README.md
+          echo "" >> README.md
+          echo "| Week | Plan | Preview |" >> README.md
+          echo "|------|------|---------|" >> README.md
+
+          # ── Collect plan entries and write table rows to temp file ──
+          FOUND=0
+
+          for file in week*_lesson_plan_enhanced.html; do
+            [ -f "$file" ] || continue
+            FOUND=1
+
+            # Extract week number from filename (week<N>_... -> <N>)
+            WEEK_NUM=$(echo "$file" | sed -n 's/^week\([0-9]*\)_.*/\1/p')
+            [ -z "$WEEK_NUM" ] && continue
+
+            # Extract h1 title (may span lines), decode common HTML entities
+            TITLE=$(grep -oPz '(?s)<h1>.*?</h1>' "$file" \
+              | tr '\n' ' ' \
+              | sed -n 's/.*<h1>\(.*\)<\/h1>.*/\1/p' \
+              | sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g; s/&#39;/'"'"'/g; s/&middot;/·/g')
+            [ -z "$TITLE" ] && TITLE="Week ${WEEK_NUM} Plan"
+
+            PREVIEW_URL="${REPO_URL}/blob/main/${file}"
+            echo "| ${WEEK_NUM} | [${TITLE}](${file}) | [View](https://html-preview.github.io/?url=${PREVIEW_URL}) |" \
+              >> /tmp/plan_rows.txt
+          done
+
+          if [ "$FOUND" -eq 0 ]; then
+            echo "| — | *No plans yet* | — |" >> /tmp/plan_rows.txt
+          fi
+
+          # Sort rows numerically by week number (field 2) and append to README
+          sort -t'|' -k2 -n /tmp/plan_rows.txt >> README.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet README.md; then
+            echo "README.md is already up to date — nothing to commit."
+            exit 0
+          fi
+
+          git add README.md
+          git commit -m "chore: auto-update README with lesson plan links [skip ci]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
