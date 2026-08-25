@@ -414,10 +414,10 @@ function applyState(state){
 let saveTimer = null;
 function scheduleSave(){
   clearTimeout(saveTimer);
-  saveTimer = setTimeout(async ()=>{
+  saveTimer = setTimeout(()=>{
     try{
       const state = collectState();
-      await window.storage.set(STORAGE_KEY, JSON.stringify(state), false);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       showSavedPill();
     }catch(err){
       console.error('Storage save failed:', err);
@@ -494,14 +494,10 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
   }
 });
 
-(async function init(){
-  try{
-    const result = await window.storage.get(STORAGE_KEY, false);
-    if(result && result.value){
-      applyState(JSON.parse(result.value));
-    }
-  }catch(err){
-    // no saved state yet
+(function init(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw){
+    applyState(JSON.parse(raw));
   }
   updateCounts();
 })();
