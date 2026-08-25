@@ -120,6 +120,15 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 .diagram-card .field-svg{display:block; width:100%; height:auto;}
 .diagram-card .foot{padding:10px 16px 14px; font-size:12px; color:rgba(247,245,236,0.8);}
 .lane{ stroke-dasharray:1,9; stroke-linecap:round; animation:marchLane 0.9s linear infinite; }
+
+/* player tracker table */
+.pt-table{width:100%;border-collapse:collapse;}
+.pt-table th{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);padding:8px 14px;border-bottom:2px solid var(--line-rule);text-align:center;}
+.pt-table th:first-child{text-align:left;}
+.pt-table td{padding:8px 14px;border-bottom:1px solid var(--line-rule);text-align:center;vertical-align:middle;}
+.pt-table td:first-child{font-weight:600;text-align:left;}
+.pt-table tr:nth-child(even){background:rgba(247,245,236,0.5);}
+.pt-table input[type=checkbox]{display:block;margin:0 auto;}
 </style>
 </head>
 <body>
@@ -139,6 +148,34 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 </div>
 
 <div class="wrap">
+
+<!-- PLAYER TRACKER -->
+<div class="segment" data-seg="player-tracker">
+  <div class="seg-head">
+    <div><div class="seg-time">AT A GLANCE</div><div class="seg-title">Player Tracker</div></div>
+    <div class="seg-count" data-count-for="player-tracker">0/14</div>
+  </div>
+  <div class="checklist">
+    <table class="pt-table">
+      <thead>
+        <tr><th>Player Name</th><th>Executed</th><th>Strong Effort</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Emilia Albert</td><td><input type="checkbox" id="pt-emilia-exec"></td><td><input type="checkbox" id="pt-emilia-effort"></td></tr>
+        <tr><td>Maverick Hahn</td><td><input type="checkbox" id="pt-maverick-exec"></td><td><input type="checkbox" id="pt-maverick-effort"></td></tr>
+        <tr><td>Ellie Lipp</td><td><input type="checkbox" id="pt-ellie-exec"></td><td><input type="checkbox" id="pt-ellie-effort"></td></tr>
+        <tr><td>Amelia Molitor</td><td><input type="checkbox" id="pt-amelia-exec"></td><td><input type="checkbox" id="pt-amelia-effort"></td></tr>
+        <tr><td>Zenobia Pasika</td><td><input type="checkbox" id="pt-zenobia-exec"></td><td><input type="checkbox" id="pt-zenobia-effort"></td></tr>
+        <tr><td>Hannah Schrader</td><td><input type="checkbox" id="pt-hannah-exec"></td><td><input type="checkbox" id="pt-hannah-effort"></td></tr>
+        <tr><td>Cate Wehner</td><td><input type="checkbox" id="pt-cate-exec"></td><td><input type="checkbox" id="pt-cate-effort"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="player-tracker-notes">Coach notes — player observations</label>
+    <textarea id="player-tracker-notes" placeholder="e.g. who stood out today, who struggled, rotation notes..."></textarea>
+  </div>
+</div>
 
 <!-- SEGMENT 1: Arrival Scrimmage -->
 <div class="segment" data-seg="w2w-arrival">
@@ -401,7 +438,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
 <script>
 const STORAGE_KEY = 'week2-wed-lesson-plan';
-const segmentIds = ['w2w-arrival','w2w-welcome','w2w-footwork','water-break','w2w-passing','w2w-scrimmage','w2w-juggling'];
+const segmentIds = ['player-tracker','w2w-arrival','w2w-welcome','w2w-footwork','water-break','w2w-passing','w2w-scrimmage','w2w-juggling'];
 
 function collectState(){
   const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
@@ -493,6 +530,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
   const state = collectState();
   let out = 'WEEK 2 WEDNESDAY NOTES\n\n';
   const titles = {
+    'player-tracker':'Player Tracker',
     'w2w-arrival':'Arrival Scrimmage', 'w2w-welcome':'Welcome & Recap',
     'w2w-footwork':'Footwork & Movement Passing', 'water-break':'Water Break',
     'w2w-passing':'Small-Sided Game: Pass Into Space',
@@ -506,6 +544,19 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
   });
   if(state.carryForward && state.carryForward.trim()){
     out += `CARRY INTO WEEK 3:\n${state.carryForward.trim()}\n`;
+  }
+  const players = [
+    {id:'emilia',name:'Emilia Albert'},{id:'maverick',name:'Maverick Hahn'},
+    {id:'ellie',name:'Ellie Lipp'},{id:'amelia',name:'Amelia Molitor'},
+    {id:'zenobia',name:'Zenobia Pasika'},{id:'hannah',name:'Hannah Schrader'},
+    {id:'cate',name:'Cate Wehner'}
+  ];
+  const executed = players.filter(p=>document.getElementById('pt-'+p.id+'-exec').checked).map(p=>p.name);
+  const effort = players.filter(p=>document.getElementById('pt-'+p.id+'-effort').checked).map(p=>p.name);
+  if(executed.length || effort.length){
+    out += '\nPLAYER TRACKER\n';
+    if(executed.length) out += `Executed: ${executed.join(', ')}\n`;
+    if(effort.length) out += `Strong Effort: ${effort.join(', ')}\n`;
   }
   try{
     await navigator.clipboard.writeText(out);
