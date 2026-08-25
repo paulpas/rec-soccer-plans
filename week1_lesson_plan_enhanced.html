@@ -194,10 +194,22 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
 </div>
 
+<!-- SEGMENT: Water Break -->
+<div class="segment" data-seg="water-break">
+  <div class="seg-head">
+    <div><div class="seg-time">6:10 – 6:15 PM</div><div class="seg-title">Water Break</div></div>
+    <div class="seg-count" data-count-for="water-break">0/2</div>
+  </div>
+  <div class="checklist">
+    <div class="item"><input type="checkbox" id="wb-1"><label for="wb-1">Water break — everyone drinks</label></div>
+    <div class="item"><input type="checkbox" id="wb-2"><label for="wb-2">Quick bathroom break if needed</label></div>
+  </div>
+</div>
+
 <!-- SEGMENT 4 -->
 <div class="segment" data-seg="formation">
   <div class="seg-head">
-    <div><div class="seg-time">6:10 – 6:30 PM</div><div class="seg-title">On-Field Formation Walkthrough</div></div>
+    <div><div class="seg-time">6:15 – 6:35 PM</div><div class="seg-title">On-Field Formation Walkthrough</div></div>
     <div class="seg-count" data-count-for="formation">0/9</div>
   </div>
   <div class="diagram-block">
@@ -321,7 +333,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 <!-- SEGMENT 5 -->
 <div class="segment" data-seg="scrimmage">
   <div class="seg-head">
-    <div><div class="seg-time">6:30 – 6:45 PM</div><div class="seg-title">Half-Field Scrimmage</div></div>
+    <div><div class="seg-time">6:35 – 6:50 PM</div><div class="seg-title">Half-Field Scrimmage</div></div>
     <div class="seg-count" data-count-for="scrimmage">0/3</div>
   </div>
   <div class="checklist">
@@ -352,7 +364,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
 <script>
 const STORAGE_KEY = 'week1-lesson-plan';
-const segmentIds = ['arrival','welcome','footwork','formation','scrimmage'];
+const segmentIds = ['arrival','welcome','footwork','water-break','formation','scrimmage'];
 
 function collectState(){
   const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
@@ -445,7 +457,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
   let out = 'WEEK 1 NOTES\n\n';
   const titles = {
     arrival:'Arrival Scrimmage', welcome:'Welcome & Team Talk', footwork:'Footwork Foundations',
-    formation:'On-Field Formation Walkthrough', scrimmage:'Half-Field Scrimmage'
+    'water-break':'Water Break', formation:'On-Field Formation Walkthrough', scrimmage:'Half-Field Scrimmage'
   };
   segmentIds.forEach(seg=>{
     const notes = state.segments[seg].notes;
