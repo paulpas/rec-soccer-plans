@@ -30,17 +30,148 @@ jobs:
 *Weekly practice plans with interactive checklists and auto-saved notes.*
 
 <div align="center">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 130" width="500" height="130">
-  <rect x="4" y="4" width="492" height="122" rx="6" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2"/>
-  <line x1="250" y1="4" x2="250" y2="126" stroke="#F7F5EC" stroke-width="1.5"/>
-  <circle cx="250" cy="65" r="28" fill="none" stroke="#F7F5EC" stroke-width="1.5"/>
-  <circle cx="250" cy="65" r="2" fill="#F7F5EC"/>
-  <rect x="4" y="25" width="80" height="80" fill="none" stroke="#F7F5EC" stroke-width="1.5"/>
-  <rect x="416" y="25" width="80" height="80" fill="none" stroke="#F7F5EC" stroke-width="1.5"/>
-  <rect x="4" y="48" width="32" height="34" fill="none" stroke="#F7F5EC" stroke-width="1"/>
-  <rect x="464" y="48" width="32" height="34" fill="none" stroke="#F7F5EC" stroke-width="1"/>
-  <circle cx="84" cy="65" r="2" fill="#F7F5EC"/>
-  <circle cx="416" cy="65" r="2" fill="#F7F5EC"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a4e"/>
+      <stop offset="35%" stop-color="#2d1b69"/>
+      <stop offset="65%" stop-color="#c4512b"/>
+      <stop offset="100%" stop-color="#e8863a"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.8"/>
+      <stop offset="25%" stop-color="#ff9a2e" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#c4512b" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#c4512b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pitchGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a7e3f"/>
+      <stop offset="35%" stop-color="#248040"/>
+      <stop offset="70%" stop-color="#1f6d36"/>
+      <stop offset="100%" stop-color="#1a5c2e"/>
+    </linearGradient>
+    <radialGradient id="floodGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fffde8" stop-opacity="0.65"/>
+      <stop offset="35%" stop-color="#ffe88a" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffe88a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="spotlightGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.01"/>
+    </linearGradient>
+    <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softBloom" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="pitchClip"><polygon points="310,205 490,205 550,385 250,385"/></clipPath>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.25"/>
+    </radialGradient>
+  </defs>
+  <rect x="0" y="0" width="800" height="145" fill="url(#skyGrad)"/>
+  <circle cx="430" cy="115" r="65" fill="url(#sunGlow)"/>
+  <circle cx="430" cy="115" r="12" fill="#ffe86e" opacity="0.95"/>
+  <circle cx="60" cy="22" r="0.8" fill="#fff" opacity="0.35"/>
+  <circle cx="145" cy="38" r="0.6" fill="#fff" opacity="0.25"/>
+  <circle cx="230" cy="15" r="1.0" fill="#fff" opacity="0.3"/>
+  <circle cx="680" cy="28" r="0.7" fill="#fff" opacity="0.28"/>
+  <circle cx="755" cy="48" r="0.9" fill="#fff" opacity="0.22"/>
+  <circle cx="310" cy="50" r="0.6" fill="#fff" opacity="0.2"/>
+  <circle cx="560" cy="20" r="0.8" fill="#fff" opacity="0.3"/>
+  <circle cx="720" cy="60" r="0.5" fill="#fff" opacity="0.18"/>
+  <rect x="0" y="143" width="800" height="67" fill="#0a0a16"/>
+  <path d="M 0,156 L25,153 50,157 75,152 100,156 125,151 150,155 175,150 200,154 225,149 250,153 275,148 300,152 325,147 350,151 375,146 400,150 425,145 450,149 475,144 500,148 525,143 550,147 575,142 600,146 625,141 650,145 675,140 700,144 725,139 750,143 775,138 800,142 L800,172 L0,172 Z" fill="#0e0e2a"/>
+  <path d="M 0,164 L35,161 70,165 105,160 140,163 175,158 210,162 245,157 280,161 315,156 350,160 385,155 420,159 455,154 490,158 525,153 560,157 595,152 630,156 665,151 700,155 735,150 770,154 800,149 L800,186 L0,186 Z" fill="#0b0b20"/>
+  <path d="M 0,172 L45,169 90,173 135,168 180,171 225,166 270,170 315,165 360,169 405,164 450,168 495,163 540,167 585,162 630,166 675,161 720,165 765,160 800,164 L800,205 L0,205 Z" fill="#08081a"/>
+  <rect x="98" y="38" width="5" height="112" fill="#1c1c36" rx="1"/>
+  <circle cx="100.5" cy="41" r="38" fill="url(#floodGlow)" filter="url(#softBloom)"/>
+  <circle cx="100.5" cy="41" r="6" fill="#fffbe8" opacity="0.95"/>
+  <rect x="697" y="38" width="5" height="112" fill="#1c1c36" rx="1"/>
+  <circle cx="699.5" cy="41" r="38" fill="url(#floodGlow)" filter="url(#softBloom)"/>
+  <circle cx="699.5" cy="41" r="6" fill="#fffbe8" opacity="0.95"/>
+  <polygon points="100,42 180,210 340,210" fill="url(#spotlightGrad)" opacity="0.5"/>
+  <polygon points="700,42 460,210 620,210" fill="url(#spotlightGrad)" opacity="0.5"/>
+  <polygon points="100,42 300,260 500,260" fill="url(#spotlightGrad)" opacity="0.25"/>
+  <polygon points="700,42 300,260 500,260" fill="url(#spotlightGrad)" opacity="0.25"/>
+  <polygon points="310,205 490,205 550,385 250,385" fill="url(#pitchGrad)"/>
+  <g clip-path="url(#pitchClip)">
+    <rect x="230" y="206" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="221" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="236" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="251" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="266" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="281" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="296" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="311" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="326" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="341" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="356" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="371" width="340" height="7" fill="#389a54" opacity="0.3"/>
+    <rect x="230" y="213" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="228" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="243" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="258" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="273" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="288" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="303" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="318" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="333" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="348" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="363" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+    <rect x="230" y="378" width="340" height="6" fill="#1d5c30" opacity="0.35"/>
+  </g>
+  <line x1="310" y1="205" x2="250" y2="385" stroke="#F7F5EC" stroke-width="2" opacity="0.75" filter="url(#lineGlow)"/>
+  <line x1="490" y1="205" x2="550" y2="385" stroke="#F7F5EC" stroke-width="2" opacity="0.75" filter="url(#lineGlow)"/>
+  <line x1="310" y1="205" x2="490" y2="205" stroke="#F7F5EC" stroke-width="2" opacity="0.75" filter="url(#lineGlow)"/>
+  <line x1="250" y1="385" x2="550" y2="385" stroke="#F7F5EC" stroke-width="2" opacity="0.6" filter="url(#lineGlow)"/>
+  <line x1="400" y1="205" x2="400" y2="385" stroke="#F7F5EC" stroke-width="1.5" opacity="0.65" filter="url(#lineGlow)"/>
+  <circle cx="400" cy="295" r="2" fill="#F7F5EC" opacity="0.75"/>
+  <ellipse cx="400" cy="295" rx="36" ry="14" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.65" filter="url(#lineGlow)"/>
+  <polygon points="332,240 468,240 478,308 322,308" fill="none" stroke="#F7F5EC" stroke-width="1.2" opacity="0.55" filter="url(#lineGlow)"/>
+  <polygon points="296,292 504,292 538,374 262,374" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.6" filter="url(#lineGlow)"/>
+  <polygon points="348,253 452,253 456,288 344,288" fill="none" stroke="#F7F5EC" stroke-width="1" opacity="0.45" filter="url(#lineGlow)"/>
+  <polygon points="312,300 488,300 516,365 284,365" fill="none" stroke="#F7F5EC" stroke-width="1.2" opacity="0.5" filter="url(#lineGlow)"/>
+  <circle cx="400" cy="274" r="1.5" fill="#F7F5EC" opacity="0.5"/>
+  <circle cx="400" cy="333" r="1.5" fill="#F7F5EC" opacity="0.55"/>
+  <path d="M 368,274 Q 382,290 400,290 Q 418,290 432,274" fill="none" stroke="#F7F5EC" stroke-width="1" opacity="0.45" filter="url(#lineGlow)"/>
+  <path d="M 368,333 Q 382,317 400,317 Q 418,317 432,333" fill="none" stroke="#F7F5EC" stroke-width="1" opacity="0.5" filter="url(#lineGlow)"/>
+  <path d="M 310,211 A 7,7 0 0,0 318,204" fill="none" stroke="#F7F5EC" stroke-width="1.2" opacity="0.6" filter="url(#lineGlow)"/>
+  <path d="M 490,211 A 7,7 0 0,1 482,204" fill="none" stroke="#F7F5EC" stroke-width="1.2" opacity="0.6" filter="url(#lineGlow)"/>
+  <path d="M 250,381 A 7,7 0 0,0 242,388" fill="none" stroke="#F7F5EC" stroke-width="1.2" opacity="0.6" filter="url(#lineGlow)"/>
+  <path d="M 550,381 A 7,7 0 0,1 558,388" fill="none" stroke="#F7F5EC" stroke-width="1.2" opacity="0.6" filter="url(#lineGlow)"/>
+  <line x1="308" y1="205" x2="308" y2="174" stroke="#a0602e" stroke-width="2.2"/>
+  <path d="M 308,177 C 320,173 328,181 319,189 C 312,195 306,191 308,189" fill="#E3A72E" opacity="0.85"/>
+  <line x1="492" y1="205" x2="492" y2="174" stroke="#a0602e" stroke-width="2.2"/>
+  <path d="M 492,177 C 480,173 472,181 481,189 C 488,195 494,191 492,189" fill="#2a8e4f" opacity="0.85"/>
+  <line x1="247" y1="385" x2="247" y2="354" stroke="#a0602e" stroke-width="2.2"/>
+  <path d="M 247,357 C 259,353 267,361 258,369 C 251,375 245,371 247,369" fill="#E3A72E" opacity="0.85"/>
+  <line x1="553" y1="385" x2="553" y2="354" stroke="#a0602e" stroke-width="2.2"/>
+  <path d="M 553,357 C 541,353 533,361 542,369 C 549,375 555,371 553,369" fill="#2a8e4f" opacity="0.85"/>
+  <circle cx="45" cy="150" r="1.2" fill="#ffe86e" opacity="0.5"/>
+  <circle cx="92" cy="168" r="1.0" fill="#fff" opacity="0.4"/>
+  <circle cx="148" cy="156" r="1.3" fill="#ffe06e" opacity="0.45"/>
+  <circle cx="205" cy="174" r="0.9" fill="#fff" opacity="0.35"/>
+  <circle cx="262" cy="162" r="1.1" fill="#ffd85e" opacity="0.4"/>
+  <circle cx="318" cy="178" r="1.0" fill="#fff" opacity="0.3"/>
+  <circle cx="375" cy="165" r="1.4" fill="#ffe47e" opacity="0.5"/>
+  <circle cx="428" cy="180" r="0.8" fill="#fff" opacity="0.35"/>
+  <circle cx="485" cy="168" r="1.2" fill="#ffdc6e" opacity="0.45"/>
+  <circle cx="542" cy="184" r="1.0" fill="#fff" opacity="0.3"/>
+  <circle cx="598" cy="172" r="1.3" fill="#ffe06e" opacity="0.4"/>
+  <circle cx="655" cy="186" r="0.9" fill="#fff" opacity="0.35"/>
+  <circle cx="712" cy="174" r="1.1" fill="#ffd85e" opacity="0.5"/>
+  <circle cx="768" cy="180" r="1.0" fill="#fff" opacity="0.3"/>
+  <circle cx="68" cy="148" r="0.5" fill="#fff" opacity="0.2"/>
+  <circle cx="175" cy="170" r="0.5" fill="#fff" opacity="0.18"/>
+  <circle cx="340" cy="156" r="0.6" fill="#fff" opacity="0.22"/>
+  <circle cx="510" cy="176" r="0.5" fill="#fff" opacity="0.18"/>
+  <circle cx="680" cy="168" r="0.5" fill="#fff" opacity="0.2"/>
+  <rect x="0" y="0" width="800" height="400" fill="url(#vignette)" style="pointer-events:none;"/>
 </svg>
 </div>
 
