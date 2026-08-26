@@ -192,7 +192,7 @@
           font-family: Georgia, 'Times New Roman', serif;
           font-size: 20px;
           color: #f0ead6;
-          text-shadow: 0 0 6px rgba(0,0,0,0.9), 0 2px 4px rgba(0,0,0,1);
+          text-shadow: 0 0 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,1), -2px -2px 4px rgba(0,0,0,0.8);
           margin: 0;
           letter-spacing: 3px;
         }
