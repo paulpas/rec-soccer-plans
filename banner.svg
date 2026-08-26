@@ -154,37 +154,23 @@
   <!-- ====== LAYER 5: VIGNETTE overlay ====== -->
   <rect x="0" y="0" width="800" height="450" fill="url(#vignette)" opacity="0.12"/>
 
-  <!-- ====== LAYER 6: BANNER STRIP via foreignObject ====== -->
-  <foreignObject width="800" height="60">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="width:800px;height:60px;background:rgba(15,25,15,0.85);display:flex;align-items:center;justify-content:space-around;padding:0 40px;border-bottom:2px solid rgba(231,167,46,0.5);">
-      <style>
-        @keyframes bannerPulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.9; }
-        }
-        .brand {
-          font-family: Arial Black, Impact, 'Trebuchet MS', sans-serif;
-          font-size: 28px;
-          color: #F7F5EC;
-          letter-spacing: 4px;
-          animation: bannerPulse 4s ease-in-out infinite;
-        }
-        .divider {
-          width: 2px;
-          height: 30px;
-          background: #E3A72E;
-          opacity: 0.6;
-        }
-        .tagline {
-          font-family: Georgia, 'Times New Roman', serif;
-          font-size: 18px;
-          color: #e8d5b0;
-          letter-spacing: 3px;
-        }
-      </style>
-      <span class="brand">RECREATIONAL SOCCER</span>
-      <span class="divider"></span>
-      <span class="tagline">COACHING PLANS · WEEKLY PRACTICES</span>
-    </div>
-  </foreignObject>
+  <!-- ====== LAYER 6: BANNER STRIP (pure SVG, no foreignObject) ====== -->
+  <!-- Dark background bar across full width -->
+  <rect x="0" y="0" width="800" height="55" fill="#0f190f" opacity="0.88"/>
+  <!-- Bottom amber accent line -->
+  <rect x="0" y="53" width="800" height="2" fill="#E3A72E" opacity="0.5"/>
+
+  <!-- "RECREATIONAL SOCCER" on the left half -->
+  <text x="195" y="35" text-anchor="middle" font-family="Arial Black, Impact, 'Trebuchet MS', sans-serif" font-size="26" fill="#F7F5EC" letter-spacing="3">
+    RECREATIONAL SOCCER
+    <animate attributeName="opacity" values="1;0.85;1" dur="4s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- Amber vertical divider in center -->
+  <line x1="399" y1="12" x2="399" y2="43" stroke="#E3A72E" stroke-width="2" opacity="0.5"/>
+
+  <!-- "COACHING PLANS · WEEKLY PRACTICES" on the right half -->
+  <text x="600" y="35" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#e8d5b0" letter-spacing="2">
+    COACHING PLANS · WEEKLY PRACTICES
+  </text>
 </svg>
