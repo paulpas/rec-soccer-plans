@@ -154,23 +154,14 @@
   <!-- ====== LAYER 5: VIGNETTE overlay ====== -->
   <rect x="0" y="0" width="800" height="450" fill="url(#vignette)" opacity="0.12"/>
 
-  <!-- ====== LAYER 6: BANNER STRIP (pure SVG, no foreignObject) ====== -->
-  <!-- Dark background bar across full width -->
-  <rect x="0" y="0" width="800" height="55" fill="#0f190f" opacity="0.88"/>
-  <!-- Bottom amber accent line -->
-  <rect x="0" y="53" width="800" height="2" fill="#E3A72E" opacity="0.5"/>
-
-  <!-- "RECREATIONAL SOCCER" on the left half -->
-  <text x="195" y="35" text-anchor="middle" font-family="Arial Black, Impact, 'Trebuchet MS', sans-serif" font-size="26" fill="#F7F5EC" letter-spacing="3">
+  <!-- ====== LAYER 6: TEXT (pure SVG, no background) ====== -->
+  <!-- "RECREATIONAL SOCCER" across the top, full width -->
+  <text x="400" y="42" text-anchor="middle" font-family="Arial Black, Impact, 'Trebuchet MS', sans-serif" font-size="32" fill="#F7F5EC" letter-spacing="5" opacity="0.95">
     RECREATIONAL SOCCER
-    <animate attributeName="opacity" values="1;0.85;1" dur="4s" repeatCount="indefinite"/>
   </text>
 
-  <!-- Amber vertical divider in center -->
-  <line x1="399" y1="12" x2="399" y2="43" stroke="#E3A72E" stroke-width="2" opacity="0.5"/>
-
-  <!-- "COACHING PLANS · WEEKLY PRACTICES" on the right half -->
-  <text x="600" y="35" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#e8d5b0" letter-spacing="2">
+  <!-- "COACHING PLANS · WEEKLY PRACTICES" centered, full width -->
+  <text x="400" y="62" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#e8d5b0" letter-spacing="4" opacity="0.85">
     COACHING PLANS · WEEKLY PRACTICES
   </text>
 </svg>
