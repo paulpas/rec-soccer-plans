@@ -6,7 +6,7 @@
 <img src="banner.svg" width="100%" alt="Soccer field coaching plans banner">
 </div>
 
-⚽ Season plans for rec soccer coaching. Each plan includes structured drills, SVG field diagrams, and a checklist that auto-saves.
+⚽ Season plans for rec soccer coaching. Each plan includes structured drills, game scenarios, and weekly practice sessions.
 
 ### 🥅 Lesson Plans
 
