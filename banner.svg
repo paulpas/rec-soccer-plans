@@ -1,106 +1,166 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
   <defs>
-    <!-- Grass gradient: lighter at top (far), darker at bottom (near) -->
-    <linearGradient id="grassGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#3a9e54"/>
-      <stop offset="50%" stop-color="#2d8447"/>
-      <stop offset="100%" stop-color="#1f6b37"/>
+    <!-- Sky gradient: deep indigo → sunset purple → warm orange -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f0c29"/>
+      <stop offset="40%" stop-color="#302b63"/>
+      <stop offset="70%" stop-color="#e8863a"/>
+      <stop offset="100%" stop-color="#ffbf69"/>
     </linearGradient>
 
-    <!-- Pitch clip (trapezoidal perspective) -->
+    <!-- Sun glow -->
+    <radialGradient id="sunGlow" cx="50%" cy="65%" r="12%">
+      <stop offset="0%" stop-color="#fff5cc" stop-opacity="1"/>
+      <stop offset="30%" stop-color="#ffdf80" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#e8863a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Pitch gradient: lighter near horizon, darker in foreground -->
+    <linearGradient id="pitchGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a7a45"/>
+      <stop offset="40%" stop-color="#1d6335"/>
+      <stop offset="100%" stop-color="#144828"/>
+    </linearGradient>
+
+    <!-- Spotlight cone -->
+    <linearGradient id="spotlight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff9e6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#fff9e6" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Clip path for perspective pitch -->
     <clipPath id="pitchClip">
-      <polygon points="60,60 740,60 800,450 0,450"/>
+      <polygon points="100,270 700,270 760,450 40,450"/>
     </clipPath>
 
-    <!-- Spotlight glow from top center -->
-    <radialGradient id="spotGlow" cx="50%" cy="15%" r="35%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    <!-- Vignette overlay -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="1"/>
     </radialGradient>
   </defs>
 
-  <!-- Base pitch -->
-  <rect x="0" y="0" width="800" height="450" fill="url(#grassGrad)"/>
+  <!-- ====== LAYER 1: SKY (top ~60%) ====== -->
+  <rect x="0" y="0" width="800" height="300" fill="url(#skyGrad)"/>
 
+  <!-- Sun glow (animated pulse) -->
+  <ellipse cx="400" cy="295" rx="100" ry="40" fill="url(#sunGlow)">
+    <animate attributeName="rx" values="100;115;100" dur="6s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- Twinkling stars -->
+  <circle cx="80" cy="40" r="1.5" fill="#fff"><animate attributeName="opacity" values="1;0.2;1" dur="3s" repeatCount="indefinite"/></circle>
+  <circle cx="150" cy="70" r="1" fill="#fff"><animate attributeName="opacity" values="0.8;0.1;0.8" dur="4s" repeatCount="indefinite"/></circle>
+  <circle cx="230" cy="30" r="1.5" fill="#fff"><animate attributeName="opacity" values="1;0.3;1" dur="5s" repeatCount="indefinite"/></circle>
+  <circle cx="340" cy="55" r="1" fill="#fff"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="3.5s" repeatCount="indefinite"/></circle>
+  <circle cx="480" cy="25" r="1.5" fill="#fff"><animate attributeName="opacity" values="1;0.2;1" dur="4.5s" repeatCount="indefinite"/></circle>
+  <circle cx="560" cy="60" r="1" fill="#fff"><animate attributeName="opacity" values="0.7;0.1;0.7" dur="2.8s" repeatCount="indefinite"/></circle>
+  <circle cx="650" cy="35" r="1.5" fill="#fff"><animate attributeName="opacity" values="1;0.3;1" dur="3.2s" repeatCount="indefinite"/></circle>
+  <circle cx="720" cy="80" r="1" fill="#fff"><animate attributeName="opacity" values="0.9;0.2;0.9" dur="5.5s" repeatCount="indefinite"/></circle>
+
+  <!-- ====== LAYER 2: STADIUM SILHOUETTES (3 tiers) ====== -->
+  <!-- Farthest tier - lightest shade -->
+  <polygon points="0,260 80,240 160,255 240,235 320,250 400,230 480,248 560,233 640,252 720,238 800,258 800,300 0,300" fill="#1a1a3e"/>
+  <!-- Mid tier -->
+  <polygon points="0,275 60,260 140,272 220,255 300,268 400,250 500,265 580,253 660,270 740,258 800,278 800,300 0,300" fill="#12122a"/>
+  <!-- Closest tier - darkest -->
+  <polygon points="0,290 70,278 150,290 230,275 310,288 400,270 490,286 570,274 650,290 730,278 800,295 800,300 0,300" fill="#0a0a1e"/>
+
+  <!-- ====== LAYER 3: FLOODLIGHT TOWERS ====== -->
+  <!-- Left tower -->
+  <rect x="60" y="140" width="4" height="165" fill="#2a2a5a"/>
+  <circle cx="62" cy="138" r="14" fill="#fff9e6" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.55;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Right tower -->
+  <rect x="736" y="140" width="4" height="165" fill="#2a2a5a"/>
+  <circle cx="738" cy="138" r="14" fill="#fff9e6" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.55;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ====== LAYER 4: PITCH (perspective view from sideline) ====== -->
+  <rect x="0" y="270" width="800" height="180" fill="#144828"/>
   <g clip-path="url(#pitchClip)">
-    <!-- Grass mowing stripes (alternating light/dark green, top to bottom) -->
-    <!-- Stripe 1: far end (light) -->
-    <polygon points="60,60 740,60 780,120 20,120" fill="#3aae5a"/>
-    <!-- Stripe 2 (dark) -->
-    <polygon points="20,120 780,120 800,180 0,180" fill="#2d8447"/>
-    <!-- Stripe 3 (light) -->
-    <polygon points="0,180 800,180 820,240 -20,240" fill="#3aae5a"/>
-    <!-- Stripe 4 (dark) -->
-    <polygon points="-20,240 820,240 840,300 -40,300" fill="#2d8447"/>
-    <!-- Stripe 5 (light) -->
-    <polygon points="-40,300 840,300 860,360 -60,360" fill="#3aae5a"/>
-    <!-- Stripe 6 (dark) -->
-    <polygon points="-60,360 860,360 880,450 -80,450" fill="#2d8447"/>
+    <!-- Grass mowing stripes (alternating light/dark, top to bottom) -->
+    <polygon points="100,270 700,270 760,305 40,305" fill="#2a7a45"/>
+    <polygon points="40,305 760,305 800,340 0,340" fill="#1d6335"/>
+    <polygon points="0,340 800,340 840,375 -40,375" fill="#2a7a45"/>
+    <polygon points="-40,375 840,375 880,410 -80,410" fill="#1d6335"/>
+    <polygon points="-80,410 880,410 920,450 -120,450" fill="#2a7a45"/>
 
-    <!-- Spotlight glow overlay -->
-    <rect x="0" y="0" width="800" height="450" fill="url(#spotGlow)"/>
-
-    <!-- Field markings (white with slight transparency for perspective depth) -->
-    <!-- Boundary lines - slightly inset from clip edge -->
-    <polygon points="65,65 735,65 800,450 0,450" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.9"/>
+    <!-- Field markings (white lines with transparency for depth) -->
+    <!-- Outer boundary -->
+    <polygon points="100,270 700,270 760,450 40,450" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.85"/>
 
     <!-- Halfway line -->
-    <line x1="400" y1="65" x2="400" y2="450" stroke="#ffffff" stroke-width="1.5" opacity="0.7"/>
+    <line x1="400" y1="270" x2="400" y2="450" stroke="#ffffff" stroke-width="1.5" opacity="0.65"/>
 
     <!-- Center circle (perspective: ellipse) -->
-    <ellipse cx="400" cy="258" rx="90" ry="40" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.7"/>
+    <ellipse cx="400" cy="360" rx="80" ry="35" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.65"/>
 
     <!-- Center spot -->
-    <circle cx="400" cy="258" r="3" fill="#ffffff"/>
+    <circle cx="400" cy="360" r="3" fill="#ffffff"/>
 
-    <!-- Left penalty area -->
-    <polyline points="65,130 190,130 190,385 65,450" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.7"/>
+    <!-- Left penalty area (trapezoid) -->
+    <polyline points="100,295 200,295 200,420 100,450" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
 
-    <!-- Right penalty area -->
-    <polyline points="735,130 610,130 610,385 735,450" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.7"/>
+    <!-- Right penalty area (trapezoid) -->
+    <polyline points="700,295 600,295 600,420 700,450" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
 
-    <!-- Left goal area (6-yard box) -->
-    <polyline points="65,190 120,190 120,325 65,385" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+    <!-- Left goal area / 6-yard box (trapezoid) -->
+    <polyline points="100,320 150,320 150,400 100,425" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
 
-    <!-- Right goal area (6-yard box) -->
-    <polyline points="735,190 680,190 680,325 735,385" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+    <!-- Right goal area / 6-yard box (trapezoid) -->
+    <polyline points="700,320 650,320 650,400 700,425" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
 
     <!-- Penalty spots -->
-    <circle cx="210" cy="258" r="2.5" fill="#ffffff" opacity="0.8"/>
-    <circle cx="590" cy="258" r="2.5" fill="#ffffff" opacity="0.8"/>
+    <circle cx="220" cy="360" r="2.5" fill="#ffffff" opacity="0.7"/>
+    <circle cx="580" cy="360" r="2.5" fill="#ffffff" opacity="0.7"/>
 
-    <!-- Penalty arcs (dashed arc from penalty spot curving outward) -->
-    <path d="M 210,218 A 60,60 0 0,1 210,298" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.6"/>
-    <path d="M 590,218 A 60,60 0 0,1 590,298" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.6"/>
+    <!-- Penalty arcs -->
+    <path d="M 220,325 A 55,55 0 0,1 220,395" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+    <path d="M 580,325 A 55,55 0 0,1 580,395" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
 
-    <!-- Corner arcs (at the four corners of the pitch) -->
-    <path d="M 70,68 Q 62,75 55,82" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
-    <path d="M 730,68 Q 738,75 745,82" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+    <!-- Corner arcs -->
+    <path d="M 105,274 Q 100,279 96,283" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+    <path d="M 695,274 Q 700,279 704,283" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
 
-    <!-- Center circle arc (small dots at intersection with halfway line) -->
-    <circle cx="310" cy="258" r="2" fill="#ffffff" opacity="0.5"/>
-    <circle cx="490" cy="258" r="2" fill="#ffffff" opacity="0.5"/>
+    <!-- Spotlight cones from floodlights -->
+    <polygon points="62,140 180,270 320,270" fill="url(#spotlight)" opacity="0.4"/>
+    <polygon points="738,140 480,270 620,270" fill="url(#spotlight)" opacity="0.4"/>
 
-    <!-- Penalty arcs extending beyond penalty area -->
-    <path d="M 190,310 A 70,70 0 0,0 190,206" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
-    <path d="M 610,310 A 70,70 0 0,0 610,206" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
-
-    <!-- Goal posts (small rectangles at each end) -->
-    <rect x="63" y="240" width="4" height="36" fill="#ffffff" opacity="0.8" rx="1"/>
-    <rect x="733" y="240" width="4" height="36" fill="#ffffff" opacity="0.8" rx="1"/>
-
-    <!-- Corner flags (small dots at corners) -->
-    <circle cx="65" cy="65" r="3" fill="#ffffff"/>
-    <circle cx="735" cy="65" r="3" fill="#ffffff"/>
+    <!-- Penalty arcs near far end -->
+    <path d="M 200,310 A 70,70 0 0,0 200,280" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4"/>
+    <path d="M 600,310 A 70,70 0 0,0 600,280" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4"/>
   </g>
 
-  <!-- ====== TEXT OVERLAY via foreignObject with CSS3 ====== -->
+  <!-- Corner markers -->
+  <circle cx="100" cy="270" r="2" fill="#ffffff"/>
+  <circle cx="700" cy="270" r="2" fill="#ffffff"/>
+
+  <!-- ====== CORNER FLAGS WITH ANIMATED RIBBONS ====== -->
+  <!-- Left top flag -->
+  <line x1="98" y1="265" x2="98" y2="238" stroke="#ffffff" stroke-width="1.5"/>
+  <polygon points="98,238 120,243 98,253" fill="#E3A72E">
+    <animate attributeName="points" values="98,238 120,243 98,253;98,238 126,245 98,253;98,238 120,243 98,253" dur="1.5s" repeatCount="indefinite"/>
+  </polygon>
+
+  <!-- Right top flag -->
+  <line x1="702" y1="265" x2="702" y2="238" stroke="#ffffff" stroke-width="1.5"/>
+  <polygon points="702,238 680,243 702,253" fill="#1F4D36">
+    <animate attributeName="points" values="702,238 680,243 702,253;702,238 674,245 702,253;702,238 680,243 702,253" dur="1.8s" repeatCount="indefinite"/>
+  </polygon>
+
+  <!-- ====== LAYER 5: VIGNETTE overlay ====== -->
+  <rect x="0" y="0" width="800" height="450" fill="url(#vignette)" opacity="0.12"/>
+
+  <!-- ====== LAYER 6: TEXT OVERLAY via foreignObject ====== -->
   <foreignObject width="800" height="450">
     <div xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:100%;">
       <style>
         @keyframes titlePulse {
           0%, 100% { opacity: 1; }
-          50% { opacity: 0.8; }
+          50% { opacity: 0.75; }
         }
         .container {
           width: 100%;
@@ -113,19 +173,19 @@
         }
         h1 {
           font-family: Arial Black, Impact, 'Trebuchet MS', sans-serif;
-          font-size: 52px;
-          color: #ffffff;
-          text-shadow: 2px 2px 10px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
-          margin: 0;
+          font-size: 46px;
+          color: #F7F5EC;
+          text-shadow: 2px 2px 8px rgba(0,0,0,0.6), 0 0 15px rgba(0,0,0,0.3);
+          margin: -25px 0 4px 0;
           letter-spacing: 4px;
           animation: titlePulse 4s ease-in-out infinite;
         }
         p {
           font-family: Georgia, 'Times New Roman', serif;
-          font-size: 16px;
-          color: #e8f0e5;
+          font-size: 15px;
+          color: #e8d5b0;
           text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-          margin: 8px 0 0 0;
+          margin: 0;
           letter-spacing: 3px;
         }
       </style>
