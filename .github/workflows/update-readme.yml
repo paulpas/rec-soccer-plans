@@ -24,12 +24,19 @@ jobs:
 
           REPO_URL="https://github.com/paulpas/rec-soccer-plans"
 
-          # ── Write README header ──
+          # ── Write README header (HTML-styled) ──
           echo "# Rec Soccer Coaching Plans" > README.md
           echo "" >> README.md
-          echo "Season plans for rec soccer coaching. Each plan includes structured drills, SVG field diagrams, and a checklist that auto-saves." >> README.md
+          echo '<em>*Weekly practice plans with interactive checklists and auto-saved notes.*</em>' >> README.md
           echo "" >> README.md
-          echo "## Lesson Plans" >> README.md
+          echo "<hr>" >> README.md
+          echo "" >> README.md
+          echo '<blockquote style="border-left:3px solid #E3A72E;padding-left:12px;color:#4B5C51;">Season plans for rec soccer coaching. Each plan includes structured drills, SVG field diagrams, and a checklist that auto-saves.</blockquote>' >> README.md
+          echo "" >> README.md
+          echo "## <small>Lesson Plans</small>" >> README.md
+          echo '<small style="color:#4B5C51;">Click any plan to open the interactive lesson planner.</small>' >> README.md
+          echo "" >> README.md
+          echo "<hr>" >> README.md
           echo "" >> README.md
           echo "| Week | Day | Plan |" >> README.md
           echo "|------|-----|------|" >> README.md
@@ -73,10 +80,20 @@ jobs:
             echo "0000|—||*No plans yet*||" >> /tmp/plan_rows.txt
           fi
 
-          # Sort by week+day key, then emit formatted table rows
+          # Sort by week+day key, then emit formatted table rows with day badges
           sort -t'|' -k1 -n /tmp/plan_rows.txt | while IFS='|' read -r _sort week day title file preview_url; do
-            echo "| ${week} | ${day} | [${title}](https://html-preview.github.io/?url=${preview_url}) |"
+            case "$day" in
+              Wednesday) DAY_BADGE='<span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;background-color:#E3A72E;color:#152018;">Wednesday</span>' ;;
+              *)         DAY_BADGE='<span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;background-color:#1F4D36;color:#F7F5EC;">'"${day}"'</span>' ;;
+            esac
+            ESCAPED_TITLE=$(echo "$title" | sed 's/&/\&amp;/g')
+            echo "| ${week} | ${DAY_BADGE} | [${ESCAPED_TITLE}](https://html-preview.github.io/?url=${preview_url}) |"
           done >> README.md
+
+          # ── Footer note ──
+          echo "" >> README.md
+          echo "<hr>" >> README.md
+          echo '<p style="font-size:0.85em;color:#4B5C51;">Plans are auto-generated from HTML files in this repository.</p>' >> README.md
 
       - name: Commit and push
         run: |
