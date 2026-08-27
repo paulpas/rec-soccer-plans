@@ -249,12 +249,12 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="formation">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">One diamond contracts (defend) and expands (attack). Red lines = offensive operating space.</p>
+    <p class="diagram-note">Attack → expand wide. Defend → compact. Turnover → push forward together.</p>
 
     <div class="diagram-card">
       <div class="cap">
-        <h4>The Diamond: Compact When Defending, Expanded When Attacking</h4>
-        <div class="legend"><span>&#9675; defend — compact diamond</span><span>&#9679; attack — expanded diamond</span></div>
+        <h4>The Diamond: Contract to Defend, Expand to Attack and Push</h4>
+        <div class="legend"><span>&#9675; defend — compact</span><span>&#9679; attack — expanded wide</span><span>▲ turnover — push up together</span></div>
       </div>
       <svg class="field-svg" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
         <!-- Field background -->
@@ -306,6 +306,47 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
         <!-- DEFENSE diamond outline (subtle connection) -->
         <polygon points="300,120 260,170 340,170 300,210" fill="none" stroke="#E3A72E" stroke-width="1.5" opacity="0.3"/>
 
+        <!-- DEFENSIVE EXPANSION ON TURNOVER — 3 defenders pushing forward loosely marking -->
+        <!-- Ghost positions from original defense, faded to show transition -->
+        <g opacity="0.25">
+          <circle cx="300" cy="120" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+          <circle cx="260" cy="170" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+          <circle cx="340" cy="170" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+          <circle cx="300" cy="210" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        </g>
+
+        <!-- 3 loose marking defenders (not spread wide — stays compact) -->
+        <!-- Top defender loosely marks front attacker -->
+        <circle cx="300" cy="105" r="16" fill="#1F4D36" stroke="#7A9A82" stroke-width="2.5"/>
+        <text x="300" y="110" fill="#7A9A82" font-family="Bebas Neue" font-size="14" text-anchor="middle">D</text>
+        <!-- Left defender — closer to center, not wide -->
+        <circle cx="275" cy="160" r="16" fill="#1F4D36" stroke="#7A9A82" stroke-width="2.5"/>
+        <text x="275" y="165" fill="#7A9A82" font-family="Bebas Neue" font-size="14" text-anchor="middle">D</text>
+        <!-- Right defender — closer to center, not wide -->
+        <circle cx="325" cy="160" r="16" fill="#1F4D36" stroke="#7A9A82" stroke-width="2.5"/>
+        <text x="325" y="165" fill="#7A9A82" font-family="Bebas Neue" font-size="14" text-anchor="middle">D</text>
+
+        <!-- Loose marking connections — short, not spread wide -->
+        <line x1="300" y1="105" x2="300" y2="90" stroke="#7A9A82" stroke-width="1.5" opacity="0.5" stroke-dasharray="3,4"/>
+        <line x1="275" y1="160" x2="260" y2="140" stroke="#7A9A82" stroke-width="1.5" opacity="0.5" stroke-dasharray="3,4"/>
+        <line x1="325" y1="160" x2="340" y2="140" stroke="#7A9A82" stroke-width="1.5" opacity="0.5" stroke-dasharray="3,4"/>
+
+        <!-- 3 front attackers being loosely marked -->
+        <circle cx="300" cy="90" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
+        <text x="300" y="95" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">A</text>
+        <circle cx="260" cy="140" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
+        <text x="260" y="145" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">A</text>
+        <circle cx="340" cy="140" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
+        <text x="340" y="145" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">A</text>
+
+        <!-- EXPANSION ARROWS UP THE FIELD — turnover push -->
+        <!-- This is the key concept: defense goes forward as it expands -->
+        <g stroke="#4CAF82" stroke-width="2" fill="none" marker-end="url(#arrowGreen)">
+          <path d="M 300,105 L 300,75"/>
+          <path d="M 275,160 L 260,130"/>
+          <path d="M 325,160 L 340,130"/>
+        </g>
+
         <!-- OFFENSIVE DIAMOND — expanded (red/orange markers) -->
         <!-- Top forward -->
         <circle cx="300" cy="55" r="16" fill="#1F4D36" stroke="#E1592C" stroke-width="3"/>
@@ -331,14 +372,17 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
           <path d="M 300,226 L 300,255" marker-end="url(#arrowWhite)"/>
         </g>
 
-        <!-- Arrowhead marker -->
+        <!-- Arrowhead markers -->
         <defs>
           <marker id="arrowWhite" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
             <path d="M0,0 L8,4 L0,8 Z" fill="#F7F5EC"/>
           </marker>
+          <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#4CAF82"/>
+          </marker>
         </defs>
       </svg>
-      <div class="foot">The same diamond. Defend = compact shape in the center. Attack = expand outward into the available space. Width and depth grow, but it's always four players in a diamond.</div>
+      <div class="foot">Contract to defend — stays compact, doesn't spread wide. Expand to attack — width and depth grow. Turnover — push up together as the shape expands forward through the field.</div>
     </div>
   </div>
   <div class="checklist">
@@ -483,7 +527,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
   const titles = {
     'player-tracker':'Player Tracker',
     arrival:'Arrival Scrimmage', welcome:'Welcome & Team Talk', footwork:'Footwork Foundations',
-    'water-break':'Water Break', formation:'The Diamond', scrimmage:'Full Field Scrimmage'
+    'water-break':'Water Break', formation:'The Diamond: Contract, Expand, Push', scrimmage:'Full Field Scrimmage'
   };
   segmentIds.forEach(seg=>{
     const notes = state.segments[seg].notes;
