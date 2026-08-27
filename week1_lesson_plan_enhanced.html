@@ -249,12 +249,12 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="formation">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Attack → expand wide. Defend → compact. Turnover → push forward together.</p>
+    <p class="diagram-note">Attack → expand into zones. Defend → compact shape, push up on turnover.</p>
 
     <div class="diagram-card">
       <div class="cap">
-        <h4>The Diamond: Contract to Defend, Expand to Attack and Push</h4>
-        <div class="legend"><span>&#9675; defend — compact</span><span>&#9679; attack — expanded wide</span><span>▲ turnover — push up together</span></div>
+        <h4>Attack: Expand the Diamond</h4>
+        <div class="legend"><span>&#9675; compact base</span><span>&#9679; expanded attack</span></div>
       </div>
       <svg class="field-svg" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
         <!-- Field background -->
@@ -262,16 +262,14 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
         <!-- Horizontal midfield line -->
         <line x1="40" y1="160" x2="560" y2="160" stroke="#F7F5EC" stroke-width="1.5" opacity="0.25" stroke-dasharray="8,6"/>
-        <text x="555" y="155" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" text-anchor="end" opacity="0.4">ATTACK</text>
-        <text x="555" y="178" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" text-anchor="end" opacity="0.4">DEFEND</text>
 
-        <!-- Red zone boundaries — the space offense can operate in -->
-        <g stroke="#E1592C" stroke-width="1.5" opacity="0.35" fill="none" stroke-dasharray="6,4">
-          <!-- Left vertical boundary -->
+        <!-- Offensive zone boundaries — red dashed lines defining operating space -->
+        <g stroke="#E1592C" stroke-width="2" opacity="0.4" fill="none" stroke-dasharray="6,4">
+          <!-- Left boundary -->
           <line x1="140" y1="20" x2="140" y2="160"/>
-          <!-- Right vertical boundary -->
+          <!-- Right boundary -->
           <line x1="460" y1="20" x2="460" y2="160"/>
-          <!-- Diagonal from left → bottom center -->
+          <!-- Diagonal from left → bottom center (funnel shape) -->
           <line x1="140" y1="160" x2="300" y2="300"/>
           <!-- Diagonal from right → bottom center -->
           <line x1="460" y1="160" x2="300" y2="300"/>
@@ -281,108 +279,106 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
         <g stroke="#F7F5EC" stroke-width="1" opacity="0.15" stroke-dasharray="4,4">
           <!-- top: center → forward -->
           <line x1="300" y1="120" x2="300" y2="55"/>
-          <!-- left-center → left -->
+          <!-- left-center → left wide -->
           <line x1="260" y1="170" x2="148" y2="90"/>
-          <!-- right-center → right -->
+          <!-- right-center → right wide -->
           <line x1="340" y1="170" x2="452" y2="90"/>
           <!-- bottom: center back → holding mid -->
           <line x1="300" y1="210" x2="300" y2="270"/>
         </g>
 
-        <!-- DEFENSIVE DIAMOND — compact (black/dark markers with light stroke) -->
-        <!-- Top defender -->
-        <circle cx="300" cy="120" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
-        <text x="300" y="125" fill="#E3A72E" font-family="Bebas Neue" font-size="15" text-anchor="middle">T</text>
-        <!-- Left-center defender -->
-        <circle cx="260" cy="170" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
-        <text x="260" y="175" fill="#E3A72E" font-family="Bebas Neue" font-size="15" text-anchor="middle">L</text>
-        <!-- Right-center defender -->
-        <circle cx="340" cy="170" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
-        <text x="340" y="175" fill="#E3A72E" font-family="Bebas Neue" font-size="15" text-anchor="middle">R</text>
-        <!-- Bottom defender -->
-        <circle cx="300" cy="210" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
-        <text x="300" y="215" fill="#E3A72E" font-family="Bebas Neue" font-size="15" text-anchor="middle">B</text>
+        <!-- Compact base diamond (defensive shape we expand FROM) — faint gold -->
+        <polygon points="300,120 260,170 340,170 300,210" fill="none" stroke="#E3A72E" stroke-width="1.5" opacity="0.25"/>
+        <circle cx="300" cy="120" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2" opacity="0.4"/>
+        <text x="300" y="125" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle" opacity="0.4">T</text>
+        <circle cx="260" cy="170" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2" opacity="0.4"/>
+        <text x="260" y="175" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle" opacity="0.4">L</text>
+        <circle cx="340" cy="170" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2" opacity="0.4"/>
+        <text x="340" y="175" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle" opacity="0.4">R</text>
+        <circle cx="300" cy="210" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2" opacity="0.4"/>
+        <text x="300" y="215" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle" opacity="0.4">B</text>
 
-        <!-- DEFENSE diamond outline (subtle connection) -->
-        <polygon points="300,120 260,170 340,170 300,210" fill="none" stroke="#E3A72E" stroke-width="1.5" opacity="0.3"/>
+        <!-- Expanded attack diamond — bold red/orange -->
+        <polygon points="300,55 148,90 452,90 300,270" fill="none" stroke="#E1592C" stroke-width="2.5" opacity="0.6"/>
 
-        <!-- DEFENSIVE EXPANSION ON TURNOVER — 3 defenders pushing forward loosely marking -->
-        <!-- Ghost positions from original defense, faded to show transition -->
-        <g opacity="0.25">
-          <circle cx="300" cy="120" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
-          <circle cx="260" cy="170" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
-          <circle cx="340" cy="170" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
-          <circle cx="300" cy="210" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
-        </g>
-
-        <!-- 3 loose marking defenders (not spread wide — stays compact) -->
-        <!-- Top defender loosely marks front attacker -->
-        <circle cx="300" cy="105" r="16" fill="#1F4D36" stroke="#7A9A82" stroke-width="2.5"/>
-        <text x="300" y="110" fill="#7A9A82" font-family="Bebas Neue" font-size="14" text-anchor="middle">D</text>
-        <!-- Left defender — closer to center, not wide -->
-        <circle cx="275" cy="160" r="16" fill="#1F4D36" stroke="#7A9A82" stroke-width="2.5"/>
-        <text x="275" y="165" fill="#7A9A82" font-family="Bebas Neue" font-size="14" text-anchor="middle">D</text>
-        <!-- Right defender — closer to center, not wide -->
-        <circle cx="325" cy="160" r="16" fill="#1F4D36" stroke="#7A9A82" stroke-width="2.5"/>
-        <text x="325" y="165" fill="#7A9A82" font-family="Bebas Neue" font-size="14" text-anchor="middle">D</text>
-
-        <!-- Loose marking connections — short, not spread wide -->
-        <line x1="300" y1="105" x2="300" y2="90" stroke="#7A9A82" stroke-width="1.5" opacity="0.5" stroke-dasharray="3,4"/>
-        <line x1="275" y1="160" x2="260" y2="140" stroke="#7A9A82" stroke-width="1.5" opacity="0.5" stroke-dasharray="3,4"/>
-        <line x1="325" y1="160" x2="340" y2="140" stroke="#7A9A82" stroke-width="1.5" opacity="0.5" stroke-dasharray="3,4"/>
-
-        <!-- 3 front attackers being loosely marked -->
-        <circle cx="300" cy="90" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
-        <text x="300" y="95" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">A</text>
-        <circle cx="260" cy="140" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
-        <text x="260" y="145" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">A</text>
-        <circle cx="340" cy="140" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
-        <text x="340" y="145" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">A</text>
-
-        <!-- EXPANSION ARROWS UP THE FIELD — turnover push -->
-        <!-- This is the key concept: defense goes forward as it expands -->
-        <g stroke="#4CAF82" stroke-width="2" fill="none" marker-end="url(#arrowGreen)">
-          <path d="M 300,105 L 300,75"/>
-          <path d="M 275,160 L 260,130"/>
-          <path d="M 325,160 L 340,130"/>
-        </g>
-
-        <!-- OFFENSIVE DIAMOND — expanded (red/orange markers) -->
-        <!-- Top forward -->
+        <!-- Expanded attack players -->
         <circle cx="300" cy="55" r="16" fill="#1F4D36" stroke="#E1592C" stroke-width="3"/>
         <text x="300" y="60" fill="#E1592C" font-family="Bebas Neue" font-size="15" text-anchor="middle">T</text>
-        <!-- Left wide -->
         <circle cx="148" cy="90" r="16" fill="#1F4D36" stroke="#E1592C" stroke-width="3"/>
         <text x="148" y="95" fill="#E1592C" font-family="Bebas Neue" font-size="15" text-anchor="middle">L</text>
-        <!-- Right wide -->
         <circle cx="452" cy="90" r="16" fill="#1F4D36" stroke="#E1592C" stroke-width="3"/>
         <text x="452" y="95" fill="#E1592C" font-family="Bebas Neue" font-size="15" text-anchor="middle">R</text>
-        <!-- Bottom holding midfielder -->
         <circle cx="300" cy="270" r="16" fill="#1F4D36" stroke="#E1592C" stroke-width="3"/>
         <text x="300" y="275" fill="#E1592C" font-family="Bebas Neue" font-size="15" text-anchor="middle">B</text>
 
-        <!-- OFFENSE diamond outline (subtle connection) -->
-        <polygon points="300,55 148,90 452,90 300,270" fill="none" stroke="#E1592C" stroke-width="1.5" opacity="0.3"/>
-
-        <!-- Arrows showing expansion direction -->
-        <g stroke="#F7F5EC" stroke-width="1.5" opacity="0.4" fill="none">
-          <path d="M 300,108 L 300,68" marker-end="url(#arrowWhite)"/>
-          <path d="M 267,158 L 175,97" marker-end="url(#arrowWhite)"/>
-          <path d="M 333,158 L 425,97" marker-end="url(#arrowWhite)"/>
-          <path d="M 300,226 L 300,255" marker-end="url(#arrowWhite)"/>
+        <!-- Expansion arrows -->
+        <g stroke="#F7F5EC" stroke-width="1.5" opacity="0.4" fill="none" marker-end="url(#arrowWhite)">
+          <path d="M 300,108 L 300,68"/>
+          <path d="M 267,158 L 175,97"/>
+          <path d="M 333,158 L 425,97"/>
+          <path d="M 300,226 L 300,255"/>
         </g>
 
-        <!-- Arrowhead markers -->
+        <!-- Label for zone area -->
+        <text x="300" y="310" fill="#E1592C" font-family="JetBrains Mono" font-size="9" text-anchor="middle" opacity="0.6">offensive operating space</text>
+
         <defs>
           <marker id="arrowWhite" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
             <path d="M0,0 L8,4 L0,8 Z" fill="#F7F5EC"/>
           </marker>
+        </defs>
+      </svg>
+      <div class="foot">Same diamond expands from compact base into the red zone boundaries. Width and depth grow together — it is still four players in a diamond.</div>
+    </div>
+
+    <div class="diagram-card">
+      <div class="cap">
+        <h4>Defend: Compact Shape, Push on Turnover</h4>
+        <div class="legend"><span>&#9675; compact defense</span><span>▲ turnover — push up</span></div>
+      </div>
+      <svg class="field-svg" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Field background -->
+        <rect width="600" height="320" fill="#1F4D36"/>
+
+        <!-- Horizontal midfield line -->
+        <line x1="40" y1="160" x2="560" y2="160" stroke="#F7F5EC" stroke-width="1.5" opacity="0.25" stroke-dasharray="8,6"/>
+
+        <!-- Defense compact diamond — bold gold -->
+        <polygon points="300,140 265,190 335,190 300,240" fill="none" stroke="#E3A72E" stroke-width="2.5" opacity="0.7"/>
+
+        <!-- Defense players -->
+        <circle cx="300" cy="140" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
+        <text x="300" y="145" fill="#E3A72E" font-family="Bebas Neue" font-size="15" text-anchor="middle">T</text>
+        <circle cx="265" cy="190" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
+        <text x="265" y="195" fill="#E3A72E" font-family="Bebas Neue" font-size="15" text-anchor="middle">L</text>
+        <circle cx="335" cy="190" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
+        <text x="335" y="195" fill="#E3A72E" font-family="Bebas Neue" font-size="15" text-anchor="middle">R</text>
+        <circle cx="300" cy="240" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
+        <text x="300" y="245" fill="#E3A72E" font-family="Bebas Neue" font-size="15" text-anchor="middle">B</text>
+
+        <!-- Compact defense zone boundary — tight, stays centered -->
+        <g stroke="#E3A72E" stroke-width="1.5" opacity="0.2" fill="none" stroke-dasharray="4,6">
+          <rect x="230" y="120" width="140" height="140" rx="8"/>
+        </g>
+
+        <!-- Green arrows — defense pushing forward on turnover -->
+        <g stroke="#4CAF82" stroke-width="2" opacity="0.5" fill="none" marker-end="url(#arrowGreen)">
+          <path d="M 300,128 L 300,65"/>
+          <path d="M 272,178 L 255,95"/>
+          <path d="M 328,178 L 345,95"/>
+          <path d="M 300,228 L 300,175"/>
+        </g>
+
+        <!-- Label -->
+        <text x="300" y="310" fill="#4CAF82" font-family="JetBrains Mono" font-size="9" text-anchor="middle" opacity="0.6">defense pushes forward through the field</text>
+
+        <defs>
           <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
             <path d="M0,0 L8,4 L0,8 Z" fill="#4CAF82"/>
           </marker>
         </defs>
       </svg>
-      <div class="foot">Contract to defend — stays compact, doesn't spread wide. Expand to attack — width and depth grow. Turnover — push up together as the shape expands forward through the field.</div>
+      <div class="foot">Defense stays compact — does not spread wide. On turnover, they expand upward as a unit, pushing forward together through the field.</div>
     </div>
   </div>
   <div class="checklist">
