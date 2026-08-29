@@ -44,6 +44,9 @@ EOF
 
           for file in week*_lesson_plan_enhanced.html; do
             [ -f "$file" ] || continue
+            # Skip proposed plans — these are manual entries in README.md
+            [[ "$file" == *_proposed_* ]] && continue
+
             FOUND=1
 
             WEEK_NUM=$(echo "$file" | sed -n 's/^week\([0-9]*\)_.*/\1/p')
