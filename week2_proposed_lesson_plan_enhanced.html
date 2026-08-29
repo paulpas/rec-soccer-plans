@@ -217,8 +217,281 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div><div class="seg-time">5:50 – 6:10 PM</div><div class="seg-title">V-Push Gates → One-Two Machine</div></div>
     <div class="seg-count" data-count-for="w2p-footwork-game">0/4</div>
   </div>
+
+  <!-- DIAGRAM 1: V-Push Breakdown -->
+  <div class="diagram-block">
+    <p class="diagram-note">Top-down player view showing ball trajectory through each step.</p>
+
+    <div class="diagram-card">
+      <div class="cap">
+        <h4>Phase 1 — V-Push: Three Steps</h4>
+        <div class="legend"><span>&#9679; ball start</span><span>&#8594; sole pullback</span><span>&#9660; outside push</span></div>
+      </div>
+      <svg class="field-svg" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Field background -->
+        <rect width="600" height="280" fill="#1F4D36"/>
+
+        <!-- Player silhouette (simple circle + orientation arc) -->
+        <circle cx="300" cy="140" r="22" fill="#152018" stroke="#E3A72E" stroke-width="2.5"/>
+        <text x="300" y="146" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle">PLAYER</text>
+
+        <!-- Step 1: Ball start position -->
+        <circle cx="300" cy="180" r="12" fill="#E3A72E" stroke="#F7F5EC" stroke-width="2"/>
+        <text x="300" y="245" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" text-anchor="middle">START — ball at feet</text>
+
+        <!-- Arrow from player to step 1 -->
+        <line x1="300" y1="162" x2="300" y2="192" stroke="#E3A72E" stroke-width="2" opacity="0.5"/>
+
+        <!-- Step 2: Sole pullback (dashed red arc) -->
+        <path d="M 300,180 Q 300,160 300,148" stroke="#E1592C" stroke-width="2.5" fill="none" stroke-dasharray="5,4"/>
+        <!-- Arrowhead for pullback -->
+        <polygon points="300,148 295,156 305,156" fill="#E1592C"/>
+        <text x="340" y="165" fill="#E1592C" font-family="JetBrains Mono" font-size="10">Sole pulls ball back</text>
+
+        <!-- Step 3: Outside push at angle (solid green arrow) -->
+        <path d="M 300,148 L 180,120" stroke="#4CAF82" stroke-width="3" fill="none"/>
+        <!-- Arrowhead for outside push -->
+        <polygon points="180,120 195,118 197,130" fill="#4CAF82"/>
+        <circle cx="180" cy="120" r="10" fill="#4CAF82" stroke="#F7F5EC" stroke-width="2"/>
+        <text x="180" y="124" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" text-anchor="middle">★</text>
+        <text x="140" y="110" fill="#4CAF82" font-family="JetBrains Mono" font-size="10" text-anchor="end">Outside of right foot pushes ball out at angle</text>
+
+        <!-- Numbered step markers -->
+        <circle cx="300" cy="115" r="12" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        <text x="300" y="120" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">1</text>
+        <circle cx="300" cy="185" r="12" fill="#1F4D36" stroke="#E1592C" stroke-width="2"/>
+        <text x="300" y="190" fill="#E1592C" font-family="Bebas Neue" font-size="13" text-anchor="middle">2</text>
+        <circle cx="185" cy="115" r="12" fill="#1F4D36" stroke="#4CAF82" stroke-width="2"/>
+        <text x="185" y="120" fill="#4CAF82" font-family="Bebas Neue" font-size="13" text-anchor="middle">3</text>
+
+        <!-- Key coaching point box -->
+        <rect x="340" y="60" width="250" height="70" rx="6" fill="rgba(21,32,24,0.8)" stroke="#E3A72E" stroke-width="1"/>
+        <text x="350" y="80" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9">COACH CUES:</text>
+        <text x="350" y="96" fill="#e8d5b0" font-family="JetBrains Mono" font-size="9">Sole on top → pull back small</text>
+        <text x="350" y="112" fill="#e8d5b0" font-family="JetBrains Mono" font-size="9">Outside foot pushes out at 45° angle</text>
+      </svg>
+      <div class="foot">Pull back with sole, push out the side. This creates a V-shape with the ball — the "V-push" that's foundational for every first touch and change of direction.</div>
+    </div>
+
+    <div class="diagram-card">
+      <div class="cap">
+        <h4>Phase 1 — Gates: Playing Through Cones</h4>
+        <div class="legend"><span>&#9679; player with ball</span><span>&#8942; gate (two cones)</span></div>
+      </div>
+      <svg class="field-svg" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Field background -->
+        <rect width="600" height="280" fill="#1F4D36"/>
+
+        <!-- Gate 1 (top left area) -->
+        <rect x="158" y="58" width="4" height="30" fill="#E3A72E" rx="1"/>
+        <rect x="198" y="58" width="4" height="30" fill="#E3A72E" rx="1"/>
+
+        <!-- Gate 2 (top right area) -->
+        <rect x="398" y="58" width="4" height="30" fill="#E3A72E" rx="1"/>
+        <rect x="438" y="58" width="4" height="30" fill="#E3A72E" rx="1"/>
+
+        <!-- Gate 3 (middle left) -->
+        <rect x="158" y="168" width="4" height="30" fill="#E3A72E" rx="1"/>
+        <rect x="198" y="168" width="4" height="30" fill="#E3A72E" rx="1"/>
+
+        <!-- Gate 4 (middle right) -->
+        <rect x="398" y="168" width="4" height="30" fill="#E3A72E" rx="1"/>
+        <rect x="438" y="168" width="4" height="30" fill="#E3A72E" rx="1"/>
+
+        <!-- Gate 5 (bottom center) -->
+        <rect x="288" y="228" width="4" height="30" fill="#E3A72E" rx="1"/>
+        <rect x="328" y="228" width="4" height="30" fill="#E3A72E" rx="1"/>
+
+        <!-- Player 1 dribbling toward Gate 1 -->
+        <circle cx="180" cy="95" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
+        <text x="180" y="100" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" text-anchor="middle">★</text>
+
+        <!-- Player 2 dribbling toward Gate 3 -->
+        <circle cx="180" cy="195" r="16" fill="#1F4D36" stroke="#E1592C" stroke-width="2.5"/>
+        <text x="180" y="200" fill="#E1592C" font-family="JetBrains Mono" font-size="10" text-anchor="middle">★</text>
+
+        <!-- Player 3 dribbling toward Gate 5 -->
+        <circle cx="300" cy="245" r="16" fill="#1F4D36" stroke="#4CAF82" stroke-width="2.5"/>
+        <text x="300" y="250" fill="#4CAF82" font-family="JetBrains Mono" font-size="10" text-anchor="middle">★</text>
+
+        <!-- Movement arrows showing inside-outside through gates -->
+        <path d="M 196,95 Q 210,80 220,73" stroke="#E3A72E" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+        <path d="M 196,195 Q 210,180 220,183" stroke="#E1592C" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+        <path d="M 316,245 Q 330,230 340,223" stroke="#4CAF82" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+
+        <!-- Scattered extra players (dots) to show everyone has a ball -->
+        <circle cx="400" cy="95" r="10" fill="#1F4D36" stroke="#E3A72E" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="480" cy="150" r="10" fill="#1F4D36" stroke="#E1592C" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="350" cy="200" r="10" fill="#1F4D36" stroke="#4CAF82" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+      <div class="foot">Every player has a ball. Dribble through gates using inside-outside touches. After passing through, find a new gate as a pair.</div>
+    </div>
+  </div>
+
+  <!-- DIAGRAM 2: Triangle Carousel -->
+  <div class="diagram-block">
+    <p class="diagram-note">Top-down triangle with pass-and-move arrows. Magic man in center always available.</p>
+
+    <div class="diagram-card">
+      <div class="cap">
+        <h4>Phase 2 — Triangle Carousel: 3v0 + Magic Man</h4>
+        <div class="legend"><span>&#9679; passer (must run to passed-to cone)</span><span>&#9675; magic man neutral</span></div>
+      </div>
+      <svg class="field-svg" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Field background -->
+        <rect width="600" height="320" fill="#1F4D36"/>
+
+        <!-- Triangle outline (dashed) -->
+        <polygon points="300,50 170,250 430,250" fill="none" stroke="#F7F5EC" stroke-width="2" opacity="0.3" stroke-dasharray="8,6"/>
+
+        <!-- Triangle cones (small markers) -->
+        <circle cx="300" cy="50" r="12" fill="#E3A72E" opacity="0.4"/>
+        <circle cx="170" cy="250" r="12" fill="#E3A72E" opacity="0.4"/>
+        <circle cx="430" cy="250" r="12" fill="#E3A72E" opacity="0.4"/>
+
+        <!-- Player at top cone (P1) -->
+        <circle cx="300" cy="50" r="18" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
+        <text x="300" y="56" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle">P1</text>
+
+        <!-- Player at left cone (P2) -->
+        <circle cx="170" cy="250" r="18" fill="#1F4D36" stroke="#E1592C" stroke-width="3"/>
+        <text x="170" y="256" fill="#E1592C" font-family="Bebas Neue" font-size="14" text-anchor="middle">P2</text>
+
+        <!-- Player at right cone (P3) -->
+        <circle cx="430" cy="250" r="18" fill="#1F4D36" stroke="#4CAF82" stroke-width="3"/>
+        <text x="430" y="256" fill="#4CAF82" font-family="Bebas Neue" font-size="14" text-anchor="middle">P3</text>
+
+        <!-- Magic man in center -->
+        <circle cx="300" cy="180" r="16" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2.5"/>
+        <text x="300" y="185" fill="#F7F5EC" font-family="Bebas Neue" font-size="13" text-anchor="middle">M</text>
+
+        <!-- Pass arrows -->
+        <!-- P1 passes to P2 (down-left) -->
+        <path d="M 300,68 L 170,232" stroke="#E3A72E" stroke-width="2.5" fill="none" marker-end="url(#arrowGold)"/>
+
+        <!-- P2 receives, then passes to Magic Man (up-right diagonal) -->
+        <path d="M 188,242 L 284,196" stroke="#E1592C" stroke-width="2.5" fill="none" marker-end="url(#arrowRed)"/>
+
+        <!-- Magic Man lays off to P3 (right-down diagonal) -->
+        <path d="M 316,184 L 414,240" stroke="#F7F5EC" stroke-width="2.5" fill="none" marker-end="url(#arrowWhite)"/>
+
+        <!-- Movement arrows after pass (P1 runs to P2's cone) -->
+        <path d="M 318,60 Q 260,140 185,235" stroke="#E3A72E" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="4,3"/>
+
+        <!-- Movement arrow (P2 runs to M's position) -->
+        <path d="M 185,235 Q 240,210 284,196" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="4,3"/>
+
+        <!-- Movement arrow (M runs to P3's cone) -->
+        <path d="M 316,184 Q 370,215 415,235" stroke="#F7F5EC" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="4,3"/>
+
+        <!-- Arrows -->
+        <defs>
+          <marker id="arrowGold" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#E3A72E"/>
+          </marker>
+          <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#E1592C"/>
+          </marker>
+          <marker id="arrowWhite" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#F7F5EC"/>
+          </marker>
+        </defs>
+
+        <!-- Coaching note -->
+        <rect x="10" y="10" width="230" height="60" rx="6" fill="rgba(21,32,24,0.8)" stroke="#E3A72E" stroke-width="1"/>
+        <text x="20" y="28" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9">RULE:</text>
+        <text x="20" y="42" fill="#e8d5b0" font-family="JetBrains Mono" font-size="9">Pass → run to the cone you passed TO</text>
+        <text x="20" y="56" fill="#e8d5b0" font-family="JetBrains Mono" font-size="9">Receive on one foot, pass with other</text>
+
+        <!-- Label -->
+        <text x="300" y="310" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" text-anchor="middle" opacity="0.6">after 3 passes → magic man joins for one-two</text>
+      </svg>
+      <div class="foot">Three players rotate after every pass. The magic man is always available for a lay-off. Pass and move are ONE action — the run starts as the ball leaves your foot.</div>
+    </div>
+  </div>
+
+  <!-- DIAGRAM 3: Game Application (Triangle + Passive Defender) -->
+  <div class="diagram-block">
+    <p class="diagram-note">Same triangle with one passive defender in center — players use V-touch to create space.</p>
+
+    <div class="diagram-card">
+      <div class="cap">
+        <h4>Phase 3 — Game Application: Triangle + Passive Defender</h4>
+        <div class="legend"><span>&#9679; attacker with ball</span><span>&#10005; passive defender (cone + bib)</span></div>
+      </div>
+      <svg class="field-svg" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Field background -->
+        <rect width="600" height="320" fill="#1F4D36"/>
+
+        <!-- Triangle outline -->
+        <polygon points="300,50 170,250 430,250" fill="none" stroke="#F7F5EC" stroke-width="2" opacity="0.3" stroke-dasharray="8,6"/>
+
+        <!-- Triangle cones -->
+        <circle cx="300" cy="50" r="12" fill="#E3A72E" opacity="0.4"/>
+        <circle cx="170" cy="250" r="12" fill="#E3A72E" opacity="0.4"/>
+        <circle cx="430" cy="250" r="12" fill="#E3A72E" opacity="0.4"/>
+
+        <!-- Attacker 1 with ball at top -->
+        <circle cx="300" cy="50" r="18" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
+        <text x="300" y="56" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle">A1</text>
+
+        <!-- Attacker 2 at left -->
+        <circle cx="170" cy="250" r="18" fill="#1F4D36" stroke="#E1592C" stroke-width="3"/>
+        <text x="170" y="256" fill="#E1592C" font-family="Bebas Neue" font-size="14" text-anchor="middle">A2</text>
+
+        <!-- Attacker 3 at right -->
+        <circle cx="430" cy="250" r="18" fill="#1F4D36" stroke="#4CAF82" stroke-width="3"/>
+        <text x="430" y="256" fill="#4CAF82" font-family="Bebas Neue" font-size="14" text-anchor="middle">A3</text>
+
+        <!-- Passive defender (X) in center - larger, cross-hair style -->
+        <circle cx="300" cy="175" r="22" fill="#1F4D36" stroke="#E1592C" stroke-width="3"/>
+        <text x="300" y="181" fill="#E1592C" font-family="Bebas Neue" font-size="14" text-anchor="middle">X</text>
+        <!-- Cross marks -->
+        <line x1="290" y1="165" x2="310" y2="185" stroke="#E1592C" stroke-width="2"/>
+        <line x1="310" y1="165" x2="290" y2="185" stroke="#E1592C" stroke-width="2"/>
+
+        <!-- Pass: A1 → A2 -->
+        <path d="M 300,68 L 170,232" stroke="#E3A72E" stroke-width="2.5" fill="none" marker-end="url(#arrowGold2)"/>
+
+        <!-- V-Push escape: A2 uses V-touch to change direction away from X -->
+        <path d="M 188,242 L 130,220" stroke="#F7F5EC" stroke-width="3" fill="none" stroke-dasharray="6,4"/>
+        <!-- Arrowhead for V-push escape -->
+        <polygon points="130,220 140,218 142,228" fill="#F7F5EC"/>
+        <text x="110" y="210" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9">V-touch escape</text>
+
+        <!-- Pass: A3 → Magic Man (if present) -->
+        <path d="M 414,248 L 316,192" stroke="#4CAF82" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen2)"/>
+
+        <!-- Defenders' zone of influence (red dashed circle around X) -->
+        <circle cx="300" cy="175" r="45" fill="none" stroke="#E1592C" stroke-width="1.5" opacity="0.25" stroke-dasharray="6,4"/>
+
+        <!-- Arrows markers -->
+        <defs>
+          <marker id="arrowGold2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#E3A72E"/>
+          </marker>
+          <marker id="arrowGreen2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#4CAF82"/>
+          </marker>
+        </defs>
+
+        <!-- Coaching note -->
+        <rect x="360" y="10" width="230" height="70" rx="6" fill="rgba(21,32,24,0.8)" stroke="#E3A72E" stroke-width="1"/>
+        <text x="370" y="28" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9">GAME SCENARIO:</text>
+        <text x="370" y="42" fill="#e8d5b0" font-family="JetBrains Mono" font-size="9">X tries to intercept passes</text>
+        <text x="370" y="56" fill="#e8d5b0" font-family="JetBrains Mono" font-size="9">Use V-touch to create space from X</text>
+        <text x="370" y="70" fill="#e8d5b0" font-family="JetBrains Mono" font-size="9">This is the one-two in a game</text>
+
+        <!-- Label -->
+        <text x="300" y="310" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" text-anchor="middle" opacity="0.6">when X steals → player who lost ball becomes new X</text>
+      </svg>
+      <div class="foot">The passive defender creates a real decision point. V-touch changes direction to escape pressure — this is exactly what happens when a defender closes you in a match.</div>
+    </div>
+  </div>
+
+  <!-- Checklist -->
   <div class="checklist">
-    <div class="item"><input type="checkbox" id="w2p-footwork-1"><label for="w2p-footwork-1">Phase 1 — V-Push Gates: every player with a ball, dribble through cone gates using inside-outside touches<span class="sub">Pull the ball back with your sole, push it out at an angle. Small touches, use both feet.</span><span class="badge-new">NEW</span></label></div>
+    <div class="item"><input type="checkbox" id="w2p-footwork-1"><label for="w2p-footwork-1">Phase 1 — V-Push Gates: every player with a ball, dribble through cone gates using inside-outside touches<span class="sub">V-push = pull back with sole, push out at angle with outside foot. See diagram above.</span><span class="badge-new">NEW</span></label></div>
     <div class="item"><input type="checkbox" id="w2p-footwork-2"><label for="w2p-footwork-2">Phase 2 — Triangle Carousel: 3v0 with a "magic man" neutral in the middle. Players pass, rotate to the cone they passed to.<span class="sub">Receive on one foot, pass with the other. Pass and move are ONE action.</span><span class="badge-new">NEW</span></label></div>
     <div class="item"><input type="checkbox" id="w2p-footwork-3"><label for="w2p-footwork-3">Phase 3 — Game Application: same triangles but add one passive defender (a cone with a bib). Players must use the V-touch to change direction and avoid losing the ball<span class="sub">This is where the drill becomes a game scenario — show them how the footwork escapes pressure</span></label></div>
     <div class="item"><input type="checkbox" id="w2p-footwork-4"><label for="w2p-footwork-4">Connect it back: in a real game this is the one-two / give-and-go. You pass and run, the teammate lays it off, you're through<span class="sub">This exact mechanic appears in every U8 match — the wall pass to get past a defender</span></label></div>
