@@ -1,0 +1,3 @@
+# Local git hooks (not tracked; each developer sets their own)
+.git/hooks/post-commit
+.git/auto-push.log
