@@ -205,7 +205,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   <div class="checklist">
     <div class="item"><input type="checkbox" id="w2w-welcome-1"><label for="w2w-welcome-1">Recap Monday: passing into space — aim where they're going, not where they are</label></div>
     <div class="item"><input type="checkbox" id="w2w-welcome-2"><label for="w2w-welcome-2">Recap Monday: when a defender blocks, use footwork to create a passing lane</label></div>
-    <div class="item"><input type="checkbox" id="w2w-welcome-3"><label for="w2w-welcome-3">Recap juggling: seated, toes pointed down, hit with laces area</label></div>
+    <div class="item"><input type="checkbox" id="w2w-welcome-3"><label for="w2w-welcome-3">Recap Monday's kickoff pattern: two at center, spread into space, leading pass ahead of the runner</label></div>
     <div class="item"><input type="checkbox" id="w2w-welcome-4"><label for="w2w-welcome-4">Introduce today's focus: "Now we add MOVEMENT — passer AND runner are both moving"<span class="badge-new">NEW</span></label></div>
     <div class="item"><input type="checkbox" id="w2w-welcome-5"><label for="w2w-welcome-5">Set the challenge: can we complete more passes into space than Monday?</label></div>
   </div>
@@ -467,96 +467,118 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
 </div>
 
-<!-- SEGMENT 6: Juggling Practice -->
-<div class="segment" data-seg="w2w-juggling">
+<!-- SEGMENT 6: Kickoff Pattern — Live -->
+<div class="segment" data-seg="w2w-kickoff">
   <div class="seg-head">
-    <div><div class="seg-time">6:35 – 6:45 PM</div><div class="seg-title">Juggling Practice</div></div>
-    <div class="seg-count" data-count-for="w2w-juggling">0/6</div>
+    <div><div class="seg-time">6:35 – 6:45 PM</div><div class="seg-title">Kickoff Pattern</div></div>
+    <div class="seg-count" data-count-for="w2w-kickoff">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Seated juggling technique — same drill as Monday, now with a goal to beat your count.</p>
+    <p class="diagram-note">Live kickoffs — every possession starts from center. Read the space BEFORE the pass.</p>
 
     <div class="diagram-card">
       <div class="cap">
-        <h4>Seated Juggling — Toe Angle Drill</h4>
-        <div class="legend"><span>&#9679; ball path</span><span>&#8593; ball direction</span><span>&#8226; foot contact</span></div>
+        <h4>Live Kickoff — Spread, Lead, Run</h4>
+        <div class="legend"><span>&#8226; attackers</span><span>&#9651; defenders</span><span>&#8226; ball</span></div>
       </div>
-      <svg class="field-svg" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
-        <rect width="600" height="280" fill="#1F4D36"/>
+      <svg class="field-svg" viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
+        <!-- Grass stripe background — horizontal bands (landscape) -->
+        <rect x="0" y="0" width="700" height="350" fill="#1F4D36"/>
+        <g opacity="0.7">
+          <rect x="0" y="0" width="700" height="40" fill="#25573F"/>
+          <rect x="0" y="100" width="700" height="40" fill="#25573F"/>
+          <rect x="0" y="180" width="700" height="40" fill="#25573F"/>
+          <rect x="0" y="260" width="700" height="40" fill="#25573F"/>
+        </g>
+        <!-- Simplified U8 field — horizontal orientation -->
+        <rect x="15" y="15" width="670" height="320" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.35"/>
+        <line x1="15" y1="175" x2="685" y2="175" stroke="#F7F5EC" stroke-width="1" opacity="0.25" stroke-dasharray="6,4"/>
+        <ellipse cx="350" cy="175" rx="65" ry="40" fill="none" stroke="#F7F5EC" stroke-width="1" opacity="0.3"/>
+        <circle cx="350" cy="175" r="2.5" fill="#F7F5EC" opacity="0.3"/>
+        <circle cx="200" cy="175" r="2" fill="#F7F5EC" opacity="0.3"/>
+        <circle cx="500" cy="175" r="2" fill="#F7F5EC" opacity="0.3"/>
+        <path d="M 19,19 Q 15,23 19,27" fill="none" stroke="#F7F5EC" stroke-width="0.8" opacity="0.25"/>
+        <path d="M 681,19 Q 685,23 681,27" fill="none" stroke="#F7F5EC" stroke-width="0.8" opacity="0.25"/>
+        <path d="M 19,323 Q 15,327 19,331" fill="none" stroke="#F7F5EC" stroke-width="0.8" opacity="0.25"/>
+        <path d="M 681,323 Q 685,327 681,331" fill="none" stroke="#F7F5EC" stroke-width="0.8" opacity="0.25"/>
 
-        <!-- ground line -->
-        <line x1="60" y1="220" x2="540" y2="220" stroke="#F7F5EC" stroke-width="1.5" opacity="0.3" stroke-dasharray="5,5"/>
-        <text x="560" y="224" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" opacity="0.5">ground</text>
+        <!-- Attacking team (gold) — spread out in shape -->
+        <circle cx="340" cy="175" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
+        <text x="340" y="181" fill="#E3A72E" font-family="Bebas Neue" font-size="16" text-anchor="middle">A</text>
+        <circle cx="325" cy="185" r="7" fill="#F7F5EC" opacity="0.8"/>
 
-        <!-- seated body (torso + head) -->
-        <circle cx="200" cy="150" r="14" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2.5"/>
-        <text x="200" y="155" fill="#F7F5EC" font-family="Bebas Neue" font-size="14" text-anchor="middle">head</text>
-        <line x1="200" y1="164" x2="200" y2="200" stroke="#F7F5EC" stroke-width="3" opacity="0.7"/>
+        <circle cx="450" cy="120" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
+        <text x="450" y="126" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle">B</text>
 
-        <!-- legs extended -->
-        <line x1="200" y1="200" x2="350" y2="218" stroke="#F7F5EC" stroke-width="3" opacity="0.7"/>
+        <circle cx="160" cy="80" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
+        <text x="160" y="85" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">C</text>
 
-        <!-- foot with toe angle -->
-        <line x1="348" y1="218" x2="380" y2="212" stroke="#E3A72E" stroke-width="3.5"/>
+        <circle cx="150" cy="250" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
+        <text x="150" y="255" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">D</text>
 
-        <!-- CORRECT: toes pointed DOWN -->
-        <g transform="translate(390, 100)">
-          <rect x="0" y="0" width="80" height="70" rx="8" fill="rgba(247,245,236,0.08)" stroke="#E3A72E" stroke-width="1.5"/>
-          <text x="40" y="18" fill="#E3A72E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle">CORRECT</text>
-          <!-- toes down -->
-          <line x1="20" y1="48" x2="40" y2="58" stroke="#E3A72E" stroke-width="3"/>
-          <!-- ball going UP -->
-          <circle cx="42" cy="30" r="6" fill="#E3A72E" opacity="0.8"/>
-          <path d="M42,24 L42,12" stroke="#E3A72E" stroke-width="1.5" fill="none" marker-end="url(#upArrowWed)"/>
-          <text x="55" y="14" fill="#E3A72E" font-family="JetBrains Mono" font-size="8" opacity="0.8">UP</text>
-          <text x="40" y="74" fill="#F7F5EC" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" opacity="0.6">laces area contact</text>
+        <!-- Defending team (chalk/white) pressing -->
+        <polygon points="480,190 490,165 500,190" fill="#E1592C" opacity="0.85"/>
+        <text x="490" y="208" fill="#E1592C" font-family="JetBrains Mono" font-size="9" text-anchor="middle">DEF</text>
+
+        <circle cx="560" cy="140" r="14" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2.5"/>
+        <text x="560" y="145" fill="#F7F5EC" font-family="Bebas Neue" font-size="12" text-anchor="middle">D2</text>
+
+        <circle cx="230" cy="130" r="14" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2.5" opacity="0.7"/>
+        <text x="230" y="135" fill="#F7F5EC" font-family="Bebas Neue" font-size="12" text-anchor="middle">D3</text>
+
+        <!-- Defender press arrow (red) -->
+        <path d="M 490,185 C 440,170 410,175 390,182" stroke="#E1592C" stroke-width="2" fill="none" marker-end="url(#kickArrowRed)" opacity="0.7"/>
+
+        <!-- Space ahead of runner B -->
+        <polygon points="570,105 590,120 570,135" fill="#E3A72E" opacity="0.35" stroke="#E3A72E" stroke-width="1.5"/>
+        <text x="598" y="115" fill="#E3A72E" font-family="JetBrains Mono" font-size="9">SPACE</text>
+
+        <!-- Spread-out arrows (teammates move wide) -->
+        <g stroke="#F7F5EC" stroke-width="1.5" opacity="0.4" fill="none" marker-end="url(#kickArrowWhite)">
+          <path d="M 355,168 C 300,120 240,100 173,85"/>
+          <path d="M 355,185 C 300,230 230,240 163,245"/>
         </g>
 
-        <!-- WRONG: toes pointed up -->
-        <g transform="translate(490, 100)">
-          <rect x="0" y="0" width="80" height="70" rx="8" fill="rgba(247,245,236,0.08)" stroke="#E1592C" stroke-width="1.5"/>
-          <text x="40" y="18" fill="#E1592C" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle">WRONG</text>
-          <!-- toes up -->
-          <line x1="20" y1="55" x2="40" y2="44" stroke="#E1592C" stroke-width="3"/>
-          <!-- ball going FORWARD -->
-          <circle cx="48" cy="36" r="6" fill="#E1592C" opacity="0.8"/>
-          <path d="M54,36 L68,36" stroke="#E1592C" stroke-width="1.5" fill="none"/>
-          <polygon points="66,33 72,36 66,39" fill="#E1592C" opacity="0.8"/>
-          <text x="60" y="26" fill="#E1592C" font-family="JetBrains Mono" font-size="8" opacity="0.8">FORWARD</text>
-          <text x="40" y="74" fill="#F7F5EC" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" opacity="0.6">ball goes away</text>
-        </g>
+        <!-- Leading pass arrow into space ahead of runner -->
+        <path d="M 355,175 C 430,120 510,105 570,120" stroke="#4CAF82" stroke-width="3" fill="none" stroke-dasharray="6,5" opacity="0.85"/>
+        <polygon points="568,114 578,120 568,126" fill="#4CAF82" opacity="0.85"/>
 
-        <!-- arrow marker -->
+        <!-- Runner runs onto the ball -->
+        <path d="M466,118 L558,118" stroke="#F7F5EC" stroke-width="1.5" fill="none" stroke-dasharray="4,4" opacity="0.4"/>
+        <polygon points="556,114 564,118 556,122" fill="#F7F5EC" opacity="0.4"/>
+
+        <!-- Label -->
+        <text x="350" y="310" fill="#F7F5EC" font-family="JetBrains Mono" font-size="10" text-anchor="middle" opacity="0.6">defender presses — read the SPACE before the pass, lead B into it</text>
+
         <defs>
-          <marker id="upArrowWed" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,6 L3,0 L6,6" fill="none" stroke="#E3A72E" stroke-width="1.2"/></marker>
+          <marker id="kickArrowRed" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#E1592C"/>
+          </marker>
+          <marker id="kickArrowWhite" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#F7F5EC"/>
+          </marker>
         </defs>
-
-        <text x="200" y="252" fill="#F7F5EC" font-family="JetBrains Mono" font-size="10" text-anchor="middle" opacity="0.65">sit on ground, legs extended, hold ball at chest height</text>
       </svg>
-      <div class="foot">Sit on the ground with legs extended. Hold the ball at chest height, drop it, and tap it up with the toes pointed DOWN — hit the ball with the laces area of your foot. Same technique as Monday — now try to beat your count.</div>
+      <div class="foot">Real kickoffs — attackers spread out in shape, defenders can press and try to win it. The kicker reads the space BEFORE passing, then plays the leading pass into space ahead of the runner. "Spread, lead, run."</div>
     </div>
   </div>
-  <div style="padding:4px 18px 10px; font-size:13px; color:var(--ink-soft); background:rgba(227,167,46,0.07); border-left:3px solid var(--amber); margin:0 14px 10px; border-radius:0 6px 6px 0;">
-    <strong style="color:var(--amber);">BAREFOOT CHALLENGE:</strong> Have players try this drill barefoot. If they focus on proper form — toes pointed down, soft controlled touches — they won't hurt their foot. If it stings, their toes are pointing up. Fix the form, not the footwear.
-  </div>
   <div class="checklist">
-    <div class="item"><input type="checkbox" id="w2w-juggling-1"><label for="w2w-juggling-1">Everyone sits on the ground, legs extended in front — same as Monday</label></div>
-    <div class="item"><input type="checkbox" id="w2w-juggling-2"><label for="w2w-juggling-2">Hold ball at chest height, drop it, tap it up with toes pointed DOWN</label></div>
-    <div class="item"><input type="checkbox" id="w2w-juggling-3"><label for="w2w-juggling-3">Key coaching point: "Point your toes DOWN, not up — hit the ball with the top of your foot (laces area)"</label></div>
-    <div class="item"><input type="checkbox" id="w2w-juggling-4"><label for="w2w-juggling-4">Add goal: try to beat your Monday count</label></div>
-    <div class="item"><input type="checkbox" id="w2w-juggling-5"><label for="w2w-juggling-5">Progression: 1 touch let it bounce and catch → 2 touches → 3 touches</label></div>
-    <div class="item"><input type="checkbox" id="w2w-juggling-6"><label for="w2w-juggling-6">Build reps — more attempts = better touch. Encourage kids to keep going even after a miss</label></div>
+    <div class="item"><input type="checkbox" id="w2w-kickoff-1"><label for="w2w-kickoff-1">Run REAL kickoffs in the scrimmage — every possession starts from center</label></div>
+    <div class="item"><input type="checkbox" id="w2w-kickoff-2"><label for="w2w-kickoff-2">Spread into space immediately at kickoff (don't crowd the ball)</label></div>
+    <div class="item"><input type="checkbox" id="w2w-kickoff-3"><label for="w2w-kickoff-3">First pass is a leading pass INTO SPACE ahead of an open teammate</label></div>
+    <div class="item"><input type="checkbox" id="w2w-kickoff-4"><label for="w2w-kickoff-4">Defenders can try to win it — the kicker must read the space BEFORE the pass</label></div>
+    <div class="item"><input type="checkbox" id="w2w-kickoff-5"><label for="w2w-kickoff-5">Emphasis: "Spread, lead, run" — the three-step kickoff pattern</label></div>
   </div>
   <div class="notes-block">
-    <label class="notes-label" for="w2w-juggling-notes">Coach notes — who improved from Monday, who needs more reps?</label>
-    <textarea id="w2w-juggling-notes" placeholder="e.g. most kids improved by 1-2 touches from Monday, a few still point toes up but getting better..."></textarea>
+    <label class="notes-label" for="w2w-kickoff-notes">Coach notes — did the kickoff pattern work live?</label>
+    <textarea id="w2w-kickoff-notes" placeholder="e.g. first two kickoffs were chaotic, then kids started spreading out and the leading passes came..."></textarea>
   </div>
 </div>
 
 <div class="carry-box">
   <h3>Carry Into Week 3</h3>
   <p>Anything from today that should shape next week's plan — what to repeat, what to drop, what to build on.</p>
-  <textarea id="carry-forward" placeholder="e.g. movement passing was harder than static passing — need more drill time next week; juggling improving but most still under 3 touches..."></textarea>
+  <textarea id="carry-forward" placeholder="e.g. live kickoffs were chaotic at first but improved — keep them in the scrimmage next week; movement passing was harder than static passing — need more drill time..."></textarea>
 </div>
 
 <div class="actions">
@@ -570,7 +592,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
 <script>
 const STORAGE_KEY = 'week2-wed-lesson-plan';
-const segmentIds = ['player-tracker','w2w-arrival','w2w-welcome','w2w-footwork','water-break','w2w-passing','w2w-scrimmage','w2w-juggling'];
+const segmentIds = ['player-tracker','w2w-arrival','w2w-welcome','w2w-footwork','water-break','w2w-passing','w2w-scrimmage','w2w-kickoff'];
 
 function collectState(){
   const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
@@ -667,7 +689,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
     'w2w-arrival':'Arrival Scrimmage', 'w2w-welcome':'Welcome & Recap',
     'w2w-footwork':'Footwork & Movement Passing', 'water-break':'Water Break',
     'w2w-passing':'Small-Sided Game: Pass Into Space',
-    'w2w-scrimmage':'Full Field Scrimmage', 'w2w-juggling':'Juggling Practice'
+    'w2w-scrimmage':'Full Field Scrimmage', 'w2w-kickoff':'Kickoff Pattern'
   };
   segmentIds.forEach(seg=>{
     const notes = state.segments[seg].notes;
