@@ -479,7 +479,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="diagram-card">
       <div class="cap">
         <h4>Live Kickoff — Spread, Lead, Run</h4>
-        <div class="legend"><span>&#8226; attackers</span><span>&#9651; defenders</span><span>&#8226; ball</span></div>
+        <div class="legend"><span>&#8226; attackers</span><span>&#9651; pressing defender</span><span>&#8226; defending team</span><span>&#9651; space</span><span>&#8226; ball</span></div>
       </div>
       <svg class="field-svg" viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
         <!-- Grass stripe background — horizontal bands (landscape) -->
@@ -517,8 +517,8 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
         <text x="150" y="255" fill="#E3A72E" font-family="Bebas Neue" font-size="13" text-anchor="middle">D</text>
 
         <!-- Defending team (chalk/white) pressing -->
-        <polygon points="480,190 490,165 500,190" fill="#E1592C" opacity="0.85"/>
-        <text x="490" y="208" fill="#E1592C" font-family="JetBrains Mono" font-size="9" text-anchor="middle">DEF</text>
+        <polygon points="480,190 490,165 500,190" fill="#E05E5E" opacity="0.85"/>
+        <text x="490" y="208" fill="#E05E5E" font-family="JetBrains Mono" font-size="9" text-anchor="middle">DEF</text>
 
         <circle cx="560" cy="140" r="14" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2.5"/>
         <text x="560" y="145" fill="#F7F5EC" font-family="Bebas Neue" font-size="12" text-anchor="middle">D2</text>
@@ -527,7 +527,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
         <text x="230" y="135" fill="#F7F5EC" font-family="Bebas Neue" font-size="12" text-anchor="middle">D3</text>
 
         <!-- Defender press arrow (red) -->
-        <path d="M 490,185 C 440,170 410,175 390,182" stroke="#E1592C" stroke-width="2" fill="none" marker-end="url(#kickArrowRed)" opacity="0.7"/>
+        <path d="M 490,185 C 440,170 410,175 390,182" stroke="#E05E5E" stroke-width="2" fill="none" marker-end="url(#kickArrowRed)" opacity="0.7"/>
 
         <!-- Space ahead of runner B -->
         <polygon points="570,105 590,120 570,135" fill="#E3A72E" opacity="0.35" stroke="#E3A72E" stroke-width="1.5"/>
@@ -552,7 +552,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
         <defs>
           <marker id="kickArrowRed" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-            <path d="M0,0 L8,4 L0,8 Z" fill="#E1592C"/>
+            <path d="M0,0 L8,4 L0,8 Z" fill="#E05E5E"/>
           </marker>
           <marker id="kickArrowWhite" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
             <path d="M0,0 L8,4 L0,8 Z" fill="#F7F5EC"/>
