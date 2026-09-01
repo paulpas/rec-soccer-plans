@@ -438,91 +438,141 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
     <div class="diagram-card">
       <div class="cap">
-        <h4>Partner Passing + Throw-in to Advance</h4>
+        <h4>Partner Passing + Throw-in Over Cone</h4>
         <div class="legend"><span style="color:#E3A72E">&#8226; passer</span><span>&#8226; receiver/pass-in user</span><span style="color:#F7F5EC">&#9679; ball</span><span style="color:#E1592C">&#9651; cone defender</span></div>
       </div>
-      <svg class="field-svg" viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
-        <!-- Grass stripe background — horizontal bands (landscape) -->
-        <rect x="0" y="0" width="700" height="350" fill="#1F4D36"/>
+      <svg class="field-svg" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
+        <!-- Grass stripe background -->
+        <rect x="0" y="0" width="700" height="380" fill="#1F4D36"/>
         <g opacity="0.7">
           <rect x="0" y="0" width="700" height="50" fill="#25573F"/>
           <rect x="0" y="100" width="700" height="50" fill="#25573F"/>
           <rect x="0" y="180" width="700" height="50" fill="#25573F"/>
           <rect x="0" y="260" width="700" height="50" fill="#25573F"/>
         </g>
-        <!-- U8 field -->
-        <rect x="15" y="15" width="670" height="320" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.35"/>
-        <line x1="15" y1="175" x2="685" y2="175" stroke="#F7F5EC" stroke-width="1" opacity="0.25" stroke-dasharray="6,4"/>
-        <ellipse cx="350" cy="175" rx="65" ry="40" fill="none" stroke="#F7F5EC" stroke-width="1" opacity="0.3"/>
 
-        <!-- Left side: partner passing area -->
-        <text x="100" y="42" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" text-anchor="middle">PARTNER PASSING</text>
+        <!-- Full field outline -->
+        <rect x="15" y="15" width="670" height="340" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.35"/>
+        <line x1="15" y1="185" x2="685" y2="185" stroke="#F7F5EC" stroke-width="1" opacity="0.25" stroke-dasharray="6,4"/>
+
+        <!-- ============================================ -->
+        <!-- PHASE 1: Partner Passing (left side)         -->
+        <!-- ============================================ -->
+        <rect x="20" y="28" width="310" height="340" rx="8" fill="none" stroke="#E3A72E" stroke-width="1.5" opacity="0.3"/>
+        <text x="175" y="50" fill="#E3A72E" font-family="JetBrains Mono" font-size="11" font-weight="700" text-anchor="middle">PHASE 1: Partner Passing</text>
 
         <!-- Player A (passer) -->
-        <circle cx="150" cy="280" r="16" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
-        <text x="150" y="286" fill="#E3A72E" font-family="Bebas Neue" font-size="16" text-anchor="middle">A</text>
+        <circle cx="130" cy="160" r="18" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
+        <text x="130" y="166" fill="#E3A72E" font-family="Bebas Neue" font-size="16" text-anchor="middle">A</text>
 
         <!-- Player B (receiver) -->
-        <circle cx="340" cy="280" r="16" fill="#1F4D36" stroke="#F7F5EC" stroke-width="3"/>
-        <text x="340" y="286" fill="#F7F5EC" font-family="Bebas Neue" font-size="16" text-anchor="middle">B</text>
+        <circle cx="310" cy="160" r="18" fill="#1F4D36" stroke="#F7F5EC" stroke-width="3"/>
+        <text x="310" y="166" fill="#F7F5EC" font-family="Bebas Neue" font-size="16" text-anchor="middle">B</text>
 
-        <!-- Pass into space -->
-        <path d="M 166,275 C 240,230 320,230 410,270" stroke="#E3A72E" stroke-width="2.5" fill="none" stroke-dasharray="6,5" opacity="0.7"/>
-        <polygon points="408,266 418,270 408,274" fill="#E3A72E" opacity="0.7"/>
+        <!-- Pass from A into space ahead of B -->
+        <path d="M 148,155 C 220,130 290,125 350,155" stroke="#E3A72E" stroke-width="2.5" fill="none" stroke-dasharray="6,5" opacity="0.7"/>
+        <polygon points="348,149 358,155 348,161" fill="#E3A72E" opacity="0.7"/>
 
-        <!-- Runner movement -->
-        <path d="M 356,275 L 440,275" stroke="#F7F5EC" stroke-width="1.5" fill="none" stroke-dasharray="4,4" opacity="0.4"/>
+        <!-- B runs onto the ball and passes back -->
+        <path d="M 328,160 C 340,175 350,190 360,200" stroke="#F7F5EC" stroke-width="1.5" fill="none" stroke-dasharray="4,4" opacity="0.4"/>
 
-        <!-- RIGHT side: throw-in zone -->
-        <line x1="480" y1="30" x2="480" y2="320" stroke="#F7F5EC" stroke-width="1.5" opacity="0.3"/>
-        <text x="585" y="42" fill="#4CAF82" font-family="JetBrains Mono" font-size="9">THROW-IN</text>
-        <text x="585" y="54" fill="#4CAF82" font-family="JetBrains Mono" font-size="9">ZONE</text>
+        <!-- "Pass ahead, not to feet!" coaching callout -->
+        <rect x="50" y="210" width="250" height="36" rx="6" fill="rgba(21,32,24,0.7)"/>
+        <text x="175" y="225" fill="#F7F5EC" font-family="JetBrains Mono" font-size="8" text-anchor="middle">Pass into space —</text>
+        <text x="175" y="239" fill="#E3A72E" font-family="JetBrains Mono" font-size="8" text-anchor="middle">not to their feet!</text>
 
-        <!-- Sideline on right -->
-        <line x1="630" y1="30" x2="630" y2="320" stroke="#F7F5EC" stroke-width="2" opacity="0.5"/>
+        <!-- ============================================ -->
+        <!-- PHASE 2: Sideline Transition (bottom)         -->
+        <!-- ============================================ -->
+        <rect x="20" y="270" width="310" height="90" rx="8" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.25"/>
+        <text x="175" y="292" fill="#F7F5EC" font-family="JetBrains Mono" font-size="10" font-weight="700" text-anchor="middle">PHASE 2: Transition to Sideline</text>
 
-        <!-- Cone defender (middle of field, blocks direct throw) -->
-        <polygon points="530,150 540,128 550,150" fill="#E1592C" opacity="0.85"/>
-        <text x="540" y="168" fill="#E1592C" font-family="JetBrains Mono" font-size="8" text-anchor="middle">CONE</text>
+        <!-- Sideline marker -->
+        <line x1="60" y1="310" x2="290" y2="310" stroke="#F7F5EC" stroke-width="2" opacity="0.4"/>
+        <text x="175" y="305" fill="#F7F5EC" font-family="JetBrains Mono" font-size="8" text-anchor="middle" opacity="0.5">sideline</text>
 
-        <!-- Throw-in user (left of cone, after receiving pass from B) -->
-        <circle cx="430" cy="280" r="16" fill="#1F4D36" stroke="#4CAF82" stroke-width="3"/>
-        <text x="430" y="286" fill="#4CAF82" font-family="Bebas Neue" font-size="15" text-anchor="middle">T-I</text>
+        <!-- Player moves to sideline for throw-in -->
+        <circle cx="200" cy="325" r="14" fill="#1F4D36" stroke="#4CAF82" stroke-width="2.5"/>
+        <text x="200" y="330" fill="#4CAF82" font-family="Bebas Neue" font-size="12" text-anchor="middle">T-I</text>
 
-        <!-- Throw-in arc (over cone, wide) -->
-        <path d="M 446,275 Q 490,120 570,135" stroke="#E3A72E" stroke-width="2.5" fill="none" stroke-dasharray="6,5" opacity="0.8"/>
-        <polygon points="568,131 578,135 568,139" fill="#E3A72E" opacity="0.8"/>
+        <!-- Arrow showing transition -->
+        <path d="M 175,270 C 190,285 195,295 200,310" stroke="#F7F5EC" stroke-width="2" fill="none" opacity="0.4"/>
 
-        <!-- Receiver moving wide to get open -->
-        <circle cx="600" cy="240" r="14" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2.5"/>
-        <text x="600" y="245" fill="#F7F5EC" font-family="Bebas Neue" font-size="13" text-anchor="middle">R</text>
+        <!-- ============================================ -->
+        <!-- PHASE 3: Throw-in Over Cone (right side)     -->
+        <!-- ============================================ -->
+        <rect x="345" y="28" width="335" height="340" rx="8" fill="none" stroke="#E1592C" stroke-width="1.5" opacity="0.3"/>
+        <text x="512" y="50" fill="#E1592C" font-family="JetBrains Mono" font-size="11" font-weight="700" text-anchor="middle">PHASE 3: Throw-in Over Cone</text>
 
-        <!-- Runner movement arrow (sideways to get open) -->
-        <path d="M 586,250 C 580,260 590,240 598,248" stroke="#4CAF82" stroke-width="2" fill="none"/>
+        <!-- Sideline on far right -->
+        <line x1="640" y1="70" x2="640" y2="350" stroke="#F7F5EC" stroke-width="2" opacity="0.5"/>
+        <text x="660" y="210" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" text-anchor="middle" transform="rotate(90, 660, 210)" opacity="0.4">SIDE LINE</text>
 
-        <!-- Flow arrow from partner passing to throw-in -->
-        <path d="M 360,310 L 410,310" stroke="#F7F5EC" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#pitArrow)"/>
-        <text x="385" y="330" fill="#F7F5EC" font-family="JetBrains Mono" font-size="8" text-anchor="middle" opacity="0.5">after a few passes...</text>
+        <!-- Throw-in user on sideline -->
+        <circle cx="605" cy="220" r="18" fill="#1F4D36" stroke="#4CAF82" stroke-width="3"/>
+        <text x="605" y="226" fill="#4CAF82" font-family="Bebas Neue" font-size="15" text-anchor="middle">T-I</text>
 
-        <!-- Thrower bubble indicator -->
-        <circle cx="430" cy="280" r="40" fill="none" stroke="#E3A72E" stroke-width="1" opacity="0.2"/>
-        <text x="430" y="335" fill="#E3A72E" font-family="JetBrains Mono" font-size="8" text-anchor="middle">uses their range</text>
+        <!-- Cone defender on field, blocking forward path -->
+        <polygon points="530,210 540,185 550,210" fill="#E1592C" opacity="0.85"/>
+        <text x="540" y="228" fill="#E1592C" font-family="JetBrains Mono" font-size="7" text-anchor="middle">CONE</text>
 
+        <!-- Receiver running in CLOSE to thrower -->
+        <circle cx="585" cy="220" r="14" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2"/>
+        <text x="585" y="224" fill="#F7F5EC" font-family="Bebas Neue" font-size="12" text-anchor="middle">R</text>
+
+        <!-- "CLOSE RANGE" zone between thrower and receiver -->
+        <line x1="560" y1="205" x2="560" y2="235" stroke="#E3A72E" stroke-width="1.5" opacity="0.4" stroke-dasharray="3,3"/>
+        <text x="555" y="200" fill="#E3A72E" font-family="JetBrains Mono" font-size="8" text-anchor="end">CLOSE</text>
+
+        <!-- Arrow: receiver runs in close to thrower -->
+        <path d="M 570,215 L 595,215" stroke="#4CAF82" stroke-width="2.5" fill="none" opacity="0.7"/>
+        <polygon points="593,211 601,215 593,219" fill="#4CAF82" opacity="0.7"/>
+        <text x="580" y="205" fill="#4CAF82" font-family="JetBrains Mono" font-size="8" text-anchor="middle">runs in close</text>
+
+        <!-- Throw arc: goes OVER the cone to space beyond -->
+        <path d="M 618,215 Q 590,140 530,175" stroke="#E3A72E" stroke-width="2.5" fill="none" stroke-dasharray="6,5" opacity="0.8"/>
+        <polygon points="530,170 536,175 530,180" fill="#E3A72E" opacity="0.8"/>
+
+        <!-- Thrower's range bubble (the "discovered range" from earlier) -->
+        <circle cx="605" cy="220" r="45" fill="none" stroke="#E3A72E" stroke-width="1" opacity="0.2"/>
+        <text x="605" y="280" fill="#E3A72E" font-family="JetBrains Mono" font-size="8" text-anchor="middle">discovered range</text>
+
+        <!-- Runner accelerates past cone into open space -->
+        <path d="M 545,210 C 500,195 460,170 410,165" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.7"/>
+        <polygon points="408,160 418,165 408,170" fill="#F7F5EC" opacity="0.7"/>
+
+        <!-- Runner's acceleration arrow (past cone) -->
+        <path d="M 490,172 L 440,168" stroke="#F7F5EC" stroke-width="1.5" fill="none" stroke-dasharray="3,3" opacity="0.3"/>
+
+        <!-- Sequence flow arrows -->
+        <path d="M 200,100 C 240,90 280,90 310,100" stroke="#F7F5EC" stroke-width="2" fill="none" opacity="0.3"/>
+        <polygon points="308,96 316,100 308,104" fill="#F7F5EC" opacity="0.3"/>
+
+        <path d="M 200,260 C 240,250 280,240 340,250" stroke="#F7F5EC" stroke-width="2" fill="none" opacity="0.3"/>
+        <polygon points="338,246 346,250 338,254" fill="#F7F5EC" opacity="0.3"/>
+
+        <!-- Coaching callout box -->
+        <rect x="355" y="290" width="310" height="50" rx="6" fill="rgba(21,32,24,0.8)" stroke="#E3A72E" stroke-width="1"/>
+        <text x="365" y="307" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9">SEQUENCE:</text>
+        <text x="365" y="322" fill="#4CAF82" font-family="JetBrains Mono" font-size="9">Pass → sideline transition</text>
+        <text x="365" y="337" fill="#E3A72E" font-family="JetBrains Mono" font-size="9">→ receiver runs in close → throw over cone → accelerate past</text>
+
+        <!-- Arrow markers -->
         <defs>
           <marker id="pitArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
             <path d="M0,0 L8,4 L0,8 Z" fill="#F7F5EC"/>
           </marker>
         </defs>
       </svg>
-      <div class="foot">Partner passing drill transitions to a throw-in. A cone "defender" blocks the direct throw — the runner must move wide to get open before receiving the throw-in.</div>
+      <div class="foot">Partner passing drill transitions to a throw-in. Receiver sprints in close to the thrower (within ~2 yards), the throw goes over the cone defender, and the runner accelerates past it into open space.</div>
     </div>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="w2-pit-1"><label for="w2-pit-1">Partner drill: Player A passes to the SPACE ahead of Player B (not at their feet)</label></div>
     <div class="item"><input type="checkbox" id="w2-pit-2"><label for="w2-pit-2">Player B runs onto the ball and passes back</label></div>
     <div class="item"><input type="checkbox" id="w2-pit-3"><label for="w2-pit-3">After 3–4 passes, introduce a sideline — one player moves to it for a throw-in</label></div>
-    <div class="item"><input type="checkbox" id="w2-pit-4"><label for="w2-pit-4">Thrower uses their discovered range from earlier; receiver sprints off-ball to create space<span class="badge-new">NEW</span></label></div>
-    <div class="item"><input type="checkbox" id="w2-pit-5"><label for="w2-pit-5">Add a cone "defender" blocking the direct throw — runner must move WIDE to get open<span class="badge-new">NEW</span></label></div>
+    <div class="item"><input type="checkbox" id="w2-pit-4"><label for="w2-pit-4">Thrower uses their discovered range from earlier; receiver sprints IN CLOSE (within ~2 yards of thrower), then receives the throw <span class="badge-new">NEW</span></label></div>
+    <div class="item"><input type="checkbox" id="w2-pit-5"><label for="w2-pit-5">Add a cone "defender" on the field — receiver runs in close, throw goes over the cone, runner accelerates past it into open space <span class="badge-new">NEW</span></label></div>
     <div class="item"><input type="checkbox" id="w2-pit-6"><label for="w2-pit-6">Rotate roles: everyone throws, runs receivers, and passes into space</label></div>
     <div class="item"><input type="checkbox" id="w2-pit-7"><label for="w2-pit-7">Emphasize: "Creating space off the ball — move before you receive"<span class="badge-new">NEW</span></label></div>
   </div>
