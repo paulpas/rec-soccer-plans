@@ -1,0 +1,68 @@
+name: Generate Lesson Plan Tables
+
+on:
+  push:
+    paths:
+      - '*.html'
+      - 'scripts/generate-tables.mjs'
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-tables:
+    name: Auto-generate README tables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate tables and update README
+        run: |
+          # Run the script to get both table sections
+          OUTPUT=$(node scripts/generate-tables.mjs)
+
+          # Split output at section markers
+          ACTIVE_TABLE=$(echo "$OUTPUT" | sed -n '/^=== ACTIVE TABLE ===/,/^$/p' | grep -v '^===' | head -c -1)
+          PROPOSED_TABLE=$(echo "$OUTPUT" | sed -n '/^=== PROPOSED\/DRAFT TABLE ===/,$ p' | tail -n +2)
+
+          # Function to replace content between markers
+          replace_section() {
+            local start_marker="$1"
+            local end_marker="$2"
+            local new_content="$3"
+            
+            # Use awk to replace everything between markers (inclusive of markers)
+            awk -v start="$start_marker" -v end="$end_marker" -v content="$new_content" '
+              $0 == start { print; printf "%s\n", content; skip=1; next }
+              $0 == end && skip { print; skip=0; next }
+              !skip { print }
+            ' README.md > README.md.tmp
+            
+            mv README.md.tmp README.md
+          }
+
+          replace_section '<!-- GENERATE_ACTIVE_TABLE -->' '<!-- END_GENERATE_ACTIVE_TABLE -->' "$ACTIVE_TABLE"
+          replace_section '<!-- GENERATE_PROPOSED_TABLE -->' '<!-- END_GENERATE_PROPOSED_TABLE -->' "$PROPOSED_TABLE"
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          if ! git diff --quiet; then
+            git add README.md
+            git commit -m "Auto-update lesson plan tables [ci skip]"
+            git push
+          else
+            echo "README up-to-date, no changes to commit."
+          fi
