@@ -10,11 +10,25 @@
 
 ### 🥅 Lesson Plans
 
+> [!NOTE]
+> Tables below are auto-generated from `scripts/generate-tables.mjs`. Files with "proposed" or "draft" in their filename appear in the Proposed/Draft table automatically.
+
+<!-- GENERATE_ACTIVE_TABLE -->
 | Week | Day | Plan |
 |------|-----|------|
-| 1 | <span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Footwork & Formation Foundations](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week1_lesson_plan_enhanced.html) |
-| 2 | <span style="background-color:#E1592C;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Proposed</span> | [Footwork → Game Application](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_proposed_lesson_plan_enhanced.html) |
-| 2 | <span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Passing Into Space](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_lesson_plan_enhanced.html) |
-| 2 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Passing Into Space: Adding Movement](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_wed_lesson_plan_enhanced.html) |
+| WEEK 1 | <span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Footwork & Formation Foundations](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week1_lesson_plan_enhanced.html) |
+| WEEK 2 | <span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Passing Into Space](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_lesson_plan_enhanced.html) |
+| WEEK 2 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Passing Into Space: Adding Movement](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_wed_lesson_plan_enhanced.html) |
+<!-- END_GENERATE_ACTIVE_TABLE -->
+
+### 📋 Proposed / Draft Plans
+
+> Files with "proposed" or "draft" in the filename appear here automatically. These are not yet finalized for the season schedule.
+
+<!-- GENERATE_PROPOSED_TABLE -->
+| Week | Day | Plan |
+|------|-----|------|
+| WEEK 2 | <span style="background-color:#E1592C;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Proposed</span> | [Footwork → Game Application: V-Push Gates & Treasure Keepers](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_proposed_lesson_plan_enhanced.html) |
+<!-- END_GENERATE_PROPOSED_TABLE -->
 
 🏁 Plans are auto-generated from HTML files in this repository.
