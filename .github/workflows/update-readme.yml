@@ -52,12 +52,14 @@ EOF
             WEEK_NUM=$(echo "$file" | sed -n 's/^week\([0-9]*\)_.*/\1/p')
             [ -z "$WEEK_NUM" ] && continue
 
-            if echo "$file" | grep -q '_wed_'; then
+            # Read explicit day from meta tag, fall back to filename pattern
+            META_DAY=$(grep -oP '(?i)meta\s+name="practice-day"\s+content="\K[^"]+' "$file" 2>/dev/null || true)
+            if [ -n "$META_DAY" ]; then
+              DAY="$META_DAY"
+            elif echo "$file" | grep -q '_wed_'; then
               DAY="Wednesday"
-              DAY_IDX=1
             else
               DAY="Monday"
-              DAY_IDX=0
             fi
 
             TITLE=$(grep -oPz '(?s)<h1>.*?</h1>' "$file" \
@@ -67,7 +69,8 @@ EOF
             [ -z "$TITLE" ] && TITLE="Week ${WEEK_NUM} Plan"
 
             PREVIEW_URL="${REPO_URL}/blob/main/${file}"
-            SORT_KEY=$(printf '%03d%d' "$WEEK_NUM" "$DAY_IDX")
+            case "$DAY" in Wednesday) DAY_SORT=1;; Proposed|proposed) DAY_SORT=2;; *) DAY_SORT=0;; esac
+            SORT_KEY=$(printf '%03d%d' "$WEEK_NUM" "$DAY_SORT")
             echo "${SORT_KEY}|${WEEK_NUM}|${DAY}|${TITLE}|${PREVIEW_URL}" >> /tmp/plan_rows.txt
           done
 
@@ -76,17 +79,15 @@ EOF
           fi
 
           sort -t'|' -k1 -n /tmp/plan_rows.txt | while IFS='|' read -r _sort week day title preview_url; do
-            if [ "$day" = "Wednesday" ]; then
-              DAY_HTML='<span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span>'
-            else
-              DAY_HTML='<span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span>'
-            fi
+            case "$day" in
+              Wednesday) DAY_HTML='<span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span>';;
+              Tuesday)   DAY_HTML='<span style="background-color:#2F6B4E;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Tuesday</span>';;
+              Thursday)  DAY_HTML='<span style="background-color:#3A7D5E;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Thursday</span>';;
+              Friday)    DAY_HTML='<span style="background-color:#46916E;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Friday</span>';;
+              *)         DAY_HTML='<span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span>';;
+            esac
             echo "| ${week} | ${DAY_HTML} | [${title}](https://html-preview.github.io/?url=${preview_url}) |" >> README.md
           done
-
-          cat >> README.md << 'EOF'
-
-🏁 Plans are auto-generated from HTML files in this repository.
 EOF
 
       - name: Commit and push

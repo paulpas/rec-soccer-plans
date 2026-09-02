@@ -31,11 +31,15 @@ function getWeekNumber(filename) {
   return match ? parseInt(match[1], 10) : 99;
 }
 
-function getDayInfo(filename, isPD) {
+function getDayInfo(filename, html, isPD) {
+  if (isPD) return { label: 'Proposed', color: '#E1592C', textColor: '#F7F5EC' };
+
+  // Read explicit day from meta tag, fall back to filename pattern
+  const metaMatch = html.match(/<meta[^>]+name="practice-day"[^>]+content="([^"]+)"/i);
+  if (metaMatch) return { label: metaMatch[1], color: '#E3A72E', textColor: '#152018' };
+
   const base = filename.replace(/lesson_plan.*\.html$/, '');
   const lowerBase = base.toLowerCase();
-
-  if (isPD) return { label: 'Proposed', color: '#E1592C', textColor: '#F7F5EC' };
 
   if (lowerBase.includes('_wed_')) return { label: 'Wednesday', color: '#E3A72E', textColor: '#152018' };
   if (lowerBase.includes('_tue_')) return { label: 'Tuesday', color: '#1F4D36', textColor: '#F7F5EC' };
@@ -74,7 +78,7 @@ for (const file of lessonFiles) {
   const title = extractTag(html, 'h1') || file.replace(/\.html$/, '');
   const weekNum = getWeekNumber(file);
   const isPD = isProposedDraft(file);
-  const { label: dayLabel, color, textColor } = getDayInfo(file, isPD);
+  const { label: dayLabel, color, textColor } = getDayInfo(file, html, isPD);
 
   if (isPD) {
     proposedDraftFiles.push({ file, title, weekNum, dayLabel, color, textColor });
