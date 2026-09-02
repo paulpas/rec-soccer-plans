@@ -6,6 +6,9 @@ on:
     paths: ["*.html"]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update-readme:
     runs-on: ubuntu-latest
@@ -18,90 +21,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate README
-        run: |
-          set -euo pipefail
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-          REPO_URL="https://github.com/paulpas/rec-soccer-plans"
+      - name: Update README tables
+        run: node scripts/update-readme.mjs
 
-          cat > README.md << 'EOF'
-# Rec Soccer Coaching Plans
-
-*Weekly practice plans with interactive checklists and auto-saved notes.*
-
-<div align="center">
-<img src="banner.svg" width="100%" alt="Soccer field coaching plans banner">
-</div>
-
-⚽ Season plans for rec soccer coaching. Each plan includes structured drills, game scenarios, and weekly practice sessions.
-
-### 🥅 Lesson Plans
-EOF
-
-          # Collect plan entries and write table rows to temp file
-          FOUND=0
-          rm -f /tmp/plan_rows.txt
-
-          for file in week*_lesson_plan_enhanced.html; do
-            [ -f "$file" ] || continue
-            # Skip proposed plans — these are manual entries in README.md
-            [[ "$file" == *_proposed_* ]] && continue
-
-            FOUND=1
-
-            WEEK_NUM=$(echo "$file" | sed -n 's/^week\([0-9]*\)_.*/\1/p')
-            [ -z "$WEEK_NUM" ] && continue
-
-            # Read explicit day from meta tag, fall back to filename pattern
-            META_DAY=$(grep -oP '(?i)meta\s+name="practice-day"\s+content="\K[^"]+' "$file" 2>/dev/null || true)
-            if [ -n "$META_DAY" ]; then
-              DAY="$META_DAY"
-            elif echo "$file" | grep -q '_wed_'; then
-              DAY="Wednesday"
-            else
-              DAY="Monday"
-            fi
-
-            TITLE=$(grep -oPz '(?s)<h1>.*?</h1>' "$file" \
-              | tr '\n' ' ' \
-              | sed -n 's/.*<h1>\(.*\)<\/h1>.*/\1/p' \
-              | sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g; s/&#39;/'"'"'/g; s/&middot;/·/g')
-            [ -z "$TITLE" ] && TITLE="Week ${WEEK_NUM} Plan"
-
-            PREVIEW_URL="${REPO_URL}/blob/main/${file}"
-            case "$DAY" in Wednesday) DAY_SORT=1;; Proposed|proposed) DAY_SORT=2;; *) DAY_SORT=0;; esac
-            SORT_KEY=$(printf '%03d%d' "$WEEK_NUM" "$DAY_SORT")
-            echo "${SORT_KEY}|${WEEK_NUM}|${DAY}|${TITLE}|${PREVIEW_URL}" >> /tmp/plan_rows.txt
-          done
-
-          if [ "$FOUND" -eq 0 ]; then
-            echo "0000|—||*No plans yet*|" >> /tmp/plan_rows.txt
-          fi
-
-          sort -t'|' -k1 -n /tmp/plan_rows.txt | while IFS='|' read -r _sort week day title preview_url; do
-            case "$day" in
-              Wednesday) DAY_HTML='<span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span>';;
-              Tuesday)   DAY_HTML='<span style="background-color:#2F6B4E;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Tuesday</span>';;
-              Thursday)  DAY_HTML='<span style="background-color:#3A7D5E;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Thursday</span>';;
-              Friday)    DAY_HTML='<span style="background-color:#46916E;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Friday</span>';;
-              *)         DAY_HTML='<span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span>';;
-            esac
-            echo "| ${week} | ${DAY_HTML} | [${title}](https://html-preview.github.io/?url=${preview_url}) |" >> README.md
-          done
-EOF
-
-      - name: Commit and push
+      - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          if git diff --quiet README.md; then
-            echo "README.md is already up to date — nothing to commit."
-            exit 0
+          if ! git diff --quiet; then
+            git add README.md
+            git commit -m "Auto-update lesson plan tables [ci skip]"
+            git push
+          else
+            echo "README up-to-date, no changes to commit."
           fi
-
-          git add README.md
-          git commit -m "chore: auto-update README with lesson plan links [skip ci]"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
