@@ -10,9 +10,6 @@
 
 ### 🥅 Lesson Plans
 
-> [!NOTE]
-> Tables below are auto-generated from `scripts/generate-tables.mjs`. Files with "proposed" or "draft" in their filename appear in the Proposed/Draft table automatically.
-
 <!-- GENERATE_ACTIVE_TABLE -->
 | Week | Day | Plan |
 |------|-----|------|
@@ -31,5 +28,3 @@
 |------|-----|------|
 | WEEK 2 | <span style="background-color:#E1592C;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Proposed</span> | [Footwork → Game Application: V-Push Gates & Treasure Keepers](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_proposed_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_PROPOSED_TABLE -->
-
-🏁 Plans are auto-generated from HTML files in this repository.
