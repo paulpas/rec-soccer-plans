@@ -124,6 +124,11 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 .diagram-card .foot{padding:10px 16px 14px; font-size:12px; color:rgba(247,245,236,0.8);}
 .lane{ stroke-dasharray:1,9; stroke-linecap:round; animation:marchLane 0.9s linear infinite; }
 
+/* player notes */
+.pt-table .notes-cell{width:100%;padding:4px 8px;}
+.pt-table .player-notes{width:100%;border:1px solid var(--line-rule);border-radius:6px;padding:6px 8px;font-family:'Inter',sans-serif;font-size:12.5px;color:var(--ink);resize:vertical;min-height:36px;background:#FCFBF6;transition:border-color .15s ease;}
+.pt-table .player-notes:focus{outline:none;border-color:var(--amber);}
+
 /* player tracker table */
 .pt-table{width:100%;border-collapse:collapse;}
 .pt-table th{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);padding:8px 14px;border-bottom:2px solid var(--line-rule);text-align:center;}
@@ -161,16 +166,16 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   <div class="checklist">
     <table class="pt-table">
       <thead>
-        <tr><th>Player Name</th><th>Attended</th><th>Homework</th><th>Strong Effort</th></tr>
+        <tr><th>Player Name</th><th>Attended</th><th>Homework</th><th>Strong Effort</th><th>Notes</th></tr>
       </thead>
       <tbody>
-        <tr><td>Emilia</td><td><input type="checkbox" id="pt-emilia-att"></td><td><input type="checkbox" id="pt-emilia-hw"></td><td><input type="checkbox" id="pt-emilia-effort"></td></tr>
-        <tr><td>Maverick</td><td><input type="checkbox" id="pt-maverick-att"></td><td><input type="checkbox" id="pt-maverick-hw"></td><td><input type="checkbox" id="pt-maverick-effort"></td></tr>
-        <tr><td>Ellie</td><td><input type="checkbox" id="pt-ellie-att"></td><td><input type="checkbox" id="pt-ellie-hw"></td><td><input type="checkbox" id="pt-ellie-effort"></td></tr>
-        <tr><td>Amelia</td><td><input type="checkbox" id="pt-amelia-att"></td><td><input type="checkbox" id="pt-amelia-hw"></td><td><input type="checkbox" id="pt-amelia-effort"></td></tr>
-        <tr><td>Zenobia</td><td><input type="checkbox" id="pt-zenobia-att"></td><td><input type="checkbox" id="pt-zenobia-hw"></td><td><input type="checkbox" id="pt-zenobia-effort"></td></tr>
-        <tr><td>Hannah</td><td><input type="checkbox" id="pt-hannah-att"></td><td><input type="checkbox" id="pt-hannah-hw"></td><td><input type="checkbox" id="pt-hannah-effort"></td></tr>
-        <tr><td>Cate</td><td><input type="checkbox" id="pt-cate-att"></td><td><input type="checkbox" id="pt-cate-hw"></td><td><input type="checkbox" id="pt-cate-effort"></td></tr>
+        <tr><td>Emilia</td><td><input type="checkbox" id="pt-emilia-att"></td><td><input type="checkbox" id="pt-emilia-hw"></td><td><input type="checkbox" id="pt-emilia-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-emilia-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Maverick</td><td><input type="checkbox" id="pt-maverick-att"></td><td><input type="checkbox" id="pt-maverick-hw"></td><td><input type="checkbox" id="pt-maverick-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-maverick-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Ellie</td><td><input type="checkbox" id="pt-ellie-att"></td><td><input type="checkbox" id="pt-ellie-hw"></td><td><input type="checkbox" id="pt-ellie-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-ellie-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Amelia</td><td><input type="checkbox" id="pt-amelia-att"></td><td><input type="checkbox" id="pt-amelia-hw"></td><td><input type="checkbox" id="pt-amelia-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-amelia-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Zenobia</td><td><input type="checkbox" id="pt-zenobia-att"></td><td><input type="checkbox" id="pt-zenobia-hw"></td><td><input type="checkbox" id="pt-zenobia-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-zenobia-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Hannah</td><td><input type="checkbox" id="pt-hannah-att"></td><td><input type="checkbox" id="pt-hannah-hw"></td><td><input type="checkbox" id="pt-hannah-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-hannah-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Cate</td><td><input type="checkbox" id="pt-cate-att"></td><td><input type="checkbox" id="pt-cate-hw"></td><td><input type="checkbox" id="pt-cate-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-cate-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
       </tbody>
     </table>
   </div>
@@ -591,7 +596,7 @@ const STORAGE_KEY = 'week2-proposed-lesson-plan';
 const segmentIds = ['player-tracker','w2p-arrival','w2p-welcome','w2p-footwork-game','water-break','w2p-passing-pressure','w2p-scrimmage','w2p-juggling'];
 
 function collectState(){
-  const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
+  const state = { segments:{}, carryForward: document.getElementById('carry-forward').value, playerNotes:{} };
   segmentIds.forEach(seg=>{
     const items = {};
     document.querySelectorAll(`[data-seg="${seg}"] input[type=checkbox]`).forEach(cb=>{
@@ -599,6 +604,10 @@ function collectState(){
     });
     const notesEl = document.getElementById(seg+'-notes');
     state.segments[seg] = { items, notes: notesEl ? notesEl.value : '' };
+  });
+  ['emilia','maverick','ellie','amelia','zenobia','hannah','cate'].forEach(name=>{
+    const el = document.getElementById('pt-'+name+'-notes');
+    if(el) state.playerNotes[name] = el.value;
   });
   return state;
 }
@@ -615,6 +624,12 @@ function applyState(state){
     const notesEl = document.getElementById(seg+'-notes');
     if(notesEl && segState.notes) notesEl.value = segState.notes;
   });
+  if(state.playerNotes){
+    ['emilia','maverick','ellie','amelia','zenobia','hannah','cate'].forEach(name=>{
+      const el = document.getElementById('pt-'+name+'-notes');
+      if(el && state.playerNotes[name]) el.value = state.playerNotes[name];
+    });
+  }
   if(state.carryForward){
     document.getElementById('carry-forward').value = state.carryForward;
   }
