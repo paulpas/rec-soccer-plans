@@ -267,7 +267,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="w2-tf-range-finder">0/7</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Figure out your throwing range, then learn to throw INTO SPACE — waiting for movement before releasing.</p>
+    <p class="diagram-note">Progressive throw-in drill: form review → movement into range → receive, turn, and shoot.</p>
 
     <!-- CARD: Throw-in Form -->
     <div class="diagram-card">
@@ -413,36 +413,66 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
         <!-- Sequence flow -->
         <text x="195" y="135" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" text-anchor="middle" opacity="0.4">➡️ move to next phase ➡️</text>
 
-        <!-- Phase 3: Cone Defender Block -->
-        <rect x="395" y="22" width="185" height="218" rx="8" fill="none" stroke="#E1592C" stroke-width="1.5" opacity="0.4"/>
-        <text x="487" y="42" fill="#E1592C" font-family="JetBrains Mono" font-size="10" font-weight="700" text-anchor="middle">PHASE 3: Cone Blocks</text>
-
-        <!-- Thrower -->
-        <circle cx="445" cy="130" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
-        <text x="445" y="135" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">T</text>
-
-        <!-- Cone defender blocking -->
-        <polygon points="495,118 500,106 505,118" fill="#E1592C" opacity="0.8"/>
-        <text x="495" y="135" fill="#E1592C" font-family="JetBrains Mono" font-size="7" text-anchor="middle">CONE</text>
-
-        <!-- Blocked direct throw (red X) -->
-        <line x1="460" y1="120" x2="493" y2="108" stroke="#E1592C" stroke-width="1.5" opacity="0.4"/>
-
-        <!-- Receiver moves WIDE to get open -->
-        <circle cx="555" cy="170" r="12" fill="#1F4D36" stroke="#4CAF82" stroke-width="2"/>
-        <text x="555" y="174" fill="#4CAF82" font-family="Bebas Neue" font-size="11" text-anchor="middle">R</text>
-        <path d="M 460,90 L 530,140 L 555,170" stroke="#4CAF82" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
-
-        <!-- Successful throw to wide receiver -->
-        <path d="M 458,135 Q 480,150 548,165" stroke="#E3A72E" stroke-width="2.5" fill="none" opacity="0.7"/>
-        <polygon points="546,162 554,160 550,168" fill="#E3A72E" opacity="0.7"/>
-
-        <!-- Key teaching callout -->
-        <rect x="400" y="195" width="180" height="35" rx="6" fill="rgba(21,32,24,0.8)" stroke="#E3A72E" stroke-width="1"/>
-        <text x="410" y="210" fill="#F7F5EC" font-family="JetBrains Mono" font-size="8">Runner moves WIDE</text>
-        <text x="410" y="223" fill="#e8d5b0" font-family="JetBrains Mono" font-size="8">to get open!</text>
       </svg>
-      <div class="foot">Phase 1: find your range. Phase 2: throw into movement. Phase 3: a cone "defender" blocks direct throws — the runner must move wide to create space.</div>
+      <div class="foot">Phase 1: find your range. Phase 2: throw into movement. Phase 3: receiver faces away from goal, traps the ball, turns, and shoots.</div>
+    </div>
+
+    <!-- CARD 3: Phase diagram — Receive, Turn & Shoot -->
+    <div class="diagram-card">
+      <div class="cap"><h4>Phase 3 — Receive, Turn &amp; Shoot</h4><div class="legend"><span style="color:#E3A72E">&#8226; thrower</span><span>&#8226; receiver</span><span style="color:#F7F5EC">&#9679; ball</span><span style="color:#4CAF82">&#9650; goal</span></div></div>
+      <svg class="field-svg" viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="260" fill="#1F4D36"/>
+        <g opacity="0.7">
+          <rect x="0" y="0" width="80" height="260" fill="#25573F"/>
+          <rect x="160" y="0" width="80" height="260" fill="#25573F"/>
+          <rect x="320" y="0" width="80" height="260" fill="#25573F"/>
+          <rect x="480" y="0" width="80" height="260" fill="#25573F"/>
+        </g>
+
+        <!-- Goal (top right) -->
+        <rect x="490" y="20" width="80" height="6" rx="3" fill="#4CAF82" opacity="0.8"/>
+        <text x="530" y="44" fill="#4CAF82" font-family="JetBrains Mono" font-size="9" text-anchor="middle">GOAL</text>
+
+        <!-- Thrower (left sideline) -->
+        <circle cx="80" cy="130" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
+        <text x="80" y="135" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">T</text>
+
+        <!-- Throw arc to receiver -->
+        <path d="M 94,125 Q 200,60 350,100" stroke="#F7F5EC" stroke-width="2" fill="none" opacity="0.5" stroke-dasharray="5,3"/>
+        <circle cx="350" cy="100" r="6" fill="#F7F5EC" opacity="0.6"/>
+        <text x="200" y="72" fill="#F7F5EC" font-family="JetBrains Mono" font-size="8" text-anchor="middle">THROW IN</text>
+
+        <!-- Receiver facing AWAY from goal (dashed outline = facing away) -->
+        <circle cx="350" cy="100" r="14" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2.5" stroke-dasharray="4,3"/>
+        <text x="350" y="105" fill="#F7F5EC" font-family="Bebas Neue" font-size="12" text-anchor="middle">R</text>
+        <text x="350" y="82" fill="#F7F5EC" font-family="JetBrains Mono" font-size="7" text-anchor="middle">facing AWAY</text>
+
+        <!-- Step 1: Trap (ball at feet) -->
+        <circle cx="350" cy="100" r="4" fill="#F7F5EC" opacity="0.7"/>
+        <text x="375" y="118" fill="#F7F5EC" font-family="JetBrains Mono" font-size="7">① trap</text>
+
+        <!-- Step 2: Turn arrow (180° toward goal) -->
+        <path d="M 340,108 C 310,140 310,170 340,190" stroke="#E1592C" stroke-width="2.5" fill="none"/>
+        <polygon points="338,188 345,195 342,186" fill="#E1592C"/>
+        <text x="290" y="158" fill="#E1592C" font-family="JetBrains Mono" font-size="7">② TURN</text>
+
+        <!-- Receiver AFTER turn (solid outline = facing goal) -->
+        <circle cx="350" cy="195" r="14" fill="#1F4D36" stroke="#4CAF82" stroke-width="2.5"/>
+        <text x="350" y="200" fill="#4CAF82" font-family="Bebas Neue" font-size="12" text-anchor="middle">R</text>
+        <text x="350" y="182" fill="#4CAF82" font-family="JetBrains Mono" font-size="7" text-anchor="middle">facing GOAL</text>
+
+        <!-- Step 3: Shoot -->
+        <line x1="364" y1="195" x2="490" y2="55" stroke="#E3A72E" stroke-width="2.5" fill="none" opacity="0.8"/>
+        <polygon points="488,52 496,50 490,58" fill="#E3A72E" opacity="0.8"/>
+        <text x="420" y="110" fill="#E3A72E" font-family="JetBrains Mono" font-size="8">③ SHOOT!</text>
+
+        <!-- Coaching callout -->
+        <rect x="20" y="195" width="160" height="50" rx="6" fill="rgba(21,32,24,0.8)" stroke="#E3A72E" stroke-width="1"/>
+        <text x="30" y="212" fill="#F7F5EC" font-family="JetBrains Mono" font-size="8">Receive with back to goal,</text>
+        <text x="30" y="226" fill="#e8d5b0" font-family="JetBrains Mono" font-size="8">trap, turn, then shoot!</text>
+        <text x="30" y="238" fill="#E3A72E" font-family="JetBrains Mono" font-size="7">Most realistic game scenario</text>
+      </svg>
+      <div class="foot">Phase 3: Thrower throws to receiver who is facing AWAY from goal. Receiver traps the ball, turns 180° toward goal, and shoots. This is the most realistic game scenario — you often receive with your back to goal.</div>
     </div>
   </div>
 
@@ -452,8 +482,8 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="item"><input type="checkbox" id="w2-tf-3"><label for="w2-tf-3">Phase 2 — Receiver starts BEYOND the cone, waits for signal, then sprints TOWARD thrower into throwing range</label></div>
     <div class="item"><input type="checkbox" id="w2-tf-4"><label for="w2-tf-4">Thrower WAITs for movement before releasing — don't throw at a stationary target<span class="badge-new">NEW</span></label></div>
     <div class="item"><input type="checkbox" id="w2-tf-5"><label for="w2-tf-5">Key teaching point: "Creating space off the ball — you have to move before you can receive"</label></div>
-    <div class="item"><input type="checkbox" id="w2-tf-6"><label for="w2-tf-6">Phase 3 — Add a cone "defender" between thrower and receiver; receiver must move WIDE to get open</label></div>
-    <div class="item"><input type="checkbox" id="w2-tf-7"><label for="w2-tf-7">Rotate roles: everyone throws AND runs</label></div>
+    <div class="item"><input type="checkbox" id="w2-tf-6"><label for="w2-tf-6">Phase 3 — Receiver starts facing AWAY from goal. Thrower throws to them. Receiver traps, turns 180° toward goal, and shoots<span class="badge-new">NEW</span></label></div>
+    <div class="item"><input type="checkbox" id="w2-tf-7"><label for="w2-tf-7">Rotate roles: everyone throws, receives, AND shoots — coach watches for proper throw-in form on every rep</label></div>
   </div>
   <div class="notes-block">
     <label class="notes-label" for="w2-tf-notes">Coach notes — how's the throw-in form? Who needs individual coaching?</label>
@@ -475,11 +505,11 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 <!-- SEGMENT 4: Sole-Roll & Finish Keep-Away -->
 <div class="segment" data-seg="sole-roll-ka">
   <div class="seg-head">
-    <div><div class="seg-time">6:07 – 6:22 PM</div><div class="seg-title">Sole-Roll &amp; Finish Keep-Away</div></div>
-    <div class="seg-count" data-count-for="sole-roll-ka">0/12</div>
+    <div><div class="seg-time">6:07 – 6:22 PM</div><div class="seg-title">Sole-Roll &amp; Finish Keep-Away — Throw-In Start</div></div>
+    <div class="seg-count" data-count-for="sole-roll-ka">0/10</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">One ball. Three zones (Back, Middle, Front). After every catch: Sole roll right foot across to left ×3 → Push out → Pass or Shoot.</p>
+    <p class="diagram-note">One ball. Three zones (Back, Middle, Front). Player at sideline throws ball into Zone 1 to start each chain. After every catch: Sole roll right foot across to left ×3 → Push out → Pass or Shoot.</p>
 
     <div class="diagram-card">
       <div class="cap"><h4>Zone Rotation &amp; Footwork Trigger</h4><div class="legend"><span style="color:#E3A72E">&#8226; attacker</span><span>&#9651; defender</span><span style="color:#F7F5EC">&#9679; ball</span></div></div>
@@ -492,62 +522,72 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
         </g>
 
         <!-- Field boundary -->
-        <rect x="50" y="30" width="600" height="240" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.3"/>
+        <rect x="80" y="30" width="570" height="240" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.3"/>
 
         <!-- Zone Dividers -->
-        <line x1="50" y1="110" x2="650" y2="110" stroke="#F7F5EC" stroke-width="1" opacity="0.2" stroke-dasharray="8,4"/>
-        <line x1="50" y1="210" x2="650" y2="210" stroke="#F7F5EC" stroke-width="1" opacity="0.2" stroke-dasharray="8,4"/>
+        <line x1="80" y1="110" x2="650" y2="110" stroke="#F7F5EC" stroke-width="1" opacity="0.2" stroke-dasharray="8,4"/>
+        <line x1="80" y1="210" x2="650" y2="210" stroke="#F7F5EC" stroke-width="1" opacity="0.2" stroke-dasharray="8,4"/>
 
         <!-- Zone Labels -->
-        <text x="80" y="80" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">BACK ZONE</text>
-        <text x="80" y="160" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">MIDDLE ZONE</text>
-        <text x="80" y="260" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">FRONT ZONE</text>
+        <text x="105" y="80" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">BACK ZONE</text>
+        <text x="105" y="160" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">MIDDLE ZONE</text>
+        <text x="105" y="260" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">FRONT ZONE</text>
+
+        <!-- Thrower (sideline, left side) -->
+        <circle cx="40" cy="70" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        <text x="40" y="75" fill="#E3A72E" font-family="Bebas Neue" font-size="11" text-anchor="middle">TH</text>
+        <text x="40" y="55" fill="#E3A72E" font-family="JetBrains Mono" font-size="7" text-anchor="middle">thrower</text>
 
         <!-- Player in Back Zone (catch, sole roll, pass) -->
-        <circle cx="250" cy="85" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
-        <text x="250" y="90" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">A</text>
+        <circle cx="220" cy="85" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        <text x="220" y="90" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">A</text>
 
         <!-- Player in Middle Zone (catch, sole roll, pass) -->
         <circle cx="380" cy="155" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
         <text x="380" y="160" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">B</text>
 
         <!-- Player in Front Zone (catch, sole roll, shoot) -->
-        <circle cx="520" cy="245" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
-        <text x="520" y="250" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">C</text>
+        <circle cx="530" cy="245" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        <text x="530" y="250" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">C</text>
 
-        <!-- Passing Arrows -->
-        <path d="M 264,88 C 300,75 350,70 366,150" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.6"/>
+        <!-- THROW-IN arrow (Thrower → Zone 1 Player A) -->
+        <path d="M 54,68 Q 120,30 206,82" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.7"/>
+        <polygon points="204,79 212,83 204,87" fill="#F7F5EC" opacity="0.7"/>
+        <text x="120" y="40" fill="#F7F5EC" font-family="JetBrains Mono" font-size="8" opacity="0.8">THROW IN</text>
+
+        <!-- Pass arrow A → B -->
+        <path d="M 234,88 C 280,80 340,75 366,150" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.6"/>
         <polygon points="364,147 371,152 362,156" fill="#F7F5EC" opacity="0.6"/>
 
-        <path d="M 394,158 C 430,150 490,140 506,240" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.6"/>
-        <polygon points="504,237 511,242 502,246" fill="#F7F5EC" opacity="0.6"/>
+        <!-- Pass arrow B → C -->
+        <path d="M 394,158 C 430,150 500,140 516,240" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.6"/>
+        <polygon points="514,237 521,242 512,246" fill="#F7F5EC" opacity="0.6"/>
 
-        <!-- Sole Roll Footwork Animation (on Player B) -->
-        <path d="M 380,155 Q 390,140 370,130" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
-        <path d="M 370,130 Q 380,115 360,105" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
-        <path d="M 360,105 Q 370,90 350,80" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
-        <text x="400" y="115" fill="#E1592C" font-family="JetBrains Mono" font-size="7" opacity="0.8">Sole Roll ×3</text>
+        <!-- Sole Roll Footwork Animation (on Player A) -->
+        <path d="M 220,85 Q 230,70 210,60" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
+        <path d="M 210,60 Q 220,45 200,35" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
+        <text x="245" y="52" fill="#E1592C" font-family="JetBrains Mono" font-size="7" opacity="0.8">Sole Roll ×3</text>
 
         <!-- Shoot Arrow (from C) -->
-        <line x1="520" y1="245" x2="600" y2="240" stroke="#E3A72E" stroke-width="3" fill="none" opacity="0.9"/>
-        <polygon points="598,235 610,240 598,245" fill="#E3A72E" opacity="0.9"/>
-        <text x="615" y="243" fill="#E3A72E" font-family="JetBrains Mono" font-size="8">TARGET</text>
+        <line x1="530" y1="245" x2="610" y2="240" stroke="#E3A72E" stroke-width="3" fill="none" opacity="0.9"/>
+        <polygon points="608,235 620,240 608,245" fill="#E3A72E" opacity="0.9"/>
+        <text x="625" y="243" fill="#E3A72E" font-family="JetBrains Mono" font-size="8">TARGET</text>
 
-        <!-- Rotation Arrow (C moves back to start) -->
-        <path d="M 530,250 C 560,270 400,280 240,100" stroke="#F7F5EC" stroke-width="1.5" fill="none" opacity="0.3" stroke-dasharray="4,4"/>
-        <text x="450" y="290" fill="#F7F5EC" font-family="JetBrains Mono" font-size="7" text-anchor="middle">Rotation: Pass → Move Up / Shoot → Back to Start</text>
+        <!-- Rotation Arrow (C moves back to thrower role) -->
+        <path d="M 540,250 C 580,270 400,290 60,100" stroke="#F7F5EC" stroke-width="1.5" fill="none" opacity="0.3" stroke-dasharray="4,4"/>
+        <text x="350" y="285" fill="#F7F5EC" font-family="JetBrains Mono" font-size="7" text-anchor="middle">Rotation: Thrower → Zone 1 → Zone 2 → Zone 3 (shoot) → back to Thrower</text>
       </svg>
-      <div class="foot">Catch ball in zone → Sole roll right foot across body to left exactly 3 times → Push ball out with same foot → Middle zones pass upfield, Front zone shoots at target. Rotate positions immediately after finishing.</div>
+      <div class="foot">Throw-in from sideline starts each chain → Zone 1 catches, sole rolls ×3, passes to Zone 2 → Zone 2 catches, sole rolls ×3, passes to Zone 3 → Zone 3 catches, sole rolls ×3, shoots on target. Thrower rotates into Zone 1, everyone shifts up.</div>
     </div>
   </div>
 
   <div class="checklist">
     <label style="color:#E3A72E;font-weight:600;display:block;padding:8px 0 4px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;">Phase 1 — Safe Chain Rotation</label>
     <div class="item"><input type="checkbox" id="sr-ka-1"><label for="sr-ka-1">Set up 20x15 yard grid, divide into 3 horizontal zones (Back, Middle, Front) with chalk or cones</label></div>
-    <div class="item"><input type="checkbox" id="sr-ka-2"><label for="sr-ka-2">Explain rule: After EVERY catch, you must do the Sole Roll ×3 before you pass or shoot. Right foot drags ball left 3 times.</label></div>
-    <div class="item"><input type="checkbox" id="sr-ka-3"><label for="sr-ka-3">Back zone passes short to Middle; Middle passes medium to Front</label></div>
-    <div class="item"><input type="checkbox" id="sr-ka-4"><label for="sr-ka-4">Front zone shoots at target (10 yards away) after the sole rolls, then jogs back to Back zone</label></div>
-    <div class="item"><input type="checkbox" id="sr-ka-5"><label for="sr-ka-5">Rotate continuously: After passing, you run into the next zone. Never stand still.</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-2"><label for="sr-ka-2">One player stands at the sideline as the thrower — they throw the ball into Zone 1 to start each chain<span class="badge-new">NEW</span></label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-3"><label for="sr-ka-3">Zone 1 catches the throw-in → sole roll right foot across to left ×3 → passes to Zone 2</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-4"><label for="sr-ka-4">Zone 2 catches → sole roll ×3 → passes to Zone 3 (front). Zone 3 catches → sole roll ×3 → shoots at target</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-5"><label for="sr-ka-5">Rotate: thrower goes to Zone 1, Zone 1 → Zone 2, Zone 2 → Zone 3, Zone 3 shoots then jogs to thrower spot</label></div>
     <label style="color:#E3A72E;font-weight:600;display:block;padding:8px 0 4px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;margin-top:6px;">Phase 2 — Defender Entry (Lateral Constraint)</label>
     <div class="item"><input type="checkbox" id="sr-ka-6"><label for="sr-ka-6">Defender enters Middle Zone only, can move side-to-side but cannot cross into Back or Front zones</label></div>
     <div class="item"><input type="checkbox" id="sr-ka-7"><label for="sr-ka-7">Same footwork rule: Catch → Sole Roll ×3 → Push out → Pass/Shoot</label></div>
