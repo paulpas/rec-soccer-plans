@@ -449,121 +449,95 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
 </div>
 
-<!-- SEGMENT 4: Small-Sided Game: Pass + Throw -->
-<div class="segment" data-seg="w2w-pstg">
+<!-- SEGMENT 4: Sole-Roll & Finish Keep-Away (Wednesday Adapted) -->
+<div class="segment" data-seg="sole-roll-ka-wed">
   <div class="seg-head">
-    <div><div class="seg-time">6:10 – 6:30 PM</div><div class="seg-title">Small-Sided Game: Pass + Throw</div></div>
-    <div class="seg-count" data-count-for="w2w-pstg">0/7</div>
+    <div><div class="seg-time">6:10 – 6:25 PM</div><div class="seg-title">Sole-Roll &amp; Finish Keep-Away — Adapted to Observed Range</div></div>
+    <div class="seg-count" data-count-for="sole-roll-ka-wed">0/13</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">3v3 grid game with two throw-in zones on the sides. Points count only when receiver moves into space before receiving.</p>
+    <p class="diagram-note">Adapt grid size and target distance based on today's observed kicking ranges. Short-passers stay in Back Zone only.</p>
 
     <div class="diagram-card">
-      <div class="cap">
-        <h4>3v3 Grid With Throw-In Zones</h4>
-        <div class="legend"><span style="color:#E3A72E">&#8226; team A</span><span>&#8226; team B</span><span style="color:#F7F5EC">&#9679; ball</span><span style="color:#4CAF82">▬ throw-in zones</span></div>
-      </div>
-      <svg class="field-svg" viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
-        <!-- Grass stripe background — horizontal bands (landscape) -->
-        <rect x="0" y="0" width="700" height="350" fill="#1F4D36"/>
+      <div class="cap"><h4>Zone Rotation with Personalized Range</h4><div class="legend"><span style="color:#E3A72E">&#8226; attacker</span><span>&#9651; defender</span><span style="color:#F7F5EC">&#9679; ball</span></div></div>
+      <svg class="field-svg" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="700" height="300" fill="#1F4D36"/>
         <g opacity="0.7">
           <rect x="0" y="0" width="700" height="50" fill="#25573F"/>
           <rect x="0" y="100" width="700" height="50" fill="#25573F"/>
           <rect x="0" y="180" width="700" height="50" fill="#25573F"/>
-          <rect x="0" y="260" width="700" height="50" fill="#25573F"/>
         </g>
 
-        <!-- Main grid -->
-        <rect x="30" y="30" width="640" height="290" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.35"/>
-        <line x1="30" y1="175" x2="670" y2="175" stroke="#F7F5EC" stroke-width="1" opacity="0.25" stroke-dasharray="6,4"/>
-        <ellipse cx="350" cy="175" rx="65" ry="40" fill="none" stroke="#F7F5EC" stroke-width="1" opacity="0.3"/>
+        <!-- Field boundary (adapted to observed max range) -->
+        <rect x="50" y="30" width="600" height="240" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.3"/>
 
-        <!-- LEFT throw-in zone -->
-        <rect x="5" y="30" width="22" height="290" fill="rgba(76,175,130,0.12)" stroke="#4CAF82" stroke-width="1.5"/>
-        <text x="16" y="180" fill="#4CAF82" font-family="JetBrains Mono" font-size="8" text-anchor="middle" transform="rotate(-90, 16, 180)" opacity="0.8">THROW-IN</text>
+        <!-- Zone Dividers -->
+        <line x1="50" y1="110" x2="650" y2="110" stroke="#F7F5EC" stroke-width="1" opacity="0.2" stroke-dasharray="8,4"/>
+        <line x1="50" y1="210" x2="650" y2="210" stroke="#F7F5EC" stroke-width="1" opacity="0.2" stroke-dasharray="8,4"/>
 
-        <!-- RIGHT throw-in zone -->
-        <rect x="673" y="30" width="22" height="290" fill="rgba(76,175,130,0.12)" stroke="#4CAF82" stroke-width="1.5"/>
-        <text x="684" y="180" fill="#4CAF82" font-family="JetBrains Mono" font-size="8" text-anchor="middle" transform="rotate(-90, 684, 180)" opacity="0.8">THROW-IN</text>
+        <!-- Zone Labels -->
+        <text x="80" y="80" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">BACK ZONE</text>
+        <text x="80" y="160" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">MIDDLE ZONE</text>
+        <text x="80" y="260" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">FRONT ZONE</text>
 
-        <!-- Zone labels at top -->
-        <rect x="5" y="32" width="22" height="16" fill="#4CAF82" opacity="0.6"/>
-        <rect x="673" y="32" width="22" height="16" fill="#4CAF82" opacity="0.6"/>
+        <!-- Player in Back Zone (short passer - restricted) -->
+        <circle cx="250" cy="85" r="14" fill="#1F4D36" stroke="#E1592C" stroke-width="2"/>
+        <text x="250" y="90" fill="#E1592C" font-family="Bebas Neue" font-size="11" text-anchor="middle">SP</text>
 
-        <!-- Team A (gold) players -->
-        <circle cx="180" cy="100" r="15" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
-        <text x="180" y="106" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle">A1</text>
+        <!-- Player in Middle Zone -->
+        <circle cx="380" cy="155" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        <text x="380" y="160" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">B</text>
 
-        <circle cx="250" cy="230" r="15" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
-        <text x="250" y="236" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle">A2</text>
+        <!-- Player in Front Zone -->
+        <circle cx="520" cy="245" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        <text x="520" y="250" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">C</text>
 
-        <circle cx="400" cy="160" r="15" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
-        <text x="400" y="166" fill="#E3A72E" font-family="Bebas Neue" font-size="14" text-anchor="middle">A3</text>
+        <!-- Passing Arrows -->
+        <path d="M 264,88 C 300,75 350,70 366,150" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.6"/>
+        <polygon points="364,147 371,152 362,156" fill="#F7F5EC" opacity="0.6"/>
 
-        <!-- Team B (white) players -->
-        <circle cx="520" cy="100" r="15" fill="#1F4D36" stroke="#F7F5EC" stroke-width="3"/>
-        <text x="520" y="106" fill="#F7F5EC" font-family="Bebas Neue" font-size="14" text-anchor="middle">B1</text>
+        <path d="M 394,158 C 430,150 490,140 506,240" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.6"/>
+        <polygon points="504,237 511,242 502,246" fill="#F7F5EC" opacity="0.6"/>
 
-        <circle cx="450" cy="230" r="15" fill="#1F4D36" stroke="#F7F5EC" stroke-width="3"/>
-        <text x="450" y="236" fill="#F7F5EC" font-family="Bebas Neue" font-size="14" text-anchor="middle">B2</text>
+        <!-- Sole Roll Footwork Animation (on Player B) -->
+        <path d="M 380,155 Q 390,140 370,130" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
+        <path d="M 370,130 Q 380,115 360,105" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
+        <path d="M 360,105 Q 370,90 350,80" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
+        <text x="400" y="115" fill="#E1592C" font-family="JetBrains Mono" font-size="7" opacity="0.8">Sole Roll ×3</text>
 
-        <circle cx="330" cy="100" r="15" fill="#1F4D36" stroke="#F7F5EC" stroke-width="3"/>
-        <text x="330" y="106" fill="#F7F5EC" font-family="Bebas Neue" font-size="14" text-anchor="middle">B3</text>
+        <!-- Shoot Arrow (from C) -->
+        <line x1="520" y1="245" x2="600" y2="240" stroke="#E3A72E" stroke-width="3" fill="none" opacity="0.9"/>
+        <polygon points="598,235 610,240 598,245" fill="#E3A72E" opacity="0.9"/>
+        <text x="615" y="243" fill="#E3A72E" font-family="JetBrains Mono" font-size="8">TARGET</text>
 
-        <!-- Passing lane arrows -->
-        <path d="M195,98 C280,70 380,60 440,95" stroke="#E3A72E" stroke-width="2" fill="none" stroke-dasharray="6,5" opacity="0.7"/>
-        <polygon points="438,91 448,95 438,99" fill="#E3A72E" opacity="0.7"/>
-
-        <!-- Throw-in example: ball goes OUT right side -->
-        <text x="685" y="220" fill="#4CAF82" font-family="JetBrains Mono" font-size="8">⬅ throw back in</text>
-
-        <!-- Ball going out of bounds (right side) -->
-        <circle cx="660" cy="250" r="7" fill="#F7F5EC" opacity="0.7"/>
-        <path d="M 470,235 C 550,220 640,230 658,248" stroke="#F7F5EC" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="4,3"/>
-
-        <!-- Throw-in player on right sideline -->
-        <circle cx="684" cy="250" r="10" fill="#1F4D36" stroke="#E3A72E" stroke-width="2.5"/>
-        <text x="684" y="254" fill="#E3A72E" font-family="Bebas Neue" font-size="9" text-anchor="middle">TI</text>
-
-        <!-- Receiver creating space off-ball (left side) -->
-        <circle cx="140" cy="200" r="12" fill="#1F4D36" stroke="#F7F5EC" stroke-width="2"/>
-        <text x="140" y="204" fill="#F7F5EC" font-family="Bebas Neue" font-size="11" text-anchor="middle">R</text>
-
-        <!-- Off-ball movement arrow -->
-        <path d="M 130,190 C 100,160 90,130 110,115" stroke="#4CAF82" stroke-width="2" fill="none"/>
-        <text x="70" y="145" fill="#4CAF82" font-family="JetBrains Mono" font-size="7">create</text>
-
-        <!-- Successful throw-in into space -->
-        <path d="M 674,250 Q 500,200 135,115" stroke="#E3A72E" stroke-width="2.5" fill="none" stroke-dasharray="6,5" opacity="0.8"/>
-        <polygon points="133,112 141,109 136,117" fill="#E3A72E" opacity="0.8"/>
-
-        <!-- Runner moving toward ball -->
-        <path d="M 128,118 L 115,110" stroke="#F7F5EC" stroke-width="1.5" fill="none" stroke-dasharray="3,3" opacity="0.4"/>
-
-        <!-- Game rules callout box -->
-        <rect x="400" y="280" width="280" height="45" rx="6" fill="rgba(21,32,24,0.8)" stroke="#E3A72E" stroke-width="1"/>
-        <text x="410" y="297" fill="#F7F5EC" font-family="JetBrains Mono" font-size="8">RULES:</text>
-        <text x="410" y="310" fill="#e8d5b0" font-family="JetBrains Mono" font-size="8">Ball out of side → throw-in (not drop in)</text>
-        <text x="410" y="322" fill="#e8d5b0" font-family="JetBrains Mono" font-size="8">Points only when receiver moves INTO SPACE</text>
-
-        <!-- Labels -->
-        <text x="350" y="50" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" text-anchor="middle" opacity="0.6">rotate teams every 3 minutes — keep it fun!</text>
+        <!-- Coaching callout -->
+        <rect x="220" y="265" width="240" height="25" rx="6" fill="rgba(21,32,24,0.8)" stroke="#E1592C" stroke-width="1"/>
+        <text x="340" y="282" fill="#F7F5EC" font-family="JetBrains Mono" font-size="8" text-anchor="middle">Short Padder (SP): Back Zone Only</text>
       </svg>
-      <div class="foot">Teams of 3 play in a zoned grid with throw-in zones on the sides. When the ball goes out, use a proper throw-in (not dropping it in). Points only count when the receiver moves into space before receiving.</div>
+      <div class="foot">Adjust grid width/depth to match today's observed ranges. Short-passers stay in Back Zone only, pushing short passes to Middle. Front zone shoots from a safe distance based on actual kicks.</div>
     </div>
   </div>
+
   <div class="checklist">
-    <div class="item"><input type="checkbox" id="w2w-pstg-1"><label for="w2w-pstg-1">Set up a small grid (3v3 or 4v4) with throw-in zones on both sides</label></div>
-    <div class="item"><input type="checkbox" id="w2w-pstg-2"><label for="w2w-pstg-2">When ball goes out of bounds on the side → proper throw-in (not dropping it in)<span class="badge-new">NEW</span></label></div>
-    <div class="item"><input type="checkbox" id="w2w-pstg-3"><label for="w2w-pstg-3">Points only count if the receiving player moves INTO SPACE before receiving</label></div>
-    <div class="item"><input type="checkbox" id="w2w-pstg-4"><label for="w2w-pstg-4">Praise attempts to pass into space, even if they don't connect</label></div>
-    <div class="item"><input type="checkbox" id="w2w-pstg-5"><label for="w2w-pstg-5">Rotate teams every 3 minutes</label></div>
-    <div class="item"><input type="checkbox" id="w2w-pstg-6"><label for="w2w-pstg-6">Encourage throw-in users to wait for off-ball movement before throwing<span class="badge-new">NEW</span></label></div>
-    <div class="item"><input type="checkbox" id="w2w-pstg-7"><label for="w2w-pstg-7">If play gets stuck, remind kids: "move to create space before you receive"</label></div>
+    <label style="color:#E3A72E;font-weight:600;display:block;padding:8px 0 4px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;">Phase 1 — Safe Chain Rotation</label>
+    <div class="item"><input type="checkbox" id="sr-ka-w-1"><label for="sr-ka-w-1">Set up grid divided into 3 zones — size it to today's observed kicking range, not a textbook measurement</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-w-2"><label for="sr-ka-w-2">Assign Short Padder (~4yd range) exclusively to Back Zone — they only push short passes into Middle</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-w-3"><label for="sr-ka-w-3">Explain rule: Catch → Sole roll right foot across to left exactly 3 times → Push out → Pass or Shoot</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-w-4"><label for="sr-ka-w-4">Back zone passes short to Middle; Middle passes medium to Front; Front shoots at target, then jogs back to Back Zone</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-w-5"><label for="sr-ka-w-5">Rotate continuously: After passing, run into next zone. Never stand still.</label></div>
+    <label style="color:#E3A72E;font-weight:600;display:block;padding:8px 0 4px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;margin-top:6px;">Phase 2 — Defender Entry (Lateral Constraint)</label>
+    <div class="item"><input type="checkbox" id="sr-ka-w-6"><label for="sr-ka-w-6">Defender enters Middle Zone only, can move side-to-side but cannot cross into Back or Front zones</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-w-7"><label for="sr-ka-w-7">Short Padder gets a "safe reset" throw-in from sideline if defender pressures them</label></div>
+    <label style="color:#E3A72E;font-weight:600;display:block;padding:8px 0 4px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;margin-top:6px;">Phase 3 — Free Scoring Keep-Away</label>
+    <div class="item"><input type="checkbox" id="sr-ka-w-8"><label for="sr-ka-w-8">Release defender to move anywhere in grid. Relax footwork to 1 Sole Roll ×1 before passing.</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-w-9"><label for="sr-ka-w-9">Score a point for every 5 consecutive passes without defender interception</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-w-10"><label for="sr-ka-w-10">Also score a point for any successful shot on target during Phase 3</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-w-11"><label for="sr-ka-w-11">Short Padder requirement: complete 3 consecutive sole-roll passes without loss (counts toward team total)</label></div>
   </div>
+
   <div class="notes-block">
-    <label class="notes-label" for="w2w-pstg-notes">Coach notes — how well are throw-ins and movement passing working in the game?</label>
-    <textarea id="w2w-pstg-notes" placeholder="e.g. threw-in integration was smooth, kids remembered proper form from today's drill..."></textarea>
+    <label class="notes-label" for="sole-roll-ka-wed-notes">Coach notes — did grid size match observed ranges? Did the short padder hold up in Back Zone under pressure?</label>
+    <textarea id="sole-roll-ka-wed-notes" placeholder="e.g. grid was slightly too big for 4yd kickers; short padder got stressed around minute 3..."></textarea>
   </div>
 </div>
 
@@ -710,7 +684,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
 <script>
 const STORAGE_KEY = 'week2-wed-lesson-plan';
-const segmentIds = ['player-tracker','w2w-arrival','w2w-welcome','w2w-tm','water-break','w2w-pstg','w2w-scrimmage','w2w-kickoff'];
+const segmentIds = ['player-tracker','w2w-arrival','w2w-welcome','w2w-tm','water-break','sole-roll-ka-wed','w2w-scrimmage','w2w-kickoff'];
 
 function collectState(){
   const state = { segments:{}, carryForward: document.getElementById('carry-forward').value, playerNotes:{} };
@@ -816,7 +790,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
     'player-tracker':'Player Tracker',
     'w2w-arrival':'Arrival Scrimmage', 'w2w-welcome':'Welcome & Recap',
     'w2w-tm':'Throw-in With Movement', 'water-break':'Water Break',
-    'w2w-pstg':'Small-Sided Game: Pass + Throw',
+    'sole-roll-ka-wed':'Sole-Roll &amp; Finish Keep-Away — Adapted to Observed Range',
     'w2w-scrimmage':'Full Field Scrimmage', 'w2w-kickoff':'Kickoff Pattern'
   };
   segmentIds.forEach(seg=>{

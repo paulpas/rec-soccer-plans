@@ -472,20 +472,17 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
 </div>
 
-<!-- SEGMENT 4: Partner Passing Into Space -->
-<div class="segment" data-seg="w2-pit">
+<!-- SEGMENT 4: Sole-Roll & Finish Keep-Away -->
+<div class="segment" data-seg="sole-roll-ka">
   <div class="seg-head">
-    <div><div class="seg-time">6:07 – 6:22 PM</div><div class="seg-title">Partner Passing Into Space</div></div>
-    <div class="seg-count" data-count-for="w2-pit">0/6</div>
+    <div><div class="seg-time">6:07 – 6:22 PM</div><div class="seg-title">Sole-Roll &amp; Finish Keep-Away</div></div>
+    <div class="seg-count" data-count-for="sole-roll-ka">0/12</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Simple partner passing drill — aim where your teammate is going, not where they are.</p>
+    <p class="diagram-note">One ball. Three zones (Back, Middle, Front). After every catch: Sole roll right foot across to left ×3 → Push out → Pass or Shoot.</p>
 
     <div class="diagram-card">
-      <div class="cap">
-        <h4>Partner Passing — Pass Into Space</h4>
-        <div class="legend"><span style="color:#E3A72E">&#8226; passer</span><span>&#8226; receiver</span><span style="color:#F7F5EC">&#9679; ball</span></div>
-      </div>
+      <div class="cap"><h4>Zone Rotation &amp; Footwork Trigger</h4><div class="legend"><span style="color:#E3A72E">&#8226; attacker</span><span>&#9651; defender</span><span style="color:#F7F5EC">&#9679; ball</span></div></div>
       <svg class="field-svg" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="700" height="300" fill="#1F4D36"/>
         <g opacity="0.7">
@@ -494,53 +491,75 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
           <rect x="0" y="180" width="700" height="50" fill="#25573F"/>
         </g>
 
-        <!-- Player A (passer) -->
-        <circle cx="200" cy="160" r="18" fill="#1F4D36" stroke="#E3A72E" stroke-width="3"/>
-        <text x="200" y="166" fill="#E3A72E" font-family="Bebas Neue" font-size="16" text-anchor="middle">A</text>
-
-        <!-- Player B (receiver) -->
-        <circle cx="440" cy="160" r="18" fill="#1F4D36" stroke="#F7F5EC" stroke-width="3"/>
-        <text x="440" y="166" fill="#F7F5EC" font-family="Bebas Neue" font-size="16" text-anchor="middle">B</text>
-
-        <!-- WRONG: pass to feet -->
-        <line x1="218" y1="155" x2="422" y2="155" stroke="#E1592C" stroke-width="2" opacity="0.3" stroke-dasharray="6,5"/>
-        <text x="320" y="148" fill="#E1592C" font-family="JetBrains Mono" font-size="9" text-anchor="middle" opacity="0.6">WRONG: pass to feet</text>
-
-        <!-- CORRECT: pass into space ahead of B -->
-        <path d="M 218,162 C 320,140 400,135 470,165" stroke="#E3A72E" stroke-width="3" fill="none" stroke-dasharray="6,5" opacity="0.9"/>
-        <polygon points="468,160 478,165 468,170" fill="#E3A72E" opacity="0.9"/>
-
-        <!-- B runs onto the ball -->
-        <path d="M 458,160 C 490,155 520,160 550,165" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.7"/>
-        <polygon points="548,160 558,165 548,170" fill="#F7F5EC" opacity="0.7"/>
-
-        <!-- Coaching callout -->
-        <rect x="300" y="210" width="120" height="45" rx="6" fill="rgba(21,32,24,0.8)" stroke="#E3A72E" stroke-width="1"/>
-        <text x="360" y="227" fill="#F7F5EC" font-family="JetBrains Mono" font-size="9" text-anchor="middle">PASS AHEAD!</text>
-        <text x="360" y="244" fill="#E3A72E" font-family="JetBrains Mono" font-size="8" text-anchor="middle">Not to their feet</text>
-
-        <!-- Space indicator -->
-        <polygon points="510,152 530,165 510,178" fill="#E3A72E" opacity="0.3"/>
-        <text x="545" y="169" fill="#E3A72E" font-family="JetBrains Mono" font-size="9">SPACE</text>
-
         <!-- Field boundary -->
-        <rect x="80" y="50" width="540" height="200" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.25"/>
+        <rect x="50" y="30" width="600" height="240" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.3"/>
+
+        <!-- Zone Dividers -->
+        <line x1="50" y1="110" x2="650" y2="110" stroke="#F7F5EC" stroke-width="1" opacity="0.2" stroke-dasharray="8,4"/>
+        <line x1="50" y1="210" x2="650" y2="210" stroke="#F7F5EC" stroke-width="1" opacity="0.2" stroke-dasharray="8,4"/>
+
+        <!-- Zone Labels -->
+        <text x="80" y="80" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">BACK ZONE</text>
+        <text x="80" y="160" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">MIDDLE ZONE</text>
+        <text x="80" y="260" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" opacity="0.6">FRONT ZONE</text>
+
+        <!-- Player in Back Zone (catch, sole roll, pass) -->
+        <circle cx="250" cy="85" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        <text x="250" y="90" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">A</text>
+
+        <!-- Player in Middle Zone (catch, sole roll, pass) -->
+        <circle cx="380" cy="155" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        <text x="380" y="160" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">B</text>
+
+        <!-- Player in Front Zone (catch, sole roll, shoot) -->
+        <circle cx="520" cy="245" r="14" fill="#1F4D36" stroke="#E3A72E" stroke-width="2"/>
+        <text x="520" y="250" fill="#E3A72E" font-family="Bebas Neue" font-size="12" text-anchor="middle">C</text>
+
+        <!-- Passing Arrows -->
+        <path d="M 264,88 C 300,75 350,70 366,150" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.6"/>
+        <polygon points="364,147 371,152 362,156" fill="#F7F5EC" opacity="0.6"/>
+
+        <path d="M 394,158 C 430,150 490,140 506,240" stroke="#F7F5EC" stroke-width="2.5" fill="none" opacity="0.6"/>
+        <polygon points="504,237 511,242 502,246" fill="#F7F5EC" opacity="0.6"/>
+
+        <!-- Sole Roll Footwork Animation (on Player B) -->
+        <path d="M 380,155 Q 390,140 370,130" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
+        <path d="M 370,130 Q 380,115 360,105" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
+        <path d="M 360,105 Q 370,90 350,80" stroke="#E1592C" stroke-width="2" fill="none" opacity="0.7"/>
+        <text x="400" y="115" fill="#E1592C" font-family="JetBrains Mono" font-size="7" opacity="0.8">Sole Roll ×3</text>
+
+        <!-- Shoot Arrow (from C) -->
+        <line x1="520" y1="245" x2="600" y2="240" stroke="#E3A72E" stroke-width="3" fill="none" opacity="0.9"/>
+        <polygon points="598,235 610,240 598,245" fill="#E3A72E" opacity="0.9"/>
+        <text x="615" y="243" fill="#E3A72E" font-family="JetBrains Mono" font-size="8">TARGET</text>
+
+        <!-- Rotation Arrow (C moves back to start) -->
+        <path d="M 530,250 C 560,270 400,280 240,100" stroke="#F7F5EC" stroke-width="1.5" fill="none" opacity="0.3" stroke-dasharray="4,4"/>
+        <text x="450" y="290" fill="#F7F5EC" font-family="JetBrains Mono" font-size="7" text-anchor="middle">Rotation: Pass → Move Up / Shoot → Back to Start</text>
       </svg>
-      <div class="foot">Players A and B pass back and forth, but always into the space ahead of their partner. Partner B runs onto the ball each time, then passes it back.</div>
+      <div class="foot">Catch ball in zone → Sole roll right foot across body to left exactly 3 times → Push ball out with same foot → Middle zones pass upfield, Front zone shoots at target. Rotate positions immediately after finishing.</div>
     </div>
   </div>
 
   <div class="checklist">
-    <div class="item"><input type="checkbox" id="w2-pit-1"><label for="w2-pit-1">Set up pairs in a ~5-yard grid — no walls, open space</label></div>
-    <div class="item"><input type="checkbox" id="w2-pit-2"><label for="w2-pit-2">Pass into the SPACE ahead of your partner (not at their feet)<span class="badge-new">NEW</span></label></div>
-    <div class="item"><input type="checkbox" id="w2-pit-3"><label for="w2-pit-3">Receiver runs onto the ball each time, then passes it back</label></div>
-    <div class="item"><input type="checkbox" id="w2-pit-4"><label for="w2-pit-4">After 30 seconds, have them switch roles — now the other person leads</label></div>
-    <div class="item"><input type="checkbox" id="w2-pit-5"><label for="w2-pit-5">Add a challenge: they must pass 3 times before switching who leads</label></div>
-    <div class="item"><input type="checkbox" id="w2-pit-6"><label for="w2-pit-6">Remind kids: "We pass to where they're going, not where they are"</label></div>
+    <label style="color:#E3A72E;font-weight:600;display:block;padding:8px 0 4px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;">Phase 1 — Safe Chain Rotation</label>
+    <div class="item"><input type="checkbox" id="sr-ka-1"><label for="sr-ka-1">Set up 20x15 yard grid, divide into 3 horizontal zones (Back, Middle, Front) with chalk or cones</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-2"><label for="sr-ka-2">Explain rule: After EVERY catch, you must do the Sole Roll ×3 before you pass or shoot. Right foot drags ball left 3 times.</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-3"><label for="sr-ka-3">Back zone passes short to Middle; Middle passes medium to Front</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-4"><label for="sr-ka-4">Front zone shoots at target (10 yards away) after the sole rolls, then jogs back to Back zone</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-5"><label for="sr-ka-5">Rotate continuously: After passing, you run into the next zone. Never stand still.</label></div>
+    <label style="color:#E3A72E;font-weight:600;display:block;padding:8px 0 4px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;margin-top:6px;">Phase 2 — Defender Entry (Lateral Constraint)</label>
+    <div class="item"><input type="checkbox" id="sr-ka-6"><label for="sr-ka-6">Defender enters Middle Zone only, can move side-to-side but cannot cross into Back or Front zones</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-7"><label for="sr-ka-7">Same footwork rule: Catch → Sole Roll ×3 → Push out → Pass/Shoot</label></div>
+    <label style="color:#E3A72E;font-weight:600;display:block;padding:8px 0 4px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;margin-top:6px;">Phase 3 — Free Scoring Keep-Away</label>
+    <div class="item"><input type="checkbox" id="sr-ka-8"><label for="sr-ka-8">Release defender to move anywhere in the grid. Relax footwork to 1 Sole Roll ×1 before passing.</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-9"><label for="sr-ka-9">Score a point for every 5 consecutive passes without defender interception</label></div>
+    <div class="item"><input type="checkbox" id="sr-ka-10"><label for="sr-ka-10">Also score a point for any successful shot on target during Phase 3</label></div>
   </div>
+
   <div class="notes-block">
-    <label class="notes-label" for="w2-pit-notes">Coach notes — how well are they passing into space?</label>
-    <textarea id="w2-pit-notes" placeholder="e.g. most kids still pass to feet, but some caught on; need more reps..."></textarea>
+    <label class="notes-label" for="sole-roll-ka-notes">Coach notes — how well are they holding single-leg balance? Did the sole rolls force them to create passing angles?</label>
+    <textarea id="sole-roll-ka-notes" placeholder="e.g. most kids struggled with hop rhythm, but good angle creation; need more reps..."></textarea>
   </div>
 </div>
 
@@ -640,7 +659,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
 <script>
 const STORAGE_KEY = 'week2-lesson-plan';
-const segmentIds = ['player-tracker','w2-arrival','w2-welcome','w2-tf-range-finder','water-break','w2-pit','w2-game'];
+const segmentIds = ['player-tracker','w2-arrival','w2-welcome','w2-tf-range-finder','water-break','sole-roll-ka','w2-game'];
 
 function collectState(){
   const state = { segments:{}, carryForward: document.getElementById('carry-forward').value, playerNotes:{} };
@@ -748,7 +767,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
     'player-tracker':'Player Tracker',
     'w2-arrival':'Arrival Scrimmage', 'w2-welcome':'Welcome & Recap',
     'w2-tf-range-finder':'Throw-in Range Finder', 'water-break':'Water Break',
-    'w2-pit':'Partner Passing Into Space',
+    'sole-roll-ka':'Sole-Roll &amp; Finish Keep-Away',
     'w2-scrimmage':'Full Field Scrimmage', 'w2-kickoff':'Kickoff Pattern'
   };
   segmentIds.forEach(seg=>{
