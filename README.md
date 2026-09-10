@@ -19,6 +19,12 @@
 | WEEK 2 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Passing Into Space: Adding Movement](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_wed_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_ACTIVE_TABLE -->
 
+### 🎮 Game Reference Library
+
+[All 27 U8 "Stealth Training" Games — YouTube Videos, Diagrams & Coaching Notes](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/games.html)
+
+> A curated collection of game-based drills from US Youth Soccer, The FA England, Ajax/La Masia, FIFA, FFA MiniRoos, and other established youth programs. Each game teaches a specific skill while kids think they're just playing. Includes video links where available, setup instructions, scaling tips, and source attribution.
+
 ### 📋 Proposed / Draft Plans
 
 > Files with "proposed" or "draft" in the filename appear here automatically. These are not yet finalized for the season schedule.

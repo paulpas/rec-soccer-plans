@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>U8 Stealth Training Games — Complete Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #2E7D32;
+  --green-light: #4CAF50;
+  --green-bg: #E8F5E9;
+  --gray-50: #f8f9fa;
+  --gray-100: #f1f3f5;
+  --gray-200: #e9ecef;
+  --gray-400: #ced4da;
+  --gray-600: #6c757d;
+  --gray-800: #343a40;
+  --card-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --card-shadow-hover: 0 4px 12px rgba(0,0,0,.1), 0 2px 4px rgba(0,0,0,.06);
+  --radius: 12px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ───────────────────────────────────────────── */
+.site-header {
+  background: linear-gradient(135deg, var(--green) 0%, #1B5E20 100%);
+  color: #fff;
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: .35rem;
+}
+
+.site-header p {
+  font-size: clamp(.9rem, 2vw, 1.05rem);
+  opacity: .85;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Container ─────────────────────────────────────────── */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* ── Quick Filter Bar ─────────────────────────────────── */
+.quick-filter-bar {
+  background: var(--green-bg);
+  border: 1px solid #C8E6C9;
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.quick-filter-bar h3 {
+  font-size: .85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--green);
+  margin-bottom: .6rem;
+}
+
+.quick-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.qf-btn {
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  padding: .45rem .9rem;
+  border: 2px solid var(--green);
+  background: #fff;
+  color: var(--green);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .15s ease;
+  white-space: nowrap;
+}
+
+.qf-btn:hover, .qf-btn.active {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ── Category Filter Buttons ──────────────────────────── */
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-bottom: 1.75rem;
+  justify-content: center;
+}
+
+.cat-btn {
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  padding: .4rem .95rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .15s ease;
+  white-space: nowrap;
+}
+
+.cat-btn.active { transform: scale(1.05); }
+
+.cat-btn[data-cat="all"]   { background: var(--gray-800); color: #fff; }
+.cat-btn[data-cat="Dribbling"]       { background: #E91E63;  color: #fff; }
+.cat-btn[data-cat="Passing"]         { background: #1565C0;  color: #fff; }
+.cat-btn[data-cat="Shooting"]        { background: #EF6C00;  color: #fff; }
+.cat-btn[data-cat="Small-Sided Games"] { background: #6A1B9A; color: #fff; }
+.cat-btn[data-cat="Warm-Up/Fun"]     { background: #00838F;  color: #fff; }
+
+/* ── Game Count Badge ─────────────────────────────────── */
+.game-count {
+  text-align: center;
+  font-size: .85rem;
+  color: var(--gray-600);
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+.game-count strong { color: var(--green); }
+
+/* ── Section Headers ──────────────────────────────────── */
+.section-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--green);
+  padding: .75rem 0 .5rem;
+  border-bottom: 2px solid var(--green-light);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.section-heading:first-child { margin-top: 0; }
+
+/* ── Game Card ─────────────────────────────────────────── */
+.game-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  margin-bottom: .85rem;
+  overflow: hidden;
+  transition: box-shadow .2s ease, transform .15s ease;
+}
+
+.game-card:hover { box-shadow: var(--card-shadow-hover); }
+
+.game-card.hidden { display: none; }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .9rem 1.1rem;
+  cursor: pointer;
+  user-select: none;
+  background: #fff;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+}
+
+.card-header:hover { background: var(--gray-50); }
+
+.card-number {
+  font-size: .72rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--green);
+  min-width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  flex: 1;
+  letter-spacing: -0.01em;
+}
+
+.category-pill {
+  font-size: .68rem;
+  font-weight: 700;
+  padding: .2rem .6rem;
+  border-radius: 999px;
+  color: #fff;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.pill-dribbling    { background: #E91E63; }
+.pill-passing      { background: #1565C0; }
+.pill-shooting     { background: #EF6C00; }
+.pill-small-sided  { background: #6A1B9A; }
+.pill-warm-up-fun  { background: #00838F; }
+
+.chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  transition: transform .25s ease;
+}
+
+.card-header[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Card Body ─────────────────────────────────────────── */
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+}
+
+.card-body.expanded { max-height: 6000px; }
+
+.card-content {
+  padding: 0 1.1rem 1.2rem 4.2rem; /* indent past number circle */
+}
+
+.skill-hidden {
+  font-size: .85rem;
+  color: var(--gray-600);
+  font-style: italic;
+  margin-bottom: .9rem;
+  padding-left: .75rem;
+  border-left: 3px solid var(--green-light);
+}
+
+.skill-hidden strong { font-style: normal; color: var(--green); }
+
+/* ── Video Embeds ─────────────────────────────────────── */
+.video-section { margin-bottom: .9rem; }
+
+.video-section h4 {
+  font-size: .82rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+  color: var(--gray-800);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: .7rem;
+  margin-bottom: .5rem;
+}
+
+.video-wrapper {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .82rem;
+  font-weight: 600;
+  color: #C62828;
+  text-decoration: none;
+  padding: .5rem .8rem;
+  border: 1px solid rgba(198,40,40,.2);
+  border-radius: 8px;
+  background: #FFF5F5;
+  transition: all .15s ease;
+}
+
+.video-link:hover {
+  background: #C62828;
+  color: #fff;
+}
+
+.youtube-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.no-video-note {
+  font-size: .8rem;
+  color: var(--gray-600);
+  padding: .45rem .7rem;
+  background: var(--gray-100);
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.no-video-note a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ── Info Grid ─────────────────────────────────────────── */
+.info-section { margin-bottom: .75rem; }
+
+.info-section h4 {
+  font-size: .82rem;
+  font-weight: 700;
+  margin-bottom: .35rem;
+  color: var(--gray-800);
+}
+
+.setup-list, .tip-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.setup-list li, .tip-list li {
+  font-size: .87rem;
+  line-height: 1.55;
+  position: relative;
+  padding-left: 1.15rem;
+  margin-bottom: .2rem;
+}
+
+.setup-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--green-light);
+  font-weight: 700;
+}
+
+.tip-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gray-600);
+  font-weight: 600;
+}
+
+.why-section h4 { margin-bottom: .2rem; }
+
+.why-section p {
+  font-size: .87rem;
+  font-style: italic;
+  color: #444;
+}
+
+.source-badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .2rem .55rem;
+  background: var(--green-bg);
+  color: var(--green);
+  border-radius: 4px;
+  margin-top: .5rem;
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: .78rem;
+  color: var(--gray-600);
+  border-top: 1px solid var(--gray-200);
+  margin-top: 2.5rem;
+}
+
+.site-footer strong { color: var(--green); }
+
+.source-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .3rem .8rem;
+  margin-top: .5rem;
+}
+
+.source-list li { color: var(--gray-600); }
+
+/* ── Print Styles ─────────────────────────────────────── */
+@media print {
+  .quick-filter-bar, .category-filters { display: none !important; }
+  .card-body { max-height: none !important; overflow: visible !important; }
+  .game-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  .site-header { background: var(--green) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 600px) {
+  .card-content { padding-left: 1.1rem; }
+  .video-grid { grid-template-columns: 1fr; }
+  .site-header { padding: 2rem 1rem 1.5rem; }
+}
+
+/* ── Back to Top ──────────────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(46,125,50,.35);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .2s ease;
+  z-index: 100;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover { background: #1B5E20; }
+</style>
+</head>
+
+<body>
+
+<!-- ── Header ──────────────────────────────────────────── -->
+<header class="site-header">
+  <h1>⚽ U8 Stealth Training Games</h1>
+  <p>The complete reference — 27 games kids love and secretly develop real soccer skills with.</p>
+</header>
+
+<div class="container">
+
+  <!-- ── Quick Filter Bar ─────────────────────────────── -->
+  <div class="quick-filter-bar">
+    <h3>&#128269; Quick Filters — Recent Practice Skills</h3>
+    <div class="quick-filter-buttons">
+      <button class="qf-btn" data-quick="dribbling-cones"   onclick="quickFilter(this)">Dribbling through Cones</button>
+      <button class="qf-btn" data-quick="throw-in-shooting" onclick="quickFilter(this)">Throw-In Cutting + Shooting</button>
+      <button class="qf-btn" data-quick="kickoff-patterns"  onclick="quickFilter(this)">Kickoff Patterns</button>
+      <button class="qf-btn" data-quick="clear-all"         onclick="quickFilterClear()">Clear All</button>
+    </div>
+  </div>
+
+  <!-- ── Category Filter Buttons ─────────────────────── -->
+  <nav class="category-filters" aria-label="Filter games by category">
+    <button class="cat-btn active" data-cat="all" onclick="filterCategory(this)">All Games</button>
+    <button class="cat-btn" data-cat="Dribbling"      onclick="filterCategory(this)">Dribbling</button>
+    <button class="cat-btn" data-cat="Passing"        onclick="filterCategory(this)">Passing</button>
+    <button class="cat-btn" data-cat="Small-Sided Games"  onclick="filterCategory(this)">Small-Sided Games</button>
+    <button class="cat-btn" data-cat="Warm-Up/Fun"    onclick="filterCategory(this)">Warm-Up / Fun</button>
+  </nav>
+
+  <p class="game-count">Showing <strong id="visibleCount">27</strong> of 27 games</p>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- WARM-UP / FUN                                      -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <h2 class="section-heading">Warm-Up / Fun</h2>
+
+  <!-- Game 1 -->
+  <div class="game-card" data-cat="Warm-Up/Fun" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">1</span>
+      <span class="card-title">Sharks and Minnows</span>
+      <span class="category-pill pill-warm-up-fun">Warm-Up / Fun</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Dribbling under pressure, head-up vision, acceleration</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/OkAUW5MxjuM" title="Sharks and Minnows — Cal South Soccer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/pHnAskgdEbk?start=115" title="MOJO Compilation (Sharks &amp; Minnows at 01:55)" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 20×25 yard grid</li>
+            <li>All players except 1–3 are "minnows" with a ball, lined up on one end line</li>
+            <li>"Sharks" stand in the middle without a ball</li>
+            <li>On "Go!" minnows dribble across to the far end line</li>
+            <li>If a shark kicks a ball out, that player becomes a shark next round</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>It's tag — universally beloved. Growing shark count creates escalating drama every round.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Fewer sharks = easier start for younger players</li>
+            <li>More sharks = harder and more exciting as players improve</li>
+            <li>Add scoring rule (minnows earn points per safe crossing) for advanced groups</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Cal South Soccer, MOJO Drills</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 2 -->
+  <div class="game-card" data-cat="Warm-Up/Fun" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">2</span>
+      <span class="card-title">Red Light, Green Light (with Ball)</span>
+      <span class="category-pill pill-warm-up-fun">Warm-Up / Fun</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Close ball control, stopping with the sole</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/PfI7RqQm4d0" title="Red Light, Green Light — Cal South Soccer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 20×30 yard grid</li>
+            <li>Every player has their own ball</li>
+            <li>Coach calls "Green" = dribble fast, "Yellow" = slow motion, "Red" = stop with sole of foot</li>
+            <li>Add progressive colors: Blue = go backwards, Purple = dance around your ball</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Built-in game mechanics every kid already knows. Goofy extra colors add unpredictability and giggles.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Beginners: just green and red — keep it simple</li>
+            <li>Advanced: call color sequences quickly or have players take turns being the caller</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Cal South Soccer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 4 -->
+  <div class="game-card" data-cat="Warm-Up/Fun" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">4</span>
+      <span class="card-title">Body Parts (Body Brakes)</span>
+      <span class="category-pill pill-warm-up-fun">Warm-Up / Fun</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Close control, stopping the ball, balance, body awareness</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/xEJfAJy3xrY" title="Body Parts — Cal South Soccer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/eD2T5GXeaYE?start=115" title="MOJO Compilation (Body Brakes at 01:55)" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 20×20 yard grid</li>
+            <li>One ball per player, dribbling around the grid</li>
+            <li>Coach calls out body parts: right knee, elbow, forehead, bottom, etc.</li>
+            <li>Players must stop their ball with one foot then place that body part on top of the ball</li>
+            <li>AYSO classic bonus: when coach says "hand on ball," kids yell "No coach!" — adds laughter</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Silly and physical. Coach joining in adds enormous value and keeps energy high.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Add gates to the grid for advanced players: stop with knee on ball, then dribble through 3 gates</li>
+            <li>Call body parts faster as players improve reaction time</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Cal South Soccer, MOJO Drills, AYSO</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- DRIBBLING                                          -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <h2 class="section-heading" id="dribbling-section">Dribbling</h2>
+
+  <!-- Game 3 -->
+  <div class="game-card" data-cat="Dribbling" data-quick="dribbling-cones">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">3</span>
+      <span class="card-title">Gates Dribbling</span>
+      <span class="category-pill pill-dribbling">Dribbling</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Speed dribbling, close control in tight space, scanning</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/eD2T5GXeaYE" title="Gates Dribbling — MOJO Compilation" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Scatter 10–15 gates (pairs of cones set 1 yard apart) randomly in a 20×20 yard grid</li>
+            <li>Every player has their own ball</li>
+            <li>In 60 seconds, dribble through as many gates as possible counting out loud</li>
+            <li>Can't go through the same gate twice in one round</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Self-competition — "how many can YOU get?" Counting out loud makes it a game, not a drill.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Fewer or smaller gates = harder</li>
+            <li>Advanced: require a specific dribbling move (step-over, body feint) at each gate</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: MOJO Drills</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Game 5 -->
+  <div class="game-card" data-cat="Dribbling" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">5</span>
+      <span class="card-title">Knockout / King of the Ring</span>
+      <span class="category-pill pill-dribbling">Dribbling</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Shielding, protecting the ball, close control, vision</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/Sk-oTI-C5JQ" title="Knockout — Cal South Soccer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/98h0ATdsFrc" title="Knockout — Dedicated Video (2025)" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Define a large circle or rectangular grid</li>
+            <li>Every player has their own ball inside the area</li>
+            <li>Dribble and try to kick other players' balls out while protecting your own</li>
+            <li><strong>Points-based version:</strong> everyone starts with 10 points, lose 1 each time a ball leaves the grid. Most points after 2 minutes wins.</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Gladiator-style competition. Kids spontaneously develop shielding tactics and spatial awareness without being taught "technique."</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Points-based is better for mixed ability groups — avoids elimination frustration</li>
+            <li>Specify a required foot (right foot only) to build weak-foot awareness</li>
+            <li>Reduce grid size gradually as players improve shielding</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Cal South Soccer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 6 -->
+  <div class="game-card" data-cat="Dribbling" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">6</span>
+      <span class="card-title">Fox and the Farmer (Tail Tag)</span>
+      <span class="category-pill pill-dribbling">Dribbling</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Dribbling at speed with head up, evasion, agility</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/pHnAskgdEbk?start=280" title="Duck Tails — MOJO Compilation (at 04:40)" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Each player has a ball and a scrimmage vest tucked into shorts as their "tail"</li>
+            <li>One or two players are "foxes" — they must dribble AND grab other players' tails</li>
+            <li>"Farmers" try to pull out the fox's tail while protecting their own</li>
+            <li>Lose your tail = become a fox</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Pure playground chaos with a ball. Every kid who's played tag understands the mission instantly.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Add more foxes simultaneously for bigger groups and more chaos</li>
+            <li>Give the lone fox points per tail grabbed to create urgency</li>
+            <li>Larger grid = more dribbling distance required</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: MOJO Drills</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 7 -->
+  <div class="game-card" data-cat="Dribbling" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">7</span>
+      <span class="card-title">Trapped in the Swamp / Tigers in the Jungle</span>
+      <span class="category-pill pill-dribbling">Dribbling</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Dribbling with peripheral vision, re-entry mechanics</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video found — see diagram/PDF resources: <a href="https://mahomet.recdesk.com/RecDeskPortal/Portals/13/4%20and%20K%20practice%20guide.pdf" target="_blank" rel="noopener noreferrer">Mahomet Rec PDF</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 20×20 yard grid surrounded by "swamp" (outside area)</li>
+            <li>Each child picks an animal name and makes its sound</li>
+            <li>A "tiger" tries to dribble and kick balls into the swamp</li>
+            <li>When a ball hits the swamp: the player must dodge past alligators (other standing players), retrieve their ball, and re-enter</li>
+            <li>Players stand with legs apart making animal sounds — another player must dribble their ball through those legs to free them</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Rescue mechanic means no one is ever "out." Animal noises plus alligator dodging = pure joy.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Add multiple tigers for faster chaos and more pressure</li>
+            <li>No re-entry needed for absolute beginners who struggle with dribbling</li>
+            <li>Make the grid bigger for older U8s to increase dribbling distance</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Mahomet Recreation Department</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 8 -->
+  <div class="game-card" data-cat="Dribbling" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">8</span>
+      <span class="card-title">Cops and Robbers</span>
+      <span class="category-pill pill-dribbling">Dribbling</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Shielding, protecting the ball, defensive posture</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video — see diagrams at: <a href="https://www.soccercoachweekly.net/drills-and-games/drills/cops-and-robbers" target="_blank" rel="noopener noreferrer">SoccerCoachWeekly.com</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 15×20 yard grid</li>
+            <li>Half the players are "robbers" with balls, half are "cops" without balls</li>
+            <li>Cops try to steal robbers' balls by kicking them away</li>
+            <li>If a robber's ball is knocked out, they must perform 10 sole taps to re-enter the grid</li>
+            <li>After each round, teams switch roles so everyone experiences both sides</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Role-swap guarantees fair play. Every player gets to be chaser AND chased — keeps engagement high.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>More cops = harder for robbers</li>
+            <li>Add time limits per round (60–90 seconds) to create urgency</li>
+            <li>Cops must call "freeze!" before touching — adds a listening/reaction component</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: SoccerCoachWeekly</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 9 -->
+  <div class="game-card" data-cat="Dribbling" data-quick="dribbling-cones">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">9</span>
+      <span class="card-title">End Zone Dribblers</span>
+      <span class="category-pill pill-dribbling">Dribbling</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Dribbling with a purpose, change of speed</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/n81gYVB0dUU" title="End Zone Dribblers — England Football Learning" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 15×25 yard grid with a 5-yard end zone at each end (use cones or pinnies)</li>
+            <li>One ball per player</li>
+            <li>Half the players start in each end zone</li>
+            <li>Dribble from your end zone to the opposite one, stop the ball, turn around, and go back</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>The end zone gives a clear destination goal — no nets needed. Non-stop open-loop game with zero waiting.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Vary the dribbling speed: fast to the end zone, slow in the middle</li>
+            <li>Require a fake/feint in the central zone before entering the scoring end zone</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: England Football Learning (The FA)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 10 -->
+  <div class="game-card" data-cat="Dribbling" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">10</span>
+      <span class="card-title">Great Escape</span>
+      <span class="category-pill pill-dribbling">Dribbling</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Dribbling, turning under pressure, deception, scanning</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/n81gYVB0dUU" title="Great Escape — England Football Learning" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 35×35 yard area with four different-sized gates (1–3 yards wide) around the edge</li>
+            <li>Add a funnel entrance at one side using pinnies</li>
+            <li>Two players are "guards" inside the area without balls</li>
+            <li>Everyone else starts in the funnel with a ball</li>
+            <li>Dribble into the area and escape through any gate to score 1 point for your team</li>
+            <li>Guards win a point by kicking an attacker's ball out — rotate guards frequently</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Prison-escape narrative creates instant buy-in. Gates of different sizes force real risk/reward decisions. Kids exercise decision autonomy.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Bigger gates = easier for attackers, smaller = more pressure to dribble through tight spaces</li>
+            <li>Add a 3rd guard if the game is too easy; reduce to 1 guard if it's frustrating</li>
+            <li>Track team scores for added competitive motivation</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: England Football Learning (The FA)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 11 -->
+  <div class="game-card" data-cat="Dribbling" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">11</span>
+      <span class="card-title">Space Invaders</span>
+      <span class="category-pill pill-dribbling">Dribbling</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Dribbling into space, avoiding pressure, change of pace</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video — see diagrams at: <a href="https://www.soccercoachweekly.net/drills-and-games/small-sided-games/space-invaders-soccer-coaching-game-for-ball-control-skills" target="_blank" rel="noopener noreferrer">SoccerCoachWeekly.com</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 20×20 yard grid</li>
+            <li>All players have a ball and dribble inside the area</li>
+            <li>2–3 "space invaders" try to kick balls out of the grid</li>
+            <li>When kicked out, perform a quick task (e.g., 5 toe taps or sole taps) and immediately re-enter</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Arcade game narrative + high-energy tagging + quick re-entry tasks. Everyone stays in the game — zero standing around.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>More invaders = harder for players</li>
+            <li>Smaller grid area = more pressure, less space to evade</li>
+            <li>Invaders get their own balls = even harder (adds a new dimension)</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: SoccerCoachWeekly</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- PASSING                                            -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <h2 class="section-heading" id="passing-section">Passing</h2>
+
+  <!-- Game 12 -->
+  <div class="game-card" data-cat="Passing" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">12</span>
+      <span class="card-title">Paint the Square</span>
+      <span class="category-pill pill-passing">Passing</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Passing to a moving partner, keeping passes on the ground</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/5nNiZKcfd9U" title="Paint the Square — Cal South Soccer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Form pairs with one ball each in a small square (approx. 5×5 yards) — this is the "canvas"</li>
+            <li>Pretend the ball is a paintbrush — "paint the entire square" by passing it back and forth</li>
+            <li>A good paint stroke only counts when the ball rolls on the ground (no lobs)</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>The painting metaphor is magic — kids see themselves as artists, not just passers. Guided discovery questions ("Can you paint the corner?" "How fast can you paint red?") build technique naturally.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Bigger square = longer passes required</li>
+            <li>Add a second ball per pair = faster painting, more communication needed</li>
+            <li>Add a color-coding challenge: "paint corners different colors" using pass length or direction</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Cal South Soccer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 13 -->
+  <div class="game-card" data-cat="Passing" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">13</span>
+      <span class="card-title">Battleships</span>
+      <span class="category-pill pill-passing">Passing</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Passing accuracy and power, staying behind a line, sharing the ball</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video — see diagrams at: <a href="https://quickstartsoccer.com/battleships/" target="_blank" rel="noopener noreferrer">QuickStartSoccer.com</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Divide field: two teams on opposite end lines, 7–10 yards apart</li>
+            <li>Place 10 cones (or small targets) on each team's line with a ball balanced on top — these are the "battleships"</li>
+            <li>Teams stand behind their own line and pass toward the opposing side to knock off battleships</li>
+            <li>Knocked-off balls become extra ammo for your team to kick at the opponent</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Destruction + competition. Kids are obsessed with knocking things over and watching their battleships fall.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Closer lines for beginners (7 yards), further apart for more accuracy challenge (10+ yards)</li>
+            <li>Use a ball-per-player format instead of passing from behind if groups are large</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: QuickStartSoccer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 14 -->
+  <div class="game-card" data-cat="Passing" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">14</span>
+      <span class="card-title">Hit the Robot Coach</span>
+      <span class="category-pill pill-passing">Passing</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Inside-of-the-foot passing, accuracy</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/BilrRgwXqqA" title="Hit the Robot Coach — SoccerHelp.com (basic version)" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Coach becomes a "robot" — walks around the field with stiff, robotic movements</li>
+            <li>Every player has a ball and tries to hit the robot below the knee with an inside-of-foot pass</li>
+            <li>If your own ball rolls out of the grid: do 5 toe taps to re-enter</li>
+            <li>Robot "loses" a body part when hit: first arm (tuck in), then other arm (wiggle without it), then a leg (hop!), then the whole robot collapses</li>
+            <li>Parent or assistant takes over as the next robot — keep the drama going</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Kids absolutely LOVE hitting the coach. The robot losing "parts" creates escalating absurd drama they beg to see again.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Have the robot move faster and in unpredictable patterns for advanced players</li>
+            <li>Smaller target areas (e.g., only at a specific knee) to increase difficulty</li>
+            <li>Require left foot only for weak-foot development</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: SoccerHelp.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 15 -->
+  <div class="game-card" data-cat="Passing" data-quick="dribbling-cones">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">15</span>
+      <span class="card-title">Soccer Bowling / Skittle Football</span>
+      <span class="category-pill pill-passing">Passing</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Passing accuracy with inside of foot, weight of pass</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/Kb58F3r_TQM" title="Soccer Bowling — MOJO Compilation (skittle segment)" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.78rem; color:var(--gray-600); margin-top:.3rem;">Also available at: <a href="https://www.onlinesocceracademy.com/soccer-training-videos/passing/soccer-passing-drills-soccer-bowling" target="_blank" rel="noopener noreferrer">Online Soccer Academy</a></p>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Form pairs in a 4×12 yard lane (one lane per pair or alternating lanes)</li>
+            <li>Place 3 tall cones ("pins") standing upright in the middle of each lane</li>
+            <li>Take turns passing to knock down cones — first player's turn then partner's</li>
+            <li>First to knock down 2 pins wins the frame. Reset and replay</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Bowling is universally understood by every kid. Instant feedback: cone falls or doesn't. Kids self-manage scoring without adult intervention.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Closer lanes (8 yards) = easier for beginners to knock down pins</li>
+            <li>Single cone in the center = harder but more dramatic — one perfect pass wins</li>
+            <li>Allow only left foot for advanced skill development</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Online Soccer Academy, MOJO Drills</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 16 -->
+  <div class="game-card" data-cat="Passing" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">16</span>
+      <span class="card-title">Pac Man</span>
+      <span class="category-pill pill-passing">Passing</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Passing to a moving target, evasion</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video — see diagrams at: <a href="https://mountainrec.org/wp-content/uploads/2021/07/US-Youth-Soccer-U8-Drills-All.pdf" target="_blank" rel="noopener noreferrer">Mountain Rec U8 PDF</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 20×20 yard grid</li>
+            <li>All but 2 players place their balls outside the grid (or hold them)</li>
+            <li>The 2 "Pac Men" start inside the grid and dribble, trying to "hit" other players below the knee with a pass</li>
+            <li>Hit players grab their ball, enter the grid, and become Pac Men too</li>
+            <li>Last player standing starts as a Pac Man in the next round</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Classic arcade mechanic everyone knows. More Pac Men means more chaos and fun. Early-hit players get MORE time dribbling — that's a fair trade-off they accept.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Start with 2 Pac Men; if no one can catch anyone, start with just 1 and let them build confidence</li>
+            <li>Add a coaching point: fake passes before shooting the ball (Pac Man pretending to go one way)</li>
+            <li>Larger grid for older U8s = more room to evade</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: US Youth Soccer / Mountain Rec</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 17 -->
+  <div class="game-card" data-cat="Passing" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">17</span>
+      <span class="card-title">Freeze Tag with Ball</span>
+      <span class="category-pill pill-passing">Passing</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Passing accuracy, awareness, teamwork</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/wXAHc_deA5c" title="Freeze Tag with Ball — Cal South Soccer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/X0ofzWjoJbk" title="Freeze Tag — 2026 Upload" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Define a 20×20 yard grid with one ball per player (all dribbling)</li>
+            <li>1–2 "taggers" try to touch other players without the ball</li>
+            <li>When tagged, that player freezes with legs apart</li>
+            <li>Frozen players are freed when a teammate passes the ball through their legs</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Kids WANT to free their friends, so passing practice becomes self-motivated. No one has to be told "pass more" — the game itself demands it.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Add a dribbling requirement for the ball-carrier (must take 3 touches before passing through legs)</li>
+            <li>Multiple taggers = more pressure, more passes needed</li>
+            <li>Two balls in play = doubles the passing volume</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Cal South Soccer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 18 -->
+  <div class="game-card" data-cat="Passing" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">18</span>
+      <span class="card-title">Gates in Pairs / Lava Pits</span>
+      <span class="category-pill pill-passing">Passing</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Passing accuracy, receiving and controlling, communication</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video — see diagrams in: <a href="https://mountainrec.org/wp-content/uploads/2021/07/US-Youth-Soccer-U8-Drills-All.pdf" target="_blank" rel="noopener noreferrer">US Youth Soccer U8 Manual</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Scatter 8–12 gates (pairs of cones spaced 3 yards apart) in a 25×25 yard grid</li>
+            <li>Divide into pairs — each pair shares one ball</li>
+            <li>Attempt as many successful passes through the gates as possible in 60 seconds</li>
+            <li>Can't pass through the same gate twice in a row</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Competition between pairs makes passing feel like a game. The 60-second sprint format creates urgency without exhaustion.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Narrower gates (2 yards apart) = harder — requires more accurate passes</li>
+            <li>Require left-foot passes only to develop weak foot</li>
+            <li>Add a defender positioned at one gate for advanced pairs</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: US Youth Soccer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 19 -->
+  <div class="game-card" data-cat="Passing" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">19</span>
+      <span class="card-title">Connect Four (Squares Passing Game)</span>
+      <span class="category-pill pill-passing">Passing</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Passing into space, movement off the ball</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video — see diagrams in: <a href="https://learn.englandfootball.com/sessions/resources/2025/Session-programme-moving-with-the-ball-and-turning-to-attack" target="_blank" rel="noopener noreferrer">England Football Learning</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 35×20 yard area with a 6×6 yard square in each corner (use cones to mark)</li>
+            <li>One attacking team vs. one defending team inside the grid</li>
+            <li>Attackers score by passing to a teammate standing in one of the four corner squares</li>
+            <li>Must "connect" all four corner squares to win — like Connect Four but with real soccer</li>
+            <li>If defenders win the ball, they instantly become the attacking team</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>"Connect Four" goal structure gives a clear strategic mission. Kids spread out naturally to create passing lanes — this is spatial awareness without the word "spatial."</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Larger groups: use multiple attacking pairs (2v1, 3v1) to keep game flowing</li>
+            <li>Add a rule: must pass through the central area before entering a corner square</li>
+            <li>Remove one defender for younger or less experienced groups</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: England Football Learning (The FA)</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- SMALL-SIDED GAMES                                  -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <h2 class="section-heading" id="small-sided-section">Small-Sided Games</h2>
+
+  <!-- Game 20 -->
+  <div class="game-card" data-cat="Small-Sided Games" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">20</span>
+      <span class="card-title">Boss of the Balls (Continuous Ball Game)</span>
+      <span class="category-pill pill-small-sided">Small-Sided Games</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Quick transitions, finishing, reaction time</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video — see diagrams in: <a href="http://gcysoccer.org/Training%20&amp;%20Camps/US%20SOCCER%20TRAININGS/u8_small_group_play.pdf" target="_blank" rel="noopener noreferrer">US Soccer Curriculum PDF</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Set up 4v4 on a 20×30 yard area with two small goals (approx. 6 feet wide)</li>
+            <li>Coach stands at the midline with ALL the balls in a pile next to them</li>
+            <li>A single ball is played into the area — game begins normally</li>
+            <li>As soon as a goal is scored or ball goes out, coach immediately tosses/kicks in another ball from the midline</li>
+            <li>When coach runs out of balls, players retrieve them all and the game restarts with a fresh pile</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Zero stoppages = zero boredom. The "natural ending point" (coach runs out of balls) means kids police their own ball retrieval — nobody needs to be told to put balls away.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>More active balls = more chaos and more touches per player</li>
+            <li>Add corner goals so each team has 2 goals to attack — wider field awareness required</li>
+            <li>Start with fewer balls if the group is very young or uncoordinated</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: US Soccer Curriculum</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 21 -->
+  <div class="game-card" data-cat="Small-Sided Games" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">21</span>
+      <span class="card-title">Matthews 2-Ball 4v4</span>
+      <span class="category-pill pill-small-sided">Small-Sided Games</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Dribbling vs. passing decision-making, scanning</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video — see diagrams in: <a href="https://mountainrec.org/wp-content/uploads/2021/07/US-Youth-Soccer-U8-Drills-All.pdf" target="_blank" rel="noopener noreferrer">US Youth Soccer U8 Manual</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>4v4 on a field approximately 25×30 yards with end lines for scoring (line-game format — score by dribbling over the end line)</li>
+            <li>Always played with 2 balls at the same time</li>
+            <li>When a team scores, they find a NEW ball from the coach to keep action going</li>
+            <li>Bonus point if the scorer can tell the coach who passed them the ball (rewarding passing awareness)</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Two balls = two games at once = constant action everywhere on the field. The bonus point incentivizes passing awareness naturally.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Start with 2 balls; drop to 1 if the group is chaotic; add a 3rd ball for advanced groups</li>
+            <li>Narrower field forces quicker decisions</li>
+            <li>Bonus point rule can be emphasized more or downplayed depending on coaching focus</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: US Youth Soccer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 22 -->
+  <div class="game-card" data-cat="Small-Sided Games" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">22</span>
+      <span class="card-title">4 Gates &amp; 4 Goals (Dutch Vision)</span>
+      <span class="category-pill pill-small-sided">Small-Sided Games</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Vision to find open goals, switching play, communication</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/AOjzJMjTtc8" title="4 Gates &amp; 4 Goals — Cal South Soccer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/TyRrv-UGH7U" title="Dutch Vision Game — SoccerDrive" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 30×30 yard field with one small goal on each side (4 total — 2 per team)</li>
+            <li>Two teams of 3–4 players per team</li>
+            <li>Coach starts with a ball pile at their feet and plays balls into the game continuously</li>
+            <li>Teams score by passing through any of the 4 goals (small gates count as goals)</li>
+            <li>Coach (or parent assistant) opens one goal for a short time, then closes it and opens another — players must find the open goal</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>The shifting "open goal" creates constant scanning and surprise. Kids shout to each other ("That one is open!") — communication develops naturally.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Use parent volunteers as goal-stoppers (gently block shots) for a more game-like feel</li>
+            <li>Fewer goals = harder to find space, larger grid increases scanning distance</li>
+            <li>Coach can call out "switch play!" to encourage long balls across the field</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Cal South Soccer, SoccerDrive, Dutch Coaching Methodology</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 23 -->
+  <div class="game-card" data-cat="Small-Sided Games" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">23</span>
+      <span class="card-title">End Zone Game</span>
+      <span class="category-pill pill-small-sided">Small-Sided Games</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Dribbling into space, penetration, decision-making</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/n81gYVB0dUU" title="End Zone Game — England Football Learning" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 20×20 yard grid with an end zone (5 yards deep) at each side</li>
+            <li>Two teams — score by dribbling the ball into the opponent's end zone and stopping it there</li>
+            <li>Crucial rule: no player without the ball is allowed into the end zone — prevents "parking the bus" or crowding</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Touchdown-style end zones are inherently exciting. The objective of stopping the ball inside a zone is clear and achievable for every U8 player.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Add a second ball to increase touches and decision volume</li>
+            <li>Allow a pass into the zone for more advanced players (instead of only dribbling in)</li>
+            <li>Narrower end zones = harder scoring, bigger = easier</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: England Football Learning (The FA)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 24 -->
+  <div class="game-card" data-cat="Small-Sided Games" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">24</span>
+      <span class="card-title">Clean Your Backyard / Stadium Game</span>
+      <span class="category-pill pill-small-sided">Small-Sided Games</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Striking the ball with power, quick decision-making</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/x7rVvU-L1HE" title="Clean Your Backyard — Cal South Soccer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Divide a large area in half — each team gets one half with an equal pile of balls (15–20 balls per side)</li>
+            <li>On "GO!", each team kicks all their balls into the OTHER team's half</li>
+            <li>Teams continuously retrieve stray balls and kick them back — it's a free-for-all</li>
+            <li>When the time expires, the team with FEWER balls in their own half wins</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Pure mayhem — pure fun, zero standing around. Kids literally cannot stop moving. It's like a controlled hurricane on the field.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Add hula hoops or cones as targets to aim at for more precision practice</li>
+            <li>Let teams play as their favorite real club — adds social/play element (e.g., "We're Barcelona!")</li>
+            <li>Reduce number of balls per team if too chaotic for very young players</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: Cal South Soccer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 25 -->
+  <div class="game-card" data-cat="Small-Sided Games" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">25</span>
+      <span class="card-title">Four Goal Football (FFA MiniRoos)</span>
+      <span class="category-pill pill-small-sided">Small-Sided Games</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Spreading out, switching play, team communication</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/AOjzJMjTtc8" title="Four Goal Football — Cal South Soccer (same video as 4 Gates &amp; 4 Goals)" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Create a 30×20 meter area with four pop-up goals — one in each corner (or use small cone gates)</li>
+            <li>Two teams play continuous soccer with no goalkeepers</li>
+            <li>A team can score in any of the 3 opponent-side goals</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>More scoring options = more scoring chances = more fun. Kids naturally spread out to find open goals — this is positional play without anyone knowing the term.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Remove one goal to change the field shape and force adaptation</li>
+            <li>Add rule: "goal from outside penalty arc = 2 points" for strategic depth</li>
+            <li>Reduce number of goals (to 2) for younger or smaller groups</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: FFA MiniRoos / Football Federation Australia</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 26 -->
+  <div class="game-card" data-cat="Small-Sided Games" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">26</span>
+      <span class="card-title">Rondo (adapted for U8)</span>
+      <span class="category-pill pill-small-sided">Small-Sided Games</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Passing under pressure, one-touch play, scanning</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <div class="video-grid">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/c_nq0Ka_RWs" title="Rondo — Paul Spacey" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/Kb58F3r_TQM" title="Rondo Segment — MOJO Compilation (at 8:00+)" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Form a circle of 5–6 players with balls on the outside, 1–2 "defenders" (fish) in the middle</li>
+            <li>Outer players keep the ball away from the defenders by passing</li>
+            <li>After 5 successful passes: circle scores a point, or one player shoots at a small goal placed nearby</li>
+            <li>If a pass is intercepted, the passer swaps into the middle with the interceptor</li>
+            <li><strong>U8 adaptations:</strong> Use BIG circles (6+ yards radius), max 1 defender, allow 2–3 touches per player</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>The La Masia philosophy: "a six-year-old and thirty-year-old in the first team do the same exercise." It's competitive, social, and rotation is built in — no one sits out.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>More allowed touches = easier (start with 3–4 for beginners)</li>
+            <li>Smaller circle = harder — forces quicker decisions and accurate passing</li>
+            <li>Add a 3rd defender as players improve (this is the classic progression to advanced rondos)</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: La Masia / Ajax Academy, Paul Spacey</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game 27 -->
+  <div class="game-card" data-cat="Small-Sided Games" data-quick="">
+    <button class="card-header" aria-expanded="true" onclick="toggleCard(this)">
+      <span class="card-number">27</span>
+      <span class="card-title">Rob the Nest</span>
+      <span class="category-pill pill-small-sided">Small-Sided Games</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="card-body expanded">
+      <div class="card-content">
+        <p class="skill-hidden"><strong>Skill hidden:</strong> Running with the ball, speed dribbling, decision-making under time pressure</p>
+
+        <div class="video-section">
+          <h4>📹 Video Reference</h4>
+          <p class="no-video-note">No video — see diagrams in: <a href="https://playfootball.com.au/sites/play/files/2018-02/ALDI%20MiniRoos%20Program%20Leader%20Session%20Guide_7-9.pdf" target="_blank" rel="noopener noreferrer">MiniRoos / SANFL PDF</a></p>
+        </div>
+
+        <div class="info-section">
+          <h4>Setup</h4>
+          <ul class="setup-list">
+            <li>Divide players into four equal groups, each stationed at a corner of a 30×20 meter area</li>
+            <li>Place a pile of footballs in the center of the field — this is the "nest"</li>
+            <li>On whistle: one player per group runs to the nest, collects ONE ball, dribbles it back to their corner, and tags the next player</li>
+            <li>Continue until all balls are retrieved. Group with the most balls in their corner when time ends wins</li>
+            <li><strong>Phase 2:</strong> Once the middle nest is empty, players may steal from other groups' nests while dribbling — adds a new strategic layer</li>
+          </ul>
+        </div>
+
+        <div class="why-section info-section">
+          <h4>Why it engages kids</h4>
+          <p>Relay-race urgency + treasure-collection instinct. Kids run at 100% speed for their group. The stealing phase adds strategic thinking that surprises you.</p>
+        </div>
+
+        <div class="info-section">
+          <h4>Scaling Tips</h4>
+          <ul class="tip-list">
+            <li>Bigger area = harder, requires more endurance and speed dribbling</li>
+            <li>The stealing phase (Phase 2) is highly strategic and best for advanced groups who understand spatial awareness</li>
+            <li>Reduce the number of balls in the nest for younger players so they succeed faster</li>
+          </ul>
+        </div>
+
+        <span class="source-badge">Source: FFA MiniRoos / SANFL</span>
+      </div>
+    </div>
+  </div>
+
+
+</div><!-- .container -->
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="site-footer">
+  <p><strong>U8 Stealth Training Games</strong> — Definitive reference compiled from youth soccer coaching resources.</p>
+  <ul class="source-list">
+    <li>US Youth Soccer</li>
+    <li>&bull;</li>
+    <li>Cal South Soccer</li>
+    <li>&bull;</li>
+    <li>The FA England (England Football Learning)</li>
+    <li>&bull;</li>
+    <li>FFA MiniRoos (Australia)</li>
+    <li>&bull;</li>
+    <li>Ajax / La Masia</li>
+    <li>&bull;</li>
+    <li>MOJO Drills</li>
+    <li>&bull;</li>
+    <li>SoccerCoachWeekly</li>
+    <li>&bull;</li>
+    <li>QuickStartSoccer</li>
+    <li>&bull;</li>
+    <li>SoccerHelp.com</li>
+    <li>&bull;</li>
+    <li>SoccerDrive</li>
+    <li>&bull;</li>
+    <li>Online Soccer Academy</li>
+    <li>&bull;</li>
+    <li>Mountain Rec / US Youth Soccer U8 Manual</li>
+  </ul>
+  <p style="margin-top:1rem; font-size:.72rem; color:#999;">For personal coaching use. Games sourced from public coaching resources and YouTube videos.</p>
+</footer>
+
+<!-- ── Back to Top Button ─────────────────────────────── -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+
+
+<!-- ── JavaScript ──────────────────────────────────────── -->
+<script>
+// ── Card Toggle ────────────────────────────────────────
+function toggleCard(header) {
+  const body = header.nextElementSibling;
+  const expanded = header.getAttribute('aria-expanded') === 'true';
+
+  if (expanded) {
+    body.classList.remove('expanded');
+    header.setAttribute('aria-expanded', 'false');
+  } else {
+    body.classList.add('expanded');
+    header.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// ── Category Filter ────────────────────────────────────
+let activeCategory = 'all';
+
+function filterCategory(btn) {
+  // Update button states
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const cat = btn.getAttribute('data-cat');
+  activeCategory = cat;
+
+  // Also clear quick filters when category changes
+  document.querySelectorAll('.qf-btn[data-quick]').forEach(q => q.classList.remove('active'));
+
+  applyFilters();
+}
+
+// ── Quick Filter ───────────────────────────────────────
+function quickFilter(btn) {
+  const key = btn.getAttribute('data-quick');
+  if (key === 'clear-all') return;
+
+  // Toggle this quick filter
+  btn.classList.toggle('active');
+  applyFilters();
+}
+
+function quickFilterClear() {
+  document.querySelectorAll('.qf-btn').forEach(q => q.classList.remove('active'));
+  applyFilters();
+}
+
+// ── Apply All Filters ──────────────────────────────────
+function applyFilters() {
+  const cards = document.querySelectorAll('.game-card');
+  const activeQuickBtns = document.querySelectorAll('.qf-btn.active[data-quick]');
+  const activeQuickKeys = new Set();
+  activeQuickBtns.forEach(b => activeQuickKeys.add(b.getAttribute('data-quick')));
+
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const catMatch = activeCategory === 'all' || card.getAttribute('data-cat') === activeCategory;
+    const quickKeys = card.getAttribute('data-quick').split(',').filter(Boolean).map(s => s.trim());
+    const quickMatch = activeQuickKeys.size === 0 ||
+      quickKeys.some(k => activeQuickKeys.has(k));
+
+    const show = catMatch && quickMatch;
+
+    card.classList.toggle('hidden', !show);
+    if (show) visibleCount++;
+  });
+
+  document.getElementById('visibleCount').textContent = visibleCount;
+
+  // Hide section headings with no visible cards
+  document.querySelectorAll('.section-heading').forEach(h => {
+    let nextEl = h.nextElementSibling;
+    let hasVisibleSiblings = false;
+    while (nextEl) {
+      if (nextEl.classList.contains('game-card') && !nextEl.classList.contains('hidden')) {
+        hasVisibleSiblings = true;
+        break;
+      }
+      if (nextEl.classList.contains('section-heading')) break;
+      nextEl = nextEl.nextElementSibling;
+    }
+    h.style.display = hasVisibleSiblings ? '' : 'none';
+  });
+}
+
+// ── Back to Top Button Visibility ──────────────────────
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTopBtn.classList.add('visible');
+  } else {
+    backToTopBtn.classList.remove('visible');
+  }
+}, { passive: true });
+
+// ── Print-friendly: auto-expand all cards ──────────────
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('.card-body').forEach(b => b.classList.add('expanded'));
+  document.querySelectorAll('.game-card').forEach(c => c.classList.remove('hidden'));
+});
+
+// ── Keyboard accessibility for card headers ────────────
+document.querySelectorAll('.card-header').forEach(header => {
+  header.setAttribute('role', 'button');
+  header.setAttribute('tabindex', '0');
+  header.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleCard(header);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
