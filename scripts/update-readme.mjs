@@ -41,7 +41,7 @@ function getDayInfo(filename, html, isPD) {
   const metaMatch = html.match(/<meta[^>]+name="practice-day"[^>]+content="([^"]+)"/i);
   if (metaMatch) {
     const day = metaMatch[1];
-    const isWeekday = ['Monday','Tuesday','Wednesday','Thursday','Friday'].includes(day);
+    const isWeekday = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].includes(day);
     return { label: day, color: isWeekday ? '#E3A72E' : '#1F4D36', textColor: isWeekday ? '#152018' : '#F7F5EC' };
   }
 
@@ -55,10 +55,9 @@ function getDayInfo(filename, html, isPD) {
 }
 
 function formatDate(dateStr) {
-  // dateStr is YYYY-MM-DD, output: "Mon, Sep 5"
   const d = new Date(dateStr + 'T00:00:00');
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   return `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}`;
 }
 
@@ -81,7 +80,8 @@ if (lessonFiles.length === 0) {
 }
 
 const pastFiles = [];
-const upcomingFiles = [];
+const todayFiles = [];
+const developmentFiles = [];
 
 for (const file of lessonFiles) {
   const fullPath = path.join(ROOT, file);
@@ -101,9 +101,11 @@ for (const file of lessonFiles) {
 
   const entry = { file, title, weekNum, dayLabel, color, textColor, dateStr, dateObj };
 
-  if (isPD || (dateObj && dateObj >= today)) {
-    upcomingFiles.push(entry);
-  } else {
+  if (isPD) {
+    developmentFiles.push(entry);
+  } else if (dateObj && dateObj.getTime() === today.getTime()) {
+    todayFiles.push(entry);
+  } else if (dateObj && dateObj < today) {
     pastFiles.push(entry);
   }
 }
@@ -115,13 +117,12 @@ pastFiles.sort((a, b) => {
   return a.weekNum - b.weekNum || dayOrder[a.dayLabel] - dayOrder[b.dayLabel];
 });
 
-upcomingFiles.sort((a, b) => {
-  if (a.dateStr && b.dateStr) {
-    const dateCmp = a.dateStr.localeCompare(b.dateStr);
-    if (dateCmp !== 0) return dateCmp;
-  }
+todayFiles.sort((a, b) => {
+  if (a.dateStr && b.dateStr) return a.dateStr.localeCompare(b.dateStr);
   return dayOrder[a.dayLabel] - dayOrder[b.dayLabel];
 });
+
+developmentFiles.sort((a, b) => a.weekNum - b.weekNum);
 
 function generateRows(rows) {
   let lines = ['| Week | Date | Day | Plan |', '|------|------|-----|------|'];
@@ -136,13 +137,15 @@ function generateRows(rows) {
 }
 
 const pastTable = generateRows(pastFiles);
-const upcomingTable = generateRows(upcomingFiles);
+const todayTable = generateRows(todayFiles);
+const developmentTable = generateRows(developmentFiles);
 
 let readme = fs.readFileSync('README.md', 'utf-8');
 
 const markers = [
   { start: '<!-- GENERATE_PAST_TABLE -->', end: '<!-- END_GENERATE_PAST_TABLE -->', content: pastTable },
-  { start: '<!-- GENERATE_UPCOMING_TABLE -->', end: '<!-- END_GENERATE_UPCOMING_TABLE -->', content: upcomingTable },
+  { start: '<!-- GENERATE_TODAY_TABLE -->', end: '<!-- END_GENERATE_TODAY_TABLE -->', content: todayTable },
+  { start: '<!-- GENERATE_DEVELOPMENT_TABLE -->', end: '<!-- END_GENERATE_DEVELOPMENT_TABLE -->', content: developmentTable },
 ];
 
 for (const m of markers) {

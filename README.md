@@ -19,16 +19,23 @@
 | WEEK 2 | Wed, Sep 9 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Passing Into Space: Adding Movement](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_wed_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_PAST_TABLE -->
 
-### 📅 Upcoming Lesson Plans
+### 📅 Today's Lesson Plan
 
-> Placeholder plans are auto-generated on Tuesdays and Thursdays. Review and customize before each practice.
-
-<!-- GENERATE_UPCOMING_TABLE -->
+<!-- GENERATE_TODAY_TABLE -->
 | Week | Date | Day | Plan |
 |------|------|-----|------|
 | WEEK 2 | Fri, Sep 11 | <span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Friday</span> | [Footwork Games & Competition](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_fri_lesson_plan_enhanced.html) |
+<!-- END_GENERATE_TODAY_TABLE -->
+
+### 📋 Plans in Development
+
+> Files with "proposed" or "draft" in the filename appear here automatically. These are not yet finalized for the season schedule.
+
+<!-- GENERATE_DEVELOPMENT_TABLE -->
+| Week | Date | Day | Plan |
+|------|------|-----|------|
 | WEEK 2 |  | <span style="background-color:#E1592C;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Draft</span> | [Footwork → Game Application: V-Push Gates & Treasure Keepers](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_proposed_lesson_plan_enhanced.html) |
-<!-- END_GENERATE_UPCOMING_TABLE -->
+<!-- END_GENERATE_DEVELOPMENT_TABLE -->
 
 ### 🎮 Game Reference Library
 
