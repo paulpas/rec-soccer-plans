@@ -1,0 +1,127 @@
+name: Auto-Generate Draft Lesson Plan
+
+on:
+  schedule:
+    # Run every Tuesday and Thursday at 8:00 AM UTC
+    - cron: '0 8 * * 2,4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  auto-draft:
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]'))
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Determine next practice day and date
+        id: dates
+        run: |
+          # Get today's date
+          TODAY=$(date -u +%Y-%m-%d)
+          
+          # Determine the next Tuesday or Thursday from today
+          # We need to find the upcoming Tuesday or Thursday
+          DAY_OF_WEEK=$(date -u +%u)  # 1=Monday ... 7=Sunday
+          
+          if [ "$DAY_OF_WEEK" -eq 2 ]; then
+            # Today is Tuesday
+            NEXT_DAY="Tuesday"
+            NEXT_DATE="$TODAY"
+          elif [ "$DAY_OF_WEEK" -eq 4 ]; then
+            # Today is Thursday
+            NEXT_DAY="Thursday"
+            NEXT_DATE="$TODAY"
+          elif [ "$DAY_OF_WEEK" -eq 5 ] || [ "$DAY_OF_WEEK" -eq 6 ] || [ "$DAY_OF_WEEK" -eq 7 ]; then
+            # Friday-Sunday: next practice is Tuesday
+            DAYS_TO_TUESDAY=$(( (2 + 7 - DAY_OF_WEEK) % 7 ))
+            if [ "$DAYS_TO_TUESDAY" -eq 0 ]; then DAYS_TO_TUESDAY=7; fi
+            NEXT_DAY="Tuesday"
+            NEXT_DATE=$(date -u -d "+${DAYS_TO_TUESDAY} days" +%Y-%m-%d)
+          else
+            # Monday or Wednesday: next practice is Thursday (if Mon) or Tuesday (if Wed)
+            if [ "$DAY_OF_WEEK" -eq 1 ]; then
+              NEXT_DAY="Thursday"
+              NEXT_DATE=$(date -u -d "+3 days" +%Y-%m-%d)
+            else
+              # Wednesday: next is Thursday (1 day)
+              NEXT_DAY="Thursday"
+              NEXT_DATE=$(date -u -d "+1 days" +%Y-%m-%d)
+            fi
+          fi
+          
+          echo "next_day=$NEXT_DAY" >> $GITHUB_OUTPUT
+          echo "next_date=$NEXT_DATE" >> $GITHUB_OUTPUT
+
+      - name: Determine next week number
+        id: weeknum
+        run: |
+          # Find the highest existing week number from lesson plan files
+          HIGHEST_WEEK=$(ls *.html 2>/dev/null | grep -oP 'week\d+' | sed 's/week//' | sort -n | tail -1)
+          if [ -z "$HIGHEST_WEEK" ]; then
+            NEXT_WEEK=1
+          else
+            NEXT_WEEK=$((HIGHEST_WEEK + 1))
+          fi
+          echo "week=$NEXT_WEEK" >> $GITHUB_OUTPUT
+
+      - name: Copy draft template and update dates
+        run: |
+          WEEK=${{ steps.weeknum.outputs.week }}
+          DATE=${{ steps.dates.outputs.next_date }}
+          DAY=${{ steps.dates.outputs.next_day }}
+          
+          # Create the filename
+          DAY_LOWER=$(echo "$DAY" | tr '[:upper:]' '[:lower:]')
+          FILENAME="week${WEEK}_${DAY_LOWER}_lesson_plan_enhanced.html"
+          
+          if [ -f "week2_proposed_lesson_plan_enhanced.html" ]; then
+            # Use the proposed template as base
+            cp week2_proposed_lesson_plan_enhanced.html "$FILENAME"
+          else
+            # Fall back to any existing lesson plan as template
+            TEMPLATE=$(ls *_lesson_plan_enhanced.html 2>/dev/null | head -1)
+            if [ -n "$TEMPLATE" ]; then
+              cp "$TEMPLATE" "$FILENAME"
+            else
+              echo "No template found. Skipping."
+              exit 0
+            fi
+          fi
+          
+          # Update meta tags
+          sed -i "s|<meta name=\"practice-day\" content=\".*\">|<meta name=\"practice-day\" content=\"${DAY}\">|" "$FILENAME"
+          sed -i "s|<meta name=\"practice-date\" content=\".*\">|<meta name=\"practice-date\" content=\"${DATE}\">|" "$FILENAME"
+          
+          # Update h1 title
+          sed -i "s|<h1>.*</h1>|<h1>Week ${WEEK} ${DAY} Practice</h1>|" "$FILENAME"
+          
+          # Update page title
+          sed -i "s|<title>.*</title>|<title>Week ${WEEK} ${DAY} Lesson Plan</title>|" "$FILENAME"
+          
+          echo "Created $FILENAME for Week ${WEEK}, ${DAY}, ${DATE}"
+
+      - name: Commit and push draft
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          
+          git add .
+          git commit -m "Auto-generate draft: Week ${{ steps.weeknum.outputs.week }} ${{ steps.dates.outputs.next_day }} (${{ steps.dates.outputs.next_date }}) [ci skip]" || true
+          git push

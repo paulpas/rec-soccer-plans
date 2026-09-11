@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-// 1. Generate the raw table output by importing and running generate-tables logic inline
 function decodeEntities(str) {
   return str
     .replace(/&amp;/g, '&')
@@ -21,6 +20,11 @@ function extractTag(html, tag) {
   return match ? decodeEntities(stripHtml(match[1])) : null;
 }
 
+function extractMeta(html, name) {
+  const match = html.match(new RegExp(`<meta[^>]+name="${name}"[^>]+content="([^"]+)"`, 'i'));
+  return match ? match[1] : null;
+}
+
 function isProposedDraft(filename) {
   const lower = filename.toLowerCase();
   return lower.includes('proposed') || lower.includes('draft');
@@ -32,15 +36,17 @@ function getWeekNumber(filename) {
 }
 
 function getDayInfo(filename, html, isPD) {
-  if (isPD) return { label: 'Proposed', color: '#E1592C', textColor: '#F7F5EC' };
+  if (isPD) return { label: 'Draft', color: '#E1592C', textColor: '#F7F5EC' };
 
-  // Read explicit day from meta tag, fall back to filename pattern
   const metaMatch = html.match(/<meta[^>]+name="practice-day"[^>]+content="([^"]+)"/i);
-  if (metaMatch) return { label: metaMatch[1], color: '#E3A72E', textColor: '#152018' };
+  if (metaMatch) {
+    const day = metaMatch[1];
+    const isWeekday = ['Monday','Tuesday','Wednesday','Thursday','Friday'].includes(day);
+    return { label: day, color: isWeekday ? '#E3A72E' : '#1F4D36', textColor: isWeekday ? '#152018' : '#F7F5EC' };
+  }
 
   const base = filename.replace(/lesson_plan.*\.html$/, '');
   const lowerBase = base.toLowerCase();
-
   if (lowerBase.includes('_wed_')) return { label: 'Wednesday', color: '#E3A72E', textColor: '#152018' };
   if (lowerBase.includes('_tue_')) return { label: 'Tuesday', color: '#1F4D36', textColor: '#F7F5EC' };
   if (lowerBase.includes('_thurs_') || lowerBase.includes('_thu_')) return { label: 'Thursday', color: '#1F4D36', textColor: '#F7F5EC' };
@@ -48,11 +54,22 @@ function getDayInfo(filename, html, isPD) {
   return { label: 'Monday', color: '#1F4D36', textColor: '#F7F5EC' };
 }
 
-const dayOrder = { 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thursday': 4, 'Friday': 5, 'Proposed': 99 };
+function formatDate(dateStr) {
+  // dateStr is YYYY-MM-DD, output: "Mon, Sep 5"
+  const d = new Date(dateStr + 'T00:00:00');
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}`;
+}
 
 function renderDayBadge(label, color, textColor) {
   return `<span style="background-color:${color};color:${textColor};padding:2px 8px;border-radius:3px;font-size:0.85em;">${label}</span>`;
 }
+
+const dayOrder = { 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thursday': 4, 'Friday': 5, 'Draft': 99 };
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const ALL_HTML_FILES = fs.readdirSync(ROOT);
@@ -63,8 +80,8 @@ if (lessonFiles.length === 0) {
   process.exit(1);
 }
 
-const activeFiles = [];
-const proposedDraftFiles = [];
+const pastFiles = [];
+const upcomingFiles = [];
 
 for (const file of lessonFiles) {
   const fullPath = path.join(ROOT, file);
@@ -79,37 +96,53 @@ for (const file of lessonFiles) {
   const weekNum = getWeekNumber(file);
   const isPD = isProposedDraft(file);
   const { label: dayLabel, color, textColor } = getDayInfo(file, html, isPD);
+  const dateStr = extractMeta(html, 'practice-date');
+  const dateObj = dateStr ? new Date(dateStr + 'T00:00:00') : null;
 
-  if (isPD) {
-    proposedDraftFiles.push({ file, title, weekNum, dayLabel, color, textColor });
+  const entry = { file, title, weekNum, dayLabel, color, textColor, dateStr, dateObj };
+
+  if (isPD || (dateObj && dateObj >= today)) {
+    upcomingFiles.push(entry);
   } else {
-    activeFiles.push({ file, title, weekNum, dayLabel, color, textColor });
+    pastFiles.push(entry);
   }
 }
 
-activeFiles.sort((a, b) => a.weekNum !== b.weekNum ? a.weekNum - b.weekNum : dayOrder[a.dayLabel] - dayOrder[b.dayLabel]);
-proposedDraftFiles.sort((a, b) => a.weekNum !== b.weekNum ? a.weekNum - b.weekNum : 0);
+pastFiles.sort((a, b) => {
+  if (a.dateStr && b.dateStr) return a.dateStr.localeCompare(b.dateStr);
+  if (a.dateStr) return -1;
+  if (b.dateStr) return 1;
+  return a.weekNum - b.weekNum || dayOrder[a.dayLabel] - dayOrder[b.dayLabel];
+});
+
+upcomingFiles.sort((a, b) => {
+  if (a.dateStr && b.dateStr) {
+    const dateCmp = a.dateStr.localeCompare(b.dateStr);
+    if (dateCmp !== 0) return dateCmp;
+  }
+  return dayOrder[a.dayLabel] - dayOrder[b.dayLabel];
+});
 
 function generateRows(rows) {
-  let lines = ['| Week | Day | Plan |', '|------|-----|------|'];
+  let lines = ['| Week | Date | Day | Plan |', '|------|------|-----|------|'];
   for (const row of rows) {
     const weekLabel = `WEEK ${row.weekNum}`;
+    const dateCol = row.dateStr ? formatDate(row.dateStr) : '';
     const dayBadge = renderDayBadge(row.dayLabel, row.color, row.textColor);
     const url = `https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/${row.file}`;
-    lines.push(`| ${weekLabel} | ${dayBadge} | [${row.title}](${url}) |`);
+    lines.push(`| ${weekLabel} | ${dateCol} | ${dayBadge} | [${row.title}](${url}) |`);
   }
   return lines.join('\n');
 }
 
-const activeTable = generateRows(activeFiles);
-const proposedTable = generateRows(proposedDraftFiles);
+const pastTable = generateRows(pastFiles);
+const upcomingTable = generateRows(upcomingFiles);
 
-// 2. Read and update README.md
 let readme = fs.readFileSync('README.md', 'utf-8');
 
 const markers = [
-  { start: '<!-- GENERATE_ACTIVE_TABLE -->', end: '<!-- END_GENERATE_ACTIVE_TABLE -->', content: activeTable },
-  { start: '<!-- GENERATE_PROPOSED_TABLE -->', end: '<!-- END_GENERATE_PROPOSED_TABLE -->', content: proposedTable },
+  { start: '<!-- GENERATE_PAST_TABLE -->', end: '<!-- END_GENERATE_PAST_TABLE -->', content: pastTable },
+  { start: '<!-- GENERATE_UPCOMING_TABLE -->', end: '<!-- END_GENERATE_UPCOMING_TABLE -->', content: upcomingTable },
 ];
 
 for (const m of markers) {
