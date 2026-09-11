@@ -239,9 +239,30 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 </div>
 
 <!-- SEGMENT 5 -->
+<div class="segment" data-seg="fri-ring">
+  <div class="seg-head">
+    <div><div class="seg-time">6:10 – 6:20 PM</div><div class="seg-title">King of the Ring</div></div>
+    <div class="seg-count" data-count-for="fri-ring">0/4</div>
+  </div>
+  <div class="diagram-block">
+    <p class="diagram-note">Same idea as Pirates — now everyone protects their own ball (you're all pirates), and everyone's trying to knock yours out. 20x20 yard square. All players inside with a ball. Protect YOUR ball, kick others' balls out. If your ball goes out, you're out. Last one standing wins. 30-sec tiebreaker if two remain. Shielding/backside protection is taught ad-hoc here — show kids how to put their body between defender and ball on the fly.</p>
+  </div>
+  <div class="checklist">
+    <div class="item"><input type="checkbox" id="fri-16"><label for="fri-16">Set up 20x20 yard square, all players with a ball inside</label></div>
+    <div class="item"><input type="checkbox" id="fri-17"><label for="fri-17">Protect your ball, kick others' balls out</label></div>
+    <div class="item"><input type="checkbox" id="fri-18"><label for="fri-18">Last one standing wins; 30-sec tiebreaker if needed</label></div>
+    <div class="item"><input type="checkbox" id="fri-19"><label for="fri-19">Ad-hoc: show backside protection when a defender pressures</label></div>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="fri-ring-notes">Coach notes</label>
+    <textarea id="fri-ring-notes" placeholder="e.g. who won, was the tiebreaker dramatic, who showed best ball protection..."></textarea>
+  </div>
+</div>
+
+<!-- SEGMENT 6 -->
 <div class="segment" data-seg="fri-juggle">
   <div class="seg-head">
-    <div><div class="seg-time">6:10 – 6:20 PM</div><div class="seg-title">Juggling</div></div>
+    <div><div class="seg-time">6:20 – 6:30 PM</div><div class="seg-title">Juggling</div></div>
     <div class="seg-count" data-count-for="fri-juggle">0/3</div>
   </div>
   <div class="diagram-block">
@@ -255,27 +276,6 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   <div class="notes-block">
     <label class="notes-label" for="fri-juggle-notes">Coach notes</label>
     <textarea id="fri-juggle-notes" placeholder="e.g. personal bests — who improved the most..."></textarea>
-  </div>
-</div>
-
-<!-- SEGMENT 6 -->
-<div class="segment" data-seg="fri-ring">
-  <div class="seg-head">
-    <div><div class="seg-time">6:20 – 6:30 PM</div><div class="seg-title">King of the Ring</div></div>
-    <div class="seg-count" data-count-for="fri-ring">0/4</div>
-  </div>
-  <div class="diagram-block">
-    <p class="diagram-note">20x20 yard square. All players inside with a ball. Protect YOUR ball, kick others' balls out. If your ball goes out, you're out. Last one standing wins. 30-sec tiebreaker if two remain. Shielding/backside protection is taught ad-hoc here — show kids how to put their body between defender and ball on the fly.</p>
-  </div>
-  <div class="checklist">
-    <div class="item"><input type="checkbox" id="fri-16"><label for="fri-16">Set up 20x20 yard square, all players with a ball inside</label></div>
-    <div class="item"><input type="checkbox" id="fri-17"><label for="fri-17">Protect your ball, kick others' balls out</label></div>
-    <div class="item"><input type="checkbox" id="fri-18"><label for="fri-18">Last one standing wins; 30-sec tiebreaker if needed</label></div>
-    <div class="item"><input type="checkbox" id="fri-19"><label for="fri-19">Ad-hoc: show backside protection when a defender pressures</label></div>
-  </div>
-  <div class="notes-block">
-    <label class="notes-label" for="fri-ring-notes">Coach notes</label>
-    <textarea id="fri-ring-notes" placeholder="e.g. who won, was the tiebreaker dramatic, who showed best ball protection..."></textarea>
   </div>
 </div>
 
@@ -318,7 +318,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
 <script>
 const STORAGE_KEY = 'week2-fri-lesson-plan';
-const segmentIds = ['fri-arrival','fri-welcome','fri-glrl','fri-pirates','fri-juggle','fri-ring','fri-target'];
+const segmentIds = ['fri-arrival','fri-welcome','fri-glrl','fri-pirates','fri-ring','fri-juggle','fri-target'];
 
 function collectState(){
   const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
@@ -415,8 +415,8 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
     'fri-welcome':'Welcome & Team Chat',
     'fri-glrl':'Red Light, Green Light with Ball',
     'fri-pirates':'Pirates',
-    'fri-juggle':'Juggling',
     'fri-ring':'King of the Ring',
+    'fri-juggle':'Juggling',
     'fri-target':'Target Practice'
   };
   segmentIds.forEach(seg=>{
