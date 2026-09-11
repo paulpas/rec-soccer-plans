@@ -13,11 +13,10 @@
 <!-- GENERATE_PAST_TABLE -->
 | Week | Date | Day | Plan |
 |------|------|-----|------|
-| WEEK 1 | Fri, Sep 5 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Footwork & Formation Foundations](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week1_lesson_plan_enhanced.html) |
-| WEEK 1 | Sun, Sep 7 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Extreme Heat Adaptation — Day 2](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week1_wed_lesson_plan_enhanced.html) |
-| WEEK 2 | Tue, Sep 9 | <span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Passing Into Space](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_lesson_plan_enhanced.html) |
-| WEEK 2 | Thu, Sep 11 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Passing Into Space: Adding Movement](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_wed_lesson_plan_enhanced.html) |
-| WEEK 2 | Fri, Sep 12 | <span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Friday</span> | [Footwork Games & Competition](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_fri_lesson_plan_enhanced.html) |
+| WEEK 1 | Wed, Sep 2 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Footwork & Formation Foundations](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week1_lesson_plan_enhanced.html) |
+| WEEK 1 | Sat, Sep 5 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Extreme Heat Adaptation — Day 2](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week1_wed_lesson_plan_enhanced.html) |
+| WEEK 2 | Mon, Sep 7 | <span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Passing Into Space](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_lesson_plan_enhanced.html) |
+| WEEK 2 | Wed, Sep 9 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Passing Into Space: Adding Movement](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_wed_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_PAST_TABLE -->
 
 ### 📅 Upcoming Lesson Plans
@@ -27,6 +26,7 @@
 <!-- GENERATE_UPCOMING_TABLE -->
 | Week | Date | Day | Plan |
 |------|------|-----|------|
+| WEEK 2 | Fri, Sep 11 | <span style="background-color:#1F4D36;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Friday</span> | [Footwork Games & Competition](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_fri_lesson_plan_enhanced.html) |
 | WEEK 2 |  | <span style="background-color:#E1592C;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Draft</span> | [Footwork → Game Application: V-Push Gates & Treasure Keepers](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_proposed_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_UPCOMING_TABLE -->
 
