@@ -65,6 +65,10 @@ function renderDayBadge(label, color, textColor) {
   return `<span style="background-color:${color};color:${textColor};padding:2px 8px;border-radius:3px;font-size:0.85em;">${label}</span>`;
 }
 
+function renderUpcomingBadge() {
+  return `<span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">UPCOMING</span>`;
+}
+
 const dayOrder = { 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thursday': 4, 'Friday': 5, 'Draft': 99 };
 
 const today = new Date();
@@ -81,6 +85,7 @@ if (lessonFiles.length === 0) {
 
 const pastFiles = [];
 const todayFiles = [];
+const futureFiles = [];
 const developmentFiles = [];
 
 for (const file of lessonFiles) {
@@ -107,6 +112,8 @@ for (const file of lessonFiles) {
     todayFiles.push(entry);
   } else if (dateObj && dateObj < today) {
     pastFiles.push(entry);
+  } else if (dateObj && dateObj > today) {
+    futureFiles.push(entry);
   }
 }
 
@@ -122,22 +129,29 @@ todayFiles.sort((a, b) => {
   return dayOrder[a.dayLabel] - dayOrder[b.dayLabel];
 });
 
+futureFiles.sort((a, b) => {
+  if (a.dateStr && b.dateStr) return a.dateStr.localeCompare(b.dateStr);
+  return a.weekNum - b.weekNum;
+});
+
 developmentFiles.sort((a, b) => a.weekNum - b.weekNum);
 
-function generateRows(rows) {
+function generateRows(rows, extraBadge) {
   let lines = ['| Week | Date | Day | Plan |', '|------|------|-----|------|'];
   for (const row of rows) {
     const weekLabel = `WEEK ${row.weekNum}`;
     const dateCol = row.dateStr ? formatDate(row.dateStr) : '';
     const dayBadge = renderDayBadge(row.dayLabel, row.color, row.textColor);
     const url = `https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/${row.file}`;
-    lines.push(`| ${weekLabel} | ${dateCol} | ${dayBadge} | [${row.title}](${url}) |`);
+    const badge = extraBadge ? `${extraBadge} ` : '';
+    lines.push(`| ${weekLabel} | ${dateCol} | ${badge}${dayBadge} | [${row.title}](${url}) |`);
   }
   return lines.join('\n');
 }
 
 const pastTable = generateRows(pastFiles);
 const todayTable = generateRows(todayFiles);
+const futureTable = generateRows(futureFiles, renderUpcomingBadge());
 const developmentTable = generateRows(developmentFiles);
 
 let readme = fs.readFileSync('README.md', 'utf-8');
@@ -145,6 +159,7 @@ let readme = fs.readFileSync('README.md', 'utf-8');
 const markers = [
   { start: '<!-- GENERATE_PAST_TABLE -->', end: '<!-- END_GENERATE_PAST_TABLE -->', content: pastTable },
   { start: '<!-- GENERATE_TODAY_TABLE -->', end: '<!-- END_GENERATE_TODAY_TABLE -->', content: todayTable },
+  { start: '<!-- GENERATE_FUTURE_TABLE -->', end: '<!-- END_GENERATE_FUTURE_TABLE -->', content: futureTable },
   { start: '<!-- GENERATE_DEVELOPMENT_TABLE -->', end: '<!-- END_GENERATE_DEVELOPMENT_TABLE -->', content: developmentTable },
 ];
 

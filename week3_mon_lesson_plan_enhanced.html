@@ -189,7 +189,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="mon-3"><label for="mon-3">Welcome players, announce today's theme: hold your ground</label></div>
-    <div class="item"><input type="checkbox" id="mon-4"><label for="mon-4">Preview today (shielding drill, Pirates twist, 3v3 game)</label></div>
+    <div class="item"><input type="checkbox" id="mon-4"><label for="mon-4">Preview today (shielding drill, Pirates twist, shielding game)</label></div>
   </div>
   <div class="notes-block">
     <label class="notes-label" for="mon-welcome-notes">Coach notes</label>
@@ -243,17 +243,17 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 <!-- SEGMENT 5 -->
 <div class="segment" data-seg="mon-game">
   <div class="seg-head">
-    <div><div class="seg-time">6:10 – 6:30 PM</div><div class="seg-title">3v3 Shielding Game</div></div>
+    <div><div class="seg-time">6:10 – 6:30 PM</div><div class="seg-title">Shielding Game</div></div>
     <div class="seg-count" data-count-for="mon-game">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">2 small goals (4x2 ft) spaced 15 ft apart on each end of a 25x15 yard field. Split into two teams of 3 (one team sits out, rotates every 3 min). Play normal 3v3, but add a bonus point: if a player shields the ball for 5 full seconds without losing it, their team gets a bonus point (worth 2 goals). This makes shielding a scoring mechanic, not just a defensive skill. Rotate teams frequently so everyone plays.</p>
+    <p class="diagram-note">2 small goals (4x2 ft) spaced 15 ft apart on each end of a 25x15 yard field. Split into two teams (3 vs 2, one sub rotates every 3 min). Play with the stronger team on defense, then switch sides halfway through. Add a bonus point: if a player shields the ball for 5 full seconds without losing it, their team gets a bonus point (worth 2 goals). This makes shielding a scoring mechanic, not just a defensive skill. Rotate teams frequently so everyone plays.</p>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="mon-14"><label for="mon-14">Set up 25x15 yard field with 2 small goals per end</label></div>
-    <div class="item"><input type="checkbox" id="mon-15"><label for="mon-15">Split into two teams of 3 (one sub team rotates every 3 min)</label></div>
-    <div class="item"><input type="checkbox" id="mon-16"><label for="mon-16">Play normal 3v3 — goals score 1 point</label></div>
-    <div class="item"><input type="checkbox" id="mon-17"><label for="mon-17">Bonus: hold a shield for 5 seconds = bonus point (worth 2 goals)</label></div>
+    <div class="item"><input type="checkbox" id="mon-15"><label for="mon-15">Split into two teams (3 vs 2, one sub rotates every 3 min)</label></div>
+    <div class="item"><input type="checkbox" id="mon-16"><label for="mon-16">Play 3 vs 2 — goals score 1 point</label></div>
+    <div class="item"><input type="checkbox" id="mon-17"><label for="mon-17">Bonus: hold a shield for 5 seconds = bonus point (worth 2 goals); sub rotates in when called</label></div>
     <div class="item"><input type="checkbox" id="mon-18"><label for="mon-18">Keep rotations frequent; celebrate good shields loudly</label></div>
   </div>
   <div class="notes-block">
@@ -396,7 +396,7 @@ document.getElementById('copyBtn').addEventListener('click', async ()=>{
     'mon-welcome':'Welcome & Team Chat',
     'mon-shield':'Back-to-Back Power Shielding',
     'mon-pirates':'Pirates with Shielding Twist',
-    'mon-game':'3v3 Shielding Game',
+    'mon-game':'Shielding Game',
     'mon-cool':'Cool-Down & Team Chat'
   };
   segmentIds.forEach(seg=>{
