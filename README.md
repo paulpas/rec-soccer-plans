@@ -25,7 +25,7 @@
 <!-- GENERATE_TODAY_TABLE -->
 | Week | Date | Day | Plan |
 |------|------|-----|------|
-| WEEK 3 | Mon, Sep 14 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">NEXT UP</span> <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Shielding & Small-Sided Games](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week3_mon_lesson_plan_enhanced.html) |
+| WEEK 3 | Mon, Sep 14 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Shielding & Small-Sided Games](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week3_mon_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_TODAY_TABLE -->
 
 ### 📅 Upcoming Lesson Plans
