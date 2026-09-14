@@ -205,6 +205,45 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="diagram-block">
     <p class="diagram-note">40 yard long x 10 yard wide field. Three players wear belts with 6-yard leashes attached to Baby Yoda plushie in the center of the field. Baby Yoda must stay aloft — if it touches the ground, 'it dies' and everything resets. Green = move fast but keep tension on leashes so Baby Yoda stays alive. Yellow = slow dribble, still maintain spacing. Red = STOP but hold your position (don't collapse inward toward Baby Yoda). Rotate players through the 3 leash positions every 3-4 minutes so everyone gets the sensation. Remaining players (1-4 depending on roster) do ball-mastery nearby (dribble through cones, keepy-uppies) and rotate in when called.</p>
+
+    <div class="diagram-card">
+      <div class="cap"><h4>Triangle Formation Around Baby Yoda</h4><div class="legend"><span style="color:#4CAF82">&#9679; Baby Yoda plushie</span><span style="color:#E3A72E">&#9472; leashes</span><span style="color:#F7F5EC">&#9679; players</span></div></div>
+      <svg class="field-svg" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="420" fill="#1F4D36"/>
+        <g opacity="0.6">
+          <rect x="0" y="0" width="600" height="70" fill="#25573F"/>
+          <rect x="0" y="140" width="600" height="70" fill="#25573F"/>
+          <rect x="0" y="280" width="600" height="70" fill="#25573F"/>
+        </g>
+        <!-- 40x10 field outline (4:1 ratio) -->
+        <rect x="120" y="155" width="360" height="90" rx="4" fill="none" stroke="#F7F5EC" stroke-width="1.5" opacity="0.3"/>
+        <line x1="120" y1="200" x2="480" y2="200" stroke="#F7F5EC" stroke-width="1" opacity="0.15" stroke-dasharray="6,4"/>
+        <!-- virtual equilateral triangle (dashed) -->
+        <polygon points="300,205 242,305 358,305" fill="none" stroke="#F7F5EC" stroke-width="1.2" stroke-dasharray="5,5" opacity="0.3"/>
+        <!-- leashes: straight lines from each player corner to Baby Yoda center -->
+        <line x1="300" y1="205" x2="300" y2="272" stroke="#E3A72E" stroke-width="2.5"/>
+        <line x1="242" y1="305" x2="300" y2="272" stroke="#E3A72E" stroke-width="2.5"/>
+        <line x1="358" y1="305" x2="300" y2="272" stroke="#E3A72E" stroke-width="2.5"/>
+        <!-- player 1 (top corner) -->
+        <circle cx="300" cy="205" r="22" fill="#1F4D36" stroke="#F7F5EC" stroke-width="3"/>
+        <text x="300" y="211" fill="#F7F5EC" font-family="Bebas Neue" font-size="16" text-anchor="middle">1</text>
+        <!-- player 2 (bottom-left corner) -->
+        <circle cx="242" cy="305" r="22" fill="#1F4D36" stroke="#F7F5EC" stroke-width="3"/>
+        <text x="242" y="311" fill="#F7F5EC" font-family="Bebas Neue" font-size="16" text-anchor="middle">2</text>
+        <!-- player 3 (bottom-right corner) -->
+        <circle cx="358" cy="305" r="22" fill="#1F4D36" stroke="#F7F5EC" stroke-width="3"/>
+        <text x="358" y="311" fill="#F7F5EC" font-family="Bebas Neue" font-size="16" text-anchor="middle">3</text>
+        <!-- Baby Yoda plushie in the center: green head with two ears -->
+        <polygon points="292,261 294,246 300,257" fill="#4CAF82" stroke="#E3A72E" stroke-width="1.5"/>
+        <polygon points="308,261 306,246 300,257" fill="#4CAF82" stroke="#E3A72E" stroke-width="1.5"/>
+        <circle cx="300" cy="272" r="17" fill="#4CAF82" stroke="#E3A72E" stroke-width="2.5"/>
+        <!-- eyes -->
+        <circle cx="295" cy="269" r="2.2" fill="#152018"/>
+        <circle cx="305" cy="269" r="2.2" fill="#152018"/>
+        <text x="300" y="345" fill="#E3A72E" font-family="JetBrains Mono" font-size="10" font-weight="700" text-anchor="middle" opacity="0.85">BABY YODA CENTER</text>
+      </svg>
+      <div class="foot">Three players on 6-yard leashes hold an equilateral triangle around Baby Yoda. Move together and keep the leashes tight — Baby Yoda stays aloft. Drift inward and the leashes go slack, Baby Yoda drops.</div>
+    </div>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wed-5"><label for="wed-5">Set up 40x10 yard field, attach 3 leashes to Baby Yoda plushie in center</label></div>
