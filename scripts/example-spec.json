@@ -5,7 +5,7 @@
   "startTime": "5:30 PM",
   "endTime": "6:45 PM",
   "playerCount": 5,
-  "h1Title": "Target Practice &amp; Games",
+  "h1Title": "Target Practice & Games",
   "segments": [
     {
       "id": "fri-arrival",
@@ -20,7 +20,7 @@
     },
     {
       "id": "fri-welcome",
-      "title": "Welcome &amp; Team Chat",
+      "title": "Welcome & Team Chat",
       "time": "5:35 – 5:40 PM",
       "diagramNote": "Quick chat: what we did last time, what we're doing today. Keep it under 5 minutes — kids are ready to move.",
       "checklist": [

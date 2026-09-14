@@ -84,6 +84,11 @@ function validateSpec(spec) {
     exitError(`Invalid practiceDate "${spec.practiceDate}". Must be YYYY-MM-DD format.`);
   }
 
+  // Validate practiceDay
+  if (typeof spec.practiceDay !== 'string' || spec.practiceDay.trim() === '') {
+    exitError('Field "practiceDay" must be a non-empty string.');
+  }
+
   // Validate times
   if (typeof spec.startTime !== 'string' || spec.startTime.trim() === '') {
     exitError('Field "startTime" must be a non-empty string.');
@@ -92,9 +97,9 @@ function validateSpec(spec) {
     exitError('Field "endTime" must be a non-empty string.');
   }
 
-  // Validate playerCount
-  if (typeof spec.playerCount !== 'number' || spec.playerCount < 1) {
-    exitError('Field "playerCount" must be a positive number.');
+  // Validate playerCount is a positive integer
+  if (!Number.isInteger(spec.playerCount) || spec.playerCount < 1) {
+    exitError('Field "playerCount" must be a positive integer.');
   }
 
   // Validate h1Title
@@ -133,6 +138,17 @@ function validateSpec(spec) {
       if (typeof seg.checklist[j] !== 'string' || seg.checklist[j].trim() === '') {
         exitError(`${prefix}.checklist[${j}]: must be a non-empty string.`);
       }
+    }
+  }
+
+  // Coerce optional string fields in segments to prevent .trim() errors
+  for (let i = 0; i < spec.segments.length; i++) {
+    const seg = spec.segments[i];
+    if (seg.diagramNote !== undefined && seg.diagramNote !== null && typeof seg.diagramNote !== 'string') {
+      seg.diagramNote = String(seg.diagramNote);
+    }
+    if (seg.notesPlaceholder !== undefined && seg.notesPlaceholder !== null && typeof seg.notesPlaceholder !== 'string') {
+      seg.notesPlaceholder = String(seg.notesPlaceholder);
     }
   }
 
@@ -230,8 +246,8 @@ function buildJavaScript(spec) {
     allSegIds.unshift('player-tracker');
   }
 
-  // Build titles map (no HTML escaping needed — these are JS string literals for clipboard output)
-  const titlesEntries = spec.segments.map(s => `    '${s.id}':'${s.title}'`);
+  // Build titles map — use JSON.stringify to safely escape quotes in keys and values
+  const titlesEntries = spec.segments.map(s => `    ${JSON.stringify(s.id)}:${JSON.stringify(s.title)}`);
   if (hasPlayerTracker) {
     titlesEntries.unshift("    'player-tracker':'Player Tracker'");
   }
@@ -268,11 +284,8 @@ function buildJavaScript(spec) {
     if(effort.length) out += 'Strong Effort: '+effort.join(', ')+'\\n';
   }`;
 
-    // Build carry into header
-    const carryLabel = spec.carryInto ? `WEEK ${spec.carryInto}` : 'NEXT WEEK';
-
     return `const STORAGE_KEY = '${storageKey}';
-const segmentIds = [${allSegIds.map(id => `'${id}'`).join(',')}];
+const segmentIds = [${allSegIds.map(id => JSON.stringify(id)).join(',')}];
 
 function collectState(){
   const state = { segments:{}, carryForward: document.getElementById('carry-forward').value, playerNotes:{} };
@@ -373,8 +386,9 @@ ${titlesEntries.join(',\n')}
       out += \`\${titles[seg]}:\\n\${notes.trim()}\\n\\n\`;
     }
   });
-  if(state.carryForward && state.carryForward.trim()){${playerCopyJS}
-    out += \`CARRY INTO \${carryLabel}:\\n\${state.carryForward.trim()}\\n\`;
+${playerCopyJS}
+  if(state.carryForward && state.carryForward.trim()){
+    out += \`CARRY INTO ${spec.carryInto || 'NEXT WEEK'}:\\n\${state.carryForward.trim()}\\n\`;
   }
   try{
     await navigator.clipboard.writeText(out);
@@ -398,7 +412,7 @@ ${titlesEntries.join(',\n')}
 
   // Without player tracker
   return `const STORAGE_KEY = '${storageKey}';
-const segmentIds = [${allSegIds.map(id => `'${id}'`).join(',')}];
+const segmentIds = [${allSegIds.map(id => JSON.stringify(id)).join(',')}];
 
 function collectState(){
   const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
@@ -528,7 +542,6 @@ function generateHTML(spec, css) {
   const weekNum = extractWeekNumber(spec.filename) || '?';
   const dayUpper = spec.practiceDay.toUpperCase();
   const dateFormatted = formatDate(spec.practiceDate);
-  const carryLabel = spec.carryInto ? `WEEK ${spec.carryInto}` : 'NEXT WEEK';
 
   // Build segments HTML
   let segmentsHTML = '';
@@ -547,7 +560,7 @@ function generateHTML(spec, css) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="practice-date" content="${spec.practiceDate}">
 <meta name="practice-day" content="${spec.practiceDay}">
-<title>${spec.h1Title}</title>
+<title>${escapeHtml(spec.h1Title)}</title>
 <style>
 ${css.trim()}
 </style>
@@ -623,6 +636,14 @@ function main() {
 
   // Validate
   validateSpec(spec);
+
+  // Cross-check date day-of-week with practiceDay (warning only)
+  const d = new Date(spec.practiceDate + 'T00:00:00');
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const actualDay = daysOfWeek[d.getDay()];
+  if (actualDay !== spec.practiceDay) {
+    console.warn(`Warning: practiceDate ${spec.practiceDate} is a ${actualDay}, but practiceDay is "${spec.practiceDay}".`);
+  }
 
   // Read template CSS
   const cssPath = path.join(__dirname, 'template.css');
