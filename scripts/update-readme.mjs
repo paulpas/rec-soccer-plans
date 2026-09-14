@@ -35,14 +35,25 @@ function getWeekNumber(filename) {
   return match ? parseInt(match[1], 10) : 99;
 }
 
-function getDayInfo(filename, html, isPD) {
+const WEEKDAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+function dayBadgeColors(day) {
+  const isWeekday = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].includes(day);
+  return { color: isWeekday ? '#E3A72E' : '#1F4D36', textColor: isWeekday ? '#152018' : '#F7F5EC' };
+}
+
+function getDayInfo(filename, html, isPD, dateObj) {
   if (isPD) return { label: 'Draft', color: '#E1592C', textColor: '#F7F5EC' };
+
+  if (dateObj && !Number.isNaN(dateObj.getTime())) {
+    const day = WEEKDAY_NAMES[dateObj.getDay()];
+    return { label: day, ...dayBadgeColors(day) };
+  }
 
   const metaMatch = html.match(/<meta[^>]+name="practice-day"[^>]+content="([^"]+)"/i);
   if (metaMatch) {
     const day = metaMatch[1];
-    const isWeekday = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].includes(day);
-    return { label: day, color: isWeekday ? '#E3A72E' : '#1F4D36', textColor: isWeekday ? '#152018' : '#F7F5EC' };
+    return { label: day, ...dayBadgeColors(day) };
   }
 
   const base = filename.replace(/lesson_plan.*\.html$/, '');
@@ -69,7 +80,11 @@ function renderUpcomingBadge() {
   return `<span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">UPCOMING</span>`;
 }
 
-const dayOrder = { 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thursday': 4, 'Friday': 5, 'Draft': 99 };
+function renderNextBadge() {
+  return `<span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">NEXT UP</span>`;
+}
+
+const dayOrder = { 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thursday': 4, 'Friday': 5, 'Saturday': 6, 'Sunday': 7, 'Draft': 99 };
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -100,9 +115,9 @@ for (const file of lessonFiles) {
   const title = extractTag(html, 'h1') || file.replace(/\.html$/, '');
   const weekNum = getWeekNumber(file);
   const isPD = isProposedDraft(file);
-  const { label: dayLabel, color, textColor } = getDayInfo(file, html, isPD);
   const dateStr = extractMeta(html, 'practice-date');
   const dateObj = dateStr ? new Date(dateStr + 'T00:00:00') : null;
+  const { label: dayLabel, color, textColor } = getDayInfo(file, html, isPD, dateObj);
 
   const entry = { file, title, weekNum, dayLabel, color, textColor, dateStr, dateObj };
 
@@ -136,6 +151,12 @@ futureFiles.sort((a, b) => {
 
 developmentFiles.sort((a, b) => a.weekNum - b.weekNum);
 
+if (todayFiles.length === 0 && futureFiles.length > 0) {
+  const nextUpEntry = futureFiles.shift();
+  nextUpEntry.nextUp = true;
+  todayFiles.push(nextUpEntry);
+}
+
 function generateRows(rows, extraBadge) {
   let lines = ['| Week | Date | Day | Plan |', '|------|------|-----|------|'];
   for (const row of rows) {
@@ -143,7 +164,7 @@ function generateRows(rows, extraBadge) {
     const dateCol = row.dateStr ? formatDate(row.dateStr) : '';
     const dayBadge = renderDayBadge(row.dayLabel, row.color, row.textColor);
     const url = `https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/${row.file}`;
-    const badge = extraBadge ? `${extraBadge} ` : '';
+    const badge = row.nextUp ? `${renderNextBadge()} ` : (extraBadge ? `${extraBadge} ` : '');
     lines.push(`| ${weekLabel} | ${dateCol} | ${badge}${dayBadge} | [${row.title}](${url}) |`);
   }
   return lines.join('\n');
