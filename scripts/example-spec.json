@@ -1,0 +1,48 @@
+{
+  "filename": "week3_fri_lesson_plan_enhanced.html",
+  "practiceDate": "2026-09-18",
+  "practiceDay": "Friday",
+  "startTime": "5:30 PM",
+  "endTime": "6:45 PM",
+  "playerCount": 5,
+  "h1Title": "Target Practice &amp; Games",
+  "segments": [
+    {
+      "id": "fri-arrival",
+      "title": "Arrival Warm-Up",
+      "time": "5:30 – 5:35 PM",
+      "diagramNote": "Kids arrive, grab a ball, free play in a 20x15 yard space. Loose touches, get moving before we start.",
+      "checklist": [
+        "Set up 20x15 yard space with cones",
+        "Kids get a ball and free-play as they arrive"
+      ],
+      "notesPlaceholder": "e.g. who showed up, energy level..."
+    },
+    {
+      "id": "fri-welcome",
+      "title": "Welcome &amp; Team Chat",
+      "time": "5:35 – 5:40 PM",
+      "diagramNote": "Quick chat: what we did last time, what we're doing today. Keep it under 5 minutes — kids are ready to move.",
+      "checklist": [
+        "Welcome players, quick theme of the day",
+        "Preview today's drills"
+      ],
+      "notesPlaceholder": "How did the message land?"
+    },
+    {
+      "id": "fri-glrl",
+      "title": "Red Light, Green Light with Ball",
+      "time": "5:40 – 5:55 PM",
+      "diagramNote": "20x15 yard grid. Each player has a ball. Green = dribble fast, Yellow = dribble slow. On Red: stop the ball with your sole, or OPT to do toe taps while moving the ball forward (their choice). Mix it up and keep calls unpredictable.",
+      "checklist": [
+        "Set up 20x15 yard grid, each player has a ball",
+        "Green = fast dribble, Yellow = slow dribble",
+        "Red = stop with sole, or opt to toe-tap the ball forward",
+        "Mix calls, keep feet moving the whole time"
+      ],
+      "notesPlaceholder": "e.g. who got the toe-tap option, call frequency..."
+    }
+  ],
+  "carryInto": "Week 4",
+  "copyHeader": "WEEK 3 FRIDAY NOTES\n\n"
+}
