@@ -26,7 +26,7 @@
 <!-- GENERATE_TODAY_TABLE -->
 | Week | Date | Day | Plan |
 |------|------|-----|------|
-| WEEK 3 | Wed, Sep 16 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Spacing & Keeping Space](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week3_wed_lesson_plan_enhanced.html) |
+| WEEK 3 | Wed, Sep 16 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">NEXT UP</span> <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Spacing & Keeping Space](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week3_wed_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_TODAY_TABLE -->
 
 ### 📅 Upcoming Lesson Plans
@@ -34,6 +34,7 @@
 <!-- GENERATE_FUTURE_TABLE -->
 | Week | Date | Day | Plan |
 |------|------|-----|------|
+| WEEK 3 | Wed, Sep 16 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">UPCOMING</span> <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Shield, Turn & Escape](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week3_wed_planb_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_FUTURE_TABLE -->
 
 ### 📋 Plans in Development
