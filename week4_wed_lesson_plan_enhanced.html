@@ -460,7 +460,7 @@ const segmentIds = ['wed-arrival','wed-welcome','wed-kbya3','wed-breakout3','wed
 function readNotes(id){
   const el = document.getElementById(id);
   if(!el) return '';
-  return Array.from(el.querySelectorAll('li')).map(li=>li.textContent.trim()).filter(Boolean).join('\n');
+  return Array.from(el.querySelectorAll('li')).map(li=>li.textContent.trim()).filter(Boolean).filter(line=>!line.trim().startsWith('e.g.')).join('\n');
 }
 
 function collectState(){
@@ -501,7 +501,9 @@ function applyState(state){
     const notesEl = document.getElementById(seg+'-notes');
     if(notesEl) setNotes(seg+'-notes', segState.notes);
   });
-  setNotes('carry-forward', state.carryForward);
+  if (state.carryForward) {
+    setNotes('carry-forward', state.carryForward);
+  }
   updateCounts();
 }
 
