@@ -80,20 +80,21 @@ h1{font-family:'Bebas Neue',sans-serif; font-size:clamp(34px,7vw,50px); letter-s
   display:block; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase;
   color:var(--ink-soft); margin-bottom:6px; margin-top:8px;
 }
-textarea{
-  width:100%; border:1px solid var(--line-rule); border-radius:8px; padding:10px 12px;
-  font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); resize:vertical; min-height:56px;
-  background:#FCFBF6;
+.notes-list{
+  width:100%; border:1px solid var(--line-rule); border-radius:8px;
+  padding:10px 12px; padding-left:1.4em; margin:6px 0 0;
+  font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); min-height:56px;
+  background:#FCFBF6; list-style:disc;
 }
-textarea:focus{outline:2px solid var(--amber); outline-offset:1px;}
+.notes-list:focus{outline:2px solid var(--amber); outline-offset:1px;}
+.notes-list li{margin:2px 0; line-height:1.45;}
 
 .carry-box{
   background:var(--ink); color:var(--chalk); border-radius:14px; padding:20px 18px; margin-top:24px;
 }
 .carry-box h3{font-family:'Bebas Neue'; font-size:21px; color:var(--amber); margin-bottom:4px; letter-spacing:0.02em;}
 .carry-box p{font-size:13px; color:rgba(247,245,236,0.75); margin-bottom:10px;}
-.carry-box textarea{background:rgba(247,245,236,0.06); color:var(--chalk); border-color:rgba(247,245,236,0.2);}
-.carry-box textarea::placeholder{color:rgba(247,245,236,0.4);}
+.carry-box .notes-list{background:rgba(247,245,236,0.06); color:var(--chalk); border-color:rgba(247,245,236,0.2);}
 
 .actions{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;}
 .btn{
@@ -109,7 +110,8 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 @keyframes marchLane{ to{ stroke-dashoffset:-20; } }
 @keyframes ballCycle{ 0%,100%{ opacity:1; } }
 .diagram-block{padding:14px 18px 4px;}
-.diagram-note{font-size:12.5px; color:var(--ink-soft); margin-bottom:10px;}
+.diagram-bullets{font-size:12.5px; color:var(--ink-soft); list-style:disc; padding-left:1.4em; margin:10px 0 0;}
+.diagram-bullets li{margin:4px 0; line-height:1.5;}
 .diagram-card{
   background:var(--pitch); border-radius:12px; overflow:hidden; margin-bottom:14px; border:1px solid var(--line-rule);
 }
@@ -166,7 +168,11 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-arrival">0/2</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Kids arrive, grab a ball, free play in the space. Loose touches, get moving before we start. Today we make D the captain, and after we escape the ring we make the first pass to a teammate.</p>
+    <ul class="diagram-bullets">
+      <li>Kids arrive, grab a ball, free play in the space.</li>
+      <li>Loose touches, get moving before we start.</li>
+      <li>Today we make D the captain, and after we escape the ring we make the first pass to a teammate.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wed-1"><label for="wed-1">Set up the practice space with cones — 20x20 ring area plus the KBYA path between two cone targets</label></div>
@@ -174,7 +180,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-arrival-notes">Coach notes</label>
-    <textarea id="wed-arrival-notes" placeholder="e.g. who arrived early, who needed a nudge to get moving..."></textarea>
+    <ul class="notes-list" id="wed-arrival-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who arrived early, who needed a nudge to get moving...</li></ul>
   </div>
 </div>
 
@@ -185,7 +191,11 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-welcome">0/2</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Quick chat. Last week the group moved as ONE connected unit; this week D gets to steer, and when we escape the ring we make a first pass to a teammate. Two big ideas, one at a time.</p>
+    <ul class="diagram-bullets">
+      <li>Quick chat.</li>
+      <li>Last week the group moved as ONE connected unit; this week D gets to steer, and when we escape the ring we make a first pass to a teammate.</li>
+      <li>Two big ideas, one at a time.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wed-3"><label for="wed-3">Chat: last week we moved as one connected unit — today D becomes the captain</label></div>
@@ -193,7 +203,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-welcome-notes">Coach notes</label>
-    <textarea id="wed-welcome-notes" placeholder="e.g. theme landed well, kids were locked in..."></textarea>
+    <ul class="notes-list" id="wed-welcome-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. theme landed well, kids were locked in...</li></ul>
   </div>
 </div>
 
@@ -204,7 +214,17 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-kbya3">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">KBYA Iteration 3 — DELIBERATE INFLUENCE. Week 3 introduced the triangle (A/B/C on leashes, D connected to C — ONE CONNECTED UNIT); Monday added expansion and contraction (spread/squeeze calls, D echoes C). Today's single new concept: D becomes the CAPTAIN. D deliberately chooses a direction — forward, back, left, right — and the A/B/C trio reacts and rebalances to keep Yoda alive while being led. Coach framing: "D is the captain now — D decides where the unit walks; A, B, C listen with their bodies." D leads the unit along a simple path (e.g., across the field between two cone targets, or around a loop); speed slow; if Yoda drops = reset with a smile, captain picks a new direction. Introduce the word "eyes up" lightly ONLY as: A/B/C glance at where D is heading — no formal scanning drill. 7 players = A/B/C + D + 3 station (swap ~4-5 min); 6 players = A/B/C + D + 2 station; 5 players = A/B/C + D + 1 station.</p>
+    <ul class="diagram-bullets">
+      <li>KBYA Iteration 3 — DELIBERATE INFLUENCE. Week 3 introduced the triangle (A/B/C on leashes, D connected to C — ONE CONNECTED UNIT); Monday added expansion and contraction (spread/squeeze calls, D echoes C).</li>
+      <li>Today's single new concept: D becomes the CAPTAIN.</li>
+      <li>D deliberately chooses a direction — forward, back, left, right — and the A/B/C trio reacts and rebalances to keep Yoda alive while being led.</li>
+      <li>Coach framing: "D is the captain now — D decides where the unit walks; A, B, C listen with their bodies."</li>
+      <li>D leads the unit along a simple path (e.g., across the field between two cone targets, or around a loop); speed slow; if Yoda drops = reset with a smile, captain picks a new direction.</li>
+      <li>Introduce the word "eyes up" lightly ONLY as: A/B/C glance at where D is heading — no formal scanning drill.</li>
+      <li>7 players = A/B/C + D + 3 station (swap ~4-5 min);</li>
+      <li>6 players = A/B/C + D + 2 station;</li>
+      <li>5 players = A/B/C + D + 1 station.</li>
+    </ul>
 
     <div class="diagram-card">
       <div class="cap"><h4>Yoda's Captain — D Steers the Unit</h4><div class="legend"><span style="color:#4CAF82">&#9679; Baby Yoda plushie</span><span style="color:#E3A72E">&#9472; leashes (6 ft)</span><span style="color:#E3A72E">D&#8594; captain path</span><span style="color:#F7F5EC">&#9679; players</span><span><b style="color:#E1592C">&#9650;</b> target cones</span></div></div>
@@ -268,7 +288,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-kbya3-notes">Coach notes</label>
-    <textarea id="wed-kbya3-notes" placeholder="e.g. did the captain pick clear directions, did A/B/C react as one unit, who kept Yoda alive the longest..."></textarea>
+    <ul class="notes-list" id="wed-kbya3-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. did the captain pick clear directions, did A/B/C react as one unit, who kept Yoda alive the longest...</li></ul>
   </div>
 </div>
 
@@ -279,7 +299,16 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-breakout3">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Ring Breakout Iteration 3 — FIRST PASS AFTER ESCAPE. Week 3: 4-around-1, body shield low and wide, exit gate with the ball. Monday: gate decision — pick the unguarded gate, guardians gamble. Today's single new concept: AFTER exiting the gate, the carrier makes the FIRST pass to a waiting receiver in a target zone — shield, escape, connect. The ring chases; the receiver must control the pass; then roles rotate (receiver becomes carrier next). 7 players = 4 ring + 1 carrier + 2 receivers (receivers stand in two target zones ~10 yd off the square; the carrier passes to the NEARER one first — quick decision); 6 players = 4 ring + 1 carrier + 1 receiver; 5 players = 4 ring + 1 carrier (dribble to the target zone instead of passing). Non-punitive: bad pass = quick reset and restart. Celebrate successful escapes.</p>
+    <ul class="diagram-bullets">
+      <li>Ring Breakout Iteration 3 — FIRST PASS AFTER ESCAPE.</li>
+      <li>Week 3: 4-around-1, body shield low and wide, exit gate with the ball. Monday: gate decision — pick the unguarded gate, guardians gamble.</li>
+      <li>Today's single new concept: AFTER exiting the gate, the carrier makes the FIRST pass to a waiting receiver in a target zone — shield, escape, connect.</li>
+      <li>The ring chases; the receiver must control the pass; then roles rotate (receiver becomes carrier next).</li>
+      <li>7 players = 4 ring + 1 carrier + 2 receivers (receivers stand in two target zones ~10 yd off the square; the carrier passes to the NEARER one first — quick decision);</li>
+      <li>6 players = 4 ring + 1 carrier + 1 receiver;</li>
+      <li>5 players = 4 ring + 1 carrier (dribble to the target zone instead of passing).</li>
+      <li>Non-punitive: bad pass = quick reset and restart. Celebrate successful escapes.</li>
+    </ul>
 
     <div class="diagram-card">
       <div class="cap"><h4>Ring Breakout — Escape &amp; Connect</h4><div class="legend"><span style="color:#F7F5EC">&#9679; ring</span><span style="color:#E3A72E">&#9679; carrier</span><span style="color:#F7F5EC">&#9675; ball</span><span style="color:#E3A72E">&#8594; exit &amp; pass</span><span style="color:#5B8DEF">&#9679; receiver R</span><span><b style="color:#E1592C">&#9650;</b> gate cones</span></div></div>
@@ -349,7 +378,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-breakout3-notes">Coach notes</label>
-    <textarea id="wed-breakout3-notes" placeholder="e.g. who escaped with the shield, did the first pass find the receiver, who controlled it cleanly..."></textarea>
+    <ul class="notes-list" id="wed-breakout3-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who escaped with the shield, did the first pass find the receiver, who controlled it cleanly...</li></ul>
   </div>
 </div>
 
@@ -360,7 +389,18 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-game">0/4</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Keep Baby Yoda Alive in game form — deliberate defensive pressure, kept playful. The leashed trio (A/B/C) must carry Yoda from one end of the practice area to a target zone while the other players DEFEND the space — they step inside the triangle or between players to force the leashes SLACK. Defenders may NOT touch Yoda and may NOT grab players — no contact; they just occupy the space to make spacing hard. Yoda touches the ground or leashes go slack = defenders win that round. Rounds time-boxed (~60-90 sec); rotate roles so everyone gets leash time AND defense time. 7 players = leashed trio A/B/C + 4 defenders (D + 3); 6 players = trio + 3 defenders (D + 2); 5 players = trio + 2 defenders. Non-elimination, all active, rotate. Keep it simple: "step in front / fill the space" — no tactics jargon.</p>
+    <ul class="diagram-bullets">
+      <li>Keep Baby Yoda Alive in game form — deliberate defensive pressure, kept playful.</li>
+      <li>The leashed trio (A/B/C) must carry Yoda from one end of the practice area to a target zone while the other players DEFEND the space — they step inside the triangle or between players to force the leashes SLACK.</li>
+      <li>Defenders may NOT touch Yoda and may NOT grab players — no contact; they just occupy the space to make spacing hard.</li>
+      <li>Yoda touches the ground or leashes go slack = defenders win that round.</li>
+      <li>Rounds time-boxed (~60-90 sec); rotate roles so everyone gets leash time AND defense time.</li>
+      <li>7 players = leashed trio A/B/C + 4 defenders (D + 3);</li>
+      <li>6 players = trio + 3 defenders (D + 2);</li>
+      <li>5 players = trio + 2 defenders.</li>
+      <li>Non-elimination, all active, rotate.</li>
+      <li>Keep it simple: "step in front / fill the space" — no tactics jargon.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wed-15"><label for="wed-15">Set up: leashed trio A/B/C with Yoda at one end, target zone at the far end, defenders between</label></div>
@@ -370,7 +410,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-game-notes">Coach notes</label>
-    <textarea id="wed-game-notes" placeholder="e.g. did the trio keep leashes taut under pressure, who learned to fill the space without grabbing, best round of the night..."></textarea>
+    <ul class="notes-list" id="wed-game-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. did the trio keep leashes taut under pressure, who learned to fill the space without grabbing, best round of the night...</li></ul>
   </div>
 </div>
 
@@ -381,7 +421,11 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-cool">0/3</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Slow jog around the practice area, light touches on the ball, then gather in a circle. Chat about who steered the group best today and who caught the first pass. Then pack up together.</p>
+    <ul class="diagram-bullets">
+      <li>Slow jog around the practice area, light touches on the ball, then gather in a circle.</li>
+      <li>Chat about who steered the group best today and who caught the first pass.</li>
+      <li>Then pack up together.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wed-19"><label for="wed-19">Slow jog around the practice area with light touches on the ball</label></div>
@@ -390,14 +434,14 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-cool-notes">Coach notes</label>
-    <textarea id="wed-cool-notes" placeholder="e.g. what stuck with them most from today — keep it brief for U8..."></textarea>
+    <ul class="notes-list" id="wed-cool-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. what stuck with them most from today — keep it brief for U8...</li></ul>
   </div>
 </div>
 
 <div class="carry-box">
   <h3>Carry Into Week 5</h3>
   <p>Anything from today that should shape next week's plan — what to repeat, what to drop, what to build on.</p>
-  <textarea id="carry-forward" placeholder="e.g. which captain moved the group best — who steers next week; did the first pass after escape land, what needs another look..."></textarea>
+  <ul class="notes-list" id="carry-forward" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. which captain moved the group best — who steers next week; did the first pass after escape land, what needs another look...</li></ul>
 </div>
 
 <div class="actions">
@@ -413,17 +457,36 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 const STORAGE_KEY = 'week4-wed-lesson-plan';
 const segmentIds = ['wed-arrival','wed-welcome','wed-kbya3','wed-breakout3','wed-game','wed-cool'];
 
+function readNotes(id){
+  const el = document.getElementById(id);
+  if(!el) return '';
+  return Array.from(el.querySelectorAll('li')).map(li=>li.textContent.trim()).filter(Boolean).join('\n');
+}
+
 function collectState(){
-  const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
+  const state = { segments:{}, carryForward: readNotes('carry-forward') };
   segmentIds.forEach(seg=>{
     const items = {};
     document.querySelectorAll(`[data-seg="${seg}"] input[type=checkbox]`).forEach(cb=>{
       items[cb.id] = cb.checked;
     });
-    const notesEl = document.getElementById(seg+'-notes');
-    state.segments[seg] = { items, notes: notesEl ? notesEl.value : '' };
+    state.segments[seg] = { items, notes: readNotes(seg+'-notes') };
   });
   return state;
+}
+
+function setNotes(id, value){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const lines = (Array.isArray(value) ? value : String(value == null ? '' : value).split('\n'))
+    .map(line=>line.trim()).filter(Boolean);
+  const entries = lines.length ? lines : [''];
+  el.innerHTML = '';
+  entries.forEach(text=>{
+    const li = document.createElement('li');
+    li.textContent = text;
+    el.appendChild(li);
+  });
 }
 
 function applyState(state){
@@ -436,11 +499,9 @@ function applyState(state){
       if(el){ el.checked = checked; const item = el.closest('.item'); if(item) item.classList.toggle('checked', checked); }
     });
     const notesEl = document.getElementById(seg+'-notes');
-    if(notesEl && segState.notes) notesEl.value = segState.notes;
+    if(notesEl) setNotes(seg+'-notes', segState.notes);
   });
-  if(state.carryForward){
-    document.getElementById('carry-forward').value = state.carryForward;
-  }
+  setNotes('carry-forward', state.carryForward);
   updateCounts();
 }
 
@@ -487,8 +548,8 @@ document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
     scheduleSave();
   });
 });
-document.querySelectorAll('textarea').forEach(t=>{
-  t.addEventListener('input', scheduleSave);
+document.querySelectorAll('.notes-list').forEach(ul=>{
+  ul.addEventListener('input', scheduleSave);
 });
 
 document.getElementById('resetBtn').addEventListener('click', ()=>{

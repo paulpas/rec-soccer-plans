@@ -80,20 +80,21 @@ h1{font-family:'Bebas Neue',sans-serif; font-size:clamp(34px,7vw,50px); letter-s
   display:block; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase;
   color:var(--ink-soft); margin-bottom:6px; margin-top:8px;
 }
-textarea{
-  width:100%; border:1px solid var(--line-rule); border-radius:8px; padding:10px 12px;
-  font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); resize:vertical; min-height:56px;
-  background:#FCFBF6;
+.notes-list{
+  width:100%; border:1px solid var(--line-rule); border-radius:8px;
+  padding:10px 12px; padding-left:1.4em; margin:6px 0 0;
+  font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); min-height:56px;
+  background:#FCFBF6; list-style:disc;
 }
-textarea:focus{outline:2px solid var(--amber); outline-offset:1px;}
+.notes-list:focus{outline:2px solid var(--amber); outline-offset:1px;}
+.notes-list li{margin:2px 0; line-height:1.45;}
 
 .carry-box{
   background:var(--ink); color:var(--chalk); border-radius:14px; padding:20px 18px; margin-top:24px;
 }
 .carry-box h3{font-family:'Bebas Neue'; font-size:21px; color:var(--amber); margin-bottom:4px; letter-spacing:0.02em;}
 .carry-box p{font-size:13px; color:rgba(247,245,236,0.75); margin-bottom:10px;}
-.carry-box textarea{background:rgba(247,245,236,0.06); color:var(--chalk); border-color:rgba(247,245,236,0.2);}
-.carry-box textarea::placeholder{color:rgba(247,245,236,0.4);}
+.carry-box .notes-list{background:rgba(247,245,236,0.06); color:var(--chalk); border-color:rgba(247,245,236,0.2);}
 
 .actions{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;}
 .btn{
@@ -109,7 +110,8 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 @keyframes marchLane{ to{ stroke-dashoffset:-20; } }
 @keyframes ballCycle{ 0%,100%{ opacity:1; } }
 .diagram-block{padding:14px 18px 4px;}
-.diagram-note{font-size:12.5px; color:var(--ink-soft); margin-bottom:10px;}
+.diagram-bullets{font-size:12.5px; color:var(--ink-soft); list-style:disc; padding-left:1.4em; margin:10px 0 0;}
+.diagram-bullets li{margin:4px 0; line-height:1.5;}
 .diagram-card{
   background:var(--pitch); border-radius:12px; overflow:hidden; margin-bottom:14px; border:1px solid var(--line-rule);
 }
@@ -166,7 +168,11 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-arrival">0/2</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Kids arrive, grab a ball, free play in a 20x15 yard space. Loose touches, get moving before we start. Today we're going to learn how to keep space on the field.</p>
+    <ul class="diagram-bullets">
+      <li>Kids arrive, grab a ball, free play in a 20x15 yard space.</li>
+      <li>Loose touches, get moving before we start.</li>
+      <li>Today we're going to learn how to keep space on the field.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wed-1"><label for="wed-1">Set up 20x15 yard space with cones</label></div>
@@ -174,7 +180,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-arrival-notes">Coach notes</label>
-    <textarea id="wed-arrival-notes" placeholder="e.g. who arrived early, who needed a nudge to get moving..."></textarea>
+    <ul class="notes-list" id="wed-arrival-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who arrived early, who needed a nudge to get moving...</li></ul>
   </div>
 </div>
 
@@ -185,7 +191,11 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-welcome">0/2</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Quick chat about what happened in our last game. Everyone knows what it feels like when the team bunches up and loses the ball. Today we're going to practice keeping space using something special — Baby Yoda.</p>
+    <ul class="diagram-bullets">
+      <li>Quick chat about what happened in our last game.</li>
+      <li>Everyone knows what it feels like when the team bunches up and loses the ball.</li>
+      <li>Today we're going to practice keeping space using something special — Baby Yoda.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wed-3"><label for="wed-3">Talk about the game collapse — what did it feel like?</label></div>
@@ -193,7 +203,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-welcome-notes">Coach notes</label>
-    <textarea id="wed-welcome-notes" placeholder="e.g. theme landed well, kids were locked in..."></textarea>
+    <ul class="notes-list" id="wed-welcome-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. theme landed well, kids were locked in...</li></ul>
   </div>
 </div>
 
@@ -204,7 +214,18 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-breakout">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Finish Monday's pushing work. Monday it was back-to-back pushing, rolling around, then the shield-and-twist in Pirates — one defender at a time. Now the ring has 4. Same shield: get low and wide, body between ball and the ring, and take the ball WITH you out through a gate — not kicked through a gap. 7 players: 4 ring + 1 carrier + 2 gate guardians (one per gate); 6 players: 4 ring + 1 carrier + 1 guardian who picks ONE gate to guard — the carrier exits either gate; 5 players = 4 ring + 1 carrier (gates unguarded). In every split — 7, 6, or 5 players — everyone is active every attempt. Attempts are short — about 20-30 seconds. Coach counts '1, 2, 3 — GO!' Steal or failed exit = quick reset, no penalty. Whoever exits becomes part of the ring; a ring player becomes the carrier.</p>
+    <ul class="diagram-bullets">
+      <li>Finish Monday's pushing work. Monday it was back-to-back pushing, rolling around, then the shield-and-twist in Pirates — one defender at a time.</li>
+      <li>Now the ring has 4.</li>
+      <li>Same shield: get low and wide, body between ball and the ring, and take the ball WITH you out through a gate — not kicked through a gap.</li>
+      <li>7 players: 4 ring + 1 carrier + 2 gate guardians (one per gate);</li>
+      <li>6 players: 4 ring + 1 carrier + 1 guardian who picks ONE gate to guard — the carrier exits either gate;</li>
+      <li>5 players = 4 ring + 1 carrier (gates unguarded).</li>
+      <li>In every split — 7, 6, or 5 players — everyone is active every attempt.</li>
+      <li>Attempts are short — about 20-30 seconds. Coach counts '1, 2, 3 — GO!'</li>
+      <li>Steal or failed exit = quick reset, no penalty.</li>
+      <li>Whoever exits becomes part of the ring; a ring player becomes the carrier.</li>
+    </ul>
 
     <div class="diagram-card">
       <div class="cap"><h4>Ring Breakout — 4 Around 1</h4><div class="legend"><span style="color:#F7F5EC">&#9679; ring</span><span style="color:#E3A72E">&#9679; carrier</span><span style="color:#5B8DEF">&#9679; guardian</span><span style="color:#F7F5EC">&#9675; ball</span><span><b style="color:#E1592C">&#9650;</b> gate cones</span></div></div>
@@ -258,7 +279,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-breakout-notes">Coach notes</label>
-    <textarea id="wed-breakout-notes" placeholder="e.g. who got the low-and-wide shield, who exited through a gate with the ball, did the ring close the gaps fast..."></textarea>
+    <ul class="notes-list" id="wed-breakout-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who got the low-and-wide shield, who exited through a gate with the ball, did the ring close the gaps fast...</li></ul>
   </div>
 </div>
 
@@ -269,7 +290,21 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-kbya">0/6</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Baby Yoda's first-ever game — keep it basic. Small open area: a 20x20 yard square or the field center circle — simpler than the long field; this is an intro. Three players (A, B, C) clip to Baby Yoda with ~6-foot leashes at their waist belts and make a triangle around him. A fourth player, D, clips to Player C with one more ~6-foot leash — D's simple job: step and feel how C reacts (no tactics). The rule: Yoda never touches the ground — if it does, Yoda 'dies' and everyone freezes, resets, no punishment. Five focus points: (1) know the physical constraint — Yoda dies if it touches the ground, and we reset with a smile; (2) keep roughly even spacing around Yoda; (3) move while holding that spacing; (4) see that if one player moves, the others may need to adjust; (5) begin to feel the group as ONE connected unit — not three separate players. This first intro is NOT defensive cover, pressure, balance, switching, rotations, passing combos, or scanning — those are saved for later practices. Start standing still and feel the tension: each player steps out until their leash is taut but Yoda stays aloft. Then move together on coach calls — 'step left together', 'turn right together', small shuffling steps, leashes stay taut. One teaching point: one player's movement can influence another player's positioning. 7 players: A, B, C on leashes + D connected to C + 3 on a ball-mastery station (dribble through cones, toe taps, keepy-uppies), swap groups every ~4-5 min; 6 players: A, B, C, D + 2 on ball-mastery — the connected 4th concept stays the same; 5 players = A/B/C + D + 1 on ball-mastery.</p>
+    <ul class="diagram-bullets">
+      <li>Baby Yoda's first-ever game — keep it basic.</li>
+      <li>Small open area: a 20x20 yard square or the field center circle — simpler than the long field; this is an intro.</li>
+      <li>Three players (A, B, C) clip to Baby Yoda with ~6-foot leashes at their waist belts and make a triangle around him.</li>
+      <li>A fourth player, D, clips to Player C with one more ~6-foot leash — D's simple job: step and feel how C reacts (no tactics).</li>
+      <li>The rule: Yoda never touches the ground — if it does, Yoda 'dies' and everyone freezes, resets, no punishment.</li>
+      <li>Five focus points: (1) know the physical constraint — Yoda dies if it touches the ground, and we reset with a smile; (2) keep roughly even spacing around Yoda; (3) move while holding that spacing; (4) see that if one player moves, the others may need to adjust; (5) begin to feel the group as ONE connected unit — not three separate players.</li>
+      <li>This first intro is NOT defensive cover, pressure, balance, switching, rotations, passing combos, or scanning — those are saved for later practices.</li>
+      <li>Start standing still and feel the tension: each player steps out until their leash is taut but Yoda stays aloft.</li>
+      <li>Then move together on coach calls — 'step left together', 'turn right together', small shuffling steps, leashes stay taut.</li>
+      <li>One teaching point: one player's movement can influence another player's positioning.</li>
+      <li>7 players: A, B, C on leashes + D connected to C + 3 on a ball-mastery station (dribble through cones, toe taps, keepy-uppies), swap groups every ~4-5 min;</li>
+      <li>6 players: A, B, C, D + 2 on ball-mastery — the connected 4th concept stays the same;</li>
+      <li>5 players = A/B/C + D + 1 on ball-mastery.</li>
+    </ul>
 
     <div class="diagram-card">
       <div class="cap"><h4>Keep Baby Yoda Alive — Triangle of 3 + Connected D</h4><div class="legend"><span style="color:#4CAF82">&#9679; Baby Yoda plushie</span><span style="color:#E3A72E">&#9472; leashes (6 ft)</span><span style="color:#F7F5EC">&#9679; players</span><span style="color:#E3A72E">C&#8596;D connected</span></div></div>
@@ -323,7 +358,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-kbya-notes">Coach notes</label>
-    <textarea id="wed-kbya-notes" placeholder="e.g. did the group move as one unit, did D notice their step pulled C, who kept Yoda alive the longest..."></textarea>
+    <ul class="notes-list" id="wed-kbya-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. did the group move as one unit, did D notice their step pulled C, who kept Yoda alive the longest...</li></ul>
   </div>
 </div>
 
@@ -334,7 +369,15 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-game">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Two goals, one at each end of the 40x10 yard field — a Baby Yoda sits in each goal between two cones (only one plushie exists; the second goal uses a stand-in, a second plushie or a cone/marker called "Baby Yoda's friend"). Split into two small teams (7=3v3, 6=3v2, 5=2v2) plus one global Star. The Star plays for whichever team has the ball — the guaranteed open outlet — and never defends; on a turnover the Star sprints to join the new attacking team. Score by touching the ball to the enemy Yoda. Yoda is in play for everyone: no fouls for touching Yoda, defenders may stand in front of their own Yoda to block. Rotate who is the Star every 3-4 minutes so everyone gets a turn; rebalance teams between rounds. Spacing lesson: when we keep space, Baby Yoda stays alive; when we bunch up, the Star is wide open, the other team finds them, and your Yoda gets touched.</p>
+    <ul class="diagram-bullets">
+      <li>Two goals, one at each end of the 40x10 yard field — a Baby Yoda sits in each goal between two cones (only one plushie exists; the second goal uses a stand-in, a second plushie or a cone/marker called "Baby Yoda's friend").</li>
+      <li>Split into two small teams (7=3v3, 6=3v2, 5=2v2) plus one global Star.</li>
+      <li>The Star plays for whichever team has the ball — the guaranteed open outlet — and never defends; on a turnover the Star sprints to join the new attacking team.</li>
+      <li>Score by touching the ball to the enemy Yoda.</li>
+      <li>Yoda is in play for everyone: no fouls for touching Yoda, defenders may stand in front of their own Yoda to block.</li>
+      <li>Rotate who is the Star every 3-4 minutes so everyone gets a turn; rebalance teams between rounds.</li>
+      <li>Spacing lesson: when we keep space, Baby Yoda stays alive; when we bunch up, the Star is wide open, the other team finds them, and your Yoda gets touched.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wed-16"><label for="wed-16">Set up two goals — a Baby Yoda in each between two cones (second plushie or "Baby Yoda's friend" stand-in)</label></div>
@@ -345,7 +388,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-game-notes">Coach notes</label>
-    <textarea id="wed-game-notes" placeholder="e.g. did the Star always have an open look, did teams spread or swarm, who got the biggest cheer when Yoda got touched..."></textarea>
+    <ul class="notes-list" id="wed-game-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. did the Star always have an open look, did teams spread or swarm, who got the biggest cheer when Yoda got touched...</li></ul>
   </div>
 </div>
 
@@ -356,7 +399,10 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="wed-cool">0/3</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Slow jog around the field, then gather in a circle. Quick chat about what they learned today.</p>
+    <ul class="diagram-bullets">
+      <li>Slow jog around the field, then gather in a circle.</li>
+      <li>Quick chat about what they learned today.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="wed-21"><label for="wed-21">Slow jog around the field, then gather in a circle</label></div>
@@ -365,14 +411,14 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="wed-cool-notes">Coach notes</label>
-    <textarea id="wed-cool-notes" placeholder="e.g. what stuck with them most from today — keep it brief for U8..."></textarea>
+    <ul class="notes-list" id="wed-cool-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. what stuck with them most from today — keep it brief for U8...</li></ul>
   </div>
 </div>
 
 <div class="carry-box">
   <h3>Carry Into Week 4</h3>
   <p>Anything from today that should shape next week's plan — what to repeat, what to drop, what to build on.</p>
-  <textarea id="carry-forward" placeholder="e.g. kids were amazed by how Baby Yoda reacted to wide spacing; build on that spatial awareness next week..."></textarea>
+  <ul class="notes-list" id="carry-forward" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. kids were amazed by how Baby Yoda reacted to wide spacing; build on that spatial awareness next week...</li></ul>
 </div>
 
 <div class="actions">
@@ -388,17 +434,36 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 const STORAGE_KEY = 'week3-wed-lesson-plan';
 const segmentIds = ['wed-arrival','wed-welcome','wed-breakout','wed-kbya','wed-game','wed-cool'];
 
+function readNotes(id){
+  const el = document.getElementById(id);
+  if(!el) return '';
+  return Array.from(el.querySelectorAll('li')).map(li=>li.textContent.trim()).filter(Boolean).join('\n');
+}
+
 function collectState(){
-  const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
+  const state = { segments:{}, carryForward: readNotes('carry-forward') };
   segmentIds.forEach(seg=>{
     const items = {};
     document.querySelectorAll(`[data-seg="${seg}"] input[type=checkbox]`).forEach(cb=>{
       items[cb.id] = cb.checked;
     });
-    const notesEl = document.getElementById(seg+'-notes');
-    state.segments[seg] = { items, notes: notesEl ? notesEl.value : '' };
+    state.segments[seg] = { items, notes: readNotes(seg+'-notes') };
   });
   return state;
+}
+
+function setNotes(id, value){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const lines = (Array.isArray(value) ? value : String(value == null ? '' : value).split('\n'))
+    .map(line=>line.trim()).filter(Boolean);
+  const entries = lines.length ? lines : [''];
+  el.innerHTML = '';
+  entries.forEach(text=>{
+    const li = document.createElement('li');
+    li.textContent = text;
+    el.appendChild(li);
+  });
 }
 
 function applyState(state){
@@ -411,11 +476,9 @@ function applyState(state){
       if(el){ el.checked = checked; const item = el.closest('.item'); if(item) item.classList.toggle('checked', checked); }
     });
     const notesEl = document.getElementById(seg+'-notes');
-    if(notesEl && segState.notes) notesEl.value = segState.notes;
+    if(notesEl) setNotes(seg+'-notes', segState.notes);
   });
-  if(state.carryForward){
-    document.getElementById('carry-forward').value = state.carryForward;
-  }
+  setNotes('carry-forward', state.carryForward);
   updateCounts();
 }
 
@@ -462,8 +525,8 @@ document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
     scheduleSave();
   });
 });
-document.querySelectorAll('textarea').forEach(t=>{
-  t.addEventListener('input', scheduleSave);
+document.querySelectorAll('.notes-list').forEach(ul=>{
+  ul.addEventListener('input', scheduleSave);
 });
 
 document.getElementById('resetBtn').addEventListener('click', ()=>{

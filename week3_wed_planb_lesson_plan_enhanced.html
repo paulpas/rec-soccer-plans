@@ -80,20 +80,21 @@ h1{font-family:'Bebas Neue',sans-serif; font-size:clamp(34px,7vw,50px); letter-s
   display:block; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase;
   color:var(--ink-soft); margin-bottom:6px; margin-top:8px;
 }
-textarea{
-  width:100%; border:1px solid var(--line-rule); border-radius:8px; padding:10px 12px;
-  font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); resize:vertical; min-height:56px;
-  background:#FCFBF6;
+.notes-list{
+  width:100%; border:1px solid var(--line-rule); border-radius:8px;
+  padding:10px 12px; padding-left:1.4em; margin:6px 0 0;
+  font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); min-height:56px;
+  background:#FCFBF6; list-style:disc;
 }
-textarea:focus{outline:2px solid var(--amber); outline-offset:1px;}
+.notes-list:focus{outline:2px solid var(--amber); outline-offset:1px;}
+.notes-list li{margin:2px 0; line-height:1.45;}
 
 .carry-box{
   background:var(--ink); color:var(--chalk); border-radius:14px; padding:20px 18px; margin-top:24px;
 }
 .carry-box h3{font-family:'Bebas Neue'; font-size:21px; color:var(--amber); margin-bottom:4px; letter-spacing:0.02em;}
 .carry-box p{font-size:13px; color:rgba(247,245,236,0.75); margin-bottom:10px;}
-.carry-box textarea{background:rgba(247,245,236,0.06); color:var(--chalk); border-color:rgba(247,245,236,0.2);}
-.carry-box textarea::placeholder{color:rgba(247,245,236,0.4);}
+.carry-box .notes-list{background:rgba(247,245,236,0.06); color:var(--chalk); border-color:rgba(247,245,236,0.2);}
 
 .actions{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;}
 .btn{
@@ -109,7 +110,8 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 @keyframes marchLane{ to{ stroke-dashoffset:-20; } }
 @keyframes ballCycle{ 0%,100%{ opacity:1; } }
 .diagram-block{padding:14px 18px 4px;}
-.diagram-note{font-size:12.5px; color:var(--ink-soft); margin-bottom:10px;}
+.diagram-bullets{font-size:12.5px; color:var(--ink-soft); list-style:disc; padding-left:1.4em; margin:10px 0 0;}
+.diagram-bullets li{margin:4px 0; line-height:1.5;}
 .diagram-card{
   background:var(--pitch); border-radius:12px; overflow:hidden; margin-bottom:14px; border:1px solid var(--line-rule);
 }
@@ -166,7 +168,12 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="planb-arrival">0/2</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Equipment: 7 balls, cones to mark a 20x15 yard space, no props. Kids arrive, grab a ball, and free-play in the space — loose touches, get moving before we start. Theme reminder rolling straight from Monday: hold your ground. If a teammate bumps you, get low, get wide, body between the ball and them, and keep the ball. Everything today builds on that — protect first, then escape.</p>
+    <ul class="diagram-bullets">
+      <li>Equipment: 7 balls, cones to mark a 20x15 yard space, no props.</li>
+      <li>Kids arrive, grab a ball, and free-play in the space — loose touches, get moving before we start.</li>
+      <li>Theme reminder rolling straight from Monday: hold your ground. If a teammate bumps you, get low, get wide, body between the ball and them, and keep the ball.</li>
+      <li>Everything today builds on that — protect first, then escape.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="planb-1"><label for="planb-1">Set up 20x15 yard space with cones</label></div>
@@ -174,7 +181,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="planb-arrival-notes">Coach notes</label>
-    <textarea id="planb-arrival-notes" placeholder="e.g. who arrived early, who was already holding their ground when bumped..."></textarea>
+    <ul class="notes-list" id="planb-arrival-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who arrived early, who was already holding their ground when bumped...</li></ul>
   </div>
 </div>
 
@@ -185,7 +192,13 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="planb-welcome">0/2</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Equipment: 1 ball for the demo, no props. Today's story in one breath: Monday we protected the ball — get low, wide base, body between ball and defender, hold your ground. Today is the exact next step: after you protect the ball, what do you do next? You ESCAPE — feel the pressure, turn away from it, run into space, and find your teammate. So today's whole practice makes one move the game: shield, turn, escape, connect. Demonstration first, talk short (under 30 seconds), then straight into play.</p>
+    <ul class="diagram-bullets">
+      <li>Equipment: 1 ball for the demo, no props.</li>
+      <li>Today's story in one breath: Monday we protected the ball — get low, wide base, body between ball and defender, hold your ground.</li>
+      <li>Today is the exact next step: after you protect the ball, what do you do next? You ESCAPE — feel the pressure, turn away from it, run into space, and find your teammate.</li>
+      <li>So today's whole practice makes one move the game: shield, turn, escape, connect.</li>
+      <li>Demonstration first, talk short (under 30 seconds), then straight into play.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="planb-3"><label for="planb-3">Today's story: Monday we protected the ball — today we ESCAPE: turn away from pressure, run into space, find your teammate</label></div>
@@ -193,7 +206,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="planb-welcome-notes">Coach notes</label>
-    <textarea id="planb-welcome-notes" placeholder="e.g. did the demo land, who got the escape idea immediately..."></textarea>
+    <ul class="notes-list" id="planb-welcome-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. did the demo land, who got the escape idea immediately...</li></ul>
   </div>
 </div>
 
@@ -204,7 +217,18 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="planb-shieldturn">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Equipment: 6-7 balls, ~9 cones (3 squares + 3 escape cones), no props. Objective: one teaching step past Monday — from "hold my ground" to "feel the push, turn away, dribble to the escape cone". Setup: three 10x10y squares; in each square a 1v1 — a defender (no ball) pressures the carrier from behind; an escape cone sits ~5-10 yards outside each square. 7 players: three squares (3 carriers + 3 defenders) plus 1 "counter" who counts and announces every successful escape out loud ("3 escapes!"), calls the cadence, and swaps into a square each round (~45-60 sec) so nobody waits long. 6 players: exactly the three squares (3v3) — no counter, carriers call their own escapes. 5 players: two squares plus the counter. Skill sequence: (1) Monday recap — get low, wide base, body between ball and defender; (2) FEEL the defender's pressure as they push in from behind; (3) the moment they push hard, TURN AWAY — pivot the other way and dribble to the escape cone with the ball glued to your feet, not kicked ahead. Progression: (1) shadow pressure — defender follows, no contact; (2) live light pressure; (3) full pressure — carrier must turn and reach the cone within 3 seconds or the defender wins the ball. Coach cues: "feel the push — GO the other way", "low and wide", "ball glued to your feet", "turn, don't panic". Watch for: carriers turning INTO the pressure instead of away, heads staying down after the turn, and the ball being kicked too far ahead — stop and reset, never punish.</p>
+    <ul class="diagram-bullets">
+      <li>Equipment: 6-7 balls, ~9 cones (3 squares + 3 escape cones), no props.</li>
+      <li>Objective: one teaching step past Monday — from "hold my ground" to "feel the push, turn away, dribble to the escape cone".</li>
+      <li>Setup: three 10x10y squares; in each square a 1v1 — a defender (no ball) pressures the carrier from behind; an escape cone sits ~5-10 yards outside each square.</li>
+      <li>7 players: three squares (3 carriers + 3 defenders) plus 1 "counter" who counts and announces every successful escape out loud ("3 escapes!"), calls the cadence, and swaps into a square each round (~45-60 sec) so nobody waits long.</li>
+      <li>6 players: exactly the three squares (3v3) — no counter, carriers call their own escapes.</li>
+      <li>5 players: two squares plus the counter.</li>
+      <li>Skill sequence: (1) Monday recap — get low, wide base, body between ball and defender; (2) FEEL the defender's pressure as they push in from behind; (3) the moment they push hard, TURN AWAY — pivot the other way and dribble to the escape cone with the ball glued to your feet, not kicked ahead.</li>
+      <li>Progression: (1) shadow pressure — defender follows, no contact; (2) live light pressure; (3) full pressure — carrier must turn and reach the cone within 3 seconds or the defender wins the ball.</li>
+      <li>Coach cues: "feel the push — GO the other way", "low and wide", "ball glued to your feet", "turn, don't panic".</li>
+      <li>Watch for: carriers turning INTO the pressure instead of away, heads staying down after the turn, and the ball being kicked too far ahead — stop and reset, never punish.</li>
+    </ul>
 
     <div class="diagram-card">
       <div class="cap"><h4>Shield, Turn &amp; Go</h4><div class="legend"><span style="color:#E3A72E">&#9679; carrier C</span><span style="color:#F7F5EC">&#9679; defender D</span><span style="color:#F7F5EC">&#9675; ball</span><span><b style="color:#E1592C">&#9650;</b> escape cone</span><span style="color:#E3A72E">&#8593; push</span><span style="color:#E3A72E">&#8599; turn away</span></div></div>
@@ -248,7 +272,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="planb-shieldturn-notes">Coach notes</label>
-    <textarea id="planb-shieldturn-notes" placeholder="e.g. who felt the push and turned away, who turned INTO the pressure, who kept the ball glued..."></textarea>
+    <ul class="notes-list" id="planb-shieldturn-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who felt the push and turned away, who turned INTO the pressure, who kept the ball glued...</li></ul>
   </div>
 </div>
 
@@ -259,7 +283,18 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="planb-wolf">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Equipment: 6-8 balls, ~10 cones, 2 pinnies for the defenders. Objective: put the shield-turn-escape into a live keep-away where the ESCAPE ends in a PASS. Setup: TWO keep-away grids (~12x8y each), 2 attackers vs 1 defender per grid; spare balls outside the grids. Rule: attackers keep possession; when an attacker is under pressure they must SHIELD (hold 2-3 seconds) → TURN → PASS to the teammate in space = 1 point. Defender wins the ball = quick restart, no penalty. 7 players: both grids (2v1 + 2v1 = 6) plus the roaming "Wolf" (7th player) who pressures whichever carrier holds the ball too long — rewarding quick shield-turn-pass; the Wolf changes grids freely; rotate the Wolf and the defenders every round so all 7 get every role. 6 players: exactly the two 2v1 grids, no Wolf. 5 players: one 2v1 grid + one 1v1 shield-escape duel (reuse the Shield, Turn &amp; Go concept). Coach cues: "feel them, turn away, find your mate", "mate — give an angle", "shield 1, turn 2, pass 3". Watch for: support movement off the ball (the teammate stepping to give a passing angle), pass quality (soft, to the space) after the escape, and carriers turning into pressure — praise the quick shield-turn-pass loudly.</p>
+    <ul class="diagram-bullets">
+      <li>Equipment: 6-8 balls, ~10 cones, 2 pinnies for the defenders.</li>
+      <li>Objective: put the shield-turn-escape into a live keep-away where the ESCAPE ends in a PASS.</li>
+      <li>Setup: TWO keep-away grids (~12x8y each), 2 attackers vs 1 defender per grid; spare balls outside the grids.</li>
+      <li>Rule: attackers keep possession; when an attacker is under pressure they must SHIELD (hold 2-3 seconds) → TURN → PASS to the teammate in space = 1 point.</li>
+      <li>Defender wins the ball = quick restart, no penalty.</li>
+      <li>7 players: both grids (2v1 + 2v1 = 6) plus the roaming "Wolf" (7th player) who pressures whichever carrier holds the ball too long — rewarding quick shield-turn-pass; the Wolf changes grids freely; rotate the Wolf and the defenders every round so all 7 get every role.</li>
+      <li>6 players: exactly the two 2v1 grids, no Wolf.</li>
+      <li>5 players: one 2v1 grid + one 1v1 shield-escape duel (reuse the Shield, Turn &amp; Go concept).</li>
+      <li>Coach cues: "feel them, turn away, find your mate", "mate — give an angle", "shield 1, turn 2, pass 3".</li>
+      <li>Watch for: support movement off the ball (the teammate stepping to give a passing angle), pass quality (soft, to the space) after the escape, and carriers turning into pressure — praise the quick shield-turn-pass loudly.</li>
+    </ul>
 
     <div class="diagram-card">
       <div class="cap"><h4>Escape to Space — Beat the Wolf</h4><div class="legend"><span style="color:#F7F5EC">&#9679; attackers 1,2</span><span style="color:#F7F5EC">&#9679; attackers 3,4</span><span style="color:#E1592C">&#9679; defender</span><span style="color:#E3A72E">&#9679; Wolf</span><span style="color:#F7F5EC">&#9675; ball</span><span style="color:#E3A72E">&#8594; escape</span><span style="color:#F7F5EC">&#8594; pass</span></div></div>
@@ -320,7 +355,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="planb-wolf-notes">Coach notes</label>
-    <textarea id="planb-wolf-notes" placeholder="e.g. who passed right after the turn, whose mate gave an angle, who held the ball too long for the Wolf..."></textarea>
+    <ul class="notes-list" id="planb-wolf-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who passed right after the turn, whose mate gave an angle, who held the ball too long for the Wolf...</li></ul>
   </div>
 </div>
 
@@ -331,7 +366,17 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="planb-game">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Equipment: 1 ball, pinnies (2 colors), 4 cones or 2 small goals. Setup: ~25x15y field with two small goals (4x2 or cone goals), two teams in pinnies. Scoring: a normal goal = 1 point; a goal that BEGAN with a 3-second shield followed by one pass = 2 points ("shield, share, score"). This makes shield-escape-pass the scoring mechanic — the direct evolution of Monday's 5-second-shield bonus, and it gives every player a reason to protect first, then share. 7 players: 3v3 + 1 "Joker" who plays for whichever team has the ball — the Joker floats, never defends, and sprints to the other team on turnover (mirrors the approved Star concept from the Week 3 plan); rotate the Joker every 3-4 min. 6 players: straight 3v3. 5 players: 2v2 + Joker. Coach cues: "shield three seconds — share — score", "after you escape, look up — who's open?". Watch for: after shielding, does the player look to pass to a teammate rather than dribbling into trouble; celebrate every shield → pass → goal sequence loudly.</p>
+    <ul class="diagram-bullets">
+      <li>Equipment: 1 ball, pinnies (2 colors), 4 cones or 2 small goals.</li>
+      <li>Setup: ~25x15y field with two small goals (4x2 or cone goals), two teams in pinnies.</li>
+      <li>Scoring: a normal goal = 1 point; a goal that BEGAN with a 3-second shield followed by one pass = 2 points ("shield, share, score").</li>
+      <li>This makes shield-escape-pass the scoring mechanic — the direct evolution of Monday's 5-second-shield bonus, and it gives every player a reason to protect first, then share.</li>
+      <li>7 players: 3v3 + 1 "Joker" who plays for whichever team has the ball — the Joker floats, never defends, and sprints to the other team on turnover (mirrors the approved Star concept from the Week 3 plan); rotate the Joker every 3-4 min.</li>
+      <li>6 players: straight 3v3.</li>
+      <li>5 players: 2v2 + Joker.</li>
+      <li>Coach cues: "shield three seconds — share — score", "after you escape, look up — who's open?".</li>
+      <li>Watch for: after shielding, does the player look to pass to a teammate rather than dribbling into trouble; celebrate every shield → pass → goal sequence loudly.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="planb-15"><label for="planb-15">Set up ~25x15y field, two small goals (4x2 or cone goals), two teams with pinnies</label></div>
@@ -342,7 +387,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="planb-game-notes">Coach notes</label>
-    <textarea id="planb-game-notes" placeholder="e.g. which goals started with a shield + pass, did players look up after escaping or dribble into trouble..."></textarea>
+    <ul class="notes-list" id="planb-game-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. which goals started with a shield + pass, did players look up after escaping or dribble into trouble...</li></ul>
   </div>
 </div>
 
@@ -353,7 +398,12 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="planb-cool">0/3</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Equipment: a few balls for light touches, no props. Slow jog around the field, then light touches in a circle while we chat. Questions: "When you felt them on your back, which way did you turn? Who did you find after you escaped?" Then pack up together — balls, cones, pinnies back to the bag.</p>
+    <ul class="diagram-bullets">
+      <li>Equipment: a few balls for light touches, no props.</li>
+      <li>Slow jog around the field, then light touches in a circle while we chat.</li>
+      <li>Questions: "When you felt them on your back, which way did you turn? Who did you find after you escaped?"</li>
+      <li>Then pack up together — balls, cones, pinnies back to the bag.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="planb-20"><label for="planb-20">Slow jog around the field, then light touches</label></div>
@@ -362,14 +412,14 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="planb-cool-notes">Coach notes</label>
-    <textarea id="planb-cool-notes" placeholder="e.g. what stuck with them — turn away from the pressure and find your mate..."></textarea>
+    <ul class="notes-list" id="planb-cool-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. what stuck with them — turn away from the pressure and find your mate...</li></ul>
   </div>
 </div>
 
 <div class="carry-box">
   <h3>Carry Into Week 4</h3>
   <p>Anything from today that should shape next week's plan — what to repeat, what to drop, what to build on.</p>
-  <textarea id="carry-forward" placeholder="What I am NOT trying to teach yet: combinations to beat pressure, scanning before receiving, possession while keeping team shape, 3v1 defending — those are future practices. What this sets up next: shield → turn → pass under pressure builds straight toward possession play; when the Baby Yoda spacing thread returns, it continues as its own progression."></textarea>
+  <ul class="notes-list" id="carry-forward" contenteditable="true" role="textbox" aria-multiline="true"><li>What I am NOT trying to teach yet: combinations to beat pressure, scanning before receiving, possession while keeping team shape, 3v1 defending — those are future practices. What this sets up next: shield → turn → pass under pressure builds straight toward possession play; when the Baby Yoda spacing thread returns, it continues as its own progression.</li></ul>
 </div>
 
 <div class="actions">
@@ -385,17 +435,36 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 const STORAGE_KEY = 'week3-wed-planb-lesson-plan';
 const segmentIds = ['planb-arrival','planb-welcome','planb-shieldturn','planb-wolf','planb-game','planb-cool'];
 
+function readNotes(id){
+  const el = document.getElementById(id);
+  if(!el) return '';
+  return Array.from(el.querySelectorAll('li')).map(li=>li.textContent.trim()).filter(Boolean).join('\n');
+}
+
 function collectState(){
-  const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
+  const state = { segments:{}, carryForward: readNotes('carry-forward') };
   segmentIds.forEach(seg=>{
     const items = {};
     document.querySelectorAll(`[data-seg="${seg}"] input[type=checkbox]`).forEach(cb=>{
       items[cb.id] = cb.checked;
     });
-    const notesEl = document.getElementById(seg+'-notes');
-    state.segments[seg] = { items, notes: notesEl ? notesEl.value : '' };
+    state.segments[seg] = { items, notes: readNotes(seg+'-notes') };
   });
   return state;
+}
+
+function setNotes(id, value){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const lines = (Array.isArray(value) ? value : String(value == null ? '' : value).split('\n'))
+    .map(line=>line.trim()).filter(Boolean);
+  const entries = lines.length ? lines : [''];
+  el.innerHTML = '';
+  entries.forEach(text=>{
+    const li = document.createElement('li');
+    li.textContent = text;
+    el.appendChild(li);
+  });
 }
 
 function applyState(state){
@@ -408,11 +477,9 @@ function applyState(state){
       if(el){ el.checked = checked; const item = el.closest('.item'); if(item) item.classList.toggle('checked', checked); }
     });
     const notesEl = document.getElementById(seg+'-notes');
-    if(notesEl && segState.notes) notesEl.value = segState.notes;
+    if(notesEl) setNotes(seg+'-notes', segState.notes);
   });
-  if(state.carryForward){
-    document.getElementById('carry-forward').value = state.carryForward;
-  }
+  setNotes('carry-forward', state.carryForward);
   updateCounts();
 }
 
@@ -459,8 +526,8 @@ document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
     scheduleSave();
   });
 });
-document.querySelectorAll('textarea').forEach(t=>{
-  t.addEventListener('input', scheduleSave);
+document.querySelectorAll('.notes-list').forEach(ul=>{
+  ul.addEventListener('input', scheduleSave);
 });
 
 document.getElementById('resetBtn').addEventListener('click', ()=>{

@@ -80,20 +80,21 @@ h1{font-family:'Bebas Neue',sans-serif; font-size:clamp(34px,7vw,50px); letter-s
   display:block; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase;
   color:var(--ink-soft); margin-bottom:6px; margin-top:8px;
 }
-textarea{
-  width:100%; border:1px solid var(--line-rule); border-radius:8px; padding:10px 12px;
-  font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); resize:vertical; min-height:56px;
-  background:#FCFBF6;
+.notes-list{
+  width:100%; border:1px solid var(--line-rule); border-radius:8px;
+  padding:10px 12px; padding-left:1.4em; margin:6px 0 0;
+  font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); min-height:56px;
+  background:#FCFBF6; list-style:disc;
 }
-textarea:focus{outline:2px solid var(--amber); outline-offset:1px;}
+.notes-list:focus{outline:2px solid var(--amber); outline-offset:1px;}
+.notes-list li{margin:2px 0; line-height:1.45;}
 
 .carry-box{
   background:var(--ink); color:var(--chalk); border-radius:14px; padding:20px 18px; margin-top:24px;
 }
 .carry-box h3{font-family:'Bebas Neue'; font-size:21px; color:var(--amber); margin-bottom:4px; letter-spacing:0.02em;}
 .carry-box p{font-size:13px; color:rgba(247,245,236,0.75); margin-bottom:10px;}
-.carry-box textarea{background:rgba(247,245,236,0.06); color:var(--chalk); border-color:rgba(247,245,236,0.2);}
-.carry-box textarea::placeholder{color:rgba(247,245,236,0.4);}
+.carry-box .notes-list{background:rgba(247,245,236,0.06); color:var(--chalk); border-color:rgba(247,245,236,0.2);}
 
 .actions{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;}
 .btn{
@@ -109,7 +110,8 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 @keyframes marchLane{ to{ stroke-dashoffset:-20; } }
 @keyframes ballCycle{ 0%,100%{ opacity:1; } }
 .diagram-block{padding:14px 18px 4px;}
-.diagram-note{font-size:12.5px; color:var(--ink-soft); margin-bottom:10px;}
+.diagram-bullets{font-size:12.5px; color:var(--ink-soft); list-style:disc; padding-left:1.4em; margin:10px 0 0;}
+.diagram-bullets li{margin:4px 0; line-height:1.5;}
 .diagram-card{
   background:var(--pitch); border-radius:12px; overflow:hidden; margin-bottom:14px; border:1px solid var(--line-rule);
 }
@@ -166,7 +168,11 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="mon-arrival">0/2</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Kids arrive, grab a ball, free play in a 20x15 yard space. Loose touches, get moving before we start. Tonight we find out how big our team can breathe — and how to take the open gate.</p>
+    <ul class="diagram-bullets">
+      <li>Kids arrive, grab a ball, free play in a 20x15 yard space.</li>
+      <li>Loose touches, get moving before we start.</li>
+      <li>Tonight we find out how big our team can breathe — and how to take the open gate.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="mon-1"><label for="mon-1">Set up 20x15 yard space with cones</label></div>
@@ -174,7 +180,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="mon-arrival-notes">Coach notes</label>
-    <textarea id="mon-arrival-notes" placeholder="e.g. who arrived early, who needed a nudge to get moving..."></textarea>
+    <ul class="notes-list" id="mon-arrival-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who arrived early, who needed a nudge to get moving...</li></ul>
   </div>
 </div>
 
@@ -185,7 +191,12 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="mon-welcome">0/2</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Quick chat to set the day. Last week Baby Yoda taught us to keep space as ONE connected unit, and we learned to shield out of a ring. Today the unit learns to BREATHE — spread wide, squeeze in, never drop Yoda — and the carrier learns to PICK THE OPEN GATE. Two ideas, one big day.</p>
+    <ul class="diagram-bullets">
+      <li>Quick chat to set the day.</li>
+      <li>Last week Baby Yoda taught us to keep space as ONE connected unit, and we learned to shield out of a ring.</li>
+      <li>Today the unit learns to BREATHE — spread wide, squeeze in, never drop Yoda — and the carrier learns to PICK THE OPEN GATE.</li>
+      <li>Two ideas, one big day.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="mon-3"><label for="mon-3">Talk about last week — the triangle moved as ONE connected unit; shields got low and wide in the ring</label></div>
@@ -193,7 +204,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="mon-welcome-notes">Coach notes</label>
-    <textarea id="mon-welcome-notes" placeholder="e.g. theme landed well, kids were locked in..."></textarea>
+    <ul class="notes-list" id="mon-welcome-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. theme landed well, kids were locked in...</li></ul>
   </div>
 </div>
 
@@ -204,7 +215,20 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="mon-kbya2">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Last week we built Baby Yoda's first rule: A, B, C hold the triangle on ~6-ft leashes, D connected to C — ONE CONNECTED UNIT. This week the unit learns to BREATHE: change size and stay alive. Coach calls "Spread wide!" — all four step OUT until the leashes are taut and the triangle is big, Yoda stays centered. "Squeeze in!" — bring the shape smaller toward the middle, NO slack, NO dropping Yoda, no bumping him. "Freeze!" — hold the shape exactly where it is. Start slow, then mix the calls faster. If a leash goes slack or Yoda touches the ground: "Yoda's asleep!" — everyone freezes, reset with a smile, restart at medium size. D's job stays simple: step and feel how C adjusts as the unit expands and contracts. 7 players: A, B, C on leashes + D connected to C + 3 on the ball-mastery station (dribble-cone figure-8s, toe taps, keepy-uppies). 6 players: A, B, C, D + 2 on the station. 5 players: A, B, C, D + 1 on the station. Swap groups every ~4-5 minutes so every kid gets leash time.</p>
+    <ul class="diagram-bullets">
+      <li>Last week we built Baby Yoda's first rule: A, B, C hold the triangle on ~6-ft leashes, D connected to C — ONE CONNECTED UNIT.</li>
+      <li>This week the unit learns to BREATHE: change size and stay alive.</li>
+      <li>Coach calls "Spread wide!" — all four step OUT until the leashes are taut and the triangle is big, Yoda stays centered.</li>
+      <li>"Squeeze in!" — bring the shape smaller toward the middle, NO slack, NO dropping Yoda, no bumping him.</li>
+      <li>"Freeze!" — hold the shape exactly where it is.</li>
+      <li>Start slow, then mix the calls faster.</li>
+      <li>If a leash goes slack or Yoda touches the ground: "Yoda's asleep!" — everyone freezes, reset with a smile, restart at medium size.</li>
+      <li>D's job stays simple: step and feel how C adjusts as the unit expands and contracts.</li>
+      <li>7 players: A, B, C on leashes + D connected to C + 3 on the ball-mastery station (dribble-cone figure-8s, toe taps, keepy-uppies).</li>
+      <li>6 players: A, B, C, D + 2 on the station.</li>
+      <li>5 players: A, B, C, D + 1 on the station.</li>
+      <li>Swap groups every ~4-5 minutes so every kid gets leash time.</li>
+    </ul>
 
     <div class="diagram-card">
       <div class="cap"><h4>Yoda's Deep Breath — Expansion &amp; Contraction</h4><div class="legend"><span style="color:#4CAF82">&#9679; Baby Yoda plushie</span><span style="color:#E3A72E">&#9472; leashes (6 ft)</span><span style="color:#F7F5EC">dashed = spread wide</span><span style="color:#F7F5EC">solid = squeezed in</span></div></div>
@@ -273,7 +297,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="mon-kbya2-notes">Coach notes</label>
-    <textarea id="mon-kbya2-notes" placeholder="e.g. did the unit change size without slack, did D feel C adjust, who kept Yoda alive through the fastest calls..."></textarea>
+    <ul class="notes-list" id="mon-kbya2-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. did the unit change size without slack, did D feel C adjust, who kept Yoda alive through the fastest calls...</li></ul>
   </div>
 </div>
 
@@ -284,7 +308,18 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="mon-breakout2">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Back to the ring — 20x20 square, 4 pressure players around 1 carrier. Last week the carrier got out through ANY gate with a shield: low and wide, body between ball and defense, ball comes WITH you. This week the gates are guarded — the carrier must PICK the gate the guardian is NOT guarding. Guardians guard their gate — or gamble by stepping out to pressure, which OPENS their gate behind them. Carrier: scan both gates, pick the open one (or the weaker side), commit, explode through body-first with the ball. 7 players: 4 ring + 1 carrier + 2 guardians (one per gate). 6 players: 4 ring + 1 carrier + 1 guardian who must choose ONE gate — the carrier reads and takes the open one. 5 players: 4 ring + 1 carrier — gates unguarded, a calibration round back to Week 3. Attempts ~20-30 seconds, coach counts "1, 2, 3 — GO!" Steal or failed exit = quick reset, no penalty. Rotate carrier every attempt; guardians rotate too — everyone gets all three jobs.</p>
+    <ul class="diagram-bullets">
+      <li>Back to the ring — 20x20 square, 4 pressure players around 1 carrier.</li>
+      <li>Last week the carrier got out through ANY gate with a shield: low and wide, body between ball and defense, ball comes WITH you.</li>
+      <li>This week the gates are guarded — the carrier must PICK the gate the guardian is NOT guarding.</li>
+      <li>Guardians guard their gate — or gamble by stepping out to pressure, which OPENS their gate behind them.</li>
+      <li>Carrier: scan both gates, pick the open one (or the weaker side), commit, explode through body-first with the ball.</li>
+      <li>7 players: 4 ring + 1 carrier + 2 guardians (one per gate).</li>
+      <li>6 players: 4 ring + 1 carrier + 1 guardian who must choose ONE gate — the carrier reads and takes the open one.</li>
+      <li>5 players: 4 ring + 1 carrier — gates unguarded, a calibration round back to Week 3.</li>
+      <li>Attempts ~20-30 seconds, coach counts "1, 2, 3 — GO!" Steal or failed exit = quick reset, no penalty.</li>
+      <li>Rotate carrier every attempt; guardians rotate too — everyone gets all three jobs.</li>
+    </ul>
 
     <div class="diagram-card">
       <div class="cap"><h4>Ring Breakout — Pick Your Gate</h4><div class="legend"><span style="color:#F7F5EC">&#9679; ring</span><span style="color:#E3A72E">&#9679; carrier</span><span style="color:#5B8DEF">&#9679; guardian</span><span style="color:#F7F5EC">&#9675; ball</span><span><b style="color:#E1592C">&#9650;</b> gate cones</span><span style="color:#F7F5EC">dashed = gamble / exit</span></div></div>
@@ -340,7 +375,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="mon-breakout2-notes">Coach notes</label>
-    <textarea id="mon-breakout2-notes" placeholder="e.g. who scanned before committing, who read the guardian's gamble, did the shield stay low and wide on the exit..."></textarea>
+    <ul class="notes-list" id="mon-breakout2-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who scanned before committing, who read the guardian's gamble, did the shield stay low and wide on the exit...</li></ul>
   </div>
 </div>
 
@@ -351,7 +386,13 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="mon-game">0/5</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Same game as Week 3 — two goals, one at each end of the 40x10 yard field, a Baby Yoda in each goal between two cones (only one plushie exists; the second goal uses a stand-in, a second plushie or a cone called "Baby Yoda's friend"). Two small teams (7=3v3, 6=3v2, 5=2v2) plus ONE global Star who plays for whoever has the ball — the guaranteed open outlet — and never defends; on a turnover the Star sprints to the new attacking team. Score by touching the ball to the enemy Yoda. Yoda is in play for everyone: no fouls for touching Yoda, defenders may stand in front of their own Yoda to block. NEW TWIST: a goal scored while your team is spread out wide counts DOUBLE — both wide attackers are outside the width markers when the pass or shot happens. Rotate who is the Star every 3-4 minutes so everyone gets a turn; rebalance teams between rounds.</p>
+    <ul class="diagram-bullets">
+      <li>Same game as Week 3 — two goals, one at each end of the 40x10 yard field, a Baby Yoda in each goal between two cones (only one plushie exists; the second goal uses a stand-in, a second plushie or a cone called "Baby Yoda's friend").</li>
+      <li>Two small teams (7=3v3, 6=3v2, 5=2v2) plus ONE global Star who plays for whoever has the ball — the guaranteed open outlet — and never defends; on a turnover the Star sprints to the new attacking team.</li>
+      <li>Score by touching the ball to the enemy Yoda. Yoda is in play for everyone: no fouls for touching Yoda, defenders may stand in front of their own Yoda to block.</li>
+      <li>NEW TWIST: a goal scored while your team is spread out wide counts DOUBLE — both wide attackers are outside the width markers when the pass or shot happens.</li>
+      <li>Rotate who is the Star every 3-4 minutes so everyone gets a turn; rebalance teams between rounds.</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="mon-15"><label for="mon-15">Set up two goals — a Baby Yoda in each between two cones (second plushie or "Baby Yoda's friend" stand-in)</label></div>
@@ -362,7 +403,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="mon-game-notes">Coach notes</label>
-    <textarea id="mon-game-notes" placeholder="e.g. did the Star always have an open look, did teams spread for the double, who spotted the wide teammate early..."></textarea>
+    <ul class="notes-list" id="mon-game-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. did the Star always have an open look, did teams spread for the double, who spotted the wide teammate early...</li></ul>
   </div>
 </div>
 
@@ -373,7 +414,10 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
     <div class="seg-count" data-count-for="mon-cool">0/4</div>
   </div>
   <div class="diagram-block">
-    <p class="diagram-note">Slow jog with light ball touches around the field, then gather in a circle. Chat about today: when did the group "breathe" — spread wide and squeeze in — and when did someone pick the open gate?</p>
+    <ul class="diagram-bullets">
+      <li>Slow jog with light ball touches around the field, then gather in a circle.</li>
+      <li>Chat about today: when did the group "breathe" — spread wide and squeeze in — and when did someone pick the open gate?</li>
+    </ul>
   </div>
   <div class="checklist">
     <div class="item"><input type="checkbox" id="mon-20"><label for="mon-20">Slow jog and light ball touches around the field, then gather in a circle</label></div>
@@ -383,14 +427,14 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
   </div>
   <div class="notes-block">
     <label class="notes-label" for="mon-cool-notes">Coach notes</label>
-    <textarea id="mon-cool-notes" placeholder="e.g. what stuck with them most from today — keep it brief for U8..."></textarea>
+    <ul class="notes-list" id="mon-cool-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. what stuck with them most from today — keep it brief for U8...</li></ul>
   </div>
 </div>
 
 <div class="carry-box">
   <h3>Carry Into Week 5</h3>
   <p>Anything from today that should shape next week's plan — what to repeat, what to drop, what to build on.</p>
-  <textarea id="carry-forward" placeholder="e.g. kids loved Yoda's deep breath; build the breakout gate decisions into a bigger small-sided game next week..."></textarea>
+  <ul class="notes-list" id="carry-forward" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. kids loved Yoda's deep breath; build the breakout gate decisions into a bigger small-sided game next week...</li></ul>
 </div>
 
 <div class="actions">
@@ -406,17 +450,36 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 const STORAGE_KEY = 'week4-mon-lesson-plan';
 const segmentIds = ['mon-arrival','mon-welcome','mon-kbya2','mon-breakout2','mon-game','mon-cool'];
 
+function readNotes(id){
+  const el = document.getElementById(id);
+  if(!el) return '';
+  return Array.from(el.querySelectorAll('li')).map(li=>li.textContent.trim()).filter(Boolean).join('\n');
+}
+
 function collectState(){
-  const state = { segments:{}, carryForward: document.getElementById('carry-forward').value };
+  const state = { segments:{}, carryForward: readNotes('carry-forward') };
   segmentIds.forEach(seg=>{
     const items = {};
     document.querySelectorAll(`[data-seg="${seg}"] input[type=checkbox]`).forEach(cb=>{
       items[cb.id] = cb.checked;
     });
-    const notesEl = document.getElementById(seg+'-notes');
-    state.segments[seg] = { items, notes: notesEl ? notesEl.value : '' };
+    state.segments[seg] = { items, notes: readNotes(seg+'-notes') };
   });
   return state;
+}
+
+function setNotes(id, value){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const lines = (Array.isArray(value) ? value : String(value == null ? '' : value).split('\n'))
+    .map(line=>line.trim()).filter(Boolean);
+  const entries = lines.length ? lines : [''];
+  el.innerHTML = '';
+  entries.forEach(text=>{
+    const li = document.createElement('li');
+    li.textContent = text;
+    el.appendChild(li);
+  });
 }
 
 function applyState(state){
@@ -429,11 +492,9 @@ function applyState(state){
       if(el){ el.checked = checked; const item = el.closest('.item'); if(item) item.classList.toggle('checked', checked); }
     });
     const notesEl = document.getElementById(seg+'-notes');
-    if(notesEl && segState.notes) notesEl.value = segState.notes;
+    if(notesEl) setNotes(seg+'-notes', segState.notes);
   });
-  if(state.carryForward){
-    document.getElementById('carry-forward').value = state.carryForward;
-  }
+  setNotes('carry-forward', state.carryForward);
   updateCounts();
 }
 
@@ -480,8 +541,8 @@ document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
     scheduleSave();
   });
 });
-document.querySelectorAll('textarea').forEach(t=>{
-  t.addEventListener('input', scheduleSave);
+document.querySelectorAll('.notes-list').forEach(ul=>{
+  ul.addEventListener('input', scheduleSave);
 });
 
 document.getElementById('resetBtn').addEventListener('click', ()=>{
