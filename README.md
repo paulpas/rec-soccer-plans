@@ -28,7 +28,7 @@
 <!-- GENERATE_TODAY_TABLE -->
 | Week | Date | Day | Plan |
 |------|------|-----|------|
-| WEEK 4 | Mon, Sep 21 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Fitness & Space Awareness](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week4_mon_lesson_plan_enhanced.html) |
+| WEEK 4 | Wed, Sep 23 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">NEXT UP</span> <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Fitness & Space Awareness](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week4_wed_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_TODAY_TABLE -->
 
 ### 📅 Upcoming Lesson Plans
@@ -36,7 +36,7 @@
 <!-- GENERATE_FUTURE_TABLE -->
 | Week | Date | Day | Plan |
 |------|------|-----|------|
-| WEEK 4 | Wed, Sep 23 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">UPCOMING</span> <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Yoda's Captain & First Pass](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week4_wed_lesson_plan_enhanced.html) |
+| WEEK 5 | Mon, Sep 28 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">UPCOMING</span> <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Yoda's Captain & First Pass](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week5_mon_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_FUTURE_TABLE -->
 
 ### 📋 Plans in Development
@@ -47,6 +47,7 @@
 | Week | Date | Day | Plan |
 |------|------|-----|------|
 | WEEK 2 |  | <span style="background-color:#E1592C;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Draft</span> | [Footwork → Game Application: V-Push Gates & Treasure Keepers](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week2_proposed_lesson_plan_enhanced.html) |
+| WEEK 4 | Mon, Sep 21 | <span style="background-color:#E1592C;color:#F7F5EC;padding:2px 8px;border-radius:3px;font-size:0.85em;">Draft</span> | [Fitness & Space Awareness](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week4_mon_draft_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_DEVELOPMENT_TABLE -->
 
 ### 🎮 Game Reference Library
