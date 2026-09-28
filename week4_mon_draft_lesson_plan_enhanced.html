@@ -139,6 +139,20 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 .pt-table tr:nth-child(even){background:rgba(247,245,236,0.5);}
 .pt-table input[type=checkbox]{display:block;margin:0 auto;}
 
+/* player notes */
+.pt-table .notes-cell{width:100%;padding:4px 8px;}
+.pt-table .player-notes{width:100%;border:1px solid var(--line-rule);border-radius:6px;padding:6px 8px;font-family:'Inter',sans-serif;font-size:12.5px;color:var(--ink);resize:vertical;min-height:36px;background:#FCFBF6;transition:border-color .15s ease;}
+.pt-table .player-notes:focus{outline:none;border-color:var(--amber);}
+
+/* player tracker table */
+.pt-table{width:100%;border-collapse:collapse;}
+.pt-table th{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);padding:8px 14px;border-bottom:2px solid var(--line-rule);text-align:center;}
+.pt-table th:first-child{text-align:left;}
+.pt-table td{padding:8px 14px;border-bottom:1px solid var(--line-rule);text-align:center;vertical-align:middle;}
+.pt-table td:first-child{font-weight:600;text-align:left;}
+.pt-table tr:nth-child(even){background:rgba(247,245,236,0.5);}
+.pt-table input[type=checkbox]{display:block;margin:0 auto;}
+
 .video-link{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#E1592C;text-decoration:none;padding:1px 8px;border:1.5px solid #E1592C;border-radius:4px;margin-left:6px;transition:background .2s,color .2s;vertical-align:middle;}
 .video-link:hover{background:#E1592C;color:#F7F5EC;}
 </style>
@@ -160,6 +174,34 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 </div>
 
 <div class="wrap">
+
+<!-- PLAYER TRACKER -->
+<div class="segment" data-seg="player-tracker">
+  <div class="seg-head">
+    <div><div class="seg-time">AT A GLANCE</div><div class="seg-title">Player Tracker</div></div>
+    <div class="seg-count" data-count-for="player-tracker">0/14</div>
+  </div>
+  <div class="checklist">
+    <table class="pt-table">
+      <thead>
+        <tr><th>Player Name</th><th>Attended</th><th>Homework</th><th>Strong Effort</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Emilia</td><td><input type="checkbox" id="pt-emilia-att"></td><td><input type="checkbox" id="pt-emilia-hw"></td><td><input type="checkbox" id="pt-emilia-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-emilia-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Maverick</td><td><input type="checkbox" id="pt-maverick-att"></td><td><input type="checkbox" id="pt-maverick-hw"></td><td><input type="checkbox" id="pt-maverick-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-maverick-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Ellie</td><td><input type="checkbox" id="pt-ellie-att"></td><td><input type="checkbox" id="pt-ellie-hw"></td><td><input type="checkbox" id="pt-ellie-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-ellie-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Amelia</td><td><input type="checkbox" id="pt-amelia-att"></td><td><input type="checkbox" id="pt-amelia-hw"></td><td><input type="checkbox" id="pt-amelia-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-amelia-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Zenobia</td><td><input type="checkbox" id="pt-zenobia-att"></td><td><input type="checkbox" id="pt-zenobia-hw"></td><td><input type="checkbox" id="pt-zenobia-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-zenobia-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Hannah</td><td><input type="checkbox" id="pt-hannah-att"></td><td><input type="checkbox" id="pt-hannah-hw"></td><td><input type="checkbox" id="pt-hannah-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-hannah-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Cate</td><td><input type="checkbox" id="pt-cate-att"></td><td><input type="checkbox" id="pt-cate-hw"></td><td><input type="checkbox" id="pt-cate-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-cate-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="player-tracker-notes">Coach notes — player observations</label>
+    <ul class="notes-list" id="player-tracker-notes" contenteditable="true" role="textbox" aria-multiline="true"><li>e.g. who stood out today, who struggled, rotation notes...</li></ul>
+  </div>
+</div>
 
 <!-- SEGMENT 1 -->
 <div class="segment" data-seg="mon-arrival">
@@ -457,7 +499,7 @@ footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'J
 
 <script>
 const STORAGE_KEY = 'week4-mon-draft-lesson-plan';
-const segmentIds = ['mon-arrival','mon-welcome','mon-dribble','mon-balltag','mon-space'];
+const segmentIds = ['player-tracker','mon-arrival','mon-welcome','mon-dribble','mon-balltag','mon-space'];
 
 function readNotes(id){
   const el = document.getElementById(id);
@@ -466,13 +508,17 @@ function readNotes(id){
 }
 
 function collectState(){
-  const state = { segments:{}, carryForward: readNotes('carry-forward') };
+  const state = { segments:{}, carryForward: readNotes('carry-forward'), playerNotes:{} };
   segmentIds.forEach(seg=>{
     const items = {};
     document.querySelectorAll(`[data-seg="${seg}"] input[type=checkbox]`).forEach(cb=>{
       items[cb.id] = cb.checked;
     });
     state.segments[seg] = { items, notes: readNotes(seg+'-notes') };
+  });
+  ['emilia','maverick','ellie','amelia','zenobia','hannah','cate'].forEach(name=>{
+    const el = document.getElementById('pt-'+name+'-notes');
+    if(el) state.playerNotes[name] = el.value;
   });
   return state;
 }
@@ -503,6 +549,12 @@ function applyState(state){
     const notesEl = document.getElementById(seg+'-notes');
     if(notesEl) setNotes(seg+'-notes', segState.notes);
   });
+  if(state.playerNotes){
+    ['emilia','maverick','ellie','amelia','zenobia','hannah','cate'].forEach(name=>{
+      const el = document.getElementById('pt-'+name+'-notes');
+      if(el && state.playerNotes[name]) el.value = state.playerNotes[name];
+    });
+  }
   if (state.carryForward) {
     setNotes('carry-forward', state.carryForward);
   }
@@ -554,6 +606,9 @@ document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
 });
 document.querySelectorAll('.notes-list').forEach(ul=>{
   ul.addEventListener('input', scheduleSave);
+});
+document.querySelectorAll('textarea').forEach(t=>{
+  t.addEventListener('input', scheduleSave);
 });
 
 document.getElementById('resetBtn').addEventListener('click', ()=>{
