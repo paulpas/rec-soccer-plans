@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Goal Kick Play</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f3f6ef;--ink:#16301f;--pitch:#3f8f4f;--btn:#16301f;--btnt:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a13;--ink:#e8f1e6;--pitch:#2f6f3d;--btn:#e8f1e6;--btnt:#101a13}}
+:root[data-theme="dark"]{--bg:#101a13;--ink:#e8f1e6;--pitch:#2f6f3d;--btn:#e8f1e6;--btnt:#101a13}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif;padding:12px;max-width:900px;margin-inline:auto}
+h1{font-size:1.4rem;margin:4px 0 8px}
+svg{width:100%;height:auto;display:block;border-radius:10px;background:var(--pitch)}
+.ln{fill:none;stroke:#fff;stroke-width:6}
+#cap{font-size:1.25rem;font-weight:700;min-height:3.2em;margin:10px 0}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;font-weight:700;font-size:1.05rem;padding:10px 18px;border:0;border-radius:10px;background:var(--btn);color:var(--btnt)}
+button.sel{background:transparent;color:var(--ink);border:3px solid var(--ink)}button.on{background:var(--btn);color:var(--btnt)}
+.key{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:.95rem}
+.key b{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:4px}
+</style></head><body>
+<h1>Goal kick play</h1>
+<svg viewBox="125 320 1530 950" id="f">
+<rect class="ln" x="128" y="323" width="1524" height="944"/>
+<line class="ln" x1="890" y1="323" x2="890" y2="1267"/>
+<circle class="ln" cx="890" cy="797" r="138"/>
+<rect class="ln" x="128" y="500" width="255" height="590"/><rect class="ln" x="128" y="665" width="90" height="265"/>
+<rect class="ln" x="1398" y="500" width="254" height="590"/><rect class="ln" x="1563" y="665" width="89" height="265"/>
+<line id="tr" stroke="#fff" stroke-width="7" stroke-dasharray="16 14" stroke-linecap="round" x1="0" y1="0" x2="0" y2="0" opacity="0"/>
+<g id="p"></g>
+<g id="b"><circle r="20" fill="#fff" stroke="#000" stroke-width="4"/><circle r="7" fill="#000"/></g>
+</svg>
+<div id="cap">Press Play to watch the play.</div>
+<div class="row" style="margin-top:8px"><button id="play">Play</button><button id="slow">Speed: normal</button></div>
+<div class="key"><span><b style="background:#4a82b5"></b>CR: center rear</span><span><b style="background:#2fc22f"></b>LW: left wing</span><span><b style="background:#111"></b>FC: front center</span><span><b style="background:#d00"></b>RW: right wing</span></div>
+<script>
+const NS="http://www.w3.org/2000/svg";
+const L={blue:"CR",green:"LW",black:"FC",red:"RW"};
+const cols={blue:"#4a82b5",green:"#2fc22f",black:"#111",red:"#d00"};
+const SC=[
+{start:{blue:[185,823],green:[421,378],black:[620,836],red:[421,1222]},ball:[245,785],stages:[
+{t:1600,m:{blue:[515,619],black:[689,619],red:[695,990]},ball:[450,380],pass:1,c:"1. Center rear kicks the ball out to the left wing."},
+{t:1800,m:{green:[641,380],black:[987,402],red:[1003,780],blue:[570,658]},ball:[715,390],pass:0,c:"2. Left wing dribbles up the side. Everyone else runs up the field."},
+{t:1300,m:{},ball:[1005,410],pass:1,c:"3. Left wing passes across to front center."},
+{t:1400,m:{red:[1245,635],green:[983,578],blue:[782,656]},ball:[1262,668],pass:1,c:"4. Front center passes to the right wing. Left wing and center rear follow up."},
+{t:1500,m:{black:[1450,431],green:[1497,975],blue:[993,785]},ball:[1628,806],pass:1,c:"5. Right wing shoots. GOAL! Front center and left wing crash the box for rebounds."}]},
+{start:{blue:[365,743],green:[421,378],black:[557,560],red:[585,933]},ball:[300,740],stages:[
+{t:1600,m:{},ball:[490,386],pass:1,c:"1. Center rear kicks the ball out to the left wing."},
+{t:1200,m:{red:[775,813]},ball:[602,541],pass:1,c:"2. Left wing passes inside to front center. Right wing moves up."},
+{t:1300,m:{green:[740,376],black:[885,645],blue:[624,917],red:[1068,891]},ball:[755,392],pass:1,c:"3. Front center plays it back to the left wing, who runs up the side."},
+{t:1300,m:{},ball:[912,617],pass:1,c:"4. Left wing passes in to front center at halfway."},
+{t:1400,m:{red:[1189,891],green:[1208,490]},ball:[1230,853],pass:1,c:"5. Front center passes to the right wing."},
+{t:1600,m:{green:[1411,460],red:[1401,929],black:[1498,802],blue:[897,719]},ball:[1453,483],pass:1,c:"6. Right wing sends it up the line to the left wing. Others move into the box."},
+{t:1200,m:{},ball:[1546,723],pass:1,c:"7. Left wing passes inside to front center."},
+{t:1200,m:{},ball:[1632,775],pass:1,c:"8. Front center shoots. GOAL!"}]}
+];
+SC.shift();
+let cur=0,stages=SC[0].stages,start=SC[0].start,ballStart=SC[0].ball;
+const P=document.getElementById("p"),B=document.getElementById("b"),TR=document.getElementById("tr"),cap=document.getElementById("cap");
+const el={};
+for(const k in cols){const g=document.createElementNS(NS,"g");let s;
+ if(k=="blue"||k=="green"||k=="red"||k=="black"){
+  if(k=="blue")s=`<circle r="30" fill="${cols.blue}"/>`;
+  if(k=="green")s=`<polygon points="0,-34 32,26 -32,26" fill="${cols.green}"/>`;
+  if(k=="red")s=`<rect x="-28" y="-28" width="56" height="56" fill="${cols.red}"/>`;
+  if(k=="black")s=`<polygon points="-12,-30 12,-30 30,-12 30,12 12,30 -12,30 -30,12 -30,-12" fill="#111"/>`;}
+ g.innerHTML=s+`<text y="12" text-anchor="middle" font-size="26" font-weight="800" fill="#fff">${L[k]}</text>`;
+ P.appendChild(g);el[k]=g}
+let pos,ball,run=0,speed=1,raf;
+function draw(){for(const k in el)el[k].setAttribute("transform",`translate(${pos[k]})`);B.setAttribute("transform",`translate(${ball})`)}
+function reset(){pos=JSON.parse(JSON.stringify(start));ball=ballStart.slice();TR.setAttribute("opacity",0);draw()}
+const ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+function go(i){
+ if(i>=stages.length){document.getElementById("play").textContent="Replay";run=0;return}
+ const s=stages[i],p0=JSON.parse(JSON.stringify(pos)),b0=ball.slice(),T=s.t/speed,t0=performance.now();
+ cap.textContent=s.c;
+ if(s.pass){TR.setAttribute("x1",b0[0]);TR.setAttribute("y1",b0[1]);TR.setAttribute("opacity",.9)}else TR.setAttribute("opacity",0);
+ (function f(now){
+  if(!run)return;
+  const u=Math.min(1,(now-t0)/T),e=ease(u);
+  for(const k in s.m)pos[k]=[p0[k][0]+(s.m[k][0]-p0[k][0])*e,p0[k][1]+(s.m[k][1]-p0[k][1])*e];
+  ball=[b0[0]+(s.ball[0]-b0[0])*e,b0[1]+(s.ball[1]-b0[1])*e];
+  TR.setAttribute("x2",ball[0]);TR.setAttribute("y2",ball[1]);draw();
+  if(u<1)raf=requestAnimationFrame(f);else setTimeout(()=>run&&go(i+1),500/speed);
+ })(t0);
+}
+document.getElementById("play").onclick=function(){
+ if(run){run=0;cancelAnimationFrame(raf);this.textContent="Replay";return}
+ reset();run=1;this.textContent="Stop";setTimeout(()=>go(0),400);
+};
+document.getElementById("slow").onclick=function(){speed=speed==1?.5:1;this.textContent="Speed: "+(speed==1?"normal":"slow")};
+function pick(n){run=0;cancelAnimationFrame(raf);cur=n;stages=SC[n].stages;start=SC[n].start;ballStart=SC[n].ball;reset();cap.textContent="Press Play to watch the play.";document.getElementById("play").textContent="Play"}
+pick(0);
+</script></body></html>
+
