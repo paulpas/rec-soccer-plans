@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="practice-date" content="2026-10-12">
+<meta name="practice-day" content="Monday">
+<title>Week 7 Monday: Crossing the Street</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root{
+  --pitch-dark:#173622;
+  --pitch:#1F4D36;
+  --pitch-stripe:#25573F;
+  --chalk:#F7F5EC;
+  --ink:#152018;
+  --ink-soft:#4B5C51;
+  --amber:#E3A72E;
+  --cone:#E1592C;
+  --line-rule:rgba(21,32,24,0.12);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:'Inter',sans-serif; background:var(--chalk); color:var(--ink); line-height:1.5;}
+.wrap{max-width:760px; margin:0 auto; padding:0 18px 70px;}
+
+.hero{
+  background:repeating-linear-gradient(180deg, var(--pitch-stripe) 0px, var(--pitch-stripe) 40px, var(--pitch) 40px, var(--pitch) 80px);
+  color:var(--chalk); padding:36px 18px 28px; border-bottom:6px solid var(--amber); position:relative;
+}
+.hero-inner{max-width:760px; margin:0 auto;}
+.eyebrow{font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--amber); font-weight:700; margin-bottom:8px;}
+h1{font-family:'Bebas Neue',sans-serif; font-size:clamp(34px,7vw,50px); letter-spacing:0.01em; margin-bottom:6px;}
+.hero p{font-size:14.5px; color:rgba(247,245,236,0.85); max-width:520px;}
+.progress-wrap{margin-top:18px; display:flex; align-items:center; gap:12px;}
+.progress-track{flex:1; height:8px; background:rgba(247,245,236,0.2); border-radius:6px; overflow:hidden;}
+.progress-fill{height:100%; background:var(--amber); width:0%; transition:width 0.3s ease;}
+.progress-label{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--chalk); white-space:nowrap;}
+
+.save-pill{
+  position:fixed; top:14px; right:14px; z-index:50;
+  background:var(--ink); color:var(--chalk); font-family:'JetBrains Mono',monospace; font-size:11px;
+  padding:6px 12px; border-radius:100px; opacity:0; transition:opacity 0.4s ease; pointer-events:none;
+}
+.save-pill.show{opacity:0.92;}
+
+.segment{
+  background:#fff; border:1px solid var(--line-rule); border-radius:14px; margin-top:20px; overflow:hidden;
+}
+.seg-head{
+  padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:var(--pitch); color:var(--chalk);
+}
+.seg-time{font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:700; color:var(--amber);}
+.seg-title{font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.02em; margin-top:2px;}
+.seg-count{font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(247,245,236,0.75); white-space:nowrap;}
+
+.checklist{padding:14px 18px 6px;}
+.item{display:flex; align-items:flex-start; gap:10px; padding:8px 0; border-bottom:1px solid var(--line-rule);}
+.item:last-child{border-bottom:none;}
+.item input[type=checkbox]{
+  appearance:none; width:20px; height:20px; flex-shrink:0; margin-top:1px;
+  border:2px solid var(--pitch); border-radius:5px; cursor:pointer; position:relative; background:#fff;
+}
+.item input[type=checkbox]:checked{background:var(--pitch);}
+.item input[type=checkbox]:checked::after{
+  content:""; position:absolute; left:5px; top:1px; width:5px; height:10px;
+  border:solid var(--chalk); border-width:0 2px 2px 0; transform:rotate(45deg);
+}
+.item label{font-size:14px; cursor:pointer; flex:1;}
+.item label .badge-new{
+  display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9.5px; font-weight:700;
+  color:var(--cone); border:1px solid var(--cone); border-radius:4px; padding:1px 5px; margin-left:6px; vertical-align:middle;
+}
+.item.checked label{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--line-rule);}
+.item .sub{display:block; font-size:12.5px; color:var(--ink-soft); margin-top:2px; font-weight:400;}
+
+.notes-block{padding:6px 18px 18px;}
+.notes-block label.notes-label{
+  display:block; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--ink-soft); margin-bottom:6px; margin-top:8px;
+}
+textarea{
+  width:100%; border:1px solid var(--line-rule); border-radius:8px; padding:10px 12px;
+  font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); resize:vertical; min-height:56px;
+  background:#FCFBF6;
+}
+textarea:focus{outline:2px solid var(--amber); outline-offset:1px;}
+
+.carry-box{
+  background:var(--ink); color:var(--chalk); border-radius:14px; padding:20px 18px; margin-top:24px;
+}
+.carry-box h3{font-family:'Bebas Neue'; font-size:21px; color:var(--amber); margin-bottom:4px; letter-spacing:0.02em;}
+.carry-box p{font-size:13px; color:rgba(247,245,236,0.75); margin-bottom:10px;}
+.carry-box textarea{background:rgba(247,245,236,0.06); color:var(--chalk); border-color:rgba(247,245,236,0.2);}
+.carry-box textarea::placeholder{color:rgba(247,245,236,0.4);}
+
+.actions{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;}
+.btn{
+  font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.03em;
+  border-radius:8px; padding:10px 16px; cursor:pointer; border:1.5px solid var(--pitch); background:#fff; color:var(--pitch);
+}
+.btn.primary{background:var(--amber); border-color:var(--amber); color:var(--ink);}
+.btn:active{transform:scale(0.98);}
+
+footer{padding:24px 0 0; font-size:11.5px; color:var(--ink-soft); font-family:'JetBrains Mono',monospace; text-align:center;}
+
+/* field diagrams */
+.diagram-block{padding:14px 18px 4px;}
+.diagram-note{font-size:12.5px; color:var(--ink-soft); margin-bottom:10px;}
+.diagram-note code{background:#fff;border:1px solid var(--line-rule);border-radius:4px;padding:1px 5px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cone);}
+.diagram-card{
+  background:var(--pitch); border-radius:12px; overflow:hidden; margin-bottom:14px; border:1px solid var(--line-rule);
+}
+.diagram-card .cap{
+  padding:10px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;
+  background:rgba(0,0,0,0.15);
+}
+.diagram-card .cap h4{font-size:13.5px; color:var(--chalk); font-weight:600;}
+
+.diagram-card .legend{font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(247,245,236,0.75); display:flex; gap:10px; flex-wrap:wrap;}
+.diagram-card .field-svg{display:block; width:100%; height:auto;}
+.diagram-card .foot{padding:10px 16px 14px; font-size:12px; color:rgba(247,245,236,0.85);} .ou-detail{border:1px solid var(--line-rule);border-radius:10px;padding:12px 16px;margin:6px 0 14px;background:#FCFBF6;} .ou-detail h5{font-family:'Bebas Neue';font-size:15px;color:var(--pitch);margin:12px 0 4px;letter-spacing:0.02em;} .ou-detail h5:first-child{margin-top:8px;} .ou-detail p{font-size:12.5px;color:var(--ink);margin:4px 0;line-height:1.45;} .ou-detail b{color:var(--ink);} .ou-detail ol,.ou-detail ul{margin:4px 0 4px 18px;} .ou-detail li{font-size:12.5px;color:var(--ink-soft);margin:3px 0;} .ou-detail li code{background:#fff;border:1px solid var(--line-rule);border-radius:4px;padding:1px 5px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cone);}
+
+/* player tracker table */
+.pt-table{width:100%;border-collapse:collapse;}
+.pt-table th{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);padding:8px 14px;border-bottom:2px solid var(--line-rule);text-align:center;}
+.pt-table th:first-child{text-align:left;}
+.pt-table td{padding:8px 14px;border-bottom:1px solid var(--line-rule);text-align:center;vertical-align:middle;}
+.pt-table td:first-child{font-weight:600;text-align:left;}
+.pt-table tr:nth-child(even){background:rgba(247,245,236,0.5);}
+.pt-table input[type=checkbox]{display:block;margin:0 auto;}
+.pt-table .notes-cell{width:100%;padding:4px 8px;}
+.pt-table .player-notes{width:100%;border:1px solid var(--line-rule);border-radius:6px;padding:6px 8px;font-family:'Inter',sans-serif;font-size:12.5px;color:var(--ink);resize:vertical;min-height:36px;background:#FCFBF6;}
+.pt-table .player-notes:focus{outline:none;border-color:var(--amber);}
+</style>
+</head>
+<body>
+
+<div class="save-pill" id="savePill">saved</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">WEEK 7 · MONDAY</div>
+    <h1>Crossing the Street</h1>
+    <p>Monday, Oct 12 · Look both ways: find the defender, go the other way, pass across</p>
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 / 0 done</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- PLAYER TRACKER -->
+<div class="segment" data-seg="player-tracker">
+  <div class="seg-head">
+    <div><div class="seg-time">AT A GLANCE</div><div class="seg-title">Player Tracker</div></div>
+    <div class="seg-count" data-count-for="player-tracker">0/7</div>
+  </div>
+  <div class="checklist">
+    <table class="pt-table">
+      <thead>
+        <tr><th>Player Name</th><th>Attended</th><th>Homework</th><th>Strong Effort</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Emilia</td><td><input type="checkbox" id="pt-emilia-att"></td><td><input type="checkbox" id="pt-emilia-hw"></td><td><input type="checkbox" id="pt-emilia-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-emilia-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Maverick</td><td><input type="checkbox" id="pt-maverick-att"></td><td><input type="checkbox" id="pt-maverick-hw"></td><td><input type="checkbox" id="pt-maverick-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-maverick-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Ellie</td><td><input type="checkbox" id="pt-ellie-att"></td><td><input type="checkbox" id="pt-ellie-hw"></td><td><input type="checkbox" id="pt-ellie-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-ellie-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Amelia</td><td><input type="checkbox" id="pt-amelia-att"></td><td><input type="checkbox" id="pt-amelia-hw"></td><td><input type="checkbox" id="pt-amelia-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-amelia-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Zenobia</td><td><input type="checkbox" id="pt-zenobia-att"></td><td><input type="checkbox" id="pt-zenobia-hw"></td><td><input type="checkbox" id="pt-zenobia-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-zenobia-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Hannah</td><td><input type="checkbox" id="pt-hannah-att"></td><td><input type="checkbox" id="pt-hannah-hw"></td><td><input type="checkbox" id="pt-hannah-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-hannah-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+        <tr><td>Cate</td><td><input type="checkbox" id="pt-cate-att"></td><td><input type="checkbox" id="pt-cate-hw"></td><td><input type="checkbox" id="pt-cate-effort"></td><td class="notes-cell"><textarea class="player-notes" id="pt-cate-notes" placeholder="Notes..." rows="2"></textarea></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="player-tracker-notes">Coach notes — player observations</label>
+    <textarea id="player-tracker-notes" placeholder="e.g. who stood out today, who struggled, rotation notes..."></textarea>
+  </div>
+</div>
+
+<!-- ARRIVAL -->
+<div class="segment" data-seg="arrival">
+  <div class="seg-head">
+    <div><div class="seg-time">5:30 – 5:40 PM</div><div class="seg-title">Arrival Warm-Up: &ldquo;Look Both Ways&rdquo;</div></div>
+    <div class="seg-count" data-count-for="arrival">0/4</div>
+  </div>
+  <div class="diagram-block">
+    <p class="diagram-note">Every player has a ball in a loose 20x20 area for easy dribbling. Coach walks behind players and holds up fingers; on a whistle the player looks over their shoulder, calls the number, then keeps dribbling. This builds the habit of checking behind you before the ball arrives.</p>
+  </div>
+  
+  <div class="checklist">
+    <div class="item"><input type="checkbox" id="arr-1"><label for="arr-1">Set up a loose dribbling area with cones; one ball per player</label></div>
+    <div class="item"><input type="checkbox" id="arr-2"><label for="arr-2">Free dribbling — heads up, small touches</label></div>
+    <div class="item"><input type="checkbox" id="arr-3"><label for="arr-3">Whistle: look over a shoulder, call the number of fingers coach is holding up</label></div>
+    <div class="item"><input type="checkbox" id="arr-4"><label for="arr-4">Make them check BOTH shoulders, not just their favorite one</label></div>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="arrival-notes">Coach notes</label>
+    <textarea id="arrival-notes" placeholder="e.g. who checks both shoulders, who forgets to look..."></textarea>
+  </div>
+</div>
+
+<!-- WELCOME -->
+<div class="segment" data-seg="welcome">
+  <div class="seg-head">
+    <div><div class="seg-time">5:40 – 5:48 PM</div><div class="seg-title">Welcome &amp; &ldquo;Look Both Ways&rdquo;</div></div>
+    <div class="seg-count" data-count-for="welcome">0/4</div>
+  </div>
+  <div class="diagram-block">
+    <p class="diagram-note">Gather the team: <b>&ldquo;What do you do before you cross the street? You look both ways!&rdquo;</b> Today the ball is the person crossing, and the middle of the field is the street. Before the ball gets to you, look behind you to see where the danger (the defender) is, then go the other way.</p>
+  </div>
+  
+  <div class="checklist">
+    <div class="item"><input type="checkbox" id="wel-1"><label for="wel-1">Gather the team for a quick chat</label></div>
+    <div class="item"><input type="checkbox" id="wel-2"><label for="wel-2">Ask: what do you do before you cross a street?</label></div>
+    <div class="item"><input type="checkbox" id="wel-3"><label for="wel-3">Explain: the middle of the field is the street — only defenders can be in it</label></div>
+    <div class="item"><input type="checkbox" id="wel-4"><label for="wel-4">Demo one rep: look both ways, find the defender, go the other way, pass across</label></div>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="welcome-notes">Coach notes</label>
+    <textarea id="welcome-notes" placeholder="e.g. did the street idea land..."></textarea>
+  </div>
+</div>
+
+<!-- DRILL1 -->
+<div class="segment" data-seg="drill1">
+  <div class="seg-head">
+    <div><div class="seg-time">5:48 – 6:02 PM</div><div class="seg-title">Drill 1: Crossing the Street</div></div>
+    <div class="seg-count" data-count-for="drill1">0/7</div>
+  </div>
+  <div class="diagram-block">
+    <p class="diagram-note"><b>Setup:</b> 20x50 field. Mark the middle section (about 10 yards) across the full width as the street &mdash; only defenders may be in it. One defender stands in the street. One line of players waits at the start end beside the coach; receivers wait at the far end.</p>
+    <p class="diagram-note"><b>The rep:</b> The front player faces the coach, back to the street. Coach passes the ball. As it comes in, the player looks over both shoulders to find which side the defender is on, takes their touch the opposite way, then passes across the street to a player at the other end. That completes the rep.</p>
+    <p class="diagram-note"><b>Rotation:</b> The line moves forward. The player who received goes to the back of the line on the opposite side of the passer.</p>
+  </div>
+  <div class="diagram-card"><div class="cap"><h4>1. Crossing the Street — one rep</h4><div class="legend"><span style="color:#E3A72E">&#8594; pass / touch</span><span style="color:#4a82b5">&#9679; passer</span><span style="color:#2fc22f">&#9679; receiver</span><span style="color:#111;border:1px solid #777">&#9679; defender</span><span style="color:#fff">&#9679; coach</span></div></div>
+<svg class="field-svg" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Passer faces the coach with back to the street, checks both shoulders, finds the defender at the top of the street, takes the ball to the opposite side and passes across the street to the receiver">
+<rect x="0" y="0" width="600" height="420" fill="#1F4D36"/><g opacity="0.55"><rect x="0" y="0" width="600" height="70" fill="#25573F"/><rect x="0" y="140" width="600" height="70" fill="#25573F"/><rect x="0" y="280" width="600" height="70" fill="#25573F"/></g>
+<rect x="50" y="110" width="500" height="200" fill="none" stroke="#F7F5EC" stroke-width="3"/>
+<rect x="250" y="110" width="100" height="200" fill="#8a2b2b" fill-opacity="0.35" stroke="#F7F5EC" stroke-width="3" stroke-dasharray="10,7"/>
+<text x="300" y="96" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">THE STREET (defenders only) ~10 yd</text>
+<text x="150" y="330" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">20 yd</text><text x="450" y="330" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">20 yd</text>
+<text x="300" y="350" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">field: 50 yd long x 20 yd wide</text>
+<circle cx="75" cy="210" r="15" fill="#777" stroke="#fff" stroke-width="2"/><text x="75" y="214" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">COACH</text>
+<circle cx="135" cy="210" r="15" fill="#4a82b5" stroke="#fff" stroke-width="2"/><text x="135" y="214" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">PASS</text>
+<circle cx="95" cy="262" r="15" fill="#4a82b5" stroke="#fff" stroke-width="2"/><text x="95" y="266" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">2</text><circle cx="95" cy="292" r="15" fill="#4a82b5" stroke="#fff" stroke-width="2"/><text x="95" y="296" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">3</text>
+<circle cx="300" cy="150" r="15" fill="#111" stroke="#fff" stroke-width="2"/><text x="300" y="154" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">DEF</text>
+<circle cx="485" cy="210" r="15" fill="#2fc22f" stroke="#fff" stroke-width="2"/><text x="485" y="214" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">RCV</text><circle cx="515" cy="175" r="15" fill="#2fc22f" stroke="#fff" stroke-width="2"/><text x="515" y="179" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle"></text><circle cx="515" cy="245" r="15" fill="#2fc22f" stroke="#fff" stroke-width="2"/><text x="515" y="249" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle"></text>
+<line x1="92" y1="210" x2="108" y2="210" stroke="#E3A72E" stroke-width="3" stroke-dasharray="4,4" stroke-linecap="round"/><polygon points="118.0,210.0 108.0,216.0 108.0,204.0" fill="#E3A72E"/>
+<text x="105" y="196" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="10" font-weight="700" text-anchor="middle">1 pass in</text>
+<text x="135" y="175" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="10" font-weight="700" text-anchor="middle">2 look over</text><text x="135" y="188" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="10" font-weight="700" text-anchor="middle">both shoulders</text>
+<line x1="150" y1="200" x2="168.84355958027686" y2="175.88024373724562" stroke="#fff" stroke-width="2" stroke-dasharray="3,4" stroke-linecap="round"/><polygon points="175.0,168.0 173.6,179.6 164.1,172.2" fill="#fff"/><line x1="150" y1="220" x2="168.84355958027686" y2="244.11975626275438" stroke="#fff" stroke-width="2" stroke-dasharray="3,4" stroke-linecap="round"/><polygon points="175.0,252.0 164.1,247.8 173.6,240.4" fill="#fff"/>
+<line x1="135" y1="226" x2="186.42507074287457" y2="256.85504244572473" stroke="#E3A72E" stroke-width="4" stroke-dasharray="8,6" stroke-linecap="round"/><polygon points="195.0,262.0 183.3,262.0 189.5,251.7" fill="#E3A72E"/>
+<text x="190" y="250" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="10" font-weight="700" text-anchor="middle">3 defender is at the top</text><text x="190" y="278" fill="#E3A72E" font-family="Arial, sans-serif" font-size="10" font-weight="700" text-anchor="middle">so go the OTHER way</text>
+<line x1="205" y1="268" x2="452.15643521773336" y2="223.76188319060026" stroke="#E3A72E" stroke-width="5" stroke-dasharray="9,7" stroke-linecap="round"/><polygon points="462.0,222.0 453.2,229.7 451.1,217.9" fill="#E3A72E"/>
+<text x="375" y="280" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">4 pass across the street</text>
+<polygon points="250,102 243,116 257,116" fill="#E3A72E" stroke="#fff" stroke-width="1"/><polygon points="250,302 243,316 257,316" fill="#E3A72E" stroke="#fff" stroke-width="1"/><polygon points="350,102 343,116 357,116" fill="#E3A72E" stroke="#fff" stroke-width="1"/><polygon points="350,302 343,316 357,316" fill="#E3A72E" stroke="#fff" stroke-width="1"/>
+</svg>
+<div class="foot">Coach feeds the front player, who faces the coach with their back to the street. As the ball arrives they look over both shoulders, find where the defender is, take their touch to the opposite side and pass across the street to the receiver. Defender stays in the street.</div></div></div>
+  <div class="checklist">
+    <div class="item"><input type="checkbox" id="d1-1"><label for="d1-1">Mark a 20x50 field with a ~10 yd street across the middle</label></div>
+    <div class="item"><input type="checkbox" id="d1-2"><label for="d1-2">One defender in the street (rotate who defends)</label></div>
+    <div class="item"><input type="checkbox" id="d1-3"><label for="d1-3">Passer faces the coach with back to the street</label></div>
+    <div class="item"><input type="checkbox" id="d1-4"><label for="d1-4">Coach passes; passer looks over BOTH shoulders as the ball arrives</label></div>
+    <div class="item"><input type="checkbox" id="d1-5"><label for="d1-5">Passer finds the defender and takes the touch to the opposite side</label></div>
+    <div class="item"><input type="checkbox" id="d1-6"><label for="d1-6">Pass across the street to the receiver — rep complete</label></div>
+    <div class="item"><input type="checkbox" id="d1-7"><label for="d1-7">Rotate: line moves forward, receiver goes to the back of the line on the opposite side of the passer</label></div>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="drill1-notes">Coach notes</label>
+    <textarea id="drill1-notes" placeholder="e.g. did they look before the ball arrived, did they pick the right side..."></textarea>
+  </div>
+</div>
+
+<!-- DRILL2 -->
+<div class="segment" data-seg="drill2">
+  <div class="seg-head">
+    <div><div class="seg-time">6:02 – 6:14 PM</div><div class="seg-title">Drill 2: Make It Harder</div></div>
+    <div class="seg-count" data-count-for="drill2">0/5</div>
+  </div>
+  <div class="diagram-block">
+    <p class="diagram-note">Same field, same rep. Pick one progression at a time: (1) the defender starts in the middle of the street and only picks a side when the coach passes; (2) the coach passes a little firmer; (3) the receiver has to move to show for the pass. Keep each rep short so nobody waits long.</p>
+  </div>
+  
+  <div class="checklist">
+    <div class="item"><input type="checkbox" id="d2-1"><label for="d2-1">Defender starts in the middle of the street and picks a side when the coach passes</label></div>
+    <div class="item"><input type="checkbox" id="d2-2"><label for="d2-2">Same rep: look both ways, go the opposite way, pass across</label></div>
+    <div class="item"><input type="checkbox" id="d2-3"><label for="d2-3">Optional: firmer pass from the coach</label></div>
+    <div class="item"><input type="checkbox" id="d2-4"><label for="d2-4">Optional: receiver moves to show for the pass</label></div>
+    <div class="item"><input type="checkbox" id="d2-5"><label for="d2-5">Praise the look over the shoulder, not just the pass</label></div>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="drill2-notes">Coach notes</label>
+    <textarea id="drill2-notes" placeholder="e.g. which players still forget to look, which side they favor..."></textarea>
+  </div>
+</div>
+
+<!-- GAME -->
+<div class="segment" data-seg="game">
+  <div class="seg-head">
+    <div><div class="seg-time">6:14 – 6:30 PM</div><div class="seg-title">Game: The Street Game</div></div>
+    <div class="seg-count" data-count-for="game">0/4</div>
+  </div>
+  <div class="diagram-block">
+    <p class="diagram-note">Small-sided game on the same field. Attackers must pass across the street rather than dribble through it; only defenders may enter it. Rotate who defends the street every minute or two. (This game is a suggestion to finish the session &mdash; swap it out if you prefer.)</p>
+  </div>
+  <div class="diagram-card"><div class="cap"><h4>2. Street Game (optional)</h4><div class="legend"><span style="color:#E3A72E">&#8594; pass / touch</span><span style="color:#4a82b5">&#9679; passer</span><span style="color:#2fc22f">&#9679; receiver</span><span style="color:#111;border:1px solid #777">&#9679; defender</span><span style="color:#fff">&#9679; coach</span><span style="color:#d00">&#9679; other team</span></div></div>
+<svg class="field-svg" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Small-sided game on the same field where the middle street can only be entered by defenders and attackers must pass across it">
+<rect x="0" y="0" width="600" height="420" fill="#1F4D36"/><g opacity="0.55"><rect x="0" y="0" width="600" height="70" fill="#25573F"/><rect x="0" y="140" width="600" height="70" fill="#25573F"/><rect x="0" y="280" width="600" height="70" fill="#25573F"/></g>
+<rect x="50" y="110" width="500" height="200" fill="none" stroke="#F7F5EC" stroke-width="3"/>
+<rect x="250" y="110" width="100" height="200" fill="#8a2b2b" fill-opacity="0.35" stroke="#F7F5EC" stroke-width="3" stroke-dasharray="10,7"/>
+<text x="300" y="96" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">THE STREET (defenders only) ~10 yd</text>
+<text x="150" y="330" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">20 yd</text><text x="450" y="330" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">20 yd</text>
+<text x="300" y="350" fill="#F7F5EC" font-family="Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">field: 50 yd long x 20 yd wide</text>
+<circle cx="120" cy="170" r="15" fill="#4a82b5" stroke="#fff" stroke-width="2"/><text x="120" y="174" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">A</text><circle cx="120" cy="250" r="15" fill="#4a82b5" stroke="#fff" stroke-width="2"/><text x="120" y="254" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">A</text><circle cx="200" cy="210" r="15" fill="#4a82b5" stroke="#fff" stroke-width="2"/><text x="200" y="214" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">A</text>
+<circle cx="480" cy="170" r="15" fill="#d00" stroke="#fff" stroke-width="2"/><text x="480" y="174" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">B</text><circle cx="480" cy="250" r="15" fill="#d00" stroke="#fff" stroke-width="2"/><text x="480" y="254" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">B</text><circle cx="400" cy="210" r="15" fill="#d00" stroke="#fff" stroke-width="2"/><text x="400" y="214" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">B</text>
+<circle cx="300" cy="160" r="15" fill="#111" stroke="#fff" stroke-width="2"/><text x="300" y="164" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">D</text><circle cx="300" cy="260" r="15" fill="#111" stroke="#fff" stroke-width="2"/><text x="300" y="264" fill="#fff" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">D</text>
+<line x1="205" y1="200" x2="430.0702354023952" y2="173.18312088822526" stroke="#E3A72E" stroke-width="4" stroke-dasharray="9,7" stroke-linecap="round"/><polygon points="440.0,172.0 430.8,179.1 429.4,167.2" fill="#E3A72E"/>
+<text x="320" y="205" fill="#E3A72E" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">pass ACROSS the street</text>
+</svg>
+<div class="foot">Same 20x50 field. Attackers may not dribble through the street — they must pass across it. Only defenders may stand in it. Rotate who defends in the street every minute or two.</div></div></div>
+  <div class="checklist">
+    <div class="item"><input type="checkbox" id="game-1"><label for="game-1">Same field and street; split into two teams (3v3 with 6 players)</label></div>
+    <div class="item"><input type="checkbox" id="game-2"><label for="game-2">Only defenders may stand in the street; attackers pass across it</label></div>
+    <div class="item"><input type="checkbox" id="game-3"><label for="game-3">Rotate street defenders every minute or two</label></div>
+    <div class="item"><input type="checkbox" id="game-4"><label for="game-4">Praise players who look behind them before receiving</label></div>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="game-notes">Coach notes</label>
+    <textarea id="game-notes" placeholder="e.g. did they carry the look-over-shoulder habit into the game..."></textarea>
+  </div>
+</div>
+
+<!-- COOL -->
+<div class="segment" data-seg="cool">
+  <div class="seg-head">
+    <div><div class="seg-time">6:30 – 6:40 PM</div><div class="seg-title">Cool-Down &amp; Team Chat</div></div>
+    <div class="seg-count" data-count-for="cool">0/3</div>
+  </div>
+  <div class="diagram-block">
+    <p class="diagram-note">Light rolling passes and easy touches. Team chat: what do you do before you cross the street? When did looking over your shoulder help you today? What&rsquo;s one thing to fix before next time?</p>
+  </div>
+  
+  <div class="checklist">
+    <div class="item"><input type="checkbox" id="cool-1"><label for="cool-1">Light rolling passes and easy touches to cool down</label></div>
+    <div class="item"><input type="checkbox" id="cool-2"><label for="cool-2">Chat: what do you do before the ball gets to you?</label></div>
+    <div class="item"><input type="checkbox" id="cool-3"><label for="cool-3">Ask one thing to fix before next time and pack up</label></div>
+  </div>
+  <div class="notes-block">
+    <label class="notes-label" for="cool-notes">Coach notes</label>
+    <textarea id="cool-notes" placeholder="e.g. key takeaways..."></textarea>
+  </div>
+</div>
+
+<div class="carry-box">
+  <h3>Carry Into Next Session</h3>
+  <p>Anything from today that should shape the next plan — what to repeat, what to drop, what to build on.</p>
+  <textarea id="carry-forward" placeholder="e.g. did they look before the ball arrived; what to repeat next time..."></textarea>
+</div>
+
+<div class="actions">
+  <button class="btn primary" id="copyBtn">Copy notes for next week</button>
+  <button class="btn" id="resetBtn">Reset checklist</button>
+</div>
+
+</div>
+
+<footer>WEEK 7 MONDAY · OCTOBER 12 · NOTES AUTO-SAVE AS YOU TYPE</footer>
+
+<script>
+const STORAGE_KEY = 'week7-mon-crossing-street';
+const segmentIds = ['player-tracker','arrival','welcome','drill1','drill2','game','cool'];
+const playerNames = ['emilia','maverick','ellie','amelia','zenobia','hannah','cate'];
+
+function collectState(){
+  const state = { segments:{}, carryForward: document.getElementById('carry-forward').value, playerNotes:{} };
+  segmentIds.forEach(seg=>{
+    const items = {};
+    document.querySelectorAll(`[data-seg="${seg}"] input[type=checkbox]`).forEach(cb=>{
+      items[cb.id] = cb.checked;
+    });
+    const notesEl = document.getElementById(seg+'-notes');
+    state.segments[seg] = { items, notes: notesEl ? notesEl.value : '' };
+  });
+  playerNames.forEach(name=>{
+    const el = document.getElementById('pt-'+name+'-notes');
+    if(el) state.playerNotes[name] = el.value;
+  });
+  return state;
+}
+
+function applyState(state){
+  if(!state) return;
+  segmentIds.forEach(seg=>{
+    const segState = state.segments && state.segments[seg];
+    if(!segState) return;
+    Object.entries(segState.items || {}).forEach(([id, checked])=>{
+      const el = document.getElementById(id);
+      if(el){ el.checked = checked; const item = el.closest('.item'); if(item) item.classList.toggle('checked', checked); }
+    });
+    const notesEl = document.getElementById(seg+'-notes');
+    if(notesEl && segState.notes) notesEl.value = segState.notes;
+  });
+  if(state.playerNotes){
+    playerNames.forEach(name=>{
+      const el = document.getElementById('pt-'+name+'-notes');
+      if(el && state.playerNotes[name]) el.value = state.playerNotes[name];
+    });
+  }
+  if(state.carryForward){
+    document.getElementById('carry-forward').value = state.carryForward;
+  }
+  updateCounts();
+}
+
+let saveTimer = null;
+function scheduleSave(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(()=>{
+    try{
+      const state = collectState();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      showSavedPill();
+    }catch(err){
+      console.error('Storage save failed:', err);
+    }
+  }, 350);
+}
+
+function showSavedPill(){
+  const pill = document.getElementById('savePill');
+  pill.textContent = 'saved';
+  pill.classList.add('show');
+  clearTimeout(showSavedPill._t);
+  showSavedPill._t = setTimeout(()=> pill.classList.remove('show'), 1200);
+}
+
+function updateCounts(){
+  let totalDone = 0, totalAll = 0;
+  segmentIds.forEach(seg=>{
+    const boxes = document.querySelectorAll(`[data-seg="${seg}"] input[type=checkbox]`);
+    const done = Array.from(boxes).filter(b=>b.checked).length;
+    totalDone += done; totalAll += boxes.length;
+    const countEl = document.querySelector(`[data-count-for="${seg}"]`);
+    if(countEl) countEl.textContent = `${done}/${boxes.length}`;
+  });
+  document.getElementById('progressLabel').textContent = `${totalDone} / ${totalAll} done`;
+  document.getElementById('progressFill').style.width = totalAll ? `${(totalDone/totalAll)*100}%` : '0%';
+}
+
+document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+  cb.addEventListener('change', ()=>{
+    const item = cb.closest('.item');
+    if(item) item.classList.toggle('checked', cb.checked);
+    updateCounts();
+    scheduleSave();
+  });
+});
+document.querySelectorAll('textarea').forEach(t=>{
+  t.addEventListener('input', scheduleSave);
+});
+
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  if(!confirm('Reset all checkboxes for this session? Notes will stay.')) return;
+  document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+    cb.checked = false; cb.closest('.item').classList.remove('checked');
+  });
+  updateCounts();
+  scheduleSave();
+});
+
+document.getElementById('copyBtn').addEventListener('click', async ()=>{
+  const state = collectState();
+  let out = 'Week 7 Monday: Crossing the Street\n\n';
+  const titles = {
+    'arrival':'Arrival Warm-Up: Look Both Ways',
+    'welcome':'Welcome &amp; Look Both Ways',
+    'drill1':'Drill 1: Crossing the Street',
+    'drill2':'Drill 2: Make It Harder',
+    'game':'Game: The Street Game',
+    'cool':'Cool-Down &amp; Team Chat'
+  };
+  segmentIds.forEach(seg=>{
+    const notes = state.segments[seg].notes;
+    if(notes && notes.trim()){
+      out += `${titles[seg]}:\n${notes.trim()}\n\n`;
+    }
+  });
+  if(state.carryForward && state.carryForward.trim()){
+    out += `CARRY INTO NEXT SESSION:\n${state.carryForward.trim()}\n`;
+  }
+  try{
+    await navigator.clipboard.writeText(out);
+    const btn = document.getElementById('copyBtn');
+    const old = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(()=> btn.textContent = old, 1400);
+  }catch(err){
+    alert(out);
+  }
+});
+
+(function init(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw){
+    applyState(JSON.parse(raw));
+  }
+  updateCounts();
+})();
+</script>
+
+</body>
+</html>
