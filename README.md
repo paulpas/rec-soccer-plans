@@ -23,6 +23,7 @@
 | WEEK 3 | Wed, Sep 16 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Shield, Turn & Escape](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week3_wed_planb_lesson_plan_enhanced.html) |
 | WEEK 4 | Wed, Sep 23 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Fitness & Space Awareness](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week4_wed_lesson_plan_enhanced.html) |
 | WEEK 5 | Mon, Sep 28 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Half-Field Lava Scrimmage](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week5_mon_lesson_plan_enhanced.html) |
+| WEEK 6 | Wed, Oct 7 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Pass, Move & Receive](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week6_wed_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_PAST_TABLE -->
 
 ### 📅 Today's / Next Lesson Plan
@@ -30,7 +31,7 @@
 <!-- GENERATE_TODAY_TABLE -->
 | Week | Date | Day | Plan |
 |------|------|-----|------|
-| WEEK 6 | Wed, Oct 7 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Wednesday</span> | [Pass, Move & Receive](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week6_wed_lesson_plan_enhanced.html) |
+| WEEK 7 | Mon, Oct 12 | <span style="background-color:#E3A72E;color:#152018;padding:2px 8px;border-radius:3px;font-size:0.85em;">Monday</span> | [Feints & 1v1](https://html-preview.github.io/?url=https://github.com/paulpas/rec-soccer-plans/blob/main/week7_mon_lesson_plan_enhanced.html) |
 <!-- END_GENERATE_TODAY_TABLE -->
 
 ### 📅 Upcoming Lesson Plans
